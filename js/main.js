@@ -58,6 +58,8 @@ function downloads(p) {
 
 // 이 사이트(yh-yeop.github.io) 아래 웹 프로젝트는 manifest 와 /install.js 를 갖춰 앱으로 설치할 수 있다.
 // ?install 을 붙여 열면 그 페이지가 설치 버튼을 바로 띄운다. 설치를 지원하지 않는 프로젝트는 pwa: false.
+// 베타: data.js · portfolio.json 의 beta: true, 또는 프리릴리스를 최신으로 보는 앱
+const isBeta = p => Boolean(p.beta || p.release?.pre);
 const installable = p => p.live && p.pwa !== false && p.live.startsWith(PAGES + '/');
 function installUrl(live) {
   const u = new URL(live);
@@ -102,7 +104,7 @@ function card(p) {
       ${icon(p, 48)}
       <div class="head-text">
         <span class="cat">${c.label}</span>
-        <h3 id="t-${p.id}">${esc(p.title)}</h3>
+        <h3 id="t-${p.id}">${esc(p.title)}${isBeta(p) ? ' <span class="beta">베타</span>' : ''}</h3>
         ${p.repos.length ? `<span class="repo">${p.repos.map(esc).join(' · ')}</span>` : ''}
       </div>
     </div>
@@ -216,7 +218,7 @@ function renderQuick() {
     return `<a class="tile" style="--cat:${c.color}" href="${href}"${p.page || p.live ? '' : ` data-jump="${p.id}"`}>
       ${icon(p, 40)}
       <span class="tile-text"><b>${esc(p.title)}</b><span>${c.label}</span></span>
-      <span class="kind">${p.live ? '웹' : p.release?.pre ? '베타' : '설치'}</span>
+      <span class="kind">${p.live ? (isBeta(p) ? '웹 · 베타' : '웹') : p.release?.pre ? '베타' : '설치'}</span>
     </a>`;
   }).join('');
 }
@@ -263,6 +265,7 @@ async function addUnknownRepos() {
       repos: [r.name],
       live: typeof pf.live === 'string' ? pf.live : (r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : '')),
       pwa: pf.pwa === false ? false : undefined,
+      beta: pf.beta === true || undefined,
       desc: String(pf.desc || r.description || '설명이 아직 없습니다.'),
       points: list(pf.points) || undefined,
       tags: list(pf.tags) || (r.language ? [r.language] : []),
