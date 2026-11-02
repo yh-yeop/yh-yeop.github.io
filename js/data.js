@@ -81,7 +81,7 @@ export const PROJECTS = [
     tags: ['React', 'TypeScript', 'Tauri', 'Windows · Android'],
   },
   {
-    id: 'fracture', cat: 'game', title: 'Fracture', mono: 'F', icon: 'assets/icons/fracture.svg',
+    id: 'fracture', cat: 'game', title: 'Fracture', mono: 'F', icon: 'assets/icons/fracture.png',
     repos: [], release: { repo: 'releases', prefix: 'Fracture', pre: true }, closed: true, page: 'p/fracture/',
     featured: {
       kicker: '첫 공개 베타',
