@@ -238,7 +238,7 @@ function render() { renderChips(); renderGrid(); }
 async function addUnknownRepos() {
   const known = new Set([...PROJECTS.flatMap(p => p.repos), ...HIDE]);
   const fresh = Object.values(state.repos).filter(r => !known.has(r.name) && !r.fork && !r.archived);
-  const infos = await Promise.all(fresh.map(r => portfolioOf(r.name).catch(() => null)));
+  const infos = await Promise.all(fresh.map(r => portfolioOf(r.name, r.pushed_at).catch(() => null)));
   fresh.forEach((r, i) => {
     const pf = infos[i] && typeof infos[i] === 'object' ? infos[i] : {};
     if (pf.hidden) return;

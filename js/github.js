@@ -4,11 +4,11 @@ import { USER } from './data.js';
 const API = 'https://api.github.com';
 const TTL = 10 * 60 * 1000;
 
-export async function gh(path, { accept = 'application/vnd.github+json', text = false } = {}) {
+export async function gh(path, { accept = 'application/vnd.github+json', text = false, ttl = TTL } = {}) {
   const key = `gh:${accept}:${path}`;
   try {
     const hit = JSON.parse(sessionStorage.getItem(key));
-    if (hit && Date.now() - hit.t < TTL) return hit.v;
+    if (hit && Date.now() - hit.t < ttl) return hit.v;
   } catch {}
   const res = await fetch(API + path, { headers: { Accept: accept } });
   if (!res.ok) throw new Error(`GitHub ${res.status}`);
@@ -19,7 +19,8 @@ export async function gh(path, { accept = 'application/vnd.github+json', text = 
 
 const HTML_JSON = 'application/vnd.github.html+json';
 
-export const userRepos = () => gh(`/users/${USER}/repos?per_page=100&type=owner`);
+// 저장소 목록은 pushed_at 으로 portfolio.json 갱신을 알아채는 기준이라 짧게(1분) 캐시한다
+export const userRepos = () => gh(`/users/${USER}/repos?per_page=100&type=owner`, { ttl: 60 * 1000 });
 export const releasesOf = repo => gh(`/repos/${USER}/${repo}/releases?per_page=100`, { accept: HTML_JSON });
 
 // 설치 파일만 고른다 (.sha256 · .sig 같은 부속 파일 제외). 압축본은 Windows 빌드로 본다(예: Fracture-0.9.0-beta-win64.zip)
@@ -99,20 +100,25 @@ export function cleanHTML(html, repo) {
 
 export const rawUrl = (repo, path) => `https://raw.githubusercontent.com/${USER}/${repo}/HEAD/${path.replace(/^\.?\//, '')}`;
 
-// 공개 저장소 루트의 portfolio.json — 프로젝트가 스스로 들고 있는 소개 사이트 등록 정보(형식은 README).
-// raw.githubusercontent.com 은 API 횟수 제한이 없다. 없으면(404) null.
-export async function portfolioOf(repo) {
+// 공개 저장소 루트의 portfolio.json — 프로젝트가 스스로 들고 있는 소개 사이트 등록 정보(형식은 README). 없으면(404) null.
+// 고치면 바로 반영되게: raw.githubusercontent.com 은 CDN 이 5분 캐시하고 쿼리로도 못 깨므로 API(캐시 60초)로 받는다.
+// 대신 저장소의 pushed_at(version)이 바뀔 때만 다시 받고 그 사이엔 localStorage 값을 써서 API 횟수를 아낀다.
+export async function portfolioOf(repo, version = '') {
   const key = `pf:${repo}`;
+  let hit = null;
+  try { hit = JSON.parse(localStorage.getItem(key)); } catch {}
+  if (hit && version && hit.version === version) return hit.v;
   try {
-    const hit = JSON.parse(sessionStorage.getItem(key));
-    if (hit && Date.now() - hit.t < TTL) return hit.v;
-  } catch {}
-  const res = await fetch(rawUrl(repo, 'portfolio.json'));
-  if (!res.ok && res.status !== 404) throw new Error(`portfolio.json ${res.status}`);
-  let v = null;
-  if (res.ok) { try { v = await res.json(); } catch { v = null; } }
-  try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), v })); } catch {}
-  return v;
+    const res = await fetch(`${API}/repos/${USER}/${repo}/contents/portfolio.json`, { headers: { Accept: 'application/vnd.github.raw' } });
+    if (!res.ok && res.status !== 404) throw new Error(`portfolio.json ${res.status}`);
+    let v = null;
+    if (res.ok) { try { v = JSON.parse(await res.text()); } catch { v = null; } }
+    if (version) { try { localStorage.setItem(key, JSON.stringify({ version, v })); } catch {} }
+    return v;
+  } catch (e) {
+    if (hit) return hit.v; // API 횟수 초과 등 → 지난 값이라도
+    throw e;
+  }
 }
 
 // 서브페이지에서 data-embed 가 붙은 부분과 대표 이미지(og:image)를 가져온다 → 첫 화면 카드에서 펼쳐 보기.
