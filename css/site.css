@@ -82,6 +82,25 @@ h2 small { font-weight: 500; color: var(--muted); font-size: .875rem; margin-lef
 }
 .ico.mono { display: grid; place-items: center; background: var(--cat, var(--accent)); color: #fff; font-weight: 700; font-size: calc(var(--ico, 48px) * .42); }
 
+/* featured banner — 배너는 테마와 상관없이 어두운 게임 화면 위에 얹는다 */
+.featured {
+  position: relative; overflow: hidden; border-radius: var(--radius); margin-top: 28px;
+  background: #0b1020 var(--feat-img) right center / cover no-repeat; color: #eef2fb;
+  min-height: 240px; display: flex; align-items: flex-end;
+}
+.featured::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(8,11,22,.94) 0%, rgba(8,11,22,.8) 42%, rgba(8,11,22,.15) 100%);
+}
+.feat-inner { position: relative; padding: 28px; max-width: 560px; }
+.feat-kicker { font-size: .8125rem; font-weight: 700; color: #5ef2ff; letter-spacing: .04em; }
+.featured h2 { margin: 4px 0 6px; font-size: 2rem; letter-spacing: .18em; font-weight: 800; }
+.featured p { margin: 0; color: #c9d1e4; }
+.feat-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.featured .btn.primary { background: #5ef2ff; border-color: #5ef2ff; color: #071018; }
+.featured .feat-ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28); color: #fff; }
+.featured :focus-visible { outline-color: #5ef2ff; }
+
 /* quick access */
 .quick { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .tile {
@@ -196,6 +215,10 @@ footer { margin: 48px 0 32px; color: var(--muted); font-size: .8125rem; }
   .tile .kind { display: none; }
   .card { padding: 16px; }
   .card-head { --ico: 44px; }
+  .featured { min-height: 0; background-position: 70% center; }
+  .featured::before { background: linear-gradient(0deg, rgba(8,11,22,.95) 0%, rgba(8,11,22,.75) 60%, rgba(8,11,22,.35) 100%); }
+  .feat-inner { padding: 22px 18px; }
+  .featured h2 { font-size: 1.625rem; }
   .search kbd { display: none; }
   .search input { padding-right: 12px; }
 }

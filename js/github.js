@@ -22,28 +22,37 @@ const HTML_JSON = 'application/vnd.github.html+json';
 export const userRepos = () => gh(`/users/${USER}/repos?per_page=100&type=owner`);
 export const releasesOf = repo => gh(`/repos/${USER}/${repo}/releases?per_page=100`, { accept: HTML_JSON });
 
+// 설치 파일만 고른다 (.sha256 · .sig 같은 부속 파일 제외). 압축본은 Windows 빌드로 본다(예: Fracture-0.9.0-beta-win64.zip)
 function assetLabel(name) {
   if (/\.apk$/i.test(name)) return 'Android';
-  if (/\.exe$/i.test(name)) return 'Windows';
+  if (/\.exe$/i.test(name) || /win(dows|32|64)?[^/]*\.zip$/i.test(name)) return 'Windows';
   return null;
 }
 
-// prefix 가 있으면 '<prefix>-v<버전>' 태그 중 최신 정식 릴리스, 없으면 저장소의 최신 정식 릴리스
-export function latestRelease(list, prefix) {
+// prefix 가 있으면 '<prefix>-v<버전>' 태그 중 최신 릴리스, 없으면 저장소의 최신 릴리스.
+// 정식 릴리스만 보되, pre 면 프리릴리스(베타)도 포함한다.
+export function latestRelease(list, prefix, { pre = false } = {}) {
   const re = prefix ? new RegExp(`^${prefix}-v\\d`) : /./;
-  const rel = list.find(r => !r.draft && !r.prerelease && re.test(r.tag_name));
+  const rel = list.find(r => !r.draft && (pre || !r.prerelease) && re.test(r.tag_name));
   if (!rel) return null;
   const assets = [];
   for (const a of rel.assets || []) {
     const label = assetLabel(a.name);
-    if (label && !assets.some(x => x.label === label)) assets.push({ label, url: a.browser_download_url });
+    if (!label || assets.some(x => x.label === label)) continue;
+    const sha = /^sha256:([0-9a-f]{64})$/i.exec(a.digest || '');
+    assets.push({ label, url: a.browser_download_url, name: a.name, size: a.size, sha256: sha ? sha[1].toLowerCase() : null });
   }
   assets.sort((a, b) => (b.label === 'Windows') - (a.label === 'Windows'));
   return {
-    version: rel.tag_name.replace(/^.*?v(?=\d)/, ''),
+    version: rel.tag_name.replace(/^.*?v(?=\d)/, ''), name: rel.name || rel.tag_name, prerelease: rel.prerelease,
     assets, page: rel.html_url, date: rel.published_at, notes: rel.body_html || '',
   };
 }
+
+export const formatMB = bytes => `${(bytes / 1048576).toFixed(1)} MB`;
+
+// 화면에 보일 버전: 0.9.0-beta → '0.9.0 베타', 0.9.1-beta.2 → '0.9.1 베타 2', 1.5.2 → 'v1.5.2'
+export const versionLabel = v => /-beta/.test(v) ? v.replace(/-beta(?:\.(\d+))?$/, (_, n) => ` 베타${n ? ` ${n}` : ''}`) : `v${v}`;
 
 const DROP = 'script,style,iframe,object,embed,form,link,meta,base';
 

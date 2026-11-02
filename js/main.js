@@ -1,5 +1,5 @@
 import { GH, PAGES, CATS, PROJECTS, HIDE } from './data.js';
-import { userRepos, releasesOf, latestRelease, readmeHTML, cleanHTML, wireAnchors } from './github.js';
+import { userRepos, releasesOf, latestRelease, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel } from './github.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -50,7 +50,7 @@ function downloads(p) {
     : `${GH}/${p.release.repo}/releases/latest`;
   if (!rel || !rel.assets.length) return [`<a class="btn primary" href="${fallback}">${ICON.down} 다운로드</a>`];
   const out = rel.assets.map(a =>
-    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 v${esc(rel.version)} 받기">${ICON.down} ${esc(a.label)}</a>`);
+    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 ${esc(versionLabel(rel.version))} 받기">${ICON.down} ${esc(a.label)}</a>`);
   if (!p.closed) out.push(`<a class="btn" href="${esc(rel.page)}">릴리스 노트</a>`);
   return out;
 }
@@ -63,9 +63,9 @@ function card(p) {
   const kind = docKind(p);
 
   const actions = [];
+  if (p.page) actions.push(`<a class="btn primary" href="${esc(p.page)}" aria-label="${esc(p.title)} 소개 페이지">${ICON.open} 소개 페이지</a>`);
   if (p.live) actions.push(`<a class="btn primary" href="${p.live}" aria-label="${esc(p.title)} 열기">${ICON.open} 열기</a>`);
   if (p.release) actions.push(...downloads(p));
-  if (p.page) actions.push(`<a class="btn" href="${esc(p.page)}">자세히</a>`);
   const sources = p.sources || p.repos.map(r => ['소스', r]);
   for (const [label, r] of sources) actions.push(`<a class="btn" href="${GH}/${r}" aria-label="${esc(p.title)} ${label} (GitHub)">${ICON.code} ${label}</a>`);
   if (p.closed) actions.push('<span class="note">소스 비공개</span>');
@@ -73,11 +73,11 @@ function card(p) {
   const meta = [];
   const up = updatedAt(p);
   if (up) meta.push(`<span>업데이트 ${ago(up)}</span>`);
-  if (rel?.version) meta.push(`<span>최신 v${esc(rel.version)}</span>`);
+  if (rel?.version) meta.push(`<span>최신 ${esc(versionLabel(rel.version))}</span>`);
   if (main?.stargazers_count) meta.push(`<span>★ ${main.stargazers_count}</span>`);
   if (main?.license?.spdx_id && main.license.spdx_id !== 'NOASSERTION') meta.push(`<span>${esc(main.license.spdx_id)}</span>`);
 
-  const docLabel = kind === 'notes' ? `릴리스 노트${rel?.version ? ` v${esc(rel.version)}` : ''}` : 'README';
+  const docLabel = kind === 'notes' ? `릴리스 노트${rel?.version ? ` ${esc(versionLabel(rel.version))}` : ''}` : 'README';
   const doc = kind ? `<div class="doc">
       <button class="doc-toggle" type="button" aria-expanded="${open}" aria-controls="doc-${p.id}" data-doc="${p.id}">
         ${ICON.doc}<span>${docLabel} ${open ? '접기' : '펼치기'}</span>${ICON.chev}
@@ -194,13 +194,35 @@ function renderQuick() {
   const items = PROJECTS.filter(p => p.live || p.release);
   $('#quick').innerHTML = items.map(p => {
     const c = CATS[p.cat];
-    const href = p.live || '#p/' + p.id;
-    return `<a class="tile" style="--cat:${c.color}" href="${href}"${p.live ? '' : ` data-jump="${p.id}"`}>
+    const href = p.page || p.live || '#p/' + p.id;
+    return `<a class="tile" style="--cat:${c.color}" href="${href}"${p.page || p.live ? '' : ` data-jump="${p.id}"`}>
       ${icon(p, 40)}
       <span class="tile-text"><b>${esc(p.title)}</b><span>${c.label}</span></span>
-      <span class="kind">${p.live ? '웹' : '설치'}</span>
+      <span class="kind">${p.live ? '웹' : p.release?.pre ? '베타' : '설치'}</span>
     </a>`;
   }).join('');
+}
+
+// featured 가 있는 프로젝트는 맨 위 배너로 알린다 (새 베타·출시 소식)
+function renderFeatured() {
+  const p = PROJECTS.find(x => x.featured);
+  const box = $('#featured');
+  if (!p) { box.hidden = true; return; }
+  const f = p.featured;
+  const rel = state.releases[p.id];
+  const win = rel?.assets.find(a => a.label === 'Windows');
+  box.hidden = false;
+  // CSS 변수 안의 상대 경로는 site.css 기준으로 풀리므로 절대 주소로 넘긴다
+  box.style.setProperty('--feat-img', `url("${new URL(f.image, location.href).href}")`);
+  box.innerHTML = `<div class="feat-inner">
+      <span class="feat-kicker">${esc(f.kicker)}${rel ? ` · ${esc(versionLabel(rel.version))}` : ''}</span>
+      <h2 id="feat-h">${esc(p.title)}</h2>
+      <p>${esc(f.tagline)}</p>
+      <div class="feat-actions">
+        <a class="btn primary" href="${esc(p.page)}">소개 페이지</a>
+        ${win ? `<a class="btn feat-ghost" href="${esc(win.url)}" aria-label="${esc(p.title)} ${esc(versionLabel(rel.version))} Windows용 받기">${ICON.down} 받기 · ${formatMB(win.size)}</a>` : ''}
+      </div>
+    </div>`;
 }
 
 function render() { renderChips(); renderGrid(); }
@@ -244,10 +266,10 @@ async function loadLive() {
   const relBy = Object.fromEntries(repoNames.map((n, i) => [n, rels[i].status === 'fulfilled' ? rels[i].value : null]));
   for (const p of PROJECTS) {
     const list = p.release && relBy[p.release.repo];
-    const rel = list && latestRelease(list, p.release.prefix);
+    const rel = list && latestRelease(list, p.release.prefix, { pre: p.release.pre });
     if (rel) state.releases[p.id] = rel;
   }
-  renderQuick(); render();
+  renderFeatured(); renderQuick(); render();
 }
 
 /* ---------- 이벤트 ---------- */
@@ -290,7 +312,7 @@ addEventListener('hashchange', openFromHash);
 
 const hashCat = location.hash.slice(1);
 if (CATS[hashCat]) state.cat = hashCat;
-renderQuick(); render();
+renderFeatured(); renderQuick(); render();
 openFromHash();
 loadLive().catch(() => {}).finally(() => {
   // 릴리스 정보가 늦게 오면 펼쳐 둔 릴리스 노트를 다시 채운다

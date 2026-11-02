@@ -81,6 +81,18 @@ export const PROJECTS = [
     tags: ['React', 'TypeScript', 'Tauri', 'Windows · Android'],
   },
   {
+    id: 'fracture', cat: 'game', title: 'Fracture', mono: 'F', icon: 'assets/icons/fracture.svg',
+    repos: [], release: { repo: 'releases', prefix: 'Fracture', pre: true }, closed: true, page: 'p/fracture/',
+    featured: {
+      kicker: '첫 공개 베타',
+      tagline: '되돌리려다, 시간을 부숴 버렸다. 시간을 건너뛰고 멈추고 되감으며 무너진 기계도시를 가로지르는 2D 메트로배니아.',
+      image: 'assets/fracture/hero.webp',
+    },
+    desc: '시간을 건너뛰는 대시, 벤 적의 시간을 멈춰 발판으로 삼는 공중 연쇄. 무너진 기계도시를 가로지르는 2D 플랫포머 메트로배니아.',
+    points: ['프롤로그부터 엔딩까지 전부 들어 있는 첫 공개 베타', '시간 도약 · 시간 정지 베기 · 시간 앵커 · 회귀', '보스마다 다른 질서, 그리고 그 질서의 틈'],
+    tags: ['Unity 6', '메트로배니아', 'Windows', '베타'],
+  },
+  {
     id: 'duet', cat: 'game', title: 'Duet 모작', mono: 'D', icon: 'assets/icons/duet.jpg',
     repos: ['Duet_copy'],
     desc: 'Kumobius의 게임 Duet을 Pygame으로 다시 만든 프로젝트. 원작에 없는 커스텀 레벨 제작 · 공유가 목표였습니다.',
