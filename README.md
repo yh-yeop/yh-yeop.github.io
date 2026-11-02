@@ -16,6 +16,8 @@
 | `assets/icons/` | 프로젝트 아이콘 (`<id>.svg/png/jpg`) |
 | `p/<id>/` | 프로젝트 서브페이지 (지금은 `p/fracture/` — 게임 소개, 갤러리 · 최신 베타 · 릴리스 노트) |
 | `assets/<id>/` | 서브페이지 이미지 (스크린샷 1600px webp + `-t` 썸네일 400px) |
+| `install.js` | 웹 프로젝트가 같이 쓰는 "앱으로 설치" 안내 (아래) |
+| `manifest.webmanifest` | 이 사이트를 앱으로 설치할 때의 정보 |
 
 - 업데이트 날짜 · 별 · 라이선스 · 최신 버전과 설치 파일 링크, README는 GitHub API에서 그때그때 불러온다.
 - 소스가 공개된 프로젝트는 카드에서 README를, 비공개 앱(`closed: true`)은 `releases` 저장소의 최신 릴리스 노트를 펼쳐 읽는다.
@@ -52,8 +54,20 @@
 | `live` | | 바로 열 주소. 없으면 GitHub homepage → Pages 주소 순 |
 | `id` | | 주소(`#p/<id>`)에 쓰는 이름. 없으면 저장소 이름 소문자 |
 | `hidden` | | `true`면 목록에 띄우지 않는다 |
+| `pwa` | | `false`면 "앱으로 설치" 버튼을 달지 않는다 (아래 "앱으로 설치") |
 
 **바로 반영:** `portfolio.json`을 고쳐 푸시하면 1분 안에 카드가 바뀐다. 사이트는 GitHub API(캐시 60초)로 이 파일을 받고,
 브라우저에는 저장소의 `pushed_at`과 함께 저장해 두었다가 그 값이 바뀔 때만 다시 받는다(API 횟수 절약). 저장소 목록은 1분 캐시.
 `raw.githubusercontent.com`은 CDN이 5분 캐시하고 쿼리로도 못 깨므로 쓰지 않는다.
 
+## 앱으로 설치 (PWA)
+
+이 사이트와 그 아래 웹 프로젝트(`https://yh-yeop.github.io/<저장소>/`)는 홈 화면·바탕화면에 앱으로 설치할 수 있다.
+
+- 각 프로젝트 `index.html` `<head>`에 세 줄: `<link rel="manifest" href="manifest.json">`, `<link rel="apple-touch-icon" href="apple-touch-icon.png">`, `<script src="/install.js"></script>(defer 없이 — 페이지가 쿼리를 지우기 전에 읽어야 함)`.
+  `manifest.json`의 `icons`에는 `icon-192.png` · `icon-512.png`(PNG 필수 — Android 설치용), iOS용 `apple-touch-icon.png`(180px, 불투명)도 둔다.
+- `install.js`는 브라우저가 설치 가능하다고 알려 줄 때(`beforeinstallprompt`) 화면 아래에 "앱으로 설치" 버튼을 잠깐 띄운다. iOS는 "공유 → 홈 화면에 추가"를 안내한다.
+  페이지에 `[data-pwa-install]` 요소가 있으면 떠 있는 버튼 대신 그 요소를 쓴다 (이 사이트 머리글의 버튼). ✕로 닫으면 그 프로젝트에서는 다시 띄우지 않는다.
+- 카드의 "앱으로 설치"는 `<주소>?install`로 연다 → 그 페이지가 버튼을 계속 띄우고, 설치할 수 없는 브라우저(이미 설치 · Firefox 등)면 이유를 보여 준다.
+  이 버튼은 이 사이트 아래 주소(`live`)인 프로젝트에 자동으로 붙는다. 설치를 지원하지 않는 프로젝트는 `pwa: false`(data.js · portfolio.json).
+- 이 사이트에는 서비스 워커를 두지 않는다. 범위가 `/` 라 모든 프로젝트 페이지의 요청까지 가로채게 되기 때문 (설치에는 manifest만 있으면 된다).

@@ -56,6 +56,15 @@ function downloads(p) {
   return out;
 }
 
+// 이 사이트(yh-yeop.github.io) 아래 웹 프로젝트는 manifest 와 /install.js 를 갖춰 앱으로 설치할 수 있다.
+// ?install 을 붙여 열면 그 페이지가 설치 버튼을 바로 띄운다. 설치를 지원하지 않는 프로젝트는 pwa: false.
+const installable = p => p.live && p.pwa !== false && p.live.startsWith(PAGES + '/');
+function installUrl(live) {
+  const u = new URL(live);
+  u.search += (u.search ? '&' : '?') + 'install';
+  return u.href;
+}
+
 function card(p) {
   const c = CATS[p.cat];
   const main = state.repos[p.repos[0]];
@@ -66,6 +75,7 @@ function card(p) {
   const actions = [];
   if (p.page) actions.push(`<a class="btn primary" href="${esc(p.page)}" aria-label="${esc(p.title)} 소개 페이지">${ICON.open} 소개 페이지</a>`);
   if (p.live) actions.push(`<a class="btn primary" href="${p.live}" aria-label="${esc(p.title)} 열기">${ICON.open} 열기</a>`);
+  if (installable(p)) actions.push(`<a class="btn" href="${installUrl(p.live)}" aria-label="${esc(p.title)} 앱으로 설치">${ICON.down} 앱으로 설치</a>`);
   if (p.release) actions.push(...downloads(p));
   const sources = p.sources || p.repos.map(r => ['소스', r]);
   for (const [label, r] of sources) actions.push(`<a class="btn" href="${GH}/${r}" aria-label="${esc(p.title)} ${label} (GitHub)">${ICON.code} ${label}</a>`);
@@ -251,6 +261,7 @@ async function addUnknownRepos() {
       icon: typeof pf.icon === 'string' ? (/^https:\/\//.test(pf.icon) ? pf.icon : rawUrl(r.name, pf.icon)) : undefined,
       repos: [r.name],
       live: typeof pf.live === 'string' ? pf.live : (r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : '')),
+      pwa: pf.pwa === false ? false : undefined,
       desc: String(pf.desc || r.description || '설명이 아직 없습니다.'),
       points: list(pf.points) || undefined,
       tags: list(pf.tags) || (r.language ? [r.language] : []),
