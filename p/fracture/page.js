@@ -1,5 +1,5 @@
 // Fracture 소개 페이지: 스크린샷 갤러리 + GitHub에서 최신 베타(프리릴리스) 정보와 릴리스 노트를 불러온다.
-import { releasesOf, latestRelease, cleanHTML, formatMB, versionLabel } from '../../js/github.js';
+import { appRelease, releaseNotes, cleanHTML, formatMB, versionLabel } from '../../js/github.js';
 
 const IMG = '../../assets/fracture/';
 const SHOTS = [
@@ -65,7 +65,7 @@ addEventListener('load', () => SHOTS.slice(1).forEach(([n]) => { new Image().src
 const fmtDate = iso => new Date(iso).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
 
 async function loadRelease() {
-  const rel = latestRelease(await releasesOf('releases'), 'Fracture', { pre: true });
+  const rel = await appRelease('Fracture', { pre: true });
   if (!rel) throw new Error('no release');
   const win = rel.assets.find(a => a.label === 'Windows');
   const ver = versionLabel(rel.version);
@@ -86,7 +86,8 @@ async function loadRelease() {
   $('#info-date').textContent = fmtDate(rel.date);
   $('#rel-link').href = rel.page;
   $('#notes-ver').textContent = ver;
-  $('#notes').innerHTML = rel.notes ? cleanHTML(rel.notes, 'releases') : '<p class="muted">이 버전에는 릴리스 노트가 없습니다.</p>';
+  const notes = await releaseNotes(rel, 'releases');
+  $('#notes').innerHTML = notes ? cleanHTML(notes, 'releases') : '<p class="muted">이 버전에는 릴리스 노트가 없습니다.</p>';
 }
 
 loadRelease().catch(() => {

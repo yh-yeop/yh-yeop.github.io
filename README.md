@@ -21,6 +21,8 @@
 
 - 업데이트 날짜 · 별 · 라이선스 · 최신 버전과 설치 파일 링크, README는 GitHub API에서 그때그때 불러온다.
 - 소스가 공개된 프로젝트는 카드에서 README를, 비공개 앱(`closed: true`)은 `releases` 저장소의 최신 릴리스 노트를 펼쳐 읽는다.
+- 소스 비공개 앱(`release.repo: 'releases'`)의 최신 버전 · 다운로드는 releases 저장소가 Pages로 내는 `https://yh-yeop.github.io/releases/index.json` 하나로 받는다 (API 횟수 제한 없음, 못 받으면 API 릴리스 목록으로). 릴리스 노트는 펼칠 때 그 릴리스만 받는다.
+  releases 저장소 `apps.json`에만 있고 `PROJECTS`에 없는 앱은 index.json 내용으로 카드가 자동으로 생긴다 — 새 비공개 앱은 `apps.json` 한 줄이면 되고, 꾸밀 때만 `PROJECTS`에 같은 `release.prefix`로 항목을 둔다.
 - `PROJECTS`에 없는 공개 저장소는 그 저장소 루트의 `portfolio.json`(아래)으로 카드가 자동으로 만들어진다. 없으면 GitHub 설명으로 '기타' 카드. 버린 저장소는 보관(archive) + 비공개로 돌리면 사라진다.
 - 서브페이지가 있는 프로젝트(`page`)는 카드에서 '소개 펼치기'로 서브페이지의 `data-embed` 부분과 대표 이미지(`og:image`)를 보여 준다.
 - `release.pre: true`면 프리릴리스(베타)도 최신으로 본다 (Fracture). `.exe` · `.apk` 외에 `*win64.zip` 같은 압축본도 Windows 설치 파일로 친다.

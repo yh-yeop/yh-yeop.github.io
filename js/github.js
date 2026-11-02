@@ -1,5 +1,5 @@
 // GitHub API 호출과 README/릴리스 노트 렌더링. 비로그인 API는 IP당 시간당 60회라 세션 캐시를 둔다.
-import { USER } from './data.js';
+import { USER, PAGES } from './data.js';
 
 const API = 'https://api.github.com';
 const TTL = 10 * 60 * 1000;
@@ -48,6 +48,52 @@ export function latestRelease(list, prefix, { pre = false } = {}) {
     version: rel.tag_name.replace(/^.*?v(?=\d)/, ''), name: rel.name || rel.tag_name, prerelease: rel.prerelease,
     assets, page: rel.html_url, date: rel.published_at, notes: rel.body_html || '',
   };
+}
+
+// releases 저장소가 Pages 로 내는 앱별 최신 요약 (그 저장소 README "index.json"). 이 사이트와 같은 주소라 API 횟수 제한이 없고,
+// 릴리스가 아무리 쌓여도 한 번에 받는다. 릴리스 후 Actions 가 다시 만들기까지 1~2분, Pages 캐시까지 최대 10분 늦을 수 있다.
+export async function releaseIndex() {
+  const key = 'rel-index';
+  try {
+    const hit = JSON.parse(sessionStorage.getItem(key));
+    if (hit && Date.now() - hit.t < 60 * 1000) return hit.v;
+  } catch {}
+  const res = await fetch(`${PAGES}/releases/index.json`);
+  if (!res.ok) throw new Error(`index.json ${res.status}`);
+  const v = await res.json();
+  if (v.schema !== 1 || !Array.isArray(v.apps)) throw new Error('index.json 형식');
+  try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), v })); } catch {}
+  return v;
+}
+
+const PLATFORM = { windows: 'Windows', android: 'Android' };
+export const platformLabel = k => PLATFORM[k] ?? k;
+
+// index.json 앱 항목 → latestRelease() 와 같은 모양. 노트는 index 에 없어서 null 로 두고 releaseNotes 로 채운다
+export function fromIndex(app, { pre = false } = {}) {
+  const r = pre ? (app.pre ?? app.stable) : app.stable;
+  if (!r) return null;
+  const assets = Object.entries(r.assets).map(([k, a]) => ({ label: platformLabel(k), url: a.url, name: a.name, size: a.size, sha256: a.sha256 }));
+  assets.sort((a, b) => (b.label === 'Windows') - (a.label === 'Windows'));
+  return { version: r.version, name: r.name, prerelease: r.prerelease, assets, page: r.release_url, date: r.published_at, notes: null, tag: r.tag };
+}
+
+// releases 저장소 앱 하나의 최신 릴리스: index.json 을 먼저, 못 받으면 API 릴리스 목록에서 고른다
+export async function appRelease(prefix, { pre = false } = {}) {
+  try {
+    const app = (await releaseIndex()).apps.find(a => a.id === prefix);
+    if (app) return fromIndex(app, { pre });
+  } catch {}
+  return latestRelease(await releasesOf('releases'), prefix, { pre });
+}
+
+// 릴리스 노트 HTML. index.json 에서 온 릴리스는 노트가 없으므로 펼칠 때 그 릴리스 하나만 받는다
+// (같은 카드를 동시에 두 번 채워도 한 번만 받는다)
+export function releaseNotes(rel, repo) {
+  if (rel.notes != null) return Promise.resolve(rel.notes);
+  return (rel.pending ??= gh(`/repos/${USER}/${repo}/releases/tags/${encodeURIComponent(rel.tag)}`, { accept: HTML_JSON })
+    .then(r => (rel.notes = r.body_html || ''))
+    .catch(e => { rel.pending = null; throw e; }));
 }
 
 export const formatMB = bytes => `${(bytes / 1048576).toFixed(1)} MB`;

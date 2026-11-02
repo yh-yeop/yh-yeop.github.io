@@ -1,5 +1,5 @@
 import { GH, PAGES, CATS, PROJECTS, HIDE } from './data.js';
-import { userRepos, releasesOf, latestRelease, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel, portfolioOf, rawUrl, pageEmbed } from './github.js';
+import { userRepos, releasesOf, latestRelease, releaseIndex, fromIndex, releaseNotes, platformLabel, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel, portfolioOf, rawUrl, pageEmbed } from './github.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -145,7 +145,8 @@ async function fillDoc(p) {
     } else if (kind === 'notes') {
       const rel = state.releases[p.id];
       if (!rel) throw new Error('no release');
-      state.docs[p.id] = `<div class="markdown">${rel.notes ? cleanHTML(rel.notes, p.release.repo) : '<p>이 버전에는 릴리스 노트가 없습니다.</p>'}</div>`;
+      const notes = await releaseNotes(rel, p.release.repo);
+      state.docs[p.id] = `<div class="markdown">${notes ? cleanHTML(notes, p.release.repo) : '<p>이 버전에는 릴리스 노트가 없습니다.</p>'}</div>`;
     } else {
       state.docs[p.id] = `<div class="markdown">${await readmeHTML(p.repos[0])}</div>`;
     }
@@ -269,6 +270,27 @@ async function addUnknownRepos() {
   });
 }
 
+// releases 저장소의 apps.json 에만 있는 앱은 index.json 으로 카드를 만든다 (data.js 에 같은 앱이 있으면 그쪽이 우선)
+function addIndexApps(index) {
+  const known = new Set(PROJECTS.filter(p => p.release?.repo === 'releases').map(p => p.release.prefix));
+  for (const a of index.apps) {
+    if (known.has(a.id)) continue;
+    let id = String(a.site || a.id).toLowerCase().replace(/[^\w-]/g, '');
+    if (byId(id)) id = 'r-' + id;
+    const list = v => (Array.isArray(v) ? v.map(String) : undefined);
+    PROJECTS.push({
+      id, cat: CATS[a.category] ? a.category : 'app', title: String(a.name), mono: String(a.name)[0].toUpperCase(),
+      icon: typeof a.icon === 'string' ? a.icon : undefined,
+      repos: [], release: { repo: 'releases', prefix: a.id, pre: Boolean(a.beta) }, closed: true,
+      // 기본값(#p/<site>)이 아닌 소개 페이지 주소가 있으면 서브페이지로 다룬다
+      ...(a.page && !a.page.includes('/#p/') ? { page: a.page } : {}),
+      desc: String(a.desc || '설명이 아직 없습니다.'),
+      points: list(a.points),
+      tags: list(a.tags) || (a.platforms || []).map(platformLabel),
+    });
+  }
+}
+
 // 주소 끝 '#p/<id>' 로 들어오면 그 프로젝트를 펼쳐서 보여 준다. 서브페이지가 생긴 프로젝트는 그쪽으로 보낸다.
 function openFromHash() {
   const m = location.hash.match(/^#p\/([\w-]+)$/);
@@ -285,17 +307,23 @@ function openFromHash() {
   return true;
 }
 
+// 소스 비공개 앱(releases 저장소)은 index.json 하나로, 자기 저장소에 릴리스가 있는 앱(ListUp)은 API 로 최신 릴리스를 고른다
 async function loadLive() {
-  const repoNames = [...new Set(PROJECTS.filter(p => p.release).map(p => p.release.repo))];
-  const [repos, ...rels] = await Promise.allSettled([userRepos(), ...repoNames.map(releasesOf)]);
+  const repoNames = [...new Set(PROJECTS.filter(p => p.release && p.release.repo !== 'releases').map(p => p.release.repo))];
+  const [repos, index, ...rels] = await Promise.allSettled([userRepos(), releaseIndex(), ...repoNames.map(releasesOf)]);
   if (repos.status === 'fulfilled') {
     for (const r of repos.value) if (!r.private) state.repos[r.name] = r;
     await addUnknownRepos();
   }
   const relBy = Object.fromEntries(repoNames.map((n, i) => [n, rels[i].status === 'fulfilled' ? rels[i].value : null]));
+  const apps = index.status === 'fulfilled' ? new Map(index.value.apps.map(a => [a.id, a])) : null;
+  if (apps) addIndexApps(index.value);
+  else relBy.releases = await releasesOf('releases').catch(() => null); // index.json 을 못 받으면 예전처럼 API 목록에서
   for (const p of PROJECTS) {
-    const list = p.release && relBy[p.release.repo];
-    const rel = list && latestRelease(list, p.release.prefix, { pre: p.release.pre });
+    if (!p.release) continue;
+    const { repo, prefix, pre } = p.release;
+    const app = repo === 'releases' && apps?.get(prefix);
+    const rel = app ? fromIndex(app, { pre }) : relBy[repo] && latestRelease(relBy[repo], prefix, { pre });
     if (rel) state.releases[p.id] = rel;
   }
   renderFeatured(); renderQuick(); render();
