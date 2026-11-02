@@ -97,6 +97,46 @@ export function cleanHTML(html, repo) {
   return root.innerHTML;
 }
 
+export const rawUrl = (repo, path) => `https://raw.githubusercontent.com/${USER}/${repo}/HEAD/${path.replace(/^\.?\//, '')}`;
+
+// 공개 저장소 루트의 portfolio.json — 프로젝트가 스스로 들고 있는 소개 사이트 등록 정보(형식은 README).
+// raw.githubusercontent.com 은 API 횟수 제한이 없다. 없으면(404) null.
+export async function portfolioOf(repo) {
+  const key = `pf:${repo}`;
+  try {
+    const hit = JSON.parse(sessionStorage.getItem(key));
+    if (hit && Date.now() - hit.t < TTL) return hit.v;
+  } catch {}
+  const res = await fetch(rawUrl(repo, 'portfolio.json'));
+  if (!res.ok && res.status !== 404) throw new Error(`portfolio.json ${res.status}`);
+  let v = null;
+  if (res.ok) { try { v = await res.json(); } catch { v = null; } }
+  try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), v })); } catch {}
+  return v;
+}
+
+// 서브페이지에서 data-embed 가 붙은 부분과 대표 이미지(og:image)를 가져온다 → 첫 화면 카드에서 펼쳐 보기.
+// 상대 경로는 서브페이지 기준으로 풀고, id 는 첫 화면의 id 와 겹치지 않게 지운다.
+export async function pageEmbed(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`page ${res.status}`);
+  const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+  const parts = [...doc.querySelectorAll('[data-embed]')];
+  const box = doc.createElement('div');
+  box.append(...parts);
+  box.querySelectorAll(DROP).forEach(el => el.remove());
+  for (const el of box.querySelectorAll('*')) {
+    el.removeAttribute('id');
+    el.removeAttribute('aria-labelledby');
+    for (const attr of ['src', 'href']) {
+      const v = el.getAttribute(attr);
+      if (v && !v.startsWith('#')) el.setAttribute(attr, new URL(v, url).href);
+    }
+  }
+  const og = doc.querySelector('meta[property="og:image"]')?.content;
+  return { image: og ? new URL(og, url).href : null, html: box.innerHTML };
+}
+
 export async function readmeHTML(repo) {
   const html = await gh(`/repos/${USER}/${repo}/readme`, { accept: 'application/vnd.github.html', text: true });
   return cleanHTML(html, repo);

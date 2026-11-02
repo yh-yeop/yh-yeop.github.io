@@ -1,5 +1,5 @@
 import { GH, PAGES, CATS, PROJECTS, HIDE } from './data.js';
-import { userRepos, releasesOf, latestRelease, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel } from './github.js';
+import { userRepos, releasesOf, latestRelease, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel, portfolioOf, rawUrl, pageEmbed } from './github.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -39,6 +39,7 @@ function icon(p, size) {
 
 // 펼쳐 읽을 문서: 소스가 공개면 README, 비공개 앱이면 최신 릴리스 노트
 function docKind(p) {
+  if (p.page) return 'page';
   if (p.closed) return p.release ? 'notes' : null;
   return p.repos.length ? 'readme' : null;
 }
@@ -77,7 +78,8 @@ function card(p) {
   if (main?.stargazers_count) meta.push(`<span>★ ${main.stargazers_count}</span>`);
   if (main?.license?.spdx_id && main.license.spdx_id !== 'NOASSERTION') meta.push(`<span>${esc(main.license.spdx_id)}</span>`);
 
-  const docLabel = kind === 'notes' ? `릴리스 노트${rel?.version ? ` ${esc(versionLabel(rel.version))}` : ''}` : 'README';
+  const docLabel = kind === 'page' ? '소개'
+    : kind === 'notes' ? `릴리스 노트${rel?.version ? ` ${esc(versionLabel(rel.version))}` : ''}` : 'README';
   const doc = kind ? `<div class="doc">
       <button class="doc-toggle" type="button" aria-expanded="${open}" aria-controls="doc-${p.id}" data-doc="${p.id}">
         ${ICON.doc}<span>${docLabel} ${open ? '접기' : '펼치기'}</span>${ICON.chev}
@@ -111,8 +113,11 @@ function docFooter(p) {
   const src = kind === 'notes'
     ? (rel?.page || `${GH}/releases/releases?q=${encodeURIComponent(p.release.prefix)}`)
     : `${GH}/${p.repos[0]}#readme`;
+  const more = kind === 'page'
+    ? `<a class="btn primary" href="${esc(p.page)}">${ICON.open} 소개 페이지 전체 보기</a>`
+    : `<a class="btn" href="${esc(src)}">${ICON.code} GitHub에서 보기</a>`;
   return `<div class="doc-foot">
-    <a class="btn" href="${esc(src)}">${ICON.code} GitHub에서 보기</a>
+    ${more}
     <button class="btn" type="button" data-doc="${p.id}">접기</button>
   </div>`;
 }
@@ -123,15 +128,17 @@ async function fillDoc(p) {
   if (state.docs[p.id]) { body.innerHTML = state.docs[p.id] + docFooter(p); return; }
   body.innerHTML = '<p class="doc-status" role="status">불러오는 중…</p>';
   try {
-    let html;
-    if (docKind(p) === 'notes') {
+    const kind = docKind(p);
+    if (kind === 'page') {
+      const { image, html } = await pageEmbed(new URL(p.page, location.href).href);
+      state.docs[p.id] = `<div class="embed">${image ? `<img class="embed-hero" src="${esc(image)}" alt="" loading="lazy">` : ''}${html}</div>`;
+    } else if (kind === 'notes') {
       const rel = state.releases[p.id];
       if (!rel) throw new Error('no release');
-      html = rel.notes ? cleanHTML(rel.notes, p.release.repo) : '<p>이 버전에는 릴리스 노트가 없습니다.</p>';
+      state.docs[p.id] = `<div class="markdown">${rel.notes ? cleanHTML(rel.notes, p.release.repo) : '<p>이 버전에는 릴리스 노트가 없습니다.</p>'}</div>`;
     } else {
-      html = await readmeHTML(p.repos[0]);
+      state.docs[p.id] = `<div class="markdown">${await readmeHTML(p.repos[0])}</div>`;
     }
-    state.docs[p.id] = `<div class="markdown">${html}</div>`;
     if (document.getElementById('doc-' + p.id) === body) body.innerHTML = state.docs[p.id] + docFooter(p);
   } catch {
     body.innerHTML = `<p class="doc-status">불러오지 못했습니다. 잠시 뒤 다시 펼치거나 GitHub에서 보세요.</p>${docFooter(p)}`;
@@ -227,17 +234,28 @@ function renderFeatured() {
 
 function render() { renderChips(); renderGrid(); }
 
-// 소개 목록에 없는 새 공개 저장소는 '기타' 카드로 자동 추가
-function addUnknownRepos() {
+// data.js 에 없는 공개 저장소는 그 저장소의 portfolio.json 으로 카드를 만든다 (없으면 GitHub 설명으로 '기타')
+async function addUnknownRepos() {
   const known = new Set([...PROJECTS.flatMap(p => p.repos), ...HIDE]);
-  for (const r of Object.values(state.repos)) {
-    if (known.has(r.name) || r.fork || r.archived) continue;
+  const fresh = Object.values(state.repos).filter(r => !known.has(r.name) && !r.fork && !r.archived);
+  const infos = await Promise.all(fresh.map(r => portfolioOf(r.name).catch(() => null)));
+  fresh.forEach((r, i) => {
+    const pf = infos[i] && typeof infos[i] === 'object' ? infos[i] : {};
+    if (pf.hidden) return;
+    const title = String(pf.title || r.name);
+    let id = String(pf.id || r.name).toLowerCase().replace(/[^\w-]/g, '');
+    if (byId(id)) id = 'x-' + id;
+    const list = v => (Array.isArray(v) ? v.map(String) : null);
     PROJECTS.push({
-      id: 'x-' + r.name.replace(/[^\w-]/g, ''), cat: 'etc', title: r.name, mono: r.name[0].toUpperCase(), repos: [r.name],
-      live: r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : ''),
-      desc: r.description || '설명이 아직 없습니다.', tags: r.language ? [r.language] : [],
+      id, cat: CATS[pf.category] ? pf.category : 'etc', title, mono: String(pf.mono || title)[0].toUpperCase(),
+      icon: typeof pf.icon === 'string' ? (/^https:\/\//.test(pf.icon) ? pf.icon : rawUrl(r.name, pf.icon)) : undefined,
+      repos: [r.name],
+      live: typeof pf.live === 'string' ? pf.live : (r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : '')),
+      desc: String(pf.desc || r.description || '설명이 아직 없습니다.'),
+      points: list(pf.points) || undefined,
+      tags: list(pf.tags) || (r.language ? [r.language] : []),
     });
-  }
+  });
 }
 
 // 주소 끝 '#p/<id>' 로 들어오면 그 프로젝트를 펼쳐서 보여 준다. 서브페이지가 생긴 프로젝트는 그쪽으로 보낸다.
@@ -261,7 +279,7 @@ async function loadLive() {
   const [repos, ...rels] = await Promise.allSettled([userRepos(), ...repoNames.map(releasesOf)]);
   if (repos.status === 'fulfilled') {
     for (const r of repos.value) if (!r.private) state.repos[r.name] = r;
-    addUnknownRepos();
+    await addUnknownRepos();
   }
   const relBy = Object.fromEntries(repoNames.map((n, i) => [n, rels[i].status === 'fulfilled' ? rels[i].value : null]));
   for (const p of PROJECTS) {
