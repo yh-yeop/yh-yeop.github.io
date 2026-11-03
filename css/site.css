@@ -151,9 +151,9 @@ select.sort {
 .card-head { display: flex; gap: 14px; align-items: flex-start; }
 .head-text { min-width: 0; }
 .card .cat { font-size: .75rem; font-weight: 700; color: var(--cat); letter-spacing: .02em; }
-.card h3 { margin: 2px 0 0; font-size: 1.125rem; line-height: 1.35; letter-spacing: -0.01em; }
-.card h3:focus { outline: none; }
-.card h3 .beta { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+.card h4 { margin: 2px 0 0; font-size: 1.125rem; line-height: 1.35; letter-spacing: -0.01em; }
+.card h4:focus { outline: none; }
+.card h4 .beta { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
   font-size: .6875rem; font-weight: 700; letter-spacing: .02em; vertical-align: 2px; }
 .card .repo { font-size: .8125rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
 .card p.desc { margin: 12px 0 0; }
@@ -164,6 +164,12 @@ select.sort {
 .meta { margin-top: 12px; font-size: .8125rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 16px; }
 .actions .note { font-size: .8125rem; color: var(--muted); align-self: center; }
+/* 개발 완료 / 개발 중 묶음 */
+.group + .group { margin-top: 28px; }
+.group-h { margin: 18px 0 0; font-size: 1rem; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.group-h small { font-weight: 500; color: var(--muted); font-size: .8125rem; }
+.group-h .n { font-weight: 500; color: var(--muted); font-size: .8125rem; margin-left: auto; }
+.card h4 .beta.stage-planning { background: var(--surface-2); color: var(--muted); }
 .empty { padding: 32px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--radius); }
 
 /* README / 릴리스 노트 펼치기 */

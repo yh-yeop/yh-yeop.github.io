@@ -15,6 +15,8 @@ export const CATS = {
 // repos: 이 카드가 소개하는 저장소들(첫 번째가 대표, README도 여기서 읽는다).
 // release: { repo, prefix } 로 최신 설치 파일을 찾는다. closed: 소스 비공개(README 대신 릴리스 노트).
 // icon: 없으면 mono 글자로 대신한다. page: 서브페이지가 생기면 그 경로('p/meso/')를 적는다.
+// stage: 'planning'(개발 기획 중) · 'alpha'(알파) · 'beta'(베타) 이면 '개발 중' 묶음에 들어간다. 없으면 '개발 완료'.
+//   beta: true 나 release.pre(프리릴리스를 최신으로 보는 앱)도 베타로 친다.
 export const PROJECTS = [
   {
     id: 'meso', cat: 'maple', title: '메소 계산기', mono: '메', icon: 'assets/icons/meso.svg',
@@ -92,6 +94,9 @@ export const PROJECTS = [
     points: ['프롤로그부터 엔딩까지 전부 들어 있는 첫 공개 베타', '시간 도약 · 시간 정지 베기 · 시간 앵커 · 회귀', '보스마다 다른 질서, 그리고 그 질서의 틈'],
     tags: ['Unity 6', '메트로배니아', 'Windows', '베타'],
   },
+  // 개발 기획 중 — 설명 없이 이름과 표시만 둔다
+  { id: 'danbi', cat: 'game', title: 'Danbi', mono: '단', repos: [], stage: 'planning' },
+  { id: 'soliquid', cat: 'game', title: 'Soliquid', mono: 'S', repos: [], stage: 'planning' },
   {
     id: 'duet', cat: 'game', title: 'Duet 모작', mono: 'D', icon: 'assets/icons/duet.jpg',
     repos: ['Duet_copy'],

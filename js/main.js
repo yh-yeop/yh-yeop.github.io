@@ -60,6 +60,10 @@ function downloads(p) {
 // ?install 을 붙여 열면 그 페이지가 설치 버튼을 바로 띄운다. 설치를 지원하지 않는 프로젝트는 pwa: false.
 // 베타: data.js · portfolio.json 의 beta: true, 또는 프리릴리스를 최신으로 보는 앱
 const isBeta = p => Boolean(p.beta || p.release?.pre);
+// 개발 단계: stage 가 있으면 그것, 없으면 베타 여부로. null 이면 개발 완료
+const STAGES = { planning: '개발 기획 중', alpha: '알파', beta: '베타' };
+const stageOf = p => (STAGES[p.stage] ? p.stage : isBeta(p) ? 'beta' : null);
+const stageBadge = p => { const s = stageOf(p); return s ? ` <span class="beta stage-${s}">${STAGES[s]}</span>` : ''; };
 const installable = p => p.live && p.pwa !== false && p.live.startsWith(PAGES + '/');
 function installUrl(live) {
   const u = new URL(live);
@@ -104,11 +108,11 @@ function card(p) {
       ${icon(p, 48)}
       <div class="head-text">
         <span class="cat">${c.label}</span>
-        <h3 id="t-${p.id}">${esc(p.title)}${isBeta(p) ? ' <span class="beta">베타</span>' : ''}</h3>
+        <h4 id="t-${p.id}">${esc(p.title)}${stageBadge(p)}</h4>
         ${p.repos.length ? `<span class="repo">${p.repos.map(esc).join(' · ')}</span>` : ''}
       </div>
     </div>
-    <p class="desc">${esc(p.desc)}</p>
+    ${p.desc ? `<p class="desc">${esc(p.desc)}</p>` : ''}
     ${p.points?.length ? `<ul>${p.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
     ${p.tags?.length ? `<div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
     ${meta.length ? `<div class="meta">${meta.join('')}</div>` : ''}
@@ -200,11 +204,21 @@ function renderChips() {
   ).join('');
 }
 
+// 개발 완료 / 개발 중 묶음 하나. 비어 있으면 묶음째 숨긴다
+function group(id, title, note, list) {
+  if (!list.length) return '';
+  return `<div class="group" aria-labelledby="g-${id}">
+    <h3 class="group-h" id="g-${id}">${title}${note ? ` <small>${note}</small>` : ''}<span class="n">${list.length}개</span></h3>
+    <div class="grid">${list.map(card).join('')}</div>
+  </div>`;
+}
+
 function renderGrid() {
   let list = PROJECTS.filter(matches);
   if (state.sort === 'recent') list = [...list].sort((a, b) => updatedAt(b).localeCompare(updatedAt(a)));
+  const done = list.filter(p => !stageOf(p)), dev = list.filter(p => stageOf(p));
   $('#grid').innerHTML = list.length
-    ? list.map(card).join('')
+    ? group('done', '개발 완료', '', done) + group('dev', '개발 중', '알파 · 베타 · 기획 단계', dev)
     : `<div class="empty">찾는 프로젝트가 없습니다. 검색어를 바꾸거나 <button class="btn" type="button" id="reset">전체 보기</button></div>`;
   $('#count').textContent = `프로젝트 ${list.length}개 표시 중`;
   for (const p of list) if (state.open.has(p.id)) fillDoc(p);
@@ -218,7 +232,7 @@ function renderQuick() {
     return `<a class="tile" style="--cat:${c.color}" href="${href}"${p.page || p.live ? '' : ` data-jump="${p.id}"`}>
       ${icon(p, 40)}
       <span class="tile-text"><b>${esc(p.title)}</b><span>${c.label}</span></span>
-      <span class="kind">${p.live ? (isBeta(p) ? '웹 · 베타' : '웹') : p.release?.pre ? '베타' : '설치'}</span>
+      <span class="kind">${p.live ? (stageOf(p) ? `웹 · ${STAGES[stageOf(p)]}` : '웹') : stageOf(p) ? STAGES[stageOf(p)] : '설치'}</span>
     </a>`;
   }).join('');
 }
@@ -266,6 +280,7 @@ async function addUnknownRepos() {
       live: typeof pf.live === 'string' ? pf.live : (r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : '')),
       pwa: pf.pwa === false ? false : undefined,
       beta: pf.beta === true || undefined,
+      stage: STAGES[pf.stage] ? pf.stage : undefined,
       desc: String(pf.desc || r.description || '설명이 아직 없습니다.'),
       points: list(pf.points) || undefined,
       tags: list(pf.tags) || (r.language ? [r.language] : []),
@@ -305,8 +320,8 @@ function openFromHash() {
   render();
   const el = document.getElementById('p-' + p.id);
   el.scrollIntoView({ block: 'start' });
-  el.querySelector('h3').setAttribute('tabindex', '-1');
-  el.querySelector('h3').focus({ preventScroll: true });
+  el.querySelector('h4').setAttribute('tabindex', '-1');
+  el.querySelector('h4').focus({ preventScroll: true });
   return true;
 }
 
