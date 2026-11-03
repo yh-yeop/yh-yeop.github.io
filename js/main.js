@@ -11,7 +11,7 @@ const ICON = {
   chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
 };
 
-const state = { cat: 'all', q: '', sort: 'pick', repos: {}, releases: {}, open: new Set(), docs: {} };
+const state = { cat: 'all', stage: 'all', q: '', sort: 'pick', repos: {}, releases: {}, open: new Set(), docs: {} };
 const byId = id => PROJECTS.find(p => p.id === id);
 
 function ago(iso) {
@@ -64,6 +64,9 @@ const isBeta = p => Boolean(p.beta || p.release?.pre);
 // 개발 단계: stage 가 있으면 그것, 없으면 베타 여부로. null 이면 개발 완료
 const STAGES = { planning: '개발 기획 중', alpha: '알파', beta: '베타' };
 const stageOf = p => (STAGES[p.stage] ? p.stage : isBeta(p) ? 'beta' : null);
+// 단계 걸러 보기: 전체 / 개발 완료 / 개발 중 (주소: #done · #dev, 분류와 함께면 #game+dev)
+const STAGE_FILTERS = { all: '모든 단계', done: '개발 완료', dev: '개발 중' };
+const stageMatch = (p, f) => f === 'all' || (f === 'dev') === Boolean(stageOf(p));
 const stageBadge = p => { const s = stageOf(p); return s ? ` <span class="beta stage-${s}">${STAGES[s]}</span>` : ''; };
 const installable = p => p.live && p.pwa !== false && p.live.startsWith(PAGES + '/');
 function installUrl(live) {
@@ -164,6 +167,9 @@ async function fillDoc(p) {
 }
 
 function setHash(h) { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); }
+// 목록 걸러 보기 상태를 주소로: 분류 · 단계를 + 로 잇는다 (#game, #dev, #game+dev)
+const listHash = () => [state.cat !== 'all' && state.cat, state.stage !== 'all' && state.stage].filter(Boolean).join('+');
+function resetFilters() { state.cat = 'all'; state.stage = 'all'; state.q = ''; $('#q').value = ''; }
 
 function toggleDoc(id, force) {
   const p = byId(id);
@@ -181,7 +187,7 @@ function toggleDoc(id, force) {
     fillDoc(p);
     setHash('p/' + id);
   } else {
-    if (location.hash === '#p/' + id) setHash(state.cat === 'all' ? '' : state.cat);
+    if (location.hash === '#p/' + id) setHash(listHash());
     cardEl.scrollIntoView({ block: 'nearest' });
     btn.focus({ preventScroll: true });
   }
@@ -191,6 +197,7 @@ function toggleDoc(id, force) {
 
 function matches(p) {
   if (state.cat !== 'all' && p.cat !== state.cat) return false;
+  if (!stageMatch(p, state.stage)) return false;
   if (!state.q) return true;
   const hay = [p.title, p.desc, ...(p.points || []), ...(p.tags || []), ...p.repos, CATS[p.cat].label].join(' ').toLowerCase();
   return state.q.toLowerCase().split(/\s+/).every(w => hay.includes(w));
@@ -212,6 +219,14 @@ function group(id, title, note, list) {
     <h3 class="group-h" id="g-${id}">${title}${note ? ` <small>${note}</small>` : ''}<span class="n">${list.length}개</span></h3>
     <div class="grid">${list.map(card).join('')}</div>
   </div>`;
+}
+
+// 단계 칩의 개수는 지금 고른 분류 안에서 센다
+function renderStages() {
+  const inCat = PROJECTS.filter(p => state.cat === 'all' || p.cat === state.cat);
+  $('#stages').innerHTML = Object.entries(STAGE_FILTERS).map(([k, label]) =>
+    `<button class="chip" type="button" data-stage="${k}" aria-pressed="${state.stage === k}">${label}<span class="n">${inCat.filter(p => stageMatch(p, k)).length}</span></button>`
+  ).join('');
 }
 
 function renderGrid() {
@@ -260,7 +275,7 @@ function renderFeatured() {
     </div>`;
 }
 
-function render() { renderChips(); renderGrid(); }
+function render() { renderChips(); renderStages(); renderGrid(); }
 
 // data.js 에 없는 공개 저장소는 그 저장소의 portfolio.json 으로 카드를 만든다 (없으면 GitHub 설명으로 '기타')
 async function addUnknownRepos() {
@@ -316,7 +331,7 @@ function openFromHash() {
   const p = m && byId(m[1]);
   if (!p) return false;
   if (p.page) { location.replace(p.page); return true; }
-  state.cat = 'all'; state.q = ''; $('#q').value = '';
+  resetFilters();
   if (docKind(p)) state.open.add(p.id);
   render();
   const el = document.getElementById('p-' + p.id);
@@ -361,7 +376,13 @@ $('#theme').addEventListener('click', () => {
 $('#chips').addEventListener('click', e => {
   const b = e.target.closest('.chip'); if (!b) return;
   state.cat = b.dataset.cat;
-  setHash(state.cat === 'all' ? '' : state.cat);
+  setHash(listHash());
+  render();
+});
+$('#stages').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  state.stage = b.dataset.stage;
+  setHash(listHash());
   render();
 });
 $('#q').addEventListener('input', e => { state.q = e.target.value.trim(); renderGrid(); });
@@ -369,13 +390,13 @@ $('#sort').addEventListener('change', e => { state.sort = e.target.value; render
 $('#grid').addEventListener('click', e => {
   const t = e.target.closest('[data-doc]');
   if (t) { toggleDoc(t.dataset.doc); return; }
-  if (e.target.id === 'reset') { state.cat = 'all'; state.q = ''; $('#q').value = ''; render(); }
+  if (e.target.id === 'reset') { resetFilters(); setHash(''); render(); }
 });
 wireAnchors($('#grid'));
 $('#quick').addEventListener('click', e => {
   const t = e.target.closest('[data-jump]'); if (!t) return;
   e.preventDefault();
-  state.cat = 'all'; state.q = ''; $('#q').value = ''; render();
+  resetFilters(); render();
   const el = document.getElementById('p-' + t.dataset.jump);
   el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   el.querySelector('.actions a')?.focus({ preventScroll: true });
@@ -386,8 +407,10 @@ document.addEventListener('keydown', e => {
 });
 addEventListener('hashchange', openFromHash);
 
-const hashCat = location.hash.slice(1);
-if (CATS[hashCat]) state.cat = hashCat;
+for (const part of location.hash.slice(1).split('+')) {
+  if (CATS[part]) state.cat = part;
+  else if (part !== 'all' && STAGE_FILTERS[part]) state.stage = part;
+}
 renderFeatured(); renderQuick(); render();
 openFromHash();
 loadLive().catch(() => {}).finally(() => {

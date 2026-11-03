@@ -137,6 +137,9 @@ h2 small { font-weight: 500; color: var(--muted); font-size: .875rem; margin-lef
 }
 .chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
 .chip .n { font-weight: 500; opacity: .7; margin-left: 4px; }
+/* 개발 단계 걸러 보기: 분류 칩 아래 한 단계 작게 */
+.stages { margin-top: 8px; }
+.stages .chip { min-height: 34px; padding: 4px 12px; font-size: .8125rem; }
 select.sort {
   min-height: 40px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line);
   background: var(--surface); color: var(--text); font: inherit; font-size: .875rem;
