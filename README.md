@@ -53,7 +53,7 @@
 | `title` | | 카드 제목 (없으면 저장소 이름) |
 | `desc` | | 한두 문장 소개 (없으면 GitHub 설명) |
 | `points` · `tags` | | 특징 줄 · 기술 태그 (tags 가 없으면 GitHub 주 언어) |
-| `icon` | | 저장소 안 경로(`icon.svg`) 또는 `https://` 주소. 없으면 제목 첫 글자 |
+| `icon` | | 저장소 안 경로(`icon.svg`) 또는 `https://` 주소. 없으면 회색 대체 아이콘 |
 | `live` | | 바로 열 주소. 없으면 GitHub homepage → Pages 주소 순 |
 | `id` | | 주소(`#p/<id>`)에 쓰는 이름. 없으면 저장소 이름 소문자 |
 | `hidden` | | `true`면 목록에 띄우지 않는다 |

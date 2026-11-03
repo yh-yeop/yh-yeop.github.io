@@ -30,11 +30,12 @@ function updatedAt(p) {
   return times.sort().pop() || '';
 }
 
-// 아이콘 파일이 있으면 그림, 없으면 분류 색 위에 글자 하나
+// 아이콘 파일이 있으면 그림, 없으면 회색 대체 아이콘(상자 모양) — 색은 테마를 따른다
+const FALLBACK_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg>';
 function icon(p, size) {
   return p.icon
     ? `<img class="ico" src="${esc(p.icon)}" alt="" width="${size}" height="${size}" loading="lazy">`
-    : `<span class="ico mono" aria-hidden="true">${esc(p.mono)}</span>`;
+    : `<span class="ico none" aria-hidden="true">${FALLBACK_ICON}</span>`;
 }
 
 // 펼쳐 읽을 문서: 소스가 공개면 README, 비공개 앱이면 최신 릴리스 노트
@@ -103,7 +104,7 @@ function card(p) {
       <div class="doc-body" id="doc-${p.id}" role="region" aria-label="${esc(p.title)} ${docLabel}"${open ? '' : ' hidden'}></div>
     </div>` : '';
 
-  return `<article class="card${open ? ' open' : ''}" id="p-${p.id}" style="--cat:${c.color}" aria-labelledby="t-${p.id}">
+  return `<article class="card${open ? ' open' : ''}${stageOf(p) === 'planning' ? ' planning' : ''}" id="p-${p.id}" style="--cat:${c.color}" aria-labelledby="t-${p.id}">
     <div class="card-head">
       ${icon(p, 48)}
       <div class="head-text">
@@ -274,7 +275,7 @@ async function addUnknownRepos() {
     if (byId(id)) id = 'x-' + id;
     const list = v => (Array.isArray(v) ? v.map(String) : null);
     PROJECTS.push({
-      id, cat: CATS[pf.category] ? pf.category : 'etc', title, mono: String(pf.mono || title)[0].toUpperCase(),
+      id, cat: CATS[pf.category] ? pf.category : 'etc', title,
       icon: typeof pf.icon === 'string' ? (/^https:\/\//.test(pf.icon) ? pf.icon : rawUrl(r.name, pf.icon)) : undefined,
       repos: [r.name],
       live: typeof pf.live === 'string' ? pf.live : (r.homepage || (r.has_pages ? `${PAGES}/${r.name}/` : '')),
@@ -297,7 +298,7 @@ function addIndexApps(index) {
     if (byId(id)) id = 'r-' + id;
     const list = v => (Array.isArray(v) ? v.map(String) : undefined);
     PROJECTS.push({
-      id, cat: CATS[a.category] ? a.category : 'app', title: String(a.name), mono: String(a.name)[0].toUpperCase(),
+      id, cat: CATS[a.category] ? a.category : 'app', title: String(a.name),
       icon: typeof a.icon === 'string' ? a.icon : undefined,
       repos: [], release: { repo: 'releases', prefix: a.id, pre: Boolean(a.beta) }, closed: true,
       // 기본값(#p/<site>)이 아닌 소개 페이지 주소가 있으면 서브페이지로 다룬다
