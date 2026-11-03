@@ -28,7 +28,7 @@
 - `release.pre: true`면 프리릴리스(베타)도 최신으로 본다 (Fracture). `.exe` · `.apk` 외에 `*win64.zip` 같은 압축본도 Windows 설치 파일로 친다.
 - `featured`가 있는 프로젝트는 첫 화면 맨 위 배너로 알린다 (한 번에 하나).
 - 프로젝트 목록은 **개발 완료**와 **개발 중**(알파 · 베타 · 기획 단계) 두 묶음으로 나눠 보여 준다. `stage: 'planning' | 'alpha' | 'beta'`가 있으면 개발 중, `beta: true`나 `release.pre`도 베타로 친다. 기획 단계 프로젝트는 설명 없이 이름과 "개발 기획 중" 표시만 둘 수 있다 (`desc` 생략).
-- 주소: `#maple` `#web` `#app` `#game` = 분류 걸러 보기, `#done` `#dev` = 개발 완료 / 개발 중만 보기 (분류와 함께면 `#game+dev`), `#p/<id>` = 그 프로젝트 펼쳐 보기.
+- 주소: `#maple` `#web` `#app` `#game` = 분류 걸러 보기, `#done` `#dev` = 개발 완료 / 개발 중만 보기 (분류와 함께면 `#game+dev`), `#p/<id>` = 그 프로젝트로 바로 가서 펼쳐 보기 (portfolio.json으로 생긴 카드도 됨, 예: `#p/sanupcraft`).
 - 서브페이지: `p/<id>/index.html`을 만들고 `PROJECTS`의 해당 항목에 `page: 'p/<id>/'`를 적으면 카드에 '자세히'가 붙고 `#p/<id>` 링크도 그쪽으로 넘어간다. 서브페이지는 `js/data.js` · `js/github.js` · `css/site.css`를 그대로 불러 쓴다.
 
 ## portfolio.json — 공개 저장소가 들고 있는 등록 정보

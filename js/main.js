@@ -361,6 +361,8 @@ async function loadLive() {
     if (rel) state.releases[p.id] = rel;
   }
   renderFeatured(); renderQuick(); render();
+  // portfolio.json · apps.json 으로 늦게 생긴 카드(#p/sanupcraft 등)도 열리게, 다시 그린 뒤 주소의 프로젝트로 한 번 더 이동한다
+  if (/^#p\//.test(location.hash)) openFromHash();
 }
 
 /* ---------- 이벤트 ---------- */
