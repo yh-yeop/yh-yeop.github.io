@@ -3,11 +3,9 @@ import { userRepos, releasesOf, latestRelease, releaseIndex, fromIndex, releaseN
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// 버튼에는 아이콘을 넣지 않는다 (글자만). 펼치기 화살표만 남김
 const ICON = {
-  open: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
-  code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>',
-  down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
-  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',
+  open: '', code: '', down: '', doc: '',
   chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
 };
 
@@ -50,9 +48,9 @@ function downloads(p) {
   const fallback = p.release.prefix
     ? `${GH}/releases/releases?q=${encodeURIComponent(p.release.prefix)}`
     : `${GH}/${p.release.repo}/releases/latest`;
-  if (!rel || !rel.assets.length) return [`<a class="btn primary" href="${fallback}">${ICON.down} 다운로드</a>`];
+  if (!rel || !rel.assets.length) return [`<a class="btn primary" href="${fallback}">다운로드</a>`];
   const out = rel.assets.map(a =>
-    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 ${esc(versionLabel(rel.version))} 받기">${ICON.down} ${esc(a.label)}</a>`);
+    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 ${esc(versionLabel(rel.version))} 받기">${esc(a.label)}</a>`);
   if (!p.closed) out.push(`<a class="btn" href="${esc(rel.page)}">릴리스 노트</a>`);
   return out;
 }
@@ -83,12 +81,12 @@ function card(p) {
   const kind = docKind(p);
 
   const actions = [];
-  if (p.page) actions.push(`<a class="btn primary" href="${esc(p.page)}" aria-label="${esc(p.title)} 소개 페이지">${ICON.open} 소개 페이지</a>`);
-  if (p.live) actions.push(`<a class="btn primary" href="${p.live}" aria-label="${esc(p.title)} 열기">${ICON.open} 열기</a>`);
-  if (installable(p)) actions.push(`<a class="btn" href="${installUrl(p.live)}" aria-label="${esc(p.title)} 앱으로 설치">${ICON.down} 앱으로 설치</a>`);
+  if (p.page) actions.push(`<a class="btn primary" href="${esc(p.page)}" aria-label="${esc(p.title)} 소개 페이지">소개 페이지</a>`);
+  if (p.live) actions.push(`<a class="btn primary" href="${p.live}" aria-label="${esc(p.title)} 열기">열기</a>`);
+  if (installable(p)) actions.push(`<a class="btn" href="${installUrl(p.live)}" aria-label="${esc(p.title)} 앱으로 설치">앱으로 설치</a>`);
   if (p.release) actions.push(...downloads(p));
   const sources = p.sources || p.repos.map(r => ['소스', r]);
-  for (const [label, r] of sources) actions.push(`<a class="btn" href="${GH}/${r}" aria-label="${esc(p.title)} ${label} (GitHub)">${ICON.code} ${label}</a>`);
+  for (const [label, r] of sources) actions.push(`<a class="btn" href="${GH}/${r}" aria-label="${esc(p.title)} ${label} (GitHub)">${label}</a>`);
   if (p.closed) actions.push('<span class="note">소스 비공개</span>');
 
   const meta = [];
@@ -102,7 +100,7 @@ function card(p) {
     : kind === 'notes' ? `릴리스 노트${rel?.version ? ` ${esc(versionLabel(rel.version))}` : ''}` : 'README';
   const doc = kind ? `<div class="doc">
       <button class="doc-toggle" type="button" aria-expanded="${open}" aria-controls="doc-${p.id}" data-doc="${p.id}">
-        ${ICON.doc}<span>${docLabel} ${open ? '접기' : '펼치기'}</span>${ICON.chev}
+        <span>${docLabel} ${open ? '접기' : '펼치기'}</span>${ICON.chev}
       </button>
       <div class="doc-body" id="doc-${p.id}" role="region" aria-label="${esc(p.title)} ${docLabel}"${open ? '' : ' hidden'}></div>
     </div>` : '';
@@ -134,8 +132,8 @@ function docFooter(p) {
     ? (rel?.page || `${GH}/releases/releases?q=${encodeURIComponent(p.release.prefix)}`)
     : `${GH}/${p.repos[0]}#readme`;
   const more = kind === 'page'
-    ? `<a class="btn primary" href="${esc(p.page)}">${ICON.open} 소개 페이지 전체 보기</a>`
-    : `<a class="btn" href="${esc(src)}">${ICON.code} GitHub에서 보기</a>`;
+    ? `<a class="btn primary" href="${esc(p.page)}">소개 페이지 전체 보기</a>`
+    : `<a class="btn" href="${esc(src)}">GitHub에서 보기</a>`;
   return `<div class="doc-foot">
     ${more}
     <button class="btn" type="button" data-doc="${p.id}">접기</button>
@@ -234,7 +232,7 @@ function renderGrid() {
   if (state.sort === 'recent') list = [...list].sort((a, b) => updatedAt(b).localeCompare(updatedAt(a)));
   const done = list.filter(p => !stageOf(p)), dev = list.filter(p => stageOf(p));
   $('#grid').innerHTML = list.length
-    ? group('done', '개발 완료', '', done) + group('dev', '개발 중', '알파 · 베타 · 기획 단계', dev)
+    ? group('done', '개발 완료', '', done) + group('dev', '개발 중', '', dev)
     : `<div class="empty">찾는 프로젝트가 없습니다. 검색어를 바꾸거나 <button class="btn" type="button" id="reset">전체 보기</button></div>`;
   $('#count').textContent = `프로젝트 ${list.length}개 표시 중`;
   for (const p of list) if (state.open.has(p.id)) fillDoc(p);
@@ -270,7 +268,7 @@ function renderFeatured() {
       <p>${esc(f.tagline)}</p>
       <div class="feat-actions">
         <a class="btn primary" href="${esc(p.page)}">소개 페이지</a>
-        ${win ? `<a class="btn feat-ghost" href="${esc(win.url)}" aria-label="${esc(p.title)} ${esc(versionLabel(rel.version))} Windows용 받기">${ICON.down} 받기 · ${formatMB(win.size)}</a>` : ''}
+        ${win ? `<a class="btn feat-ghost" href="${esc(win.url)}" aria-label="${esc(p.title)} ${esc(versionLabel(rel.version))} Windows용 받기">받기 · ${formatMB(win.size)}</a>` : ''}
       </div>
     </div>`;
 }

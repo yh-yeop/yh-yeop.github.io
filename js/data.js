@@ -86,7 +86,7 @@ export const PROJECTS = [
     id: 'fracture', cat: 'game', title: 'Fracture', icon: 'assets/icons/fracture.png',
     repos: [], release: { repo: 'releases', prefix: 'Fracture', pre: true }, closed: true, page: 'p/fracture/',
     featured: {
-      kicker: '첫 공개 베타',
+      kicker: '첫 공개',
       tagline: '시간을 건너뛰고, 멈추고, 되감으며 무너진 기계도시를 탐험하는 2D 메트로배니아.',
       image: 'assets/fracture/hero.webp',
     },
