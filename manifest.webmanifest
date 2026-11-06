@@ -10,15 +10,14 @@
   "theme_color": "#f7f7f5",
   "icons": [
     {
-      "src": "../assets/icons/site-192.png",
+      "src": "assets/icons/site-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../assets/icons/site-512.png",
+      "src": "assets/icons/site-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "id": "/p/"
+  ]
 }
