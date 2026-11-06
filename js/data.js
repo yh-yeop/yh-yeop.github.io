@@ -98,6 +98,13 @@ export const PROJECTS = [
   { id: 'danbi', cat: 'game', title: 'Danbi', repos: [], stage: 'planning' },
   { id: 'soliquid', cat: 'game', title: 'Soliquid', repos: [], stage: 'planning' },
   {
+    id: 'sanupcraft', cat: 'game', title: '산업크래프트', icon: 'assets/icons/sanupcraft.svg',
+    repos: ['sanupcraft'], page: 'p/sanupcraft/', stage: 'beta',
+    desc: '보스를 잡아 공장을 열고, 공장으로 모험대를 무장시키는 자작 마인크래프트 모드팩. 친구 최대 10명이 함께 합니다.',
+    points: ['보스 전리품이 다음 기계를 여는 공장 · 모험 순환', '증기 동력 · 컨베이어 · 굴착기, 네더 · 엔드와 이어진 진행', '인원수만큼 강해지는 보스와 기여자별 보상'],
+    tags: ['Java', 'Fabric', 'Minecraft 26.3', '멀티플레이'],
+  },
+  {
     id: 'duet', cat: 'game', title: 'Duet 모작', icon: 'assets/icons/duet.jpg',
     repos: ['Duet_copy'],
     desc: 'Kumobius의 게임 Duet을 Pygame으로 다시 만든 모작. 원작에 없는 커스텀 레벨 제작 · 공유를 목표로 했습니다.',

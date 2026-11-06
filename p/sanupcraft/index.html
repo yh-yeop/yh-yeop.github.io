@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>산업크래프트 · 마인크래프트 모드팩</title>
+<meta name="description" content="보스를 잡아 공장을 열고, 공장으로 모험대를 무장시킨다. 친구 최대 10명이 함께 하는 자작 마인크래프트 모드팩 (Fabric 26.3).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="산업크래프트 — 마인크래프트 모드팩">
+<meta property="og:description" content="보스를 잡아 공장을 열고, 공장으로 모험대를 무장시킨다. 친구 최대 10명이 함께 하는 자작 모드팩.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/sanupcraft/og.jpg">
+<meta property="og:url" content="https://yh-yeop.github.io/p/sanupcraft/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101214">
+<link rel="icon" href="../../assets/icons/sanupcraft.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preload" as="image" href="../../assets/sanupcraft/hero.webp">
+<link rel="stylesheet" href="sanupcraft.css">
+<script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">마인크래프트 모드팩 · Fabric 26.3 <span class="badge">테스트 베타</span></p>
+    <h1 class="logo">산업크래프트</h1>
+    <p class="tagline">보스를 잡아 공장을 열고, 공장으로 모험대를 무장시킨다.</p>
+    <p class="lede">친구 최대 10명이 한 서버에서 함께 하는 자작 모드팩. 보스 전리품이 다음 기계를 열고, 그 기계가 만든 장비로 다음 보스에 도전합니다.</p>
+    <div class="cta">
+      <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/sanupcraft/releases">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        <span>모드팩 받기 <small id="dl-hero-meta">.mrpack</small></span>
+      </a>
+      <a class="btn ghost big" href="#media">스크린샷 보기</a>
+    </div>
+    <p class="hero-meta" id="hero-meta">Minecraft Java 26.3 · Fabric · 무료</p>
+  </div>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <section id="media" aria-labelledby="media-h">
+      <h2 id="media-h" class="sr-only">스크린샷</h2>
+      <div class="viewer">
+        <button class="shot-main" type="button" id="shot-open" aria-label="크게 보기">
+          <img id="shot-img" src="../../assets/sanupcraft/factory.webp" alt="" width="1600" height="900">
+        </button>
+        <button class="nav prev" type="button" id="shot-prev" aria-label="이전 스크린샷">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="nav next" type="button" id="shot-next" aria-label="다음 스크린샷">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="caption" id="shot-caption" aria-live="polite"></p>
+      <div class="thumbs" id="thumbs" role="group" aria-label="스크린샷 고르기"></div>
+      <p class="shot-note">개발 중 화면입니다. 텍스처와 모델은 임시이고 계속 바뀝니다.</p>
+    </section>
+
+    <section aria-labelledby="about-h" data-embed>
+      <h2 id="about-h">이 모드팩에 대하여</h2>
+      <div class="loop" role="img" aria-label="모험대가 보스 전리품을 공장에 가져오고, 공장이 모험대에게 장비를 만들어 주는 순환">
+        <div class="node adv"><b>모험대</b><span>보스 사냥 · 네더와 엔드 탐험</span></div>
+        <div class="arrows" aria-hidden="true"><span>보스 전리품 →</span><span>← 장비 · 기계</span></div>
+        <div class="node fac"><b>공장</b><span>분쇄 · 합금 · 증기 · 자동화</span></div>
+      </div>
+      <div class="prose">
+        <p>바닐라 마인크래프트의 철 → 네더 → 엔드 진행 위에 <b>공장</b>과 <b>보스</b>를 얹었습니다. 강철은 공장에서만 나오고,
+          다음 기계의 재료는 보스만 떨어뜨립니다. 그래서 공장 담당과 모험 담당이 서로를 기다리게 됩니다.</p>
+        <p>보스는 여럿이 잡도록 만들었습니다. 근처에 있는 사람 수만큼 체력과 패턴이 늘고, 제대로 때린 사람은 <b>각자</b> 보상을 받습니다.</p>
+        <p class="pull">혼자보다 같이 할 때 재미있는 것. 이 모드팩의 유일한 기준입니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="tier-h" data-embed>
+      <h2 id="tier-h">진행 단계</h2>
+      <ol class="tiers">
+        <li>
+          <h3>철과 강철</h3>
+          <p>분쇄기로 원석을 가루 두 개로, 합금로에서 철가루와 석탄 가루로 강철을 만듭니다. 압착기 · 조립대로 부품을 만들고 강철 갑옷과 3x3 해머를 갖춥니다.</p>
+          <p class="boss">보스 <b>녹슨 수호자</b> — 강철 한 벌이 없으면 녹 공격이 더 아픕니다.</p>
+        </li>
+        <li>
+          <h3>증기와 자동화</h3>
+          <p>보일러가 만든 증기를 파이프로 기계에 보냅니다. 컨베이어 벨트로 물건을 나르고, 증기 굴착기가 9x9를 바닥까지 파서 광석만 올려 보냅니다.</p>
+          <p class="boss">보스 <b>용광로 파수꾼</b> — 네더에서만 깨어납니다. 내열 장비가 없으면 과열됩니다.</p>
+        </li>
+        <li>
+          <h3>네더 전초기지</h3>
+          <p>파수꾼의 심장으로 심장 제련로를 만들어 고대 잔해를 녹입니다. 네더에는 물이 없으니, 용암 옆 지열 분출구로 증기를 얻고 내열 드릴을 끼운 굴착기를 돌립니다.</p>
+        </li>
+        <li>
+          <h3>엔드와 차원 물류</h3>
+          <p>셜커 껍데기로 만든 엔더 송신기 · 수신기가 같은 염료 색끼리 차원을 넘어 아이템을 보냅니다. 엔더 닻을 두면 아무도 없는 전초기지도 계속 돌아갑니다.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="feat-h" data-embed>
+      <h2 id="feat-h">특징</h2>
+      <ul class="features">
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>보스가 여는 공장</h3>
+          <p>수호자의 핵, 파수꾼의 심장이 다음 단계 기계의 재료입니다. 공장만으로는 앞으로 갈 수 없습니다.</p>
+        </li>
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.8 6 5.5"/></svg></span>
+          <h3>여럿이 잡는 보스</h3>
+          <p>사람이 많을수록 보스 체력(최대 3배)과 패턴이 늘어납니다. 체력의 5% 이상 때린 사람은 각자 보상을 받습니다.</p>
+        </li>
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M6 17V9h5v8M11 12h7v5"/><path d="M8 6c0-1.5 1-2 1-3M15 9c0-1.5 1-2 1-3"/></svg></span>
+          <h3>증기 동력과 자동화</h3>
+          <p>보일러 · 파이프 · 컨베이어 · 굴착기. 쓰지 않을 때는 연료를 태우지 않아서, 공장을 크게 지어도 낭비가 적습니다.</p>
+        </li>
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16M4 12h16"/></svg></span>
+          <h3>바닐라와 이어진 진행</h3>
+          <p>네더 · 엔드에 가야 할 이유를 모드가 줍니다. 네더 용암은 동력이 되고, 엔드 재료는 차원을 넘는 물류가 됩니다.</p>
+        </li>
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg></span>
+          <h3>길잡이 발전 과제</h3>
+          <p>"산업크래프트" 발전 과제 탭에 다음에 할 일이 적혀 있고, 기계 · 장비에 마우스를 올리면 쓰임새가 나옵니다. JEI로 기계 레시피도 봅니다.</p>
+        </li>
+        <li>
+          <span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span>
+          <h3>한 번에 깔리는 모드팩</h3>
+          <p>미니맵 · 음성 채팅 · 죽은 자리 시체 · 최적화 모드까지 묶었습니다. 런처에서 파일 하나만 열면 됩니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="install-h">
+      <h2 id="install-h">설치</h2>
+      <div class="install">
+        <div>
+          <h3>플레이하는 사람</h3>
+          <ol>
+            <li><a href="https://modrinth.com/app">Modrinth App</a> 또는 <a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
+            <li><code>.mrpack</code> 파일을 받습니다.</li>
+            <li>런처에서 "모드팩 가져오기"로 그 파일을 엽니다. Minecraft 26.3 · Fabric · 편의 모드가 한 번에 깔립니다.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>서버 여는 사람</h3>
+          <ol>
+            <li>Minecraft 26.3용 <a href="https://fabricmc.net/use/server/">Fabric 서버</a>를 만듭니다.</li>
+            <li><code>mods</code> 폴더에 모드 <code>.jar</code>와 Fabric API, 그리고 릴리스 노트 표에서 "서버에도"가 O인 모드를 넣습니다.</li>
+            <li>음성 채팅을 쓰면 UDP 24454 포트를 엽니다.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="notes-h">
+      <h2 id="notes-h">릴리스 노트 <small id="notes-ver"></small></h2>
+      <div class="notes" id="notes">
+        <p class="muted">불러오는 중…</p>
+      </div>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="모드팩 정보">
+    <div class="panel download" id="download">
+      <h2>테스트 베타 받기</h2>
+      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/sanupcraft/releases">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        <span id="dl-side-label">모드팩 (.mrpack)</span>
+      </a>
+      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/sanupcraft/releases" style="margin-top:8px">
+        <span id="dl-jar-label">서버용 모드 (.jar)</span>
+      </a>
+      <p class="small" style="margin-top:12px">모드팩은 런처로, <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
+      <div class="sha" id="sha" hidden>
+        <span class="small">모드팩 SHA-256</span>
+        <code id="sha-val"></code>
+        <button class="btn tiny" type="button" id="sha-copy">복사</button>
+      </div>
+      <a class="small link" id="rel-link" href="https://github.com/yh-yeop/sanupcraft/releases">GitHub 릴리스 페이지</a>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>마인크래프트 모드팩</dd></div>
+        <div><dt>버전</dt><dd id="info-ver">0.2.0 베타 1</dd></div>
+        <div><dt>공개일</dt><dd id="info-date">2026년 11월 5일</dd></div>
+        <div><dt>게임</dt><dd>Minecraft Java 26.3</dd></div>
+        <div><dt>로더</dt><dd>Fabric</dd></div>
+        <div><dt>인원</dt><dd>1~10명 (멀티 권장)</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/sanupcraft">GitHub</a> (MIT)</dd></div>
+      </dl>
+      <div class="tags" aria-label="태그">
+        <span>공장 자동화</span><span>보스전</span><span>증기 동력</span><span>멀티플레이</span><span>네더 · 엔드</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>같이 깔리는 편의 모드</h2>
+      <ul class="mods">
+        <li>Sodium · Lithium · FerriteCore<span>최적화</span></li>
+        <li>Xaero 미니맵 · 월드 지도<span>지도</span></li>
+        <li>Simple Voice Chat<span>음성 채팅</span></li>
+        <li>Corpse Graves<span>죽은 자리 시체</span></li>
+        <li>JEI<span>레시피 보기</span></li>
+        <li>Mod Menu · EntityCulling<span>편의</span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h2>테스트 베타 안내</h2>
+      <ul class="small plain">
+        <li>공장 · 보스 2마리 · 네더 · 엔드 연결까지 들어 있습니다.</li>
+        <li>보스 난이도와 기계 수치는 플레이테스트 반응을 보고 계속 맞추는 중입니다.</li>
+        <li>느낀 점은 <a href="https://github.com/yh-yeop/sanupcraft/issues">GitHub 이슈</a>로 남겨 주세요.</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<dialog class="lightbox" id="lightbox" aria-label="스크린샷 크게 보기">
+  <img id="lb-img" alt="">
+  <p id="lb-caption"></p>
+  <button class="lb-close" type="button" id="lb-close" aria-label="닫기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="nav prev" type="button" id="lb-prev" aria-label="이전 스크린샷">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <button class="nav next" type="button" id="lb-next" aria-label="다음 스크린샷">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</dialog>
+
+<footer class="wrap foot">
+  <p>산업크래프트 © yeop · 소스와 릴리스는 <a href="https://github.com/yh-yeop/sanupcraft">yh-yeop/sanupcraft</a>에 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
+</footer>
+</body>
+</html>
