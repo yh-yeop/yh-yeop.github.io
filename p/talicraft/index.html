@@ -36,9 +36,9 @@
     <p class="lede">26SMP 월드의 데이터팩 '무한 시리즈'에서 출발한, 두 친구가 함께 하는 야생 모드. 평소처럼 캐고 농사짓다 보면 다음에 모을 부적이 늘 정해져 있습니다.</p>
     <div class="cta">
       <a class="btn primary big" href="#charms">부적 둘러보기</a>
-      <a class="btn ghost big" href="#join">플레이하려면</a>
+      <a class="btn ghost big" href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">모드팩 받기 <small>.mrpack</small></a>
     </div>
-    <p class="hero-meta">Minecraft Java 26.3 · Fabric · 서버 + 클라이언트 모드 · 친구 서버 전용</p>
+    <p class="hero-meta">Minecraft Java 26.3 · Fabric · 서버 + 클라이언트 모드 · 친구 서버에서 플레이 중</p>
   </div>
 </header>
 
@@ -322,12 +322,12 @@
     <section id="join" aria-labelledby="join-h">
       <h2 id="join-h">플레이하려면</h2>
       <div class="join">
-        <p class="join-lead"><b>공개 다운로드는 없습니다.</b> 탈리크래프트는 친구 서버(화이트리스트) 전용이라, 모드팩은 서버 운영자가 직접 전해 줍니다. 소스도 공개하지 않습니다.</p>
-        <h3>초대받은 친구라면</h3>
+        <p class="join-lead">모드팩(<code>.mrpack</code>)과 서버용 jar는 <a href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">yh-yeop/releases</a>에서 받을 수 있습니다. 소스는 공개하지 않습니다. 함께 플레이하는 서버는 친구들끼리 쓰는 화이트리스트 서버입니다.</p>
+        <h3>설치</h3>
         <ol>
-          <li><a href="https://modrinth.com/app">Modrinth App</a>(또는 <a href="https://prismlauncher.org/">Prism Launcher</a>)에서 받은 <code>.mrpack</code>을 가져옵니다. Minecraft 26.3 · Fabric · 필요한 모드가 한 번에 깔립니다.</li>
-          <li>운영자에게 닉네임을 알려 화이트리스트에 올리고, 따로 받은 주소로 접속합니다.</li>
-          <li>업데이트는 운영자가 보내 준 <code>talicraft.jar</code> 한 파일을 <code>mods</code> 폴더에 덮어쓰면 끝입니다. 버전이 다르면 접속할 때 알려 줍니다.</li>
+          <li><a href="https://modrinth.com/app">Modrinth App</a>(또는 <a href="https://prismlauncher.org/">Prism Launcher</a>)에서 <a href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">릴리스</a>의 <code>.mrpack</code>을 가져옵니다. Minecraft 26.3 · Fabric · 필요한 모드가 한 번에 깔립니다.</li>
+          <li>친구 서버라면 운영자에게 닉네임을 알려 화이트리스트에 오른 뒤, 따로 받은 주소로 접속합니다. 직접 서버를 열려면 서버용 <code>talicraft-*.jar</code>를 Fabric 서버의 <code>mods</code>에 넣습니다 (Fabric API 필요).</li>
+          <li>업데이트는 새 모드팩을 다시 가져오거나, 인스턴스 <code>mods</code> 폴더의 <code>talicraft.jar</code>만 새 것으로 바꾸면 됩니다. 서버와 버전이 다르면 접속할 때 알려 줍니다.</li>
         </ol>
         <p class="small">들어가면 평소처럼 야생입니다. 채팅에 <code>/inf</code>를 치면 메뉴가 열리고, 첫 목표는 작업대에서 만드는 I단 부적입니다.</p>
       </div>
@@ -336,9 +336,10 @@
 
   <aside class="col-side" aria-label="모드 정보">
     <div class="panel private">
-      <h2>친구 서버 전용</h2>
-      <p class="small">두 친구가 화이트리스트 서버에서 플레이하며 다듬는 중입니다. 공개 다운로드 · 릴리스 · 소스 저장소는 없고, 모드팩은 운영자가 직접 전해 줍니다.</p>
-      <a class="btn block" href="#join">접속 안내 보기</a>
+      <h2>받기</h2>
+      <p class="small">두 친구가 화이트리스트 서버에서 플레이하며 다듬는 중입니다. 모드팩과 서버용 jar는 releases 저장소에 있고, 소스는 비공개입니다.</p>
+      <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">모드팩 받기 <small>.mrpack</small></a>
+      <a class="btn block" href="#join" style="margin-top:8px">설치 방법</a>
     </div>
 
     <div class="panel">
@@ -348,9 +349,9 @@
         <div><dt>게임</dt><dd>Minecraft Java 26.3</dd></div>
         <div><dt>로더</dt><dd>Fabric</dd></div>
         <div><dt>인원</dt><dd>2명 (친구 서버)</dd></div>
-        <div><dt>배포</dt><dd>모드팩 (.mrpack), 운영자가 전달</dd></div>
+        <div><dt>배포</dt><dd>모드팩 (.mrpack) · <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a></dd></div>
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
-        <div><dt>소스</dt><dd>비공개</dd></div>
+        <div><dt>소스</dt><dd>비공개 (받을 파일은 releases)</dd></div>
       </dl>
       <div class="tags" aria-label="태그">
         <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>2인 서버</span><span>26SMP</span>
@@ -377,7 +378,7 @@
 </main>
 
 <footer class="wrap foot">
-  <p>탈리크래프트 © yeop · 친구 서버 전용 모드로, 소스와 파일은 공개하지 않습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드는 Mojang · Microsoft와 관계가 없습니다.</p>
+  <p>탈리크래프트 © yeop · 받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있고 소스는 비공개입니다. Minecraft는 Mojang Studios의 상표이며, 이 모드는 Mojang · Microsoft와 관계가 없습니다.</p>
 </footer>
 </body>
 </html>

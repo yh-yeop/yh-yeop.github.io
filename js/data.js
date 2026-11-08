@@ -116,7 +116,7 @@ export const PROJECTS = [
   {
     // 친구 서버 전용: 소스 · 릴리스 비공개라 저장소 없이 소개 페이지만 둔다 (GitHub API 호출 없음)
     id: 'talicraft', cat: 'game', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
-    repos: [], closed: true, page: 'p/talicraft/', stage: 'beta',
+    repos: [], release: { repo: 'releases', prefix: 'Talicraft' }, closed: true, page: 'p/talicraft/', stage: 'beta',
     desc: '26SMP 데이터팩 \'무한 시리즈\'에서 출발한, 두 친구용 마인크래프트 야생 모드. 바닐라 재료를 크게 모으면 죽어도 잃지 않는 편의를 줍니다.',
     points: ['재료 → 조각 → 부적, 세트 효과와 만물의 부적 합성', 'I단 · II단 생존 부적과 전투 부적, 무한 겉날개 · 도구', '겉날개 칸(갑옷과 날개 같이), /inf 메뉴, 사망 보험'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '2인 서버'],
