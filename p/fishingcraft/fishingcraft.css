@@ -52,11 +52,14 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .btn.tiny { min-height: 32px; padding: 4px 10px; font-size: .8125rem; }
 
 /* top bar + hero */
-.topbar { position: absolute; left: 0; right: 0; top: 0; z-index: 5; padding-top: 14px; }
+.topbar { position: absolute; left: 0; right: 0; top: 0; z-index: 5; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .back { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; padding: 6px 12px 6px 6px; border-radius: 999px;
   color: #e3e6ea; text-decoration: none; font-size: .875rem; font-weight: 600; background: rgba(11,22,32,.55); backdrop-filter: blur(6px); }
 .back svg { width: 18px; height: 18px; }
 .back:hover { color: #fff; background: rgba(11,22,32,.8); }
+button.back { border: 0; font-family: inherit; cursor: pointer; }
+.back.share { padding: 6px 12px; gap: 6px; }
+.back.share svg { width: 16px; height: 16px; }
 
 .hero {
   position: relative; min-height: min(640px, 92vh); display: flex; align-items: flex-end;

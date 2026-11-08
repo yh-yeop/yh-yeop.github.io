@@ -57,7 +57,7 @@ header.top { padding-top: 40px; padding-bottom: 8px; }
 .id h1 { margin: 0; font-size: 1.75rem; line-height: 1.2; letter-spacing: -0.02em; }
 .id p { margin: 2px 0 0; color: var(--muted); }
 .id .grow { flex: 1; min-width: 200px; }
-.id-actions { display: flex; gap: 8px; }
+.id-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
