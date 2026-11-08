@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>피싱크래프트 · 마인크래프트 모드팩</title>
-<meta name="description" content="바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다 (Fabric 26.3, 개발 중).">
+<meta name="description" content="바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다 (Fabric 26.3, 테스트 빌드).">
 <meta property="og:type" content="website">
 <meta property="og:title" content="피싱크래프트 — 마인크래프트 낚시 모드팩">
 <meta property="og:description" content="낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다. 바닐라 야생 위에 얹는 낚시 모드팩.">
@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="fishingcraft.css">
 <script src="../../share.js" defer></script>
+<script type="module" src="page.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -34,14 +35,18 @@
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <p class="kicker">마인크래프트 모드팩 · Fabric 26.3 <span class="badge">개발 중</span></p>
+    <p class="kicker">마인크래프트 모드팩 · Fabric 26.3 <span class="badge">테스트 빌드</span></p>
     <h1 class="logo">피싱크래프트</h1>
     <p class="tagline">낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다.</p>
     <p class="lede">바닐라 야생 위에 얹는 낚시 모드팩. 기본 낚싯대 → 인챈트 낚싯대 → 수선 → 종결 낚싯대로 이어지는 바닐라 낚시의 은근한 재미를, 용암과 공허까지 길게 늘립니다.</p>
     <div class="cta">
-      <a class="btn primary big" href="#roadmap-h">개발 현황 보기</a>
+      <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        <span>모드팩 받기 <small id="dl-hero-meta">.mrpack</small></span>
+      </a>
+      <a class="btn ghost big" href="#roadmap-h">개발 현황</a>
     </div>
-    <p class="hero-meta">Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
+    <p class="hero-meta" id="hero-meta">Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
   </div>
 </header>
 
@@ -91,7 +96,7 @@
     </section>
 
     <section aria-labelledby="feat-h" data-embed>
-      <h2 id="feat-h">특징 (계획)</h2>
+      <h2 id="feat-h">특징</h2>
       <ul class="features">
         <li>
           <h3>물마다 다른 표</h3>
@@ -128,43 +133,88 @@
           <tr><td>M0</td><td>빌드 환경 · 바닐라 낚시 확인 (찌 · 열린 물 · 용암)</td><td>완료</td></tr>
           <tr><td>M1a</td><td>물별 표 · 희귀도 · 물고기 18종 · 젖은 고서 · 도감</td><td>완료</td></tr>
           <tr><td>M1b</td><td>묵직한 입질과 줄다리기</td><td>완료</td></tr>
-          <tr><td>M1c</td><td>주민 의뢰 · 마을 신뢰도 (거래 차단) — 5직업</td><td>완료</td></tr>
-          <tr class="now"><td>M2</td><td>수조 · 박제 전시, 용암 · 공허 낚시, 자동 낚시 장치</td><td>예정</td></tr>
+          <tr><td>M1c</td><td>주민 의뢰 · 마을 신뢰도 (거래 차단) — 13직업</td><td>완료</td></tr>
+          <tr><td>0.1.0 베타 1</td><td>첫 테스트 빌드 (M1 전부)</td><td>공개</td></tr>
+          <tr class="now"><td>M2</td><td>수조 · 박제 전시, 용암 · 공허 낚시, 자동 낚시 장치</td><td>진행 중</td></tr>
           <tr><td>M3</td><td>유물 효과 · 세트</td><td>예정</td></tr>
         </tbody>
       </table>
     </section>
+
+    <section aria-labelledby="install-h">
+      <h2 id="install-h">설치</h2>
+      <div class="install">
+        <div>
+          <h3>플레이하는 사람</h3>
+          <ol>
+            <li><a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
+            <li><strong>Prism 인스턴스</strong>(<code>.zip</code>)를 받아 "인스턴스 추가 → 가져오기"로 엽니다.</li>
+            <li>켜면 처음 한 번 모드를 받습니다. 그 뒤로는 켤 때마다 새 버전을 확인해 바뀐 것만 받습니다.</li>
+          </ol>
+          <p class="small" style="margin-top:8px"><a href="https://modrinth.com/app">Modrinth App</a>을 쓰면 <code>.mrpack</code>을 "모드팩 가져오기"로 엽니다. 새 버전이 나오면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있어요.</p>
+        </div>
+        <div>
+          <h3>서버 여는 사람</h3>
+          <ol>
+            <li>Minecraft 26.3용 <a href="https://fabricmc.net/use/server/">Fabric 서버</a>를 만듭니다.</li>
+            <li><code>mods</code> 폴더에 모드 <code>.jar</code>와 Fabric API, 그리고 릴리스 노트 표에서 "서버에도"가 O인 모드를 넣습니다.</li>
+            <li>서버와 플레이어의 모드 버전이 같아야 들어갈 수 있습니다.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="notes-h">
+      <h2 id="notes-h">릴리스 노트 <small id="notes-ver"></small></h2>
+      <div class="notes" id="notes">
+        <p class="muted">불러오는 중…</p>
+      </div>
+    </section>
   </div>
 
   <aside class="col-side" aria-label="모드팩 정보">
+    <div class="panel download" id="download">
+      <h2>테스트 빌드 받기</h2>
+      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        <span id="dl-side-label">모드팩 (.mrpack)</span>
+      </a>
+      <a class="btn block" id="dl-prism" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true" style="margin-top:8px" hidden>
+        <span id="dl-prism-label">Prism 인스턴스 (자동 업데이트)</span>
+      </a>
+      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true" style="margin-top:8px">
+        <span id="dl-jar-label">서버용 모드 (.jar)</span>
+      </a>
+      <p class="small" style="margin-top:12px">모드팩은 런처로, Prism 인스턴스는 Prism Launcher에서 가져오면 켤 때마다 새 버전을 받습니다. <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
+      <div class="sha" id="sha" hidden>
+        <span class="small">모드팩 SHA-256</span>
+        <code id="sha-val"></code>
+        <button class="btn tiny" type="button" id="sha-copy">복사</button>
+      </div>
+      <a class="small link" id="rel-link" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">GitHub 릴리스 페이지</a>
+    </div>
+
     <div class="panel">
       <dl class="info">
         <div><dt>종류</dt><dd>마인크래프트 모드팩</dd></div>
-        <div><dt>상태</dt><dd>개발 중 (M1c 완료)</dd></div>
+        <div><dt>버전</dt><dd id="info-ver">0.1.0 베타 1</dd></div>
+        <div><dt>공개일</dt><dd id="info-date">2026년 11월 9일</dd></div>
         <div><dt>게임</dt><dd>Minecraft Java 26.3</dd></div>
         <div><dt>로더</dt><dd>Fabric</dd></div>
         <div><dt>인원</dt><dd>혼자 또는 친구와</dd></div>
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
-        <div><dt>소스</dt><dd>비공개</dd></div>
+        <div><dt>소스</dt><dd>비공개 (받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>)</dd></div>
       </dl>
       <div class="tags" aria-label="태그">
         <span>낚시</span><span>수집 · 도감</span><span>바닐라 야생</span><span>주민 의뢰</span><span>자동화</span>
       </div>
     </div>
 
-    <div class="panel">
-      <h2>아직 받을 수 없어요</h2>
-      <ul class="small plain">
-        <li>지금은 기획과 빌드 환경을 다지는 단계라 내려받을 파일이 없습니다.</li>
-        <li>첫 테스트 빌드가 나오면 이 페이지에 모드팩(.mrpack)을 올립니다.</li>
-        <li>진행 상황은 이 페이지의 개발 현황 표에 계속 적습니다.</li>
-      </ul>
-    </div>
   </aside>
 </main>
 
 <footer class="wrap foot">
-  <p>피싱크래프트 © yeop · 소스는 비공개이고, 빌드가 나오면 이 페이지에서 받을 수 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
+  <p>피싱크래프트 © yeop · 받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
 </footer>
 </body>
 </html>
