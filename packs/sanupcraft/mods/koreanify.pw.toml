@@ -1,0 +1,8 @@
+name = "koreanify-fabric-0.2.0+mc26.3.jar"
+filename = "koreanify-fabric-0.2.0+mc26.3.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/p1nSK3e3/versions/5i1HhMdF/koreanify-fabric-0.2.0%2Bmc26.3.jar"
+hash-format = "sha512"
+hash = "c6b29737056cdc271ab8c6f59c37911c557afc4927c04651da973222f02c50a7eccd42fdef4f8da0610fb42995f53e0722014646a15880c01641cda2f808e498"

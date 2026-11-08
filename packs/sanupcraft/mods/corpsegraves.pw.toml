@@ -1,0 +1,8 @@
+name = "corpsegraves-1.1.0+26.3.jar"
+filename = "corpsegraves-1.1.0+26.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/YQybd3R7/versions/olLsbAlx/corpsegraves-1.1.0%2B26.3.jar"
+hash-format = "sha512"
+hash = "9c3671c0f5875b8b4b4b82d266b4e7294da411ca6d4d79236796f053a6a7a83528c8d29b3446298fa84c2db27bed01ce8b8f8095cb8ba9d64631cda32403af99"
