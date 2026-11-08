@@ -105,6 +105,13 @@ export const PROJECTS = [
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '멀티플레이'],
   },
   {
+    id: 'fishingcraft', cat: 'game', title: '피싱크래프트', icon: 'assets/icons/fishingcraft.svg',
+    repos: ['fishingcraft'], page: 'p/fishingcraft/', stage: 'planning',
+    desc: '바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모읍니다.',
+    points: ['기본 → 인챈트 → 수선 → 종결 낚싯대 사다리를 용암 · 공허 낚시까지', '물마다 다른 표, 도감 · 크기 기록 · 변이, 희귀한 입질엔 줄다리기', '주민은 거래 대신 낚시 의뢰, 자동 낚시 장치도 낚시로 만듦'],
+    tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티'],
+  },
+  {
     // 친구 서버 전용: 소스 · 릴리스 비공개라 저장소 없이 소개 페이지만 둔다 (GitHub API 호출 없음)
     id: 'talicraft', cat: 'game', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
     repos: [], closed: true, page: 'p/talicraft/', stage: 'beta',
