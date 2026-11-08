@@ -14,7 +14,7 @@
 | `js/github.js` | GitHub API(10분 세션 캐시), 최신 릴리스 고르기, README · 릴리스 노트 HTML 정리 |
 | `js/main.js` | 첫 화면 동작 |
 | `assets/icons/` | 프로젝트 아이콘 (`<id>.svg/png/jpg`) |
-| `p/<id>/` | 프로젝트 서브페이지 (`p/fracture/` — 게임 소개, 갤러리 · 최신 베타 · 릴리스 노트 / `p/sanupcraft/` — 모드팩 소개, 갤러리 · sanupcraft 저장소의 최신 테스트 베타 · 설치 방법 / `p/talicraft/` — 친구 서버 전용 모드 소개, 스크립트 · API 호출 없음, 갤러리 크게 보기는 `popover` / `p/fishingcraft/` — 낚시 모드팩 소개(개발 중), 스크립트 없음, 히어로 그림 · 대표 이미지는 fishingcraft 저장소 `tools/make_icon.py` · `make_og.py`로 만듦) |
+| `p/<id>/` | 프로젝트 서브페이지 (`p/fracture/` — 게임 소개, 갤러리 · 최신 베타 · 릴리스 노트 / `p/sanupcraft/` — 모드팩 소개, 갤러리 · sanupcraft 저장소의 최신 테스트 베타 · 설치 방법 / `p/talicraft/` — 친구 서버 전용 모드 소개, 스크립트 · API 호출 없음, 갤러리 크게 보기는 `popover` / `p/fishingcraft/` — 소스 비공개 낚시 모드팩 소개(개발 중), 스크립트 · API 호출 없음, 히어로 그림 · 대표 이미지는 fishingcraft 저장소 `tools/make_icon.py` · `make_og.py`로 만듦) |
 | `assets/<id>/` | 서브페이지 이미지 (스크린샷 1600px webp + `-t` 썸네일 400px) |
 | `install.js` | 웹 프로젝트가 같이 쓰는 "앱으로 설치" 안내 (아래) |
 | `manifest.webmanifest` | 이 사이트를 앱으로 설치할 때의 정보 |
