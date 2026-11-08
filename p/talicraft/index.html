@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>탈리크래프트 · 마인크래프트 야생 모드</title>
+<meta name="description" content="바닐라 재료를 크게 모으면, 죽어도 잃지 않는 영구 편의. 26SMP 데이터팩 '무한 시리즈'에서 출발한, 두 친구가 함께 하는 마인크래프트 야생 모드 (Fabric 26.3).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="탈리크래프트 — 마인크래프트 야생 모드">
+<meta property="og:description" content="바닐라 재료를 크게 모으면, 죽어도 잃지 않는 영구 편의. 부적을 모으고 합치는 두 친구용 야생 모드.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/talicraft/og.jpg">
+<meta property="og:url" content="https://yh-yeop.github.io/p/talicraft/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#120e0a">
+<link rel="icon" href="../../assets/icons/talicraft.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preload" as="image" href="../../assets/talicraft/hero.webp">
+<link rel="stylesheet" href="talicraft.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">마인크래프트 야생 모드 · Fabric 26.3 <span class="badge">베타</span></p>
+    <h1 class="logo">탈리크래프트</h1>
+    <p class="tagline">바닐라 재료를 크게 모으면, 잃지 않는 영구 편의.</p>
+    <p class="lede">26SMP 월드의 데이터팩 '무한 시리즈'에서 출발한, 두 친구가 함께 하는 야생 모드. 평소처럼 캐고 농사짓다 보면 다음에 모을 부적이 늘 정해져 있습니다.</p>
+    <div class="cta">
+      <a class="btn primary big" href="#charms">부적 둘러보기</a>
+      <a class="btn ghost big" href="#join">플레이하려면</a>
+    </div>
+    <p class="hero-meta">Minecraft Java 26.3 · Fabric · 서버 + 클라이언트 모드 · 친구 서버 전용</p>
+  </div>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <section aria-labelledby="about-h" data-embed>
+      <h2 id="about-h">이 모드에 대하여</h2>
+      <div class="prose">
+        <p>26SMP 월드에서 쓰던 데이터팩 다섯 개(비행 · 음식 · 경험치 · 집 · 도구)를 설계서 삼아 <b>Fabric 모드</b>로 다시 만들었습니다.
+          이름은 부적을 뜻하는 탈리스만에서 왔습니다.</p>
+        <p>하는 일은 하나입니다. 황금 당근 81개, 불사의 토템 81개처럼 <b>크고 분명한 목표</b>를 걸고, 다 모으면 <b>죽어도 잃지 않는 편의</b>를 줍니다.
+          새 차원도 새 광석도 없이, 재료는 전부 바닐라 야생에서 나옵니다.</p>
+        <p class="pull">평소처럼 야생, 그 사이사이에 다음 목표.</p>
+      </div>
+      <ol class="loop" aria-label="핵심 순환">
+        <li><b>평소 야생</b><span>채굴 · 농사 · 탐험 · 보스로 바닐라 재료가 쌓인다</span></li>
+        <li><img class="px" src="../../assets/talicraft/items/saturation_shard.png" alt="" width="40" height="40"><b>조각</b><span>재료 9개 → 조각 1개</span></li>
+        <li><img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="40" height="40"><b>부적 · 무한 도구</b><span>조각 9개 → 잃지 않는 영구 편의</span></li>
+        <li><img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="40" height="40"><b>세트 · 합성</b><span>같이 지니면 세트 효과, 넷을 합치면 만물의 부적</span></li>
+        <li class="next"><b>다음 목표</b><span>각인 고르기 · 강화 보스 (개발 중)</span></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="pillar-h">
+      <h2 id="pillar-h">세 가지 원칙</h2>
+      <ul class="features pillars">
+        <li>
+          <h3>바닐라 야생 그대로</h3>
+          <p>새 차원 · 새 광석 · 기술 트리가 없습니다. 재료는 평소 하던 채굴 · 농사 · 탐험 · 보스에서 얻습니다.</p>
+        </li>
+        <li>
+          <h3>크게 모으면 영원히</h3>
+          <p>목표는 크고 분명하게, 보상은 잃지 않는 편의로. 소모품이나 확률 뽑기는 없습니다. 초반 목표는 한두 번 접속하면 끝나는 크기입니다.</p>
+        </li>
+        <li>
+          <h3>모으고 고르고 자랑하기</h3>
+          <p>세트 효과, 넷을 하나로 합치는 만물의 부적, 손에 든 아이템을 서버 전체 채팅에 띄우는 <code>/inf show</code>. 다음에는 서로 다른 선택을 하는 각인이 옵니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="media" aria-labelledby="media-h">
+      <h2 id="media-h">그림으로 보기</h2>
+      <!-- 스크린샷이 생기면 figure 하나(+ 아래 lb- 팝오버 하나)를 더한다. 첫 figure가 크게 보인다 -->
+      <div class="gallery">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-charms" aria-label="크게 보기: 부적 전체">
+            <img src="../../assets/talicraft/charms-t.webp" srcset="../../assets/talicraft/charms-t.webp 400w, ../../assets/talicraft/charms.webp 1600w" sizes="(max-width: 920px) 100vw, 780px" alt="가운데 만물의 부적, 둘레에 II단 부적 4종, 바깥에 I단 부적과 전투 부적" width="1600" height="900">
+          </button>
+          <figcaption>가운데 만물의 부적, 둘레에 금 테두리 II단 4종, 바깥에 철 테두리 I단과 전투 부적.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-tier1" aria-label="크게 보기: I단 부적 5종">
+            <img src="../../assets/talicraft/tier1-t.webp" srcset="../../assets/talicraft/tier1-t.webp 400w, ../../assets/talicraft/tier1.webp 1600w" sizes="(max-width: 600px) 100vw, 380px" alt="I단 부적 5종과 작업대 재료" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>I단 부적 5종. 작업대에서 바로 만듭니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-forge" aria-label="크게 보기: II단과 만물의 부적">
+            <img src="../../assets/talicraft/forge-t.webp" srcset="../../assets/talicraft/forge-t.webp 400w, ../../assets/talicraft/forge.webp 1600w" sizes="(max-width: 600px) 100vw, 380px" alt="조각 9개로 II단 부적을 만들고, 넷을 합쳐 만물의 부적을 만드는 흐름" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>조각 9개 → II단 부적, 넷을 합치면 만물의 부적.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-combat" aria-label="크게 보기: 전투 부적">
+            <img src="../../assets/talicraft/combat-t.webp" srcset="../../assets/talicraft/combat-t.webp 400w, ../../assets/talicraft/combat.webp 1600w" sizes="(max-width: 600px) 100vw, 380px" alt="투지의 부적과 명사수의 부적의 I단과 II단" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>전투 부적: 투지(근접 · 처치 회복)와 명사수(화살).</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-wings" aria-label="크게 보기: 겉날개 칸">
+            <img src="../../assets/talicraft/wings-t.webp" srcset="../../assets/talicraft/wings-t.webp 400w, ../../assets/talicraft/wings.webp 1600w" sizes="(max-width: 600px) 100vw, 380px" alt="인벤토리 방패 칸 위에 생긴 겉날개 칸" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>방패 칸 위에 생긴 겉날개 칸.</figcaption>
+        </figure>
+      </div>
+      <p class="shot-note">아직 게임 스크린샷이 없어 모드의 아이템 그림(16×16 픽셀)으로 만든 그림입니다. 칸 그림은 설명용으로 다시 그렸습니다.</p>
+
+      <div class="lb" popover id="lb-charms">
+        <img src="../../assets/talicraft/charms.webp" alt="가운데 만물의 부적, 둘레에 II단 부적 4종, 바깥에 I단 부적과 전투 부적" width="1600" height="900" loading="lazy">
+        <p>가운데 만물의 부적, 둘레에 금 테두리 II단 4종, 바깥에 철 테두리 I단과 전투 부적.</p>
+        <button class="lb-close" type="button" popovertarget="lb-charms" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-tier1">
+        <img src="../../assets/talicraft/tier1.webp" alt="I단 부적 5종과 작업대 재료" width="1600" height="900" loading="lazy">
+        <p>I단 부적 5종. 작업대에서 테두리 8칸 + 가운데 1칸으로 만듭니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-tier1" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-forge">
+        <img src="../../assets/talicraft/forge.webp" alt="조각 9개로 II단 부적을 만들고, 넷을 합쳐 만물의 부적을 만드는 흐름" width="1600" height="900" loading="lazy">
+        <p>재료 81개 → 조각 9개 → II단 부적(<code>/inf forge</code>). 넷을 모두 모으면 <code>/inf merge</code>로 만물의 부적.</p>
+        <button class="lb-close" type="button" popovertarget="lb-forge" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-combat">
+        <img src="../../assets/talicraft/combat.webp" alt="투지의 부적과 명사수의 부적의 I단과 II단" width="1600" height="900" loading="lazy">
+        <p>전투 부적: I단에 조각 9개와 열쇠 재료를 더해 II단으로 올립니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-combat" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-wings">
+        <img src="../../assets/talicraft/wings.webp" alt="인벤토리 방패 칸 위에 생긴 겉날개 칸" width="1600" height="900" loading="lazy">
+        <p>흉갑 칸엔 갑옷, 겉날개 칸엔 겉날개. 방어와 활공을 같이 얻습니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-wings" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </section>
+
+    <section id="charms" aria-labelledby="t1-h" data-embed>
+      <h2 id="t1-h">I단 부적 <small>초중반 · 작업대</small></h2>
+      <p class="sec-lede">부적은 가방이나 왼손에 지니고만 있으면 효과가 납니다. I단은 작업대에서 테두리 8칸 + 가운데 1칸으로 만들고, 레시피 북에도 나옵니다.</p>
+      <ul class="features charms">
+        <li class="charm iron" style="--gem:#f5c044">
+          <img class="px" src="../../assets/talicraft/items/saturation_amulet_1.png" alt="" width="48" height="48">
+          <h3>포화의 부적 I</h3>
+          <p class="recipe">건초 더미 8 + 케이크</p>
+          <p>허기가 3.5칸 아래로 줄지 않아 언제든 달릴 수 있습니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#d06ee8">
+          <img class="px" src="../../assets/talicraft/items/resistance_amulet_1.png" alt="" width="48" height="48">
+          <h3>저항의 부적 I</h3>
+          <p class="recipe">구리 블록 8 + 방패</p>
+          <p>죽을 만큼 맞아도 체력 1로 버팁니다. 2초 무적과 저항 IV 5초가 붙고, 10분 뒤 다시 됩니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#ff8a3d">
+          <img class="px" src="../../assets/talicraft/items/smelting_amulet_1.png" alt="" width="48" height="48">
+          <h3>제련의 부적 I</h3>
+          <p class="recipe">철 블록 8 + 용광로</p>
+          <p>아무 곡괭이로 캐도 철 · 금 · 구리 광석이 바로 주괴로 나옵니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#5b8cff">
+          <img class="px" src="../../assets/talicraft/items/wisdom_amulet_1.png" alt="" width="48" height="48">
+          <h3>지혜의 부적 I</h3>
+          <p class="recipe">책장 8 + 다이아몬드 블록</p>
+          <p>죽어도 레벨을 잃지 않습니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#5fe0c8">
+          <img class="px" src="../../assets/talicraft/items/home_amulet_1.png" alt="" width="48" height="48">
+          <h3>귀환의 부적 I</h3>
+          <p class="recipe">엔더의 눈 8 + 나침반</p>
+          <p>어느 차원에서든 침대 없이 오버월드 1번 지점으로 돌아갑니다. 5분마다 한 번.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="t2-h" data-embed>
+      <h2 id="t2-h">II단 부적과 만물의 부적 <small>후반 · <code>/inf forge</code></small></h2>
+      <p class="sec-lede">재료 81개를 9개씩 묶어 조각을 만들고, 조각 9개에 열쇠 재료와 같은 계열 I단을 더해 <code>/inf forge</code>로 올립니다. 세트 효과는 II단과 만물의 부적에만 붙습니다.</p>
+      <ul class="features charms">
+        <li class="charm gold" style="--gem:#d06ee8">
+          <img class="px" src="../../assets/talicraft/items/resistance_amulet.png" alt="" width="48" height="48">
+          <h3>저항의 부적</h3>
+          <p class="recipe">불사의 토템 81</p>
+          <p>지니고 있으면 늘 저항 II.</p>
+        </li>
+        <li class="charm gold" style="--gem:#f5c044">
+          <img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="48" height="48">
+          <h3>포화의 부적</h3>
+          <p class="recipe">황금 당근 81 + 마법이 부여된 황금 사과</p>
+          <p>배가 고프지 않습니다. 저항의 부적과 같이 지니면 최대 체력 +20.</p>
+        </li>
+        <li class="charm gold" style="--gem:#5b8cff">
+          <img class="px" src="../../assets/talicraft/items/wisdom_amulet.png" alt="" width="48" height="48">
+          <h3>지혜의 부적</h3>
+          <p class="recipe">청금석 블록 81 + 네더의 별</p>
+          <p>30초마다 경험치가 들어옵니다. 무한 겉날개로 날고 있으면 3배.</p>
+        </li>
+        <li class="charm gold" style="--gem:#5fe0c8">
+          <img class="px" src="../../assets/talicraft/items/home_amulet.png" alt="" width="48" height="48">
+          <h3>귀환의 부적</h3>
+          <p class="recipe">엔더 상자 81 + 드래곤 머리</p>
+          <p>오버월드 · 네더 · 엔드에 한 곳씩 집을 저장하고 명령 하나로 돌아갑니다. 무한 도구와 같이 지니면 심층암을 한 번에 캡니다.</p>
+        </li>
+        <li class="charm gold all" style="--gem:#c99cff">
+          <img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="48" height="48">
+          <h3>만물의 부적</h3>
+          <p class="recipe">II단 부적 4종 → <code>/inf merge</code></p>
+          <p>네 부적의 효과와 세트 효과를 한 칸에. 마지막 목표이자, 다음에 올 각인의 바탕입니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="combat-h" data-embed>
+      <h2 id="combat-h">전투 부적 <small>투지 · 명사수</small></h2>
+      <p class="sec-lede">싸우며 모이는 재료로 만듭니다. 만물의 부적과 세트 효과에는 들어가지 않고, 플레이어끼리 싸울 때도 똑같이 듣습니다.</p>
+      <ul class="features charms">
+        <li class="charm iron" style="--gem:#ef5050">
+          <img class="px" src="../../assets/talicraft/items/valor_amulet_1.png" alt="" width="48" height="48">
+          <h3>투지의 부적 I</h3>
+          <p class="recipe">TNT 8 + 철 검</p>
+          <p>최대 체력 10 이상인 몹이나 플레이어를 처치하면 체력 2 회복.</p>
+        </li>
+        <li class="charm gold" style="--gem:#ef5050">
+          <img class="px" src="../../assets/talicraft/items/valor_amulet.png" alt="" width="48" height="48">
+          <h3>투지의 부적</h3>
+          <p class="recipe">블레이즈 막대 81 + 위더 스켈레톤 해골</p>
+          <p>근접 공격력 +2(맨손 포함), 처치 회복은 4로.</p>
+        </li>
+        <li class="charm iron" style="--gem:#5cd27a">
+          <img class="px" src="../../assets/talicraft/items/marksman_amulet_1.png" alt="" width="48" height="48">
+          <h3>명사수의 부적 I</h3>
+          <p class="recipe">과녁 8 + 석궁</p>
+          <p>활과 석궁 모두 일반 화살이 줄지 않습니다.</p>
+        </li>
+        <li class="charm gold" style="--gem:#5cd27a">
+          <img class="px" src="../../assets/talicraft/items/marksman_amulet.png" alt="" width="48" height="48">
+          <h3>명사수의 부적</h3>
+          <p class="recipe">브리즈 막대 81 + 삼지창</p>
+          <p>활을 더 빨리 당기고, 석궁은 빠른 장전 한 단계 더. 물약 · 분광 화살도 아낍니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="gear-h" data-embed>
+      <h2 id="gear-h">무한 장비와 편의</h2>
+      <ul class="features">
+        <li>
+          <h3>무한 비행의 겉날개</h3>
+          <p>겉날개 9개로 만듭니다. 부서지지 않고 네더라이트 흉갑만큼 막아 주며, 왼손 폭죽이 저절로 채워집니다.</p>
+        </li>
+        <li>
+          <h3>무한 도구</h3>
+          <p>네더라이트 곡괭이 · 도끼 · 삽 · 괭이를 9개씩. 부서지지 않고, 곡괭이는 광석을 바로 녹이며, 넷을 만능 도구 하나로 합칠 수 있습니다.</p>
+        </li>
+        <li>
+          <h3><img class="px inline" src="../../assets/talicraft/items/upgrade_ticket.png" alt="" width="24" height="24">업글권</h3>
+          <p>무한 도구 4종을 다 모으면 한 장. 지금 입은 갑옷을 부서지지 않게 바꿉니다.</p>
+        </li>
+        <li>
+          <h3>겉날개 칸</h3>
+          <p>인벤토리 방패 칸 위에 겉날개만 들어가는 칸이 생겼습니다. 갑옷과 날개를 같이 입고, 갑옷 위에 날개가 보입니다.</p>
+        </li>
+        <li>
+          <h3><code>/inf</code> 메뉴</h3>
+          <p>부적 단계 · 다음에 모을 재료 · 제작 · 귀환 지점 · 폭죽 설정 · 도움말을 상자 화면 하나에서 봅니다.</p>
+        </li>
+        <li>
+          <h3>재사용 대기 표시</h3>
+          <p>버티기(저항 I)와 귀환 I이 다시 될 때까지 남은 시간이 화면 왼쪽 위에 아이콘으로 뜹니다.</p>
+        </li>
+        <li>
+          <h3>불사의 토템</h3>
+          <p>64개까지 겹치고, 손에 들지 않아도 가방 어디에 있든 죽는 순간 발동합니다.</p>
+        </li>
+        <li>
+          <h3>사망 보험</h3>
+          <p>토템 64개로 한 번 가입하면, 죽어도 부적 · 조각 · 무한 장비가 부활할 때 제자리로 돌아옵니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="log-h">
+      <h2 id="log-h">개발 기록</h2>
+      <ol class="timeline">
+        <li>
+          <span class="ms">M0</span>
+          <h3>뼈대와 서버</h3>
+          <p>Fabric 프로젝트와 집 서버 꾸러미(실행 · 백업 · 화이트리스트)를 만들었습니다.</p>
+        </li>
+        <li>
+          <span class="ms">M1</span>
+          <h3>데이터팩 이식</h3>
+          <p>무한 시리즈 다섯 개를 모드로 다시 만들어 II단 부적 · 무한 장비 · 사망 보험이 되었습니다. 수치는 원본 그대로, 설정 파일로 뺐습니다.</p>
+        </li>
+        <li>
+          <span class="ms">M2</span>
+          <h3>I단 부적과 메뉴, 새 월드</h3>
+          <p>초중반 목표인 I단 5종, <code>/inf</code> 메뉴, 레시피 북을 넣고 새 월드를 열었습니다.</p>
+        </li>
+        <li class="now">
+          <span class="ms">M2.5</span>
+          <h3>클라이언트 모드 <small>지금 플레이 중</small></h3>
+          <p>서버에만 돌던 모드를 모드팩으로 바꾸고, 겉날개 칸 · 전투 부적 · 재사용 대기 표시를 더했습니다. 서버와 버전이 다르면 접속할 때 알려 줍니다. 게임 안 자동 시험 125개로 확인합니다.</p>
+        </li>
+        <li class="next">
+          <span class="ms">M3</span>
+          <h3>각인과 강화 보스 <small>다음</small></h3>
+          <p>만물의 부적에 각인 칸을 열어, 희귀 재료로 서로 겹치지 않는 효과를 하나씩 고릅니다. 바닐라 보스 하나는 둘이 같이 잡는 재도전판이 되고, 그 전리품이 각인 재료가 됩니다.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="join" aria-labelledby="join-h">
+      <h2 id="join-h">플레이하려면</h2>
+      <div class="join">
+        <p class="join-lead"><b>공개 다운로드는 없습니다.</b> 탈리크래프트는 친구 서버(화이트리스트) 전용이라, 모드팩은 서버 운영자가 직접 전해 줍니다. 소스도 공개하지 않습니다.</p>
+        <h3>초대받은 친구라면</h3>
+        <ol>
+          <li><a href="https://modrinth.com/app">Modrinth App</a>(또는 <a href="https://prismlauncher.org/">Prism Launcher</a>)에서 받은 <code>.mrpack</code>을 가져옵니다. Minecraft 26.3 · Fabric · 필요한 모드가 한 번에 깔립니다.</li>
+          <li>운영자에게 닉네임을 알려 화이트리스트에 올리고, 따로 받은 주소로 접속합니다.</li>
+          <li>업데이트는 운영자가 보내 준 <code>talicraft.jar</code> 한 파일을 <code>mods</code> 폴더에 덮어쓰면 끝입니다. 버전이 다르면 접속할 때 알려 줍니다.</li>
+        </ol>
+        <p class="small">들어가면 평소처럼 야생입니다. 채팅에 <code>/inf</code>를 치면 메뉴가 열리고, 첫 목표는 작업대에서 만드는 I단 부적입니다.</p>
+      </div>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="모드 정보">
+    <div class="panel private">
+      <h2>친구 서버 전용</h2>
+      <p class="small">두 친구가 화이트리스트 서버에서 플레이하며 다듬는 중입니다. 공개 다운로드 · 릴리스 · 소스 저장소는 없고, 모드팩은 운영자가 직접 전해 줍니다.</p>
+      <a class="btn block" href="#join">접속 안내 보기</a>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>마인크래프트 모드 (서버 + 클라이언트)</dd></div>
+        <div><dt>단계</dt><dd>베타 · 친구 서버에서 플레이 중</dd></div>
+        <div><dt>게임</dt><dd>Minecraft Java 26.3</dd></div>
+        <div><dt>로더</dt><dd>Fabric</dd></div>
+        <div><dt>인원</dt><dd>2명 (친구 서버)</dd></div>
+        <div><dt>배포</dt><dd>모드팩 (.mrpack), 운영자가 전달</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd>비공개</dd></div>
+      </dl>
+      <div class="tags" aria-label="태그">
+        <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>2인 서버</span><span>26SMP</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>모드팩에 같이 들어 있는 것</h2>
+      <ul class="mods">
+        <li>Fabric API<span>필수</span></li>
+        <li>Sodium · Lithium · FerriteCore<span>성능</span></li>
+        <li>Mod Menu<span>편의</span></li>
+      </ul>
+    </div>
+
+    <a class="panel sibling" href="../sanupcraft/">
+      <img src="../../assets/icons/sanupcraft.svg" alt="" width="44" height="44">
+      <span>
+        <b>산업크래프트</b>
+        <span>같은 사람이 만든 다른 마인크래프트 프로젝트. 탈리크래프트가 바닐라를 그대로 두는 쪽이라면, 산업크래프트는 공장과 보스를 더하는 모드팩입니다.</span>
+      </span>
+    </a>
+  </aside>
+</main>
+
+<footer class="wrap foot">
+  <p>탈리크래프트 © yeop · 친구 서버 전용 모드로, 소스와 파일은 공개하지 않습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드는 Mojang · Microsoft와 관계가 없습니다.</p>
+</footer>
+</body>
+</html>

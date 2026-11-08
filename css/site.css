@@ -229,6 +229,18 @@ select.sort {
 .embed .features li { padding: 12px 0; border-top: 1px solid var(--line); }
 .embed .features h3 { margin: 0 0 2px; font-size: .9375rem; }
 .embed .features p { margin: 0; font-size: .875rem; color: var(--muted); }
+/* 픽셀 아이콘(.px)을 쓰는 서브페이지 (탈리크래프트 부적 카드 · 순환) */
+.embed h2 small { margin-left: 6px; font-size: .8125rem; font-weight: 500; color: var(--muted); }
+.embed .px { image-rendering: pixelated; }
+.embed .features li { display: flow-root; }
+.embed .features li > .px:first-child { float: left; width: 40px; height: 40px; margin: 2px 12px 4px 0; }
+.embed .features h3 .px { width: 20px; height: 20px; vertical-align: -3px; margin-right: 6px; }
+.embed .features .recipe { color: var(--text); font-size: .8125rem; }
+.embed .sec-lede { margin: 0 0 8px; font-size: .875rem; color: var(--muted); }
+.embed .loop { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.embed .loop li { flex: 1 1 140px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: .8125rem; color: var(--muted); }
+.embed .loop .px { display: block; width: 32px; height: 32px; margin-bottom: 4px; }
+.embed .loop b { display: block; color: var(--text); font-size: .875rem; }
 
 footer { margin: 48px 0 32px; color: var(--muted); font-size: .8125rem; }
 
