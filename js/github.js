@@ -26,6 +26,7 @@ export const releasesOf = repo => gh(`/repos/${USER}/${repo}/releases?per_page=1
 // 설치 파일만 고른다 (.sha256 · .sig 같은 부속 파일 제외). 압축본은 Windows 빌드로 본다(예: Fracture-0.9.0-beta-win64.zip)
 function assetLabel(name) {
   if (/\.apk$/i.test(name)) return 'Android';
+  if (/\.mrpack$/i.test(name)) return 'Minecraft 모드팩';
   if (/\.exe$/i.test(name) || /win(dows|32|64)?[^/]*\.zip$/i.test(name)) return 'Windows';
   return null;
 }
@@ -66,7 +67,7 @@ export async function releaseIndex() {
   return v;
 }
 
-const PLATFORM = { windows: 'Windows', android: 'Android' };
+const PLATFORM = { windows: 'Windows', android: 'Android', minecraft: 'Minecraft 모드팩' };
 export const platformLabel = k => PLATFORM[k] ?? k;
 
 // index.json 앱 항목 → latestRelease() 와 같은 모양. 노트는 index 에 없어서 null 로 두고 releaseNotes 로 채운다

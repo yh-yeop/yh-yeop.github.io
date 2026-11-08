@@ -1,7 +1,9 @@
-// 산업크래프트 소개 페이지: 스크린샷 갤러리 + sanupcraft 저장소의 최신 릴리스(테스트 베타 포함)와 릴리스 노트.
+// 산업크래프트 소개 페이지: 스크린샷 갤러리 + releases 저장소의 최신 Sanupcraft-v 릴리스(테스트 베타 포함)와 릴리스 노트.
+// 소스 저장소는 2026-11-09부터 비공개라 받을 파일은 yh-yeop/releases 에서 읽는다 (sanupcraft docs/DISTRIBUTION.md).
 import { releasesOf, cleanHTML, formatMB } from '../../js/github.js';
 
-const REPO = 'sanupcraft';
+const REPO = 'releases';
+const TAG = /^Sanupcraft-v(?=\d)/;
 const IMG = '../../assets/sanupcraft/';
 const SHOTS = [
   ['factory', '증기 공장. 보일러의 증기가 파이프를 타고 분쇄기 · 합금로 · 압착기 · 조립대로 간다.'],
@@ -79,12 +81,13 @@ const label = v => v.replace(/-beta(?:\.(\d+))?$/, (_, n) => ` 베타${n ? ` ${n
 const sha256 = a => (/^sha256:([0-9a-f]{64})$/i.exec(a?.digest || '') || [])[1]?.toLowerCase() || null;
 
 async function loadRelease() {
-  const rel = (await releasesOf(REPO)).find(r => !r.draft);
+  const rel = (await releasesOf(REPO)).find(r => !r.draft && TAG.test(r.tag_name));
   if (!rel) throw new Error('no release');
-  const ver = label(rel.tag_name.replace(/^v/, ''));
+  const ver = label(rel.tag_name.replace(TAG, ''));
   const pack = rel.assets.find(a => a.name.endsWith('.mrpack'));
   const jar = rel.assets.find(a => a.name.endsWith('.jar'));
   const showcase = rel.assets.find(a => /showcase.*\.zip$/i.test(a.name));
+  const prism = rel.assets.find(a => /prism.*\.zip$/i.test(a.name));
   if (pack) {
     for (const id of ['#dl-hero', '#dl-side']) {
       $(id).href = pack.browser_download_url;
@@ -102,6 +105,11 @@ async function loadRelease() {
     $('#dl-jar').href = jar.browser_download_url;
     $('#dl-jar-label').textContent = `서버용 모드 (.jar) · ${formatMB(jar.size)}`;
   }
+  if (prism) {
+    $('#dl-prism').href = prism.browser_download_url;
+    $('#dl-prism-label').textContent = `Prism 인스턴스 (자동 업데이트) · ${formatMB(prism.size)}`;
+    $('#dl-prism').hidden = false;
+  }
   if (showcase) {
     $('#dl-showcase').href = showcase.browser_download_url;
     $('#dl-showcase-label').textContent = `전시장 월드 (.zip) · ${formatMB(showcase.size)}`;
@@ -116,7 +124,7 @@ async function loadRelease() {
 }
 
 loadRelease().catch(() => {
-  $('#notes').innerHTML = '<p class="muted">릴리스 정보를 불러오지 못했습니다. <a href="https://github.com/yh-yeop/sanupcraft/releases">GitHub 릴리스 페이지</a>에서 확인하세요.</p>';
+  $('#notes').innerHTML = '<p class="muted">릴리스 정보를 불러오지 못했습니다. <a href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&expanded=true">GitHub 릴리스 페이지</a>에서 확인하세요.</p>';
 });
 
 $('#sha-copy').addEventListener('click', async e => {

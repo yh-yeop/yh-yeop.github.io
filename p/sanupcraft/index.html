@@ -36,7 +36,7 @@
     <p class="tagline">보스를 잡아 공장을 열고, 공장으로 모험대를 무장시킨다.</p>
     <p class="lede">친구 최대 10명이 한 서버에서 함께 하는 자작 모드팩. 보스 전리품이 다음 기계를 열고, 그 기계가 만든 장비로 다음 보스에 도전합니다.</p>
     <div class="cta">
-      <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/sanupcraft/releases">
+      <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
         <span>모드팩 받기 <small id="dl-hero-meta">.mrpack</small></span>
       </a>
@@ -160,10 +160,11 @@
         <div>
           <h3>플레이하는 사람</h3>
           <ol>
-            <li><a href="https://modrinth.com/app">Modrinth App</a> 또는 <a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
-            <li><code>.mrpack</code> 파일을 받습니다.</li>
-            <li>런처에서 "모드팩 가져오기"로 그 파일을 엽니다. Minecraft 26.3 · Fabric · 편의 모드가 한 번에 깔립니다.</li>
+            <li><a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
+            <li><strong>Prism 인스턴스</strong>(<code>.zip</code>)를 받아 "인스턴스 추가 → 가져오기"로 엽니다.</li>
+            <li>켜면 처음 한 번 모드를 받습니다. 그 뒤로는 켤 때마다 새 버전을 확인해 바뀐 것만 받습니다.</li>
           </ol>
+          <p class="small" style="margin-top:8px"><a href="https://modrinth.com/app">Modrinth App</a>을 쓰면 <code>.mrpack</code>을 "모드팩 가져오기"로 엽니다. 이때는 새 버전이 나올 때마다 새 <code>.mrpack</code>을 다시 가져와야 합니다.</p>
           <p class="small" style="margin-top:12px">먼저 둘러보려면 <strong>전시장 월드</strong>(<code>.zip</code>)를 받아 압축을 풀고, 런처 인스턴스의 <code>saves</code> 폴더에 넣은 뒤 싱글플레이로 엽니다. 창작 · 평지 · 낮 고정 월드에 공장 · 전기 · 창고 · 주방 · 방어 · 장비 부스 11개가 지어져 있습니다. 채팅에 <code>/sanupcraft playtest tour</code>를 치면 부스를 진행 순서대로 안내받으며 둘러볼 수 있습니다.</p>
         </div>
         <div>
@@ -188,23 +189,26 @@
   <aside class="col-side" aria-label="모드팩 정보">
     <div class="panel download" id="download">
       <h2>테스트 베타 받기</h2>
-      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/sanupcraft/releases">
+      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
         <span id="dl-side-label">모드팩 (.mrpack)</span>
       </a>
-      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/sanupcraft/releases" style="margin-top:8px">
+      <a class="btn block" id="dl-prism" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true" style="margin-top:8px" hidden>
+        <span id="dl-prism-label">Prism 인스턴스 (자동 업데이트)</span>
+      </a>
+      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true" style="margin-top:8px">
         <span id="dl-jar-label">서버용 모드 (.jar)</span>
       </a>
-      <a class="btn block" id="dl-showcase" href="https://github.com/yh-yeop/sanupcraft/releases" style="margin-top:8px" hidden>
+      <a class="btn block" id="dl-showcase" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true" style="margin-top:8px" hidden>
         <span id="dl-showcase-label">전시장 월드 (.zip)</span>
       </a>
-      <p class="small" style="margin-top:12px">모드팩은 런처로, <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 전시장 월드는 공장 · 기계 · 장비를 둘러보는 창작 월드입니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
+      <p class="small" style="margin-top:12px">모드팩은 런처로, Prism 인스턴스는 Prism Launcher에서 가져오면 켤 때마다 새 버전을 받습니다. <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 전시장 월드는 공장 · 기계 · 장비를 둘러보는 창작 월드입니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
       <div class="sha" id="sha" hidden>
         <span class="small">모드팩 SHA-256</span>
         <code id="sha-val"></code>
         <button class="btn tiny" type="button" id="sha-copy">복사</button>
       </div>
-      <a class="small link" id="rel-link" href="https://github.com/yh-yeop/sanupcraft/releases">GitHub 릴리스 페이지</a>
+      <a class="small link" id="rel-link" href="https://github.com/yh-yeop/releases/releases?q=Sanupcraft&amp;expanded=true">GitHub 릴리스 페이지</a>
     </div>
 
     <div class="panel">
@@ -216,7 +220,7 @@
         <div><dt>로더</dt><dd>Fabric</dd></div>
         <div><dt>인원</dt><dd>1~10명 (멀티 권장)</dd></div>
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
-        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/sanupcraft">GitHub</a> (MIT)</dd></div>
+        <div><dt>소스</dt><dd>비공개 (받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>)</dd></div>
       </dl>
       <div class="tags" aria-label="태그">
         <span>공장 자동화</span><span>보스전</span><span>증기 동력</span><span>멀티플레이</span><span>네더 · 엔드</span><span>채광</span>
@@ -241,7 +245,7 @@
       <ul class="small plain">
         <li>공장 · 보스 3마리(2페이즈) · 네더 · 엔드 · 창고 네트워크 · 증기 기관차 · 서버 운영 기능에, 0.4에서 채광 · 전투 · 장비 모듈 · 특수 장비가 더해졌습니다.</li>
         <li>보스 난이도와 기계 수치는 플레이테스트 반응을 보고 계속 맞추는 중입니다.</li>
-        <li>느낀 점은 <a href="https://github.com/yh-yeop/sanupcraft/issues">GitHub 이슈</a>로 남겨 주세요.</li>
+        <li>느낀 점은 만든 사람에게 직접 알려 주세요. 게임 안에서 <code>/sanupcraft note</code>로 남긴 쪽지와 <code>/sanupcraft report</code> 파일을 같이 주면 좋습니다.</li>
       </ul>
     </div>
   </aside>
@@ -262,7 +266,7 @@
 </dialog>
 
 <footer class="wrap foot">
-  <p>산업크래프트 © yeop · 소스와 릴리스는 <a href="https://github.com/yh-yeop/sanupcraft">yh-yeop/sanupcraft</a>에 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
+  <p>산업크래프트 © yeop · 받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
 </footer>
 </body>
 </html>

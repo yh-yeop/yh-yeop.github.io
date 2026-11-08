@@ -99,7 +99,8 @@ export const PROJECTS = [
   { id: 'soliquid', cat: 'game', title: 'Soliquid', repos: [], stage: 'planning' },
   {
     id: 'sanupcraft', cat: 'game', title: '산업크래프트', icon: 'assets/icons/sanupcraft.svg',
-    repos: ['sanupcraft'], page: 'p/sanupcraft/', stage: 'beta',
+    // 2026-11-09부터 소스 비공개: 받을 파일은 releases 저장소의 Sanupcraft-v 릴리스
+    repos: [], release: { repo: 'releases', prefix: 'Sanupcraft', pre: true }, closed: true, page: 'p/sanupcraft/', stage: 'beta',
     desc: '보스를 잡아 공장을 열고, 공장으로 모험대를 무장시키는 자작 마인크래프트 모드팩. 친구 최대 10명이 함께 합니다.',
     points: ['보스 전리품이 다음 기계를 여는 공장 · 모험 순환', '증기 동력 · 광맥 채광 · 장비 모듈, 네더 · 엔드와 이어진 진행', '인원수만큼 강해지고 2페이즈가 있는 보스, 쓰러지면 동료가 일으키는 협동'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '멀티플레이'],
