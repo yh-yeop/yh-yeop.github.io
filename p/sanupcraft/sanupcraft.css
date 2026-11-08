@@ -48,6 +48,7 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .btn.big small { display: block; font-size: .75rem; font-weight: 600; opacity: .75; line-height: 1.2; }
 .btn.big span { text-align: left; line-height: 1.25; }
 .btn.block { display: flex; width: 100%; }
+.btn[hidden] { display: none; }
 .btn.tiny { min-height: 32px; padding: 4px 10px; font-size: .8125rem; }
 
 /* top bar + hero */

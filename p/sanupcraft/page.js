@@ -84,6 +84,7 @@ async function loadRelease() {
   const ver = label(rel.tag_name.replace(/^v/, ''));
   const pack = rel.assets.find(a => a.name.endsWith('.mrpack'));
   const jar = rel.assets.find(a => a.name.endsWith('.jar'));
+  const showcase = rel.assets.find(a => /showcase.*\.zip$/i.test(a.name));
   if (pack) {
     for (const id of ['#dl-hero', '#dl-side']) {
       $(id).href = pack.browser_download_url;
@@ -100,6 +101,11 @@ async function loadRelease() {
   if (jar) {
     $('#dl-jar').href = jar.browser_download_url;
     $('#dl-jar-label').textContent = `서버용 모드 (.jar) · ${formatMB(jar.size)}`;
+  }
+  if (showcase) {
+    $('#dl-showcase').href = showcase.browser_download_url;
+    $('#dl-showcase-label').textContent = `전시장 월드 (.zip) · ${formatMB(showcase.size)}`;
+    $('#dl-showcase').hidden = false;
   }
   $('#hero-meta').textContent = `${ver} · ${fmtDate(rel.published_at)} 공개 · Minecraft Java 26.3 · Fabric · 무료`;
   $('#info-ver').textContent = ver;
