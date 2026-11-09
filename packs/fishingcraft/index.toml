@@ -47,7 +47,7 @@ metafile = true
 
 [[files]]
 file = "mods/fishingcraft.pw.toml"
-hash = "930aeffa1dd2bc44b5fbb0b54d147a34b305c01fd63fb52dacab0c3083fc372b"
+hash = "67efafb8d57b05e090030c6017d1630e9456dccd8a4ca9852bcba8bf32d7df1e"
 metafile = true
 
 [[files]]
@@ -82,7 +82,7 @@ metafile = true
 
 [[files]]
 file = "mods/moreculling.pw.toml"
-hash = "76f38a83d964f6a05aa2c144513228ea8d9f085fa5089c0670bc5406bf6bbe79"
+hash = "b8b1c983d6c5a3c364b2b651631eec6cccbe15ddde48a17c09d4aa38e734cb01"
 metafile = true
 
 [[files]]
