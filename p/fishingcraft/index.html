@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>피싱크래프트 · 마인크래프트 모드팩</title>
-<meta name="description" content="바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다 (Fabric 26.3, 테스트 빌드).">
+<meta name="description" content="바닐라 야생에 얹는 마인크래프트 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 것을 모읍니다 (Fabric 26.3, 테스트 빌드).">
 <meta property="og:type" content="website">
-<meta property="og:title" content="피싱크래프트 — 마인크래프트 낚시 모드팩">
-<meta property="og:description" content="낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다. 바닐라 야생 위에 얹는 낚시 모드팩.">
+<meta property="og:title" content="피싱크래프트 · 마인크래프트 낚시 모드팩">
+<meta property="og:description" content="바닐라 야생에 얹는 마인크래프트 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 것을 모읍니다.">
 <meta property="og:image" content="https://yh-yeop.github.io/assets/fishingcraft/og.png">
 <meta property="og:url" content="https://yh-yeop.github.io/p/fishingcraft/">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,39 +33,36 @@
   </button>
 </nav>
 
-<header class="hero">
-  <div class="wrap hero-inner">
-    <p class="kicker">마인크래프트 모드팩 · Fabric 26.3 <span class="badge">테스트 빌드</span></p>
-    <h1 class="logo">피싱크래프트</h1>
-    <p class="tagline">낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모은다.</p>
-    <p class="lede">바닐라 야생 위에 얹는 낚시 모드팩. 기본 낚싯대 → 인챈트 낚싯대 → 수선 → 종결 낚싯대로 이어지는 바닐라 낚시의 은근한 재미를, 용암과 공허까지 길게 늘립니다.</p>
-    <div class="cta">
-      <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-        <span>모드팩 받기 <small id="dl-hero-meta">.mrpack</small></span>
-      </a>
-      <a class="btn ghost big" href="#roadmap-h">개발 현황</a>
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/fishingcraft.svg" alt="" width="72" height="72">
+    <div>
+      <h1>피싱크래프트</h1>
+      <p class="tagline">바닐라 야생에 얹는 마인크래프트 낚시 모드팩</p>
     </div>
-    <p class="hero-meta" id="hero-meta">Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
   </div>
+  <p class="lede">낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 것을 모읍니다. 바닐라에서 종결 낚싯대로 끝나는 낚시를 용암 낚싯대와 공허 낚싯대까지 늘립니다.</p>
+  <div class="cta">
+    <a class="btn primary" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">모드팩 받기 <small id="dl-hero-meta">.mrpack</small></a>
+    <a class="btn" href="#roadmap-h">개발 현황</a>
+  </div>
+  <p class="hero-meta" id="hero-meta">테스트 빌드 · Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
 </header>
 
 <main id="main" class="wrap layout">
   <div class="col-main">
 
     <section aria-labelledby="about-h" data-embed>
-      <h2 id="about-h">이 모드팩에 대하여</h2>
-      <div class="loop" role="img" aria-label="손 낚시는 희귀한 보물과 기록을, 자동 낚시는 흔한 물고기와 재료를 모으고, 둘 다 다음 낚싯대와 새 물을 연다">
-        <div class="node adv"><b>손 낚시</b><span>희귀 · 전설 · 크기 기록 · 젖은 고서</span></div>
-        <div class="arrows" aria-hidden="true"><span>질 →</span><span>← 양</span></div>
-        <div class="node fac"><b>자동 낚시</b><span>통발 · 어망 · 자동 낚시대</span></div>
-      </div>
+      <h2 id="about-h">소개</h2>
+      <ul class="loop">
+        <li><b>손 낚시</b>희귀 · 전설 물고기, 크기 기록, 젖은 고서</li>
+        <li><b>자동 낚시</b>통발 · 어망 · 자동 낚시대로 흔한 물고기와 재료</li>
+      </ul>
       <div class="prose">
-        <p>바닐라 낚시가 은근히 재밌는 건 <b>도구가 같은 활동에서 나오기</b> 때문입니다. 기본 낚싯대로 인챈트 낚싯대를 낚고, 그걸로 또 낚아 수선을 얻고,
-          종결 낚싯대로 보물을 모읍니다. 피싱크래프트는 이 사다리를 종결 낚싯대에서 끝내지 않습니다.</p>
-        <p>다음 낚싯대 · 미끼 · 자동 낚시 장치는 모두 <b>낚시로 얻은 것</b>으로 만듭니다. 어디서, 언제 낚을지가 선택이 되도록 물마다 낚이는 것이 다르고,
+        <p>바닐라에서는 기본 낚싯대로 인챈트 낚싯대를 낚고, 그걸로 수선을 얻고, 종결 낚싯대로 보물을 모읍니다.
+          피싱크래프트는 이 순서를 종결 낚싯대 뒤로 더 이어 갑니다.</p>
+        <p>다음 낚싯대 · 미끼 · 자동 낚시 장치는 모두 낚시로 얻은 것으로 만듭니다. 물마다 낚이는 것이 달라서 어디서, 언제 낚을지 고르게 되고,
           희귀한 입질에는 짧은 줄다리기가 붙습니다.</p>
-        <p class="pull">낚시만 해도 다음 할 일이 계속 생기는 야생. 이 모드팩이 노리는 것입니다.</p>
       </div>
     </section>
 
@@ -77,8 +74,8 @@
           <p>바닐라 그대로 시작합니다. 강 · 호수 · 바다에서 낚으며 바다의 행운 · 미끼 · 내구성을 붙입니다.</p>
         </li>
         <li>
-          <h3>수선 — 젖은 고서</h3>
-          <p>주민 거래가 없는 대신, 손 낚시의 희귀한 입질에서만 나오는 <b>젖은 고서</b>를 모아 수선 책을 만듭니다. 운만 기다리는 벽이 아니라 모을수록 다가가는 목표입니다.</p>
+          <h3>수선과 젖은 고서</h3>
+          <p>주민 거래가 없는 대신, 손 낚시의 희귀한 입질에서만 나오는 젖은 고서를 모아 수선 책을 만듭니다. 5장을 모으면 되므로 운에만 기대지 않습니다.</p>
         </li>
         <li>
           <h3>종결 낚싯대와 숨은 물</h3>
@@ -90,7 +87,7 @@
         </li>
         <li>
           <h3>공허 낚시</h3>
-          <p>엔드 섬 가장자리, 아무것도 없는 아래로 찌를 던집니다. 마지막 단계의 보물이 여기서 나옵니다.</p>
+          <p>엔드 섬 가장자리 밖 공허 위로 찌를 던집니다. 마지막 단계의 물고기와 재료가 여기서 나옵니다.</p>
         </li>
       </ol>
     </section>
@@ -107,19 +104,19 @@
           <p>물별 도감, 흔함부터 전설까지 4단계 희귀도, 같은 물고기라도 다른 크기와 낮은 확률의 변이. 못 낚은 칸에는 힌트가 붙습니다.</p>
         </li>
         <li>
-          <h3>희귀한 입질엔 손맛</h3>
-          <p>흔한 입질은 바닐라처럼 바로 끝나고, 묵직한 입질에만 짧은 줄다리기가 붙습니다. 무엇이 걸렸는지는 당겨 봐야 압니다.</p>
+          <h3>줄다리기</h3>
+          <p>흔한 입질은 바닐라처럼 바로 끝나고, 묵직한 입질에만 짧은 줄다리기가 붙습니다. 무엇이 걸렸는지는 진척이 절반 찼을 때 보입니다.</p>
         </li>
         <li>
-          <h3>거래 대신 낚시 의뢰</h3>
+          <h3>주민 의뢰</h3>
           <p>주민은 거래 대신 낚시 의뢰를 냅니다. 의뢰를 깨면 마을 신뢰도가 오르고, 탐험가 지도 같은 보상이 열립니다.</p>
         </li>
         <li>
-          <h3>자동 낚시도 낚시로</h3>
-          <p>통발 → 어망 → 자동 낚시대. 놓인 물의 표를 쓰고 흔한 것을 꾸준히 모읍니다. 희귀한 것은 손으로 낚아야 합니다.</p>
+          <h3>자동 낚시</h3>
+          <p>통발 · 어망 · 자동 낚시대 순으로 만듭니다. 놓인 물의 표를 쓰고 흔한 것을 꾸준히 모읍니다. 희귀한 것은 손으로 낚아야 합니다.</p>
         </li>
         <li>
-          <h3>혼자도, 친구와도</h3>
+          <h3>혼자 또는 친구와</h3>
           <p>싱글과 친구 서버 모두 됩니다. 멀티에서는 전설 알림과 크기 기록 순위, 마을 의뢰 공동 목표가 더해집니다.</p>
         </li>
       </ul>
@@ -151,10 +148,10 @@
           <h3>플레이하는 사람</h3>
           <ol>
             <li><a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
-            <li><strong>Prism 인스턴스</strong>(<code>.zip</code>)를 받아 "인스턴스 추가 → 가져오기"로 엽니다.</li>
+            <li>Prism 인스턴스(<code>.zip</code>)를 받아 "인스턴스 추가 → 가져오기"로 엽니다.</li>
             <li>켜면 처음 한 번 모드를 받습니다. 그 뒤로는 켤 때마다 새 버전을 확인해 바뀐 것만 받습니다.</li>
           </ol>
-          <p class="small" style="margin-top:8px"><a href="https://modrinth.com/app">Modrinth App</a>을 쓰면 <code>.mrpack</code>을 "모드팩 가져오기"로 엽니다. 새 버전이 나오면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있어요.</p>
+          <p class="small note"><a href="https://modrinth.com/app">Modrinth App</a>을 쓰면 <code>.mrpack</code>을 "모드팩 가져오기"로 엽니다. 새 버전이 나오면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있습니다.</p>
         </div>
         <div>
           <h3>서버 여는 사람</h3>
@@ -176,19 +173,16 @@
   </div>
 
   <aside class="col-side" aria-label="모드팩 정보">
-    <div class="panel download" id="download">
+    <div class="panel" id="download">
       <h2>테스트 빌드 받기</h2>
-      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-        <span id="dl-side-label">모드팩 (.mrpack)</span>
-      </a>
-      <a class="btn block" id="dl-prism" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true" style="margin-top:8px" hidden>
+      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true"><span id="dl-side-label">모드팩 (.mrpack)</span></a>
+      <a class="btn block" id="dl-prism" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true" hidden>
         <span id="dl-prism-label">Prism 인스턴스 (자동 업데이트)</span>
       </a>
-      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true" style="margin-top:8px">
+      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/releases/releases?q=Fishingcraft&amp;expanded=true">
         <span id="dl-jar-label">서버용 모드 (.jar)</span>
       </a>
-      <p class="small" style="margin-top:12px">모드팩은 런처로, Prism 인스턴스는 Prism Launcher에서 가져오면 켤 때마다 새 버전을 받습니다. <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
+      <p class="small note">모드팩은 런처로, Prism 인스턴스는 Prism Launcher에서 가져오면 켤 때마다 새 버전을 받습니다. <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 테스트 빌드라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
       <div class="sha" id="sha" hidden>
         <span class="small">모드팩 SHA-256</span>
         <code id="sha-val"></code>
@@ -208,9 +202,7 @@
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
         <div><dt>소스</dt><dd>비공개 (받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>)</dd></div>
       </dl>
-      <div class="tags" aria-label="태그">
-        <span>낚시</span><span>수집 · 도감</span><span>바닐라 야생</span><span>주민 의뢰</span><span>자동화</span>
-      </div>
+      <p class="tags">낚시 · 도감 · 바닐라 야생 · 주민 의뢰 · 자동화</p>
     </div>
 
   </aside>
