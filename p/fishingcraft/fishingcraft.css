@@ -120,6 +120,7 @@ h2 small { font-weight: 500; color: var(--muted); font-size: .875rem; margin-lef
 .small { font-size: .8125rem; color: var(--muted); }
 p.small { margin: 0 0 10px; }
 p.small.note { margin-top: 12px; }
+.sha[hidden] { display: none; }
 .sha { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center; margin: 10px 0; padding: 10px; border-radius: 6px; border: 1px solid var(--line); }
 .sha .small { grid-column: 1 / -1; }
 .sha code { font-size: .75rem; color: var(--soft); word-break: break-all; }

@@ -147,6 +147,13 @@ export const PROJECTS = [
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티'],
   },
   {
+    id: 'opencraft', cat: 'minecraft', title: '오픈크래프트', icon: 'assets/icons/opencraft.svg',
+    repos: [], release: { repo: 'releases', prefix: 'Opencraft', pre: true }, closed: true, page: 'p/opencraft/', stage: 'beta',
+    desc: '바닐라 월드에 지역을 덧씌우는 오픈월드 모험 모드팩. 지역마다 마을 · 필드몹 · 보스가 있고, 어느 보스부터 갈지는 플레이어가 고릅니다.',
+    points: ['보스 첫 처치로 지역 해방, 해방 뒤에도 보스 재도전', '최초 보상(증표 · 고유 아이템)과 반복 보상(강화 재료)을 나눔', '장비 등급 · 부가 옵션, 지역마다 다른 드랍 표'],
+    tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티', '개발 중'],
+  },
+  {
     // 친구 서버 전용: 소스 · 릴리스 비공개라 저장소 없이 소개 페이지만 둔다 (GitHub API 호출 없음)
     id: 'talicraft', cat: 'minecraft', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
     repos: [], release: { repo: 'releases', prefix: 'Talicraft' }, closed: true, page: 'p/talicraft/', stage: 'beta',

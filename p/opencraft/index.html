@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오픈크래프트 · 마인크래프트 모드팩</title>
+<meta name="description" content="바닐라 월드에 지역을 덧씌우는 마인크래프트 오픈월드 모험 모드팩. 지역마다 마을 · 필드몹 · 보스가 있고, 어느 보스부터 갈지는 플레이어가 고릅니다 (Fabric 26.3, 개발 중).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="오픈크래프트 · 마인크래프트 오픈월드 모험 모드팩">
+<meta property="og:description" content="바닐라 월드에 지역을 덧씌우는 마인크래프트 오픈월드 모험 모드팩. 지역마다 마을 · 필드몹 · 보스가 있습니다.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/opencraft/og.png">
+<meta property="og:url" content="https://yh-yeop.github.io/p/opencraft/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e1612">
+<link rel="icon" href="../../assets/icons/opencraft.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="opencraft.css">
+<script src="../../share.js" defer></script>
+<script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/opencraft.svg" alt="" width="72" height="72">
+    <div>
+      <h1>오픈크래프트</h1>
+      <p class="tagline">바닐라 월드에 지역을 덧씌우는 마인크래프트 오픈월드 모험 모드팩</p>
+    </div>
+  </div>
+  <p class="lede">지역마다 성격이 다른 마을과 필드몹, 그리고 그 지역의 보스가 있습니다. 끝은 분명하고, 어느 보스부터 갈지는 플레이어가 고릅니다.</p>
+  <div class="cta">
+    <a class="btn primary" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true">모드팩 받기 <small id="dl-hero-meta">.mrpack</small></a>
+    <a class="btn" href="#roadmap-h">개발 현황</a>
+  </div>
+  <p class="hero-meta" id="hero-meta">개발 중 · Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <section aria-labelledby="about-h" data-embed>
+      <h2 id="about-h">소개</h2>
+      <ul class="loop">
+        <li><b>지역 해방</b>보스를 처음 쓰러뜨리면 그 지역이 월드에 한 번 해방됩니다</li>
+        <li><b>사람마다 보상</b>증표와 보스 고유 아이템은 싸움에 기여한 사람마다 받습니다</li>
+      </ul>
+      <div class="prose">
+        <p>오픈크래프트는 바닐라 지형 위에 지역을 덧씌우고, 몇몇 지역은 땅부터 새로 만듭니다. 높은 곳에 오르면 멀리 탑과 보스의 거처가 보이고, 보이는 곳은 모두 가 볼 수 있습니다.</p>
+        <p>메인퀘스트는 지역의 보스들을 쓰러뜨리고 마지막 목표로 가는 한 줄기입니다. 순서는 정해져 있지 않아서, 어느 지역부터 갈지와 어떻게 준비할지는 플레이어가 정합니다.</p>
+        <p class="muted">지금은 개발 초기입니다. 아래 내용은 계획이고, 첫 빌드에는 모드팩 바탕만 들어 있습니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="feat-h" data-embed>
+      <h2 id="feat-h">계획</h2>
+      <ul class="features">
+        <li>
+          <h3>지역별 마을</h3>
+          <p>지역마다 생김새와 주민, 교환품과 의뢰가 다른 마을이 있습니다. 해방한 지역의 마을에는 대장간 같은 기능이 열립니다.</p>
+        </li>
+        <li>
+          <h3>필드몹과 거점</h3>
+          <p>지역에 맞는 적이 들판을 돌아다니고, 곳곳에 그들의 거점이 있습니다. 지역마다 난도가 다릅니다.</p>
+        </li>
+        <li>
+          <h3>보스</h3>
+          <p>지역마다 전용 거처에 보스가 있습니다. 해방한 뒤에도 거처에서 다시 불러내 싸울 수 있습니다.</p>
+        </li>
+        <li>
+          <h3>최초 보상과 반복 보상</h3>
+          <p>보스를 처음 쓰러뜨리면 증표와 그 보스만의 고유 아이템을 받습니다. 다시 싸우면 고유 아이템 대신 강화 재료가 나오고, 준 피해가 클수록 많이 나옵니다.</p>
+        </li>
+        <li>
+          <h3>장비 등급과 부가 옵션</h3>
+          <p>장비에는 등급이 있고 무작위 부가 옵션이 붙습니다. 지역마다 드랍 표가 달라 어디서 사냥할지가 선택이 되고, 가장 높은 등급은 어디서든 아주 드물게 나옵니다.</p>
+        </li>
+        <li>
+          <h3>혼자 또는 친구와</h3>
+          <p>싱글과 친구 서버 모두 됩니다. 늦게 들어온 사람도 해방된 지역의 보스를 다시 불러내 직접 겪고 증표를 모을 수 있습니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="roadmap-h">
+      <h2 id="roadmap-h">개발 현황</h2>
+      <table class="roadmap">
+        <thead><tr><th scope="col">단계</th><th scope="col">내용</th><th scope="col">상태</th></tr></thead>
+        <tbody>
+          <tr><td>M0</td><td>빌드 환경 · 모드팩 바탕 · 서버 접속 버전 확인</td><td>완료</td></tr>
+          <tr><td>0.0.1 베타 1</td><td>첫 빌드 (콘텐츠 없음, 바탕만)</td><td>공개</td></tr>
+          <tr class="now"><td>M0 확인</td><td>지역 덧씌우기 · 전용 지형 · 구조물 배치 방식 확인</td><td>다음</td></tr>
+          <tr><td>M1</td><td>첫 지역 하나: 마을 · 필드몹 · 보스 · 해방</td><td>계획</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="install-h">
+      <h2 id="install-h">설치</h2>
+      <div class="install">
+        <div>
+          <h3>플레이하는 사람</h3>
+          <ol>
+            <li><a href="https://prismlauncher.org/">Prism Launcher</a>를 설치합니다.</li>
+            <li>Prism 인스턴스(<code>.zip</code>)를 받아 "인스턴스 추가 → 가져오기"로 엽니다.</li>
+            <li>켜면 처음 한 번 모드를 받습니다. 그 뒤로는 켤 때마다 새 버전을 확인해 바뀐 것만 받습니다.</li>
+          </ol>
+          <p class="small note"><a href="https://modrinth.com/app">Modrinth App</a>을 쓰면 <code>.mrpack</code>을 "모드팩 가져오기"로 엽니다. 새 버전이 나오면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있습니다.</p>
+        </div>
+        <div>
+          <h3>서버 여는 사람</h3>
+          <ol>
+            <li>Minecraft 26.3용 <a href="https://fabricmc.net/use/server/">Fabric 서버</a>를 만듭니다.</li>
+            <li><code>mods</code> 폴더에 모드 <code>.jar</code>와 Fabric API, 그리고 릴리스 노트 표에서 "서버에도"가 O인 모드를 넣습니다.</li>
+            <li>서버와 플레이어의 모드 버전이 같아야 들어갈 수 있습니다.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="notes-h">
+      <h2 id="notes-h">릴리스 노트 <small id="notes-ver"></small></h2>
+      <div class="notes" id="notes">
+        <p class="muted">불러오는 중…</p>
+      </div>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="모드팩 정보">
+    <div class="panel" id="download">
+      <h2>테스트 빌드 받기</h2>
+      <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true"><span id="dl-side-label">모드팩 (.mrpack)</span></a>
+      <a class="btn block" id="dl-prism" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true" hidden>
+        <span id="dl-prism-label">Prism 인스턴스 (자동 업데이트)</span>
+      </a>
+      <a class="btn block" id="dl-jar" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true">
+        <span id="dl-jar-label">서버용 모드 (.jar)</span>
+      </a>
+      <p class="small note">모드팩은 런처로, Prism 인스턴스는 Prism Launcher에서 가져오면 켤 때마다 새 버전을 받습니다. <code>.jar</code>는 서버의 <code>mods</code> 폴더에 넣습니다. 개발 초기라 다음 버전에서 월드가 안 맞을 수 있습니다.</p>
+      <div class="sha" id="sha" hidden>
+        <span class="small">모드팩 SHA-256</span>
+        <code id="sha-val"></code>
+        <button class="btn tiny" type="button" id="sha-copy">복사</button>
+      </div>
+      <a class="small link" id="rel-link" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true">GitHub 릴리스 페이지</a>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>마인크래프트 모드팩</dd></div>
+        <div><dt>버전</dt><dd id="info-ver">0.0.1 베타 1</dd></div>
+        <div><dt>공개일</dt><dd id="info-date">2026년 11월 9일</dd></div>
+        <div><dt>게임</dt><dd>Minecraft Java 26.3</dd></div>
+        <div><dt>로더</dt><dd>Fabric</dd></div>
+        <div><dt>인원</dt><dd>혼자 또는 친구와</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd>비공개 (받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>)</dd></div>
+      </dl>
+      <p class="tags">오픈월드 · 지역 · 마을 · 필드몹 · 보스 · 메인퀘스트 · 장비 등급</p>
+    </div>
+
+  </aside>
+</main>
+
+<footer class="wrap foot">
+  <p>오픈크래프트 © yeop · 받을 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있습니다. Minecraft는 Mojang Studios의 상표이며, 이 모드팩은 Mojang · Microsoft와 관계가 없습니다.</p>
+</footer>
+</body>
+</html>
