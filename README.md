@@ -29,7 +29,10 @@
 - `release.pre: true`면 프리릴리스(베타)도 최신으로 본다 (Fracture). `.exe` · `.apk` 외에 `*win64.zip` 같은 압축본도 Windows 설치 파일로 친다.
 - `featured`가 있는 프로젝트는 첫 화면 맨 위 배너로 알린다 (한 번에 하나).
 - 프로젝트 목록은 **개발 완료**와 **개발 중**(알파 · 베타 · 기획 단계) 두 묶음으로 나눠 보여 준다. `stage: 'planning' | 'alpha' | 'beta'`가 있으면 개발 중, `beta: true`나 `release.pre`도 베타로 친다. 기획 단계 프로젝트는 설명 없이 이름과 "개발 기획 중" 표시만 둘 수 있다 (`desc` 생략).
-- 주소: `#maple` `#web` `#app` `#game` = 분류 걸러 보기, `#done` `#dev` = 개발 완료 / 개발 중만 보기 (분류와 함께면 `#game+dev`), `#p/<id>` = 그 프로젝트로 바로 가서 펼쳐 보기 (portfolio.json으로 생긴 카드도 됨, 예: `#p/sanupcraft`).
+- 분류(필터)는 `js/data.js` 의 `CATS` 한 곳에서 정한다: `{ label, light, dark }` 한 줄을 더하면 필터 칩 · 주소 · 카드 색 · portfolio.json /
+  releases `apps.json` 의 `category` 검사가 모두 따라온다 (색은 `applyCatColors()` 가 CSS 변수 `--c-<분류>` 로 만들어서 `site.css` 는 안 고친다).
+  항목이 하나도 없는 분류는 칩이 안 보인다. 지금: `maple` 메이플스토리 · `minecraft` 마인크래프트 · `web` · `app` · `game` · `etc`.
+- 주소: `#maple` `#minecraft` `#web` `#app` `#game` = 분류 걸러 보기, `#done` `#dev` = 개발 완료 / 개발 중만 보기 (분류와 함께면 `#game+dev`), `#p/<id>` = 그 프로젝트로 바로 가서 펼쳐 보기 (portfolio.json으로 생긴 카드도 됨, 예: `#p/sanupcraft`).
 - 서브페이지: `p/<id>/index.html`을 만들고 `PROJECTS`의 해당 항목에 `page: 'p/<id>/'`를 적으면 카드에 '자세히'가 붙고 `#p/<id>` 링크도 그쪽으로 넘어간다. 서브페이지는 `js/data.js` · `js/github.js` · `css/site.css`를 그대로 불러 쓴다.
 
 ## portfolio.json — 공개 저장소가 들고 있는 등록 정보
@@ -50,7 +53,7 @@
 
 | 필드 | 필수 | 뜻 |
 |---|---|---|
-| `category` | ✔ | `maple` 메이플스토리 · `web` 웹 도구 · `app` 설치형 앱 · `game` 게임 · `etc` 기타. 틀리면 `etc` |
+| `category` | ✔ | `js/data.js` 의 `CATS` 키: `maple` 메이플스토리 · `minecraft` 마인크래프트(모드 · 모드팩 · 서버 도구) · `web` 웹 도구 · `app` 설치형 앱 · `game` 게임 · `etc` 기타. 틀리면 `etc` |
 | `title` | | 카드 제목 (없으면 저장소 이름) |
 | `desc` | | 한두 문장 소개 (없으면 GitHub 설명) |
 | `points` · `tags` | | 특징 줄 · 기술 태그 (tags 가 없으면 GitHub 주 언어) |

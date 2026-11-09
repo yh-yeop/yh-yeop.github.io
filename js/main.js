@@ -1,4 +1,6 @@
-import { GH, PAGES, CATS, PROJECTS, HIDE } from './data.js';
+import { GH, PAGES, CATS, PROJECTS, HIDE, applyCatColors } from './data.js';
+
+applyCatColors();
 import { userRepos, releasesOf, latestRelease, releaseIndex, fromIndex, releaseNotes, platformLabel, readmeHTML, cleanHTML, wireAnchors, formatMB, versionLabel, portfolioOf, rawUrl, pageEmbed } from './github.js';
 
 const $ = s => document.querySelector(s);

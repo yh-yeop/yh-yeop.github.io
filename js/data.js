@@ -3,13 +3,30 @@ export const USER = 'yh-yeop';
 export const GH = `https://github.com/${USER}`;
 export const PAGES = `https://${USER}.github.io`;
 
+// 분류(필터). 새 분류는 여기에 한 줄만 더하면 된다 — 필터 칩 · 주소(#<key>) · 카드 색 · portfolio.json /
+// releases apps.json 의 category 검사가 모두 이 목록을 따른다. 색은 밝은 테마 · 어두운 테마 두 값이고,
+// applyCatColors() 가 CSS 변수(--c-<key>)로 만든다 (site.css 를 고칠 필요 없음). 순서 = 필터 칩 순서.
 export const CATS = {
-  maple: { label: '메이플스토리', color: 'var(--c-maple)' },
-  web:   { label: '웹 도구',     color: 'var(--c-web)' },
-  app:   { label: '설치형 앱',   color: 'var(--c-app)' },
-  game:  { label: '게임',        color: 'var(--c-game)' },
-  etc:   { label: '기타',        color: 'var(--c-etc)' },
+  maple:     { label: '메이플스토리', light: '#d9682b', dark: '#f0905a' },
+  minecraft: { label: '마인크래프트', light: '#3f8a2e', dark: '#7cc46a' },
+  web:       { label: '웹 도구',     light: '#2f5bd3', dark: '#7d9cf5' },
+  app:       { label: '설치형 앱',   light: '#2d8a5f', dark: '#5cc492' },
+  game:      { label: '게임',        light: '#8b4fc7', dark: '#b98af0' },
+  etc:       { label: '기타',        light: '#6b6d75', dark: '#9a9ca6' },
 };
+for (const [k, c] of Object.entries(CATS)) c.color = `var(--c-${k})`;
+
+/** CATS 의 색을 CSS 변수로 (site.css 의 테마 선택자와 같은 규칙). 첫 화면 · 서브페이지가 시작할 때 한 번 부른다. */
+export function applyCatColors(doc = document) {
+  if (doc.getElementById('cat-colors')) return;
+  const vars = mode => Object.entries(CATS).map(([k, c]) => `--c-${k}:${c[mode]};`).join('');
+  const st = doc.createElement('style');
+  st.id = 'cat-colors';
+  st.textContent = `:root{${vars('light')}}`
+    + `@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){${vars('dark')}}}`
+    + `:root[data-theme="dark"]{${vars('dark')}}`;
+  doc.head.append(st);
+}
 
 // id: 주소(#p/<id>)와 아이콘 파일 이름에 쓰는 고정 값. 바꾸면 공유된 링크가 깨진다.
 // repos: 이 카드가 소개하는 저장소들(첫 번째가 대표, README도 여기서 읽는다).
@@ -84,7 +101,7 @@ export const PROJECTS = [
   },
   {
     // releases apps.json 의 site: 'mcserver'. 소개는 친구용 '모드팩 업데이트'와 한 페이지(p/mcserver/)에 같이 둔다
-    id: 'mcserver', cat: 'app', title: '마인크래프트 서버 관리', icon: 'assets/icons/mcserver.png',
+    id: 'mcserver', cat: 'minecraft', title: '마인크래프트 서버 관리', icon: 'assets/icons/mcserver.png',
     repos: [], release: { repo: 'releases', prefix: 'MCServerManager' }, closed: true, page: 'p/mcserver/',
     desc: '한 PC에서 도는 마인크래프트 Fabric 서버 여러 개와 도메인 중계(mc-router)를 한 창에서 관리하는 Windows 프로그램.',
     points: ['서버별 · 전체 켜기 · 끄기, 실시간 상태 카드 · 로그 · RCON 콘솔', '백업과 한 번에 복원, 플레이어 · 서버 설정 · DDNS · 자동 시작', '새 버전은 버튼 한 번: 백업 → 게임 안 공지 → 서버 모드 교체 → 다시 켜기'],
@@ -92,7 +109,7 @@ export const PROJECTS = [
   },
   {
     // releases apps.json 의 site: 'modpackupdater'. 소개 페이지의 #updater 부분으로 바로 간다
-    id: 'modpackupdater', cat: 'app', title: '모드팩 업데이트', icon: 'assets/icons/modpackupdater.svg',
+    id: 'modpackupdater', cat: 'minecraft', title: '모드팩 업데이트', icon: 'assets/icons/modpackupdater.svg',
     repos: [], release: { repo: 'releases', prefix: 'ModpackUpdater' }, closed: true, page: 'p/mcserver/#updater',
     desc: 'Modrinth App으로 탈리 · 산업 · 피싱크래프트를 하는 사람이 쓰던 인스턴스 그대로 모드만 최신 버전으로 바꾸는 프로그램.',
     points: ['인스턴스 · 설정 · 월드는 그대로, 옛 모드는 .mod-backup에 보관', 'Modrinth App 실행 전 훅에 명령을 붙여 두면 플레이할 때마다 자동으로', '마인크래프트 버전이 바뀌는 릴리스는 새 .mrpack으로 새로 설치'],
@@ -114,7 +131,7 @@ export const PROJECTS = [
   { id: 'danbi', cat: 'game', title: 'Danbi', repos: [], stage: 'planning' },
   { id: 'soliquid', cat: 'game', title: 'Soliquid', repos: [], stage: 'planning' },
   {
-    id: 'sanupcraft', cat: 'game', title: '산업크래프트', icon: 'assets/icons/sanupcraft.svg',
+    id: 'sanupcraft', cat: 'minecraft', title: '산업크래프트', icon: 'assets/icons/sanupcraft.svg',
     // 2026-11-09부터 소스 비공개: 받을 파일은 releases 저장소의 Sanupcraft-v 릴리스
     repos: [], release: { repo: 'releases', prefix: 'Sanupcraft', pre: true }, closed: true, page: 'p/sanupcraft/', stage: 'beta',
     desc: '보스를 잡아 공장을 열고, 공장으로 모험대를 무장시키는 자작 마인크래프트 모드팩. 친구 최대 10명이 함께 합니다.',
@@ -123,7 +140,7 @@ export const PROJECTS = [
   },
   {
     // 소스 비공개: 받을 파일은 releases 저장소의 Fishingcraft-v 릴리스 (0.1.0 베타 1부터)
-    id: 'fishingcraft', cat: 'game', title: '피싱크래프트', icon: 'assets/icons/fishingcraft.svg',
+    id: 'fishingcraft', cat: 'minecraft', title: '피싱크래프트', icon: 'assets/icons/fishingcraft.svg',
     repos: [], release: { repo: 'releases', prefix: 'Fishingcraft', pre: true }, closed: true, page: 'p/fishingcraft/', stage: 'beta',
     desc: '바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모읍니다.',
     points: ['기본 → 인챈트 → 수선 → 종결 낚싯대 사다리를 용암 · 공허 낚시까지', '물마다 다른 표, 도감 · 크기 기록 · 변이, 희귀한 입질엔 줄다리기', '주민은 거래 대신 낚시 의뢰, 자동 낚시 장치도 낚시로 만듦'],
@@ -131,7 +148,7 @@ export const PROJECTS = [
   },
   {
     // 친구 서버 전용: 소스 · 릴리스 비공개라 저장소 없이 소개 페이지만 둔다 (GitHub API 호출 없음)
-    id: 'talicraft', cat: 'game', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
+    id: 'talicraft', cat: 'minecraft', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
     repos: [], release: { repo: 'releases', prefix: 'Talicraft' }, closed: true, page: 'p/talicraft/', stage: 'beta',
     desc: '26SMP 데이터팩 \'무한 시리즈\'에서 출발한, 두 친구용 마인크래프트 야생 모드. 바닐라 재료를 크게 모으면 죽어도 잃지 않는 편의를 줍니다.',
     points: ['재료 → 조각 → 부적, 세트 효과와 만물의 부적 합성', 'I단 · II단 생존 부적과 전투 부적, 무한 겉날개 · 도구', '겉날개 칸(갑옷과 날개 같이), /inf 메뉴, 사망 보험'],
