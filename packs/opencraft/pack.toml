@@ -1,0 +1,13 @@
+name = "오픈크래프트"
+author = "yh-yeop"
+version = "0.0.1-beta.1"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "b015e5df9756dfb0145c7c1c076816f53a1994725761798d59ece6b604936956"
+
+[versions]
+minecraft = "26.3"
+fabric = "0.20.1"
