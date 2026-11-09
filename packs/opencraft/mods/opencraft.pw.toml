@@ -1,8 +1,8 @@
-name = "opencraft-0.1.0-beta.1.jar"
-filename = "opencraft-0.1.0-beta.1.jar"
+name = "opencraft-0.1.0-beta.2.jar"
+filename = "opencraft-0.1.0-beta.2.jar"
 side = "both"
 
 [download]
-url = "https://github.com/yh-yeop/releases/releases/download/Opencraft-v0.1.0-beta.1/opencraft-0.1.0-beta.1.jar"
+url = "https://github.com/yh-yeop/releases/releases/download/Opencraft-v0.1.0-beta.2/opencraft-0.1.0-beta.2.jar"
 hash-format = "sha512"
-hash = "553e44b14112ec27700ea452be05316030d69a8420c8ea556b7d1805b36a8099b4940877b49244aeb9ddeae135670077ec8d32c0dc4d91f89cb615e869c6f5f2"
+hash = "355ff6bc9c8964cf557dfe738c914e3ff1d1c35b997ac9ebe5f39d1a015467b8f6b6832d1551c97f128b4f8d3c89514bdda3c39a57c9961acdb9624b2404b0ee"

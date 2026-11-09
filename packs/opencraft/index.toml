@@ -32,7 +32,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "2c0a9e0112224d1d8049713723f2b9c083e6569f5a91f18a3446a19729ca2e93"
+hash = "c125e7442055053f5b32f6f833b15ee53f4c931822dccb47ac380fdfd4ca57de"
 metafile = true
 
 [[files]]
@@ -77,7 +77,7 @@ metafile = true
 
 [[files]]
 file = "mods/moreculling.pw.toml"
-hash = "76f38a83d964f6a05aa2c144513228ea8d9f085fa5089c0670bc5406bf6bbe79"
+hash = "b8b1c983d6c5a3c364b2b651631eec6cccbe15ddde48a17c09d4aa38e734cb01"
 metafile = true
 
 [[files]]
@@ -87,7 +87,7 @@ metafile = true
 
 [[files]]
 file = "mods/opencraft.pw.toml"
-hash = "3eedf7503298eac6dbc064cd2cfbbf5b6b202715354ab070f44fa7e8cd6f7433"
+hash = "c2cef3b022fe32bdf95fe00ea4a273add6498732bdd6654186192e603dac4696"
 metafile = true
 
 [[files]]
