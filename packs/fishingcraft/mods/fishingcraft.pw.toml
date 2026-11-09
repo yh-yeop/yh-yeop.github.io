@@ -1,8 +1,8 @@
-name = "fishingcraft-0.1.0-beta.3.jar"
-filename = "fishingcraft-0.1.0-beta.3.jar"
+name = "fishingcraft-0.1.0-beta.4.jar"
+filename = "fishingcraft-0.1.0-beta.4.jar"
 side = "both"
 
 [download]
-url = "https://github.com/yh-yeop/releases/releases/download/Fishingcraft-v0.1.0-beta.3/fishingcraft-0.1.0-beta.3.jar"
+url = "https://github.com/yh-yeop/releases/releases/download/Fishingcraft-v0.1.0-beta.4/fishingcraft-0.1.0-beta.4.jar"
 hash-format = "sha512"
-hash = "45758447e0f54f302ac3ea42ca553fe48caade71d5313894d2027976faaa7a66023c36da601c6c6470977205b06d0c8d2f089a34fd30d8fec7838c9a3b9c2ea6"
+hash = "d2ce27c951ed3b2f3325e9b3747e58337f69473fa4a0f73d99042c5b8d42d181045210c4e28b9c970bebe9443cd4367da5a338a65784db8ad3c1d18ee7f1bfb6"
