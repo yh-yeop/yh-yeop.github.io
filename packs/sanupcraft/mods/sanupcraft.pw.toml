@@ -1,8 +1,8 @@
-name = "sanupcraft-0.5.0-beta.5.jar"
-filename = "sanupcraft-0.5.0-beta.5.jar"
+name = "sanupcraft-0.5.0-beta.6.jar"
+filename = "sanupcraft-0.5.0-beta.6.jar"
 side = "both"
 
 [download]
-url = "https://github.com/yh-yeop/releases/releases/download/Sanupcraft-v0.5.0-beta.5/sanupcraft-0.5.0-beta.5.jar"
+url = "https://github.com/yh-yeop/releases/releases/download/Sanupcraft-v0.5.0-beta.6/sanupcraft-0.5.0-beta.6.jar"
 hash-format = "sha512"
-hash = "164f59b1787ab43c6e4c26a18bfbb26e4241f86c0b8f17ddfa618b34de4af3f1d4764bb252d50c197b4195e0b013a7359ef347a534539477ff20d135a1949e2d"
+hash = "d6b9b71b9cec38c40f167dad57e9dfde6d71284c62724bffd16cfd1af69b1459d77f25c89293cc3c91cd7256d717730567bb0613e0d363f038c5042746d9bbbc"
