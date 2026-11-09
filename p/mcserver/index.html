@@ -4,18 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>마인크래프트 서버 관리 · 모드팩 업데이트</title>
-<meta name="description" content="한 PC의 마인크래프트 서버 여러 개를 한 창에서 켜고 끄고, 새 버전은 버튼 한 번으로 올리는 Windows 프로그램. 플레이어는 '모드팩 업데이트'로 Modrinth App 인스턴스를 그대로 둔 채 모드만 바꿉니다.">
+<meta name="description" content="한 PC의 마인크래프트 서버 여러 개를 한 창에서 켜고 끄고, 백업하고, 새 버전으로 올리는 Windows 프로그램. 플레이어는 '모드팩 업데이트'로 Modrinth App 인스턴스를 그대로 둔 채 모드만 바꿉니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="마인크래프트 서버 관리 · 모드팩 업데이트">
-<meta property="og:description" content="서버 여러 개를 한 창에서, 새 버전은 버튼 한 번으로. 플레이어는 '모드팩 업데이트'로 쓰던 인스턴스 그대로 최신 버전에 맞춥니다.">
+<meta property="og:description" content="서버 여러 개를 한 창에서 관리하는 Windows 프로그램. 플레이어는 '모드팩 업데이트'로 쓰던 인스턴스 그대로 새 버전에 맞춥니다.">
 <meta property="og:image" content="https://yh-yeop.github.io/assets/mcserver/og.png">
 <meta property="og:url" content="https://yh-yeop.github.io/p/mcserver/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0c0f15">
+<meta name="theme-color" content="#121316">
 <link rel="icon" href="../../assets/icons/mcserver.png" type="image/png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="preload" as="image" href="../../assets/mcserver/hero.webp">
 <link rel="stylesheet" href="mcserver.css">
 <script src="../../share.js" defer></script>
 </head>
@@ -33,277 +32,222 @@
   </button>
 </nav>
 
-<header class="hero">
-  <div class="wrap hero-inner">
-    <div class="hero-text">
-      <p class="kicker">Windows 프로그램 · 마인크래프트 Fabric 서버</p>
-      <h1 class="logo">마인크래프트<br>서버 관리</h1>
-      <p class="tagline">서버 여러 개를 한 창에서, 새 버전은 버튼 한 번으로.</p>
-      <p class="lede">탈리크래프트 · 산업크래프트 · 피싱크래프트 서버를 한 PC에서 같이 돌리려고 만든 프로그램입니다. 함께 노는 친구들을 위한 <b>모드팩 업데이트</b>도 있어요.</p>
-      <div class="cta">
-        <a class="btn primary big" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 받기 <small>.exe</small></a>
-        <a class="btn ghost big" href="#updater">플레이어라면: 모드팩 업데이트</a>
-      </div>
-      <p class="hero-meta">Windows 10 · 11 · 무료 · 소스 비공개 (설치 파일은 releases 저장소)</p>
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico px" src="../../assets/icons/mcserver.png" alt="" width="64" height="64">
+    <div>
+      <h1>마인크래프트 서버 관리</h1>
+      <p class="tagline">한 PC의 마인크래프트 서버 여러 개를 한 창에서 관리하는 Windows 프로그램</p>
     </div>
-    <figure class="hero-shot">
-      <img src="../../assets/mcserver/hero.webp" alt="마인크래프트 서버 관리 창. 왼쪽에 서버 세 개와 도메인 중계, 위에 가동 시간 · 메모리 · CPU · 접속자 카드, 아래 업데이트 탭에 서버별 설치 버전과 최신 버전" width="1280" height="532">
-    </figure>
   </div>
+  <p class="lede">탈리크래프트 · 산업크래프트 · 피싱크래프트 서버를 같이 돌리려고 만들었습니다. 켜고 끄기, 로그, 백업, 새 버전 올리기를 여기서 다 합니다.
+    서버에 들어오는 사람을 위한 <a href="#updater">모드팩 업데이트</a>도 있습니다.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 받기 <small>.exe</small></a>
+    <a class="btn" href="#updater">모드팩 업데이트 (플레이어용)</a>
+  </div>
+  <p class="hero-meta">Windows 10 · 11 · 무료 · 소스 비공개 · 두 프로그램 모두 새 버전이 나오면 스스로 업데이트합니다</p>
 </header>
 
 <main id="main" class="wrap layout">
   <div class="col-main">
 
-    <section aria-labelledby="two-h" data-embed>
-      <h2 id="two-h">프로그램 두 개</h2>
-      <ul class="features duo">
-        <li>
-          <h3>마인크래프트 서버 관리 <small>서버를 여는 사람</small></h3>
-          <p>한 PC에서 도는 서버 여러 개와 도메인 중계(mc-router)를 한 창에서 켜고 끄고 지켜봅니다. 백업 · 복원 · 접속자 관리 · 서버 설정, 그리고 새 버전이 나오면 업데이트까지 버튼 하나로 합니다.</p>
-        </li>
-        <li>
-          <h3>모드팩 업데이트 <small>친구 서버에 들어가는 사람</small></h3>
-          <p>Modrinth App으로 플레이하는 사람용입니다. 새 버전이 나와도 모드팩을 다시 가져올 필요 없이, 쓰던 인스턴스를 그대로 둔 채 모드만 최신으로 바꿉니다. <a href="#updater">쓰는 법 보기</a></p>
-        </li>
-      </ul>
-    </section>
+    <figure class="lead-shot">
+      <button class="shot" type="button" popovertarget="lb-console" aria-label="크게 보기: 콘솔 탭">
+        <img src="../../assets/mcserver/console.webp" srcset="../../assets/mcserver/console-t.webp 400w, ../../assets/mcserver/console.webp 1280w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="서버 관리 창의 콘솔 탭. 왼쪽에 서버 세 개와 도메인 중계, 위에 상태 한 줄, 가운데 실시간 로그, 아래 빠른 명령과 명령 입력 칸" width="1280" height="820">
+      </button>
+      <figcaption>콘솔 탭. 왼쪽에서 서버를 고르면 상태와 켜기 · 재시작 · 끄기가 위에 보입니다.</figcaption>
+    </figure>
 
-    <section aria-labelledby="feat-h" data-embed>
+    <section aria-labelledby="feat-h">
+      <div data-embed>
       <h2 id="feat-h">서버 관리로 하는 일</h2>
       <ul class="features">
         <li>
           <h3>켜기 · 끄기 · 재시작</h3>
-          <p>서버마다 따로, 또는 전체 켜기 · 전체 끄기로 한 번에. 창을 닫아도 서버는 꺼지지 않습니다.</p>
+          <p>서버마다, 또는 전체를 한 번에. 창을 닫아도 서버는 계속 돕니다.</p>
         </li>
         <li>
-          <h3>실시간 상태</h3>
-          <p>가동 시간 · 메모리 · CPU · 접속자 · 힙을 카드로 봅니다. 왼쪽 목록에서 서버별 상태와 새 버전 여부도 한눈에.</p>
-        </li>
-        <li>
-          <h3>로그와 콘솔</h3>
-          <p>로그를 실시간으로 따라가고, 경고 · 오류만 걸러 봅니다. 명령은 RCON으로 바로 보냅니다.</p>
+          <h3>상태와 로그</h3>
+          <p>가동 시간 · 메모리 · CPU · 접속자를 보고, 로그를 실시간으로 따라갑니다. 명령은 RCON으로 바로 보냅니다.</p>
         </li>
         <li>
           <h3>플레이어</h3>
-          <p>접속 중 · 화이트리스트 · OP 목록을 보고, 추가 · 제거 · 강퇴를 버튼으로 합니다.</p>
+          <p>접속 중 · 최근 접속 · 화이트리스트 · OP를 보고, 추가 · 제거 · 강퇴를 버튼으로 합니다.</p>
         </li>
         <li>
           <h3>백업과 복원</h3>
-          <p>켜진 채로 백업하고, 고른 백업으로 한 번에 되돌립니다. 지금 월드는 지우지 않고 <code>old-worlds</code> 폴더로 옮겨 둡니다.</p>
+          <p>켜진 채로 백업하고, 고른 백업으로 되돌립니다. 지금 월드는 지우지 않고 <code>old-worlds</code> 폴더로 옮깁니다.</p>
         </li>
         <li>
-          <h3>서버 설정과 새 월드</h3>
-          <p><code>server.properties</code>를 화면에서 고칩니다. 화이트리스트 · 난이도는 켜져 있어도 바로 적용됩니다. 시드를 넣어 새 월드도 만듭니다.</p>
+          <h3>서버 설정 · 새 월드</h3>
+          <p><code>server.properties</code>를 화면에서 고칩니다. 화이트리스트 · 난이도는 켜진 채로 바로 적용됩니다.</p>
         </li>
         <li>
-          <h3>주소와 DDNS</h3>
-          <p>도메인 중계(mc-router)로 서버마다 주소를 하나씩 둡니다. DuckDNS 주소는 집 IP가 바뀌어도 알아서 갱신합니다.</p>
+          <h3>주소</h3>
+          <p>도메인 중계(mc-router)로 서버마다 주소를 하나씩 둡니다. DuckDNS 주소는 집 IP가 바뀌면 알아서 갱신합니다.</p>
         </li>
         <li>
-          <h3>자동 시작 · 자동 백업</h3>
-          <p>PC를 켜면 서버가 켜지고, 정해 둔 시간에 백업하도록 작업 스케줄러에 등록합니다.</p>
+          <h3>꺼지면 다시 켜기 · 디스코드 알림</h3>
+          <p>크래시로 꺼지면 15초 뒤 다시 켭니다. 이런 일과 업데이트 완료를 디스코드 채널로 알릴 수 있습니다.</p>
+        </li>
+        <li>
+          <h3>예약</h3>
+          <p>PC를 켜면 서버를 켜고, 정한 시간마다 백업합니다. 매일 정한 시각에 백업하고 재시작할 수도 있습니다.</p>
         </li>
       </ul>
+      </div>
+      <figure class="shot-fig">
+        <button class="shot" type="button" popovertarget="lb-settings" aria-label="크게 보기: 설정 탭">
+          <img src="../../assets/mcserver/settings-t.webp" srcset="../../assets/mcserver/settings-t.webp 400w, ../../assets/mcserver/settings.webp 1280w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="설정 탭의 지켜보기 · 자동 실행. 꺼지면 다시 켜기, 정기 재시작, 디스코드 알림, 자동 시작, 자동 백업" width="1280" height="820" loading="lazy">
+        </button>
+        <figcaption>설정 탭. 다시 켜기 · 정기 재시작 · 디스코드 알림은 서버마다 따로 켭니다.</figcaption>
+      </figure>
     </section>
 
-    <section aria-labelledby="up-h" data-embed>
-      <h2 id="up-h">새 버전은 버튼 한 번</h2>
-      <p class="sec-lede">업데이트 탭은 서버마다 설치된 모드 버전을 releases 저장소의 최신 릴리스와 비교합니다. 새 버전이 보이면 '업데이트' 한 번으로 아래 순서가 이어집니다.</p>
-      <ol class="loop">
-        <li><b>백업</b><span>지금 월드를 먼저 남겨 둡니다</span></li>
-        <li><b>게임 안 공지</b><span>접속 중인 친구에게 새 버전과 모드팩 받는 곳을 알립니다</span></li>
-        <li><b>서버 모드 교체</b><span>릴리스 모드팩에서 서버용 모드만 골라 넣습니다</span></li>
-        <li><b>다시 켜기</b><span>서버가 새 버전으로 다시 열립니다</span></li>
+    <section aria-labelledby="up-h">
+      <div data-embed>
+      <h2 id="up-h">새 버전이 나오면</h2>
+      <p>업데이트 탭에서 서버마다 설치된 버전과 최신 릴리스를 나란히 봅니다. '업데이트'를 누르면 이 순서로 진행합니다.</p>
+      <ol class="flow">
+        <li>월드 백업</li>
+        <li>게임 안에 공지 (새 버전과 모드팩 받는 곳)</li>
+        <li>서버를 끄고 서버용 모드 교체</li>
+        <li>다시 켜기</li>
       </ol>
-      <p class="sec-lede note-line">서버마다 '자동'을 켜 두면, 이 창이 열려 있는 동안 <b>접속자가 0명일 때</b> 스스로 업데이트합니다. 실패한 버전은 자동으로 다시 시도하지 않습니다.</p>
-    </section>
-
-    <section id="media" aria-labelledby="media-h">
-      <h2 id="media-h">화면</h2>
-      <div class="gallery">
+      <p class="muted">서버마다 '자동'을 켜 두면 창이 열려 있는 동안 접속자가 0명일 때 알아서 합니다. 실패한 버전은 다시 시도하지 않습니다.</p>
+      </div>
+      <div class="pair">
         <figure>
-          <button class="shot" type="button" popovertarget="lb-console" aria-label="크게 보기: 콘솔 · 로그">
-            <img src="../../assets/mcserver/console-t.webp" srcset="../../assets/mcserver/console-t.webp 400w, ../../assets/mcserver/console.webp 1280w" sizes="(max-width: 920px) 100vw, 780px" alt="콘솔 · 로그 탭. 서버 로그가 실시간으로 올라오고 아래에 빠른 명령 단추와 명령 입력 칸" width="1280" height="820">
+          <button class="shot" type="button" popovertarget="lb-update" aria-label="크게 보기: 업데이트 탭">
+            <img src="../../assets/mcserver/update-t.webp" srcset="../../assets/mcserver/update-t.webp 400w, ../../assets/mcserver/update.webp 1280w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="업데이트 탭. 서버별 설치 버전, 최신 버전, 상태, 베타 포함, 자동 스위치와 업데이트 단추, 아래에 릴리스 노트" width="1280" height="820" loading="lazy">
           </button>
-          <figcaption>콘솔 · 로그. 실제로 돌고 있는 서버 세 개를 띄운 모습입니다.</figcaption>
+          <figcaption>서버별 설치 버전과 최신 버전</figcaption>
         </figure>
         <figure>
           <button class="shot" type="button" popovertarget="lb-confirm" aria-label="크게 보기: 업데이트 확인">
-            <img src="../../assets/mcserver/update-confirm-t.webp" srcset="../../assets/mcserver/update-confirm-t.webp 400w, ../../assets/mcserver/update-confirm.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="업데이트 확인 창. 월드 백업, 게임 안 공지, 모드팩 받기, 서버 끄고 모드 교체 후 다시 켜기 순서" width="1280" height="820" loading="lazy">
+            <img src="../../assets/mcserver/update-confirm-t.webp" srcset="../../assets/mcserver/update-confirm-t.webp 400w, ../../assets/mcserver/update-confirm.webp 1280w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="업데이트 확인 창. 0.2.0에서 0.2.1로, 월드 백업 · 게임 안 공지 · 모드팩 받기 · 서버 끄고 모드 교체 후 다시 켜기 순서와 접속 중인 사람이 잠시 끊긴다는 안내" width="1280" height="820" loading="lazy">
           </button>
-          <figcaption>업데이트 전에 무엇을 할지 먼저 보여 줍니다.</figcaption>
-        </figure>
-        <figure>
-          <button class="shot" type="button" popovertarget="lb-backup" aria-label="크게 보기: 백업">
-            <img src="../../assets/mcserver/backup-t.webp" srcset="../../assets/mcserver/backup-t.webp 400w, ../../assets/mcserver/backup.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="백업 탭. 날짜별 월드 백업 목록과 복원 단추" width="1280" height="820" loading="lazy">
-          </button>
-          <figcaption>백업 목록. 복원은 버튼 하나, 지금 월드는 따로 옮겨 둡니다.</figcaption>
+          <figcaption>누르기 전에 할 일을 먼저 보여 줍니다</figcaption>
         </figure>
       </div>
-      <p class="shot-note">콘솔 화면은 실제 서버, 나머지는 시험용 데이터로 찍은 화면입니다.</p>
+    </section>
 
-      <div class="lb" popover id="lb-console">
-        <img src="../../assets/mcserver/console.webp" alt="콘솔 · 로그 탭. 서버 로그가 실시간으로 올라오고 아래에 빠른 명령 단추와 명령 입력 칸" width="1280" height="820" loading="lazy">
-        <p>로그는 실시간으로 따라가고, '경고 · 오류만'으로 걸러 볼 수 있습니다. 명령은 아래 칸에서 RCON으로 보냅니다.</p>
-        <button class="lb-close" type="button" popovertarget="lb-console" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-      <div class="lb" popover id="lb-confirm">
-        <img src="../../assets/mcserver/update-confirm.webp" alt="업데이트 확인 창. 월드 백업, 게임 안 공지, 모드팩 받기, 서버 끄고 모드 교체 후 다시 켜기 순서" width="1280" height="820" loading="lazy">
-        <p>접속 중인 사람이 있으면 잠시 끊긴다는 것과, 플레이어도 모드팩을 새 버전으로 바꿔야 한다는 것을 같이 알려 줍니다.</p>
-        <button class="lb-close" type="button" popovertarget="lb-confirm" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-      <div class="lb" popover id="lb-backup">
-        <img src="../../assets/mcserver/backup.webp" alt="백업 탭. 날짜별 월드 백업 목록과 복원 단추" width="1280" height="820" loading="lazy">
-        <p>서버가 켜져 있어도 백업할 수 있습니다. 보관 개수를 넘으면 오래된 백업부터 지웁니다.</p>
-        <button class="lb-close" type="button" popovertarget="lb-backup" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
+    <section id="server" aria-labelledby="server-h">
+      <h2 id="server-h">처음 쓸 때</h2>
+      <ol class="plain">
+        <li><a href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">릴리스</a>에서 <code>MCServerManager-Setup-버전.exe</code>를 받아 설치합니다.</li>
+        <li>처음 열면 이 PC의 서버 폴더를 찾아 목록을 만듭니다. 서버는 설정 탭에서 더하고 뺍니다.</li>
+        <li>업데이트 탭 아래 '내 클라이언트'에서는 이 PC의 Modrinth App 인스턴스도 모드팩 업데이트와 똑같이 맞출 수 있습니다.</li>
+      </ol>
+      <p class="small">서버를 켜 둔 채 창을 닫으면 '창만 닫기'와 '모든 서버 끄고 닫기' 중에 고릅니다. 프로그램의 새 버전이 나오면 창 아래에 알림이 뜨고, 누르면 스스로 업데이트합니다.</p>
     </section>
 
     <section id="updater" class="updater" aria-labelledby="updater-h">
       <div data-embed>
-        <h2 id="updater-h">모드팩 업데이트 <small>플레이어용</small></h2>
-        <p class="sec-lede">Modrinth App으로 탈리크래프트 · 산업크래프트 · 피싱크래프트를 하는 사람을 위한 프로그램입니다. 새 버전이 나와도 쓰던 인스턴스와 설정은 그대로 두고, 모드만 최신으로 바꿉니다.</p>
-        <ol class="loop steps">
-          <li>
-            <b>설치</b>
-            <span>아래 버튼에서 <code>ModpackUpdater-Setup-버전.exe</code>를 받아 설치합니다.</span>
-          </li>
-          <li>
-            <b>업데이트 누르기</b>
-            <span>열면 Modrinth App의 인스턴스를 알아서 찾습니다. 게임을 끈 상태에서 '업데이트'를 누르면 끝.</span>
-          </li>
-          <li class="opt">
-            <b>자동 업데이트 <small>선택</small></b>
-            <span>'자동 업데이트 설정'에서 명령을 복사해 Modrinth App에 붙여 넣으면, 그다음부터는 플레이를 누를 때마다 알아서 맞춥니다.</span>
-          </li>
+        <div class="app-id">
+          <img class="app-ico px" src="../../assets/icons/modpackupdater.png" alt="" width="48" height="48">
+          <h2 id="updater-h">모드팩 업데이트 <small>플레이어용</small></h2>
+        </div>
+        <p>Modrinth App으로 탈리크래프트 · 산업크래프트 · 피싱크래프트를 하는 사람을 위한 프로그램입니다. 새 버전이 나와도 쓰던 인스턴스는 그대로 두고 모드만 바꿉니다.</p>
+        <p>서버에 들어가다 버전이 다르다는 메시지를 보고 왔다면, 아래대로 맞춘 뒤 다시 접속하세요.</p>
+        <ol class="plain steps">
+          <li>아래 버튼에서 <code>ModpackUpdater-Setup-버전.exe</code>를 받아 설치합니다.</li>
+          <li>게임을 끄고 프로그램을 엽니다. Modrinth App 인스턴스를 알아서 찾아 주니, 새 버전이 있으면 '업데이트'를 누릅니다.</li>
+          <li>(선택) 인스턴스 옆 '자동 업데이트'에서 '명령 복사'를 누르고, Modrinth App의 그 인스턴스 설정 → 실행 훅 (Launch hooks) → 실행 전 (Pre-launch) 칸에 붙여 넣습니다. 그다음부터는 플레이할 때마다 알아서 맞춥니다.</li>
         </ol>
       </div>
 
       <div class="get">
-        <a class="btn primary big" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 받기 <small>.exe</small></a>
-        <p class="small">Windows 10 · 11. 처음 실행할 때 Windows가 'PC 보호' 경고를 띄우면 '추가 정보 → 실행'을 누릅니다.</p>
+        <a class="btn primary" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 받기 <small>.exe</small></a>
+        <p class="small">Windows 10 · 11. 처음 실행할 때 'PC 보호' 경고가 뜨면 '추가 정보 → 실행'을 누릅니다.</p>
       </div>
 
       <div class="pair">
         <figure>
           <button class="shot tall" type="button" popovertarget="lb-client" aria-label="크게 보기: 모드팩 업데이트 창">
-            <img src="../../assets/mcserver/client-t.webp" srcset="../../assets/mcserver/client-t.webp 400w, ../../assets/mcserver/client.webp 760w" sizes="(max-width: 600px) 100vw, 380px" alt="모드팩 업데이트 창. Modrinth App에서 찾은 탈리크래프트 인스턴스에 새 버전 0.2.1이 있다는 표시와 업데이트 단추" width="760" height="560" loading="lazy">
+            <img src="../../assets/mcserver/client-t.webp" srcset="../../assets/mcserver/client-t.webp 400w, ../../assets/mcserver/client.webp 820w" sizes="(max-width: 600px) calc(100vw - 32px), 360px" alt="모드팩 업데이트 창. 맨 위 내 인스턴스에 탈리크래프트 0.2.0에서 0.2.1로 가는 업데이트 단추, 아래에 모드팩 목록과 새로 설치 단추" width="820" height="620" loading="lazy">
           </button>
-          <figcaption><b>2</b> 새 버전이 있는 인스턴스 옆에 '업데이트' 단추가 생깁니다.</figcaption>
+          <figcaption>새 버전이 있는 인스턴스에 '업데이트'가 생깁니다</figcaption>
         </figure>
         <figure>
           <button class="shot tall" type="button" popovertarget="lb-auto" aria-label="크게 보기: 자동 업데이트 설정">
-            <img src="../../assets/mcserver/auto-t.webp" srcset="../../assets/mcserver/auto-t.webp 400w, ../../assets/mcserver/auto.webp 760w" sizes="(max-width: 600px) 100vw, 380px" alt="자동 업데이트 설정 창. Modrinth App에 붙여 넣을 명령과 명령 복사 단추" width="760" height="560" loading="lazy">
+            <img src="../../assets/mcserver/auto-t.webp" srcset="../../assets/mcserver/auto-t.webp 400w, ../../assets/mcserver/auto.webp 820w" sizes="(max-width: 600px) calc(100vw - 32px), 360px" alt="자동 업데이트 설정 창. Modrinth App 실행 훅에 붙여 넣는 방법과 명령, 명령 복사 단추" width="820" height="620" loading="lazy">
           </button>
-          <figcaption><b>3</b> '명령 복사'를 누르고 Modrinth App에 붙여 넣습니다.</figcaption>
+          <figcaption>자동 업데이트: 명령을 복사해 Modrinth App에 붙여 넣습니다</figcaption>
         </figure>
-      </div>
-
-      <div class="howto">
-        <h3>자동 업데이트 명령 붙여 넣기</h3>
-        <ol>
-          <li>모드팩 업데이트에서 인스턴스 옆 <b>자동 업데이트 설정</b> → <b>명령 복사</b>를 누릅니다.</li>
-          <li>Modrinth App에서 그 인스턴스를 열고 <b>설정(톱니)</b> → <b>실행 훅 (Launch hooks)</b> → <b>실행 전 (Pre-launch)</b> 칸에 붙여 넣습니다.</li>
-          <li>저장합니다. 이제 플레이를 누르면 게임이 켜지기 직전에 조용히 최신 버전으로 맞춥니다.</li>
-        </ol>
-        <p class="small">새 버전이 없으면 바로 넘어가고, 인터넷이 끊겼거나 실패해도 게임은 그대로 켜집니다.</p>
       </div>
 
       <ul class="features facts">
         <li>
           <h3>인스턴스는 그대로</h3>
-          <p>설정 · 키 배치 · 리소스팩 · 싱글 월드가 그대로 남습니다. 바뀌는 것은 모드 파일뿐입니다.</p>
+          <p>설정 · 키 배치 · 리소스팩 · 싱글 월드는 남고 모드 파일만 바뀝니다. 옛 모드는 <code>.mod-backup</code> 폴더로 옮기고, 직접 넣은 모드는 건드리지 않습니다.</p>
         </li>
         <li>
-          <h3>옛 파일은 따로 보관</h3>
-          <p>바꾼 모드의 옛 파일은 지우지 않고 인스턴스 안 <code>.mod-backup</code> 폴더로 옮깁니다. 직접 넣은 다른 모드는 건드리지 않습니다.</p>
-        </li>
-        <li>
-          <h3>받은 파일은 확인하고</h3>
-          <p>새 모드팩은 sha256으로 내용이 맞는지 확인한 뒤에 씁니다.</p>
+          <h3>실패해도 안전하게</h3>
+          <p>받은 모드팩은 sha256으로 확인한 뒤에 쓰고, 중간에 실패하면 되돌립니다. 자동 업데이트가 실패해도 게임은 그대로 켜집니다.</p>
         </li>
         <li>
           <h3>마인크래프트 버전이 바뀔 때</h3>
-          <p>새 버전이 마인크래프트나 Fabric 버전까지 바꾸면 제자리에서 바꾸지 않고, '새로 설치'로 새 <code>.mrpack</code>을 Modrinth App에서 엽니다.</p>
+          <p>제자리에서 바꾸지 않고 '새로 설치'로 새 <code>.mrpack</code>을 Modrinth App에서 엽니다.</p>
         </li>
         <li>
-          <h3>서버에서 튕겼다면</h3>
-          <p>서버에 들어가다 버전이 다르다는 메시지가 나오면 이 페이지로 오라는 뜻입니다. 모드팩 업데이트로 맞춘 뒤 다시 접속하세요.</p>
-        </li>
-        <li>
-          <h3>Prism Launcher를 쓴다면</h3>
-          <p>산업크래프트의 Prism 인스턴스는 켤 때마다 스스로 맞추므로 이 프로그램이 없어도 됩니다.</p>
+          <h3>Prism Launcher라면</h3>
+          <p>Prism 인스턴스는 켤 때마다 스스로 맞추므로 이 프로그램이 없어도 됩니다.</p>
         </li>
       </ul>
-
-      <div class="lb" popover id="lb-client">
-        <img src="../../assets/mcserver/client.webp" alt="모드팩 업데이트 창. Modrinth App에서 찾은 탈리크래프트 인스턴스에 새 버전 0.2.1이 있다는 표시와 업데이트 단추" width="760" height="560" loading="lazy">
-        <p>설치된 인스턴스와 게임별 최신 버전이 보입니다. '베타 포함'을 켜면 테스트 베타도 최신으로 칩니다.</p>
-        <button class="lb-close" type="button" popovertarget="lb-client" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-      <div class="lb" popover id="lb-auto">
-        <img src="../../assets/mcserver/auto.webp" alt="자동 업데이트 설정 창. Modrinth App에 붙여 넣을 명령과 명령 복사 단추" width="760" height="560" loading="lazy">
-        <p>명령은 인스턴스마다 다릅니다. 인스턴스를 여러 개 쓰면 각각 복사해 붙여 넣으세요.</p>
-        <button class="lb-close" type="button" popovertarget="lb-auto" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-    </section>
-
-    <section id="server" aria-labelledby="server-h">
-      <h2 id="server-h">서버 관리 쓰려면</h2>
-      <div class="join">
-        <ol>
-          <li><a href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">릴리스</a>에서 <code>MCServerManager-Setup-버전.exe</code>를 받아 설치합니다. 화면은 Windows 10 · 11에 기본으로 들어 있는 WebView2로 그립니다.</li>
-          <li>처음 열면 서버 폴더를 찾아 목록을 만듭니다. 서버는 설정 탭에서 더하고 빼고 이름을 바꿀 수 있습니다.</li>
-          <li>업데이트 탭 아래 <b>내 클라이언트</b>에서는 이 PC의 Modrinth App 인스턴스도 모드팩 업데이트와 똑같이 맞출 수 있습니다.</li>
-        </ol>
-        <p class="small">탈리크래프트 · 산업크래프트 · 피싱크래프트 서버를 한 PC에서 여는 데 맞춰 만든 프로그램입니다. 서버를 켜 둔 채 창을 닫으면 '창만 닫기'와 '모든 서버 끄고 닫기' 중에 고릅니다.</p>
-      </div>
     </section>
   </div>
 
   <aside class="col-side" aria-label="프로그램 정보">
-    <div class="panel get-panel">
+    <div class="panel">
       <h2>받기</h2>
-      <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 받기 <small>.exe</small></a>
-      <a class="btn block" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true" style="margin-top:8px">모드팩 업데이트 받기 <small>.exe</small></a>
-      <p class="small" style="margin:10px 0 0">둘 다 Windows용 설치 파일이고, releases 저장소에서 받습니다. 소스는 비공개입니다.</p>
+      <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 <small>.exe</small></a>
+      <a class="btn block" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 <small>.exe</small></a>
+      <p class="small note">둘 다 Windows용 설치 파일입니다. 설치한 뒤로는 새 버전을 알아서 받습니다.</p>
     </div>
 
     <div class="panel">
       <dl class="info">
         <div><dt>종류</dt><dd>Windows 프로그램 2개</dd></div>
-        <div><dt>대상</dt><dd>서버 관리: 서버 여는 사람<br>모드팩 업데이트: Modrinth App 플레이어</dd></div>
         <div><dt>게임</dt><dd>Minecraft Java · Fabric</dd></div>
-        <div><dt>지원</dt><dd>탈리크래프트 · 산업크래프트 · 피싱크래프트</dd></div>
-        <div><dt>배포</dt><dd><a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a></dd></div>
+        <div><dt>지원</dt><dd><a href="../talicraft/">탈리크래프트</a> · <a href="../sanupcraft/">산업크래프트</a> · <a href="../fishingcraft/">피싱크래프트</a></dd></div>
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>배포</dt><dd><a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a></dd></div>
         <div><dt>소스</dt><dd>비공개</dd></div>
       </dl>
-      <div class="tags" aria-label="태그">
-        <span>서버 관리</span><span>자동 업데이트</span><span>백업 · 복원</span><span>RCON</span><span>mc-router</span><span>Modrinth App</span>
-      </div>
+      <p class="tags">서버 관리 · 자동 업데이트 · 백업 · RCON · mc-router · Modrinth App</p>
     </div>
-
-    <a class="panel sibling" href="../talicraft/">
-      <img src="../../assets/icons/talicraft.svg" alt="" width="44" height="44">
-      <span>
-        <b>탈리크래프트</b>
-        <span>바닐라 재료를 크게 모으면 잃지 않는 편의를 주는 야생 모드.</span>
-      </span>
-    </a>
-    <a class="panel sibling" href="../sanupcraft/">
-      <img src="../../assets/icons/sanupcraft.svg" alt="" width="44" height="44">
-      <span>
-        <b>산업크래프트</b>
-        <span>보스를 잡아 공장을 열고, 공장으로 모험대를 무장시키는 모드팩.</span>
-      </span>
-    </a>
   </aside>
 </main>
 
+<div class="lb" popover id="lb-console">
+  <img src="../../assets/mcserver/console.webp" alt="서버 관리 창의 콘솔 탭" width="1280" height="820" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-console" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-settings">
+  <img src="../../assets/mcserver/settings.webp" alt="설정 탭의 지켜보기 · 자동 실행" width="1280" height="820" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-settings" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-update">
+  <img src="../../assets/mcserver/update.webp" alt="업데이트 탭" width="1280" height="820" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-update" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-confirm">
+  <img src="../../assets/mcserver/update-confirm.webp" alt="업데이트 확인 창" width="1280" height="820" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-confirm" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-client">
+  <img src="../../assets/mcserver/client.webp" alt="모드팩 업데이트 창" width="820" height="620" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-client" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-auto">
+  <img src="../../assets/mcserver/auto.webp" alt="자동 업데이트 설정 창" width="820" height="620" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-auto" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
 <footer class="wrap foot">
-  <p>마인크래프트 서버 관리 · 모드팩 업데이트 © yeop · 설치 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있고 소스는 비공개입니다. Minecraft는 Mojang Studios의 상표이며, 이 프로그램은 Mojang · Microsoft · Modrinth와 관계가 없습니다.</p>
+  <p>마인크래프트 서버 관리 · 모드팩 업데이트 © yeop · 설치 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있습니다. 스크린샷은 시험용 데이터로 찍었습니다. Minecraft는 Mojang Studios의 상표이며, 이 프로그램은 Mojang · Microsoft · Modrinth와 관계가 없습니다.</p>
 </footer>
 </body>
 </html>

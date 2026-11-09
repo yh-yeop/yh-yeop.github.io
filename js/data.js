@@ -109,7 +109,7 @@ export const PROJECTS = [
   },
   {
     // releases apps.json 의 site: 'modpackupdater'. 소개 페이지의 #updater 부분으로 바로 간다
-    id: 'modpackupdater', cat: 'minecraft', title: '모드팩 업데이트', icon: 'assets/icons/modpackupdater.svg',
+    id: 'modpackupdater', cat: 'minecraft', title: '모드팩 업데이트', icon: 'assets/icons/modpackupdater.png',
     repos: [], release: { repo: 'releases', prefix: 'ModpackUpdater' }, closed: true, page: 'p/mcserver/#updater',
     desc: 'Modrinth App으로 탈리 · 산업 · 피싱크래프트를 하는 사람이 쓰던 인스턴스 그대로 모드만 최신 버전으로 바꾸는 프로그램.',
     points: ['인스턴스 · 설정 · 월드는 그대로, 옛 모드는 .mod-backup에 보관', 'Modrinth App 실행 전 훅에 명령을 붙여 두면 플레이할 때마다 자동으로', '마인크래프트 버전이 바뀌는 릴리스는 새 .mrpack으로 새로 설치'],
