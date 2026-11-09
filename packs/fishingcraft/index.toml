@@ -12,7 +12,7 @@ metafile = true
 
 [[files]]
 file = "mods/collective.pw.toml"
-hash = "88a31af0a2a18a3937a94bde61ac7c999f82e2a275aea3bb0a3e9479040cfcbe"
+hash = "acf012cdb9f73b3d15b4aeb390c6147e6fdb0abd8e98f7c1d2495554952c8123"
 metafile = true
 
 [[files]]
@@ -47,7 +47,7 @@ metafile = true
 
 [[files]]
 file = "mods/fishingcraft.pw.toml"
-hash = "a4a2ae11fa52d1f492c302503732607ea7a2578f2ea24f0ce6059d449fecef3a"
+hash = "92580dfbfbfad405f5bde10691d0c8c5954eb629e0dd78030b439472a80cdefa"
 metafile = true
 
 [[files]]

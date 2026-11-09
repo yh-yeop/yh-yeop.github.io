@@ -1,12 +1,12 @@
 name = "피싱크래프트"
 author = "yh-yeop"
-version = "0.1.0-beta.7"
+version = "0.1.0-beta.8"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "1bcd17a146aaf77147c4a2f4dc797eefbc3ac26f24629af1532879358683c97c"
+hash = "8d381ef58657fdced3ccca874a34c4fdcf3ebf484704bea4571d8cab043f0caf"
 
 [versions]
 minecraft = "26.3"
