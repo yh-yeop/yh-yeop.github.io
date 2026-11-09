@@ -12,7 +12,7 @@ metafile = true
 
 [[files]]
 file = "mods/collective.pw.toml"
-hash = "88a31af0a2a18a3937a94bde61ac7c999f82e2a275aea3bb0a3e9479040cfcbe"
+hash = "acf012cdb9f73b3d15b4aeb390c6147e6fdb0abd8e98f7c1d2495554952c8123"
 metafile = true
 
 [[files]]
@@ -87,7 +87,7 @@ metafile = true
 
 [[files]]
 file = "mods/opencraft.pw.toml"
-hash = "21817236b5c19b1509d47396104de3de9470ce0951e12229eb54f05c5030729d"
+hash = "3eedf7503298eac6dbc064cd2cfbbf5b6b202715354ab070f44fa7e8cd6f7433"
 metafile = true
 
 [[files]]
