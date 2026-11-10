@@ -37,7 +37,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "2c0a9e0112224d1d8049713723f2b9c083e6569f5a91f18a3446a19729ca2e93"
+hash = "c125e7442055053f5b32f6f833b15ee53f4c931822dccb47ac380fdfd4ca57de"
 metafile = true
 
 [[files]]
@@ -97,7 +97,7 @@ metafile = true
 
 [[files]]
 file = "mods/sanupcraft.pw.toml"
-hash = "cf3b176b938ac70c3420eef41c0380b56e660cad881163eefedd271cd60bbf61"
+hash = "b5b1a8e7ee80ed4adf49aab1680728ad8607e0ee5c510f0ae77dfc3695680cfc"
 metafile = true
 
 [[files]]
