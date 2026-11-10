@@ -43,7 +43,7 @@
   <p class="lede">탈리크래프트 · 산업크래프트 · 피싱크래프트 서버를 같이 돌리려고 만들었습니다. 켜고 끄기, 로그, 백업, 새 버전 올리기를 여기서 다 합니다.
     서버에 들어오는 사람을 위한 <a href="#updater">모드팩 업데이트</a>도 있습니다.</p>
   <div class="cta">
-    <a class="btn primary" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 받기 <small>.exe</small></a>
+    <a class="btn primary" data-app="MCServerManager" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 받기 <small>.exe</small></a>
     <a class="btn" href="#updater">모드팩 업데이트 (플레이어용)</a>
   </div>
   <p class="hero-meta">Windows 10 · 11 · 무료 · 소스 비공개 · 두 프로그램 모두 새 버전이 나오면 스스로 업데이트합니다</p>
@@ -159,7 +159,7 @@
       </div>
 
       <div class="get">
-        <a class="btn primary" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 받기 <small>.exe</small></a>
+        <a class="btn primary" data-app="ModpackUpdater" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 받기 <small>.exe</small></a>
         <p class="small">Windows 10 · 11. 처음 실행할 때 'PC 보호' 경고가 뜨면 '추가 정보 → 실행'을 누릅니다.</p>
       </div>
 
@@ -202,8 +202,8 @@
   <aside class="col-side" aria-label="프로그램 정보">
     <div class="panel">
       <h2>받기</h2>
-      <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 <small>.exe</small></a>
-      <a class="btn block" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 <small>.exe</small></a>
+      <a class="btn primary block" data-app="MCServerManager" href="https://github.com/yh-yeop/releases/releases?q=MCServerManager&amp;expanded=true">서버 관리 <small>.exe</small></a>
+      <a class="btn block" data-app="ModpackUpdater" href="https://github.com/yh-yeop/releases/releases?q=ModpackUpdater&amp;expanded=true">모드팩 업데이트 <small>.exe</small></a>
       <p class="small note">둘 다 Windows용 설치 파일입니다. 설치한 뒤로는 새 버전을 알아서 받습니다.</p>
     </div>
 
@@ -249,5 +249,20 @@
 <footer class="wrap foot">
   <p>마인크래프트 서버 관리 · 모드팩 업데이트 © yeop · 설치 파일은 <a href="https://github.com/yh-yeop/releases">yh-yeop/releases</a>에 있습니다. 스크린샷은 시험용 데이터로 찍었습니다. Minecraft는 Mojang Studios의 상표이며, 이 프로그램은 Mojang · Microsoft · Modrinth와 관계가 없습니다.</p>
 </footer>
+<script>
+// 받기 단추: releases 저장소가 내는 index.json 으로 최신 설치 파일에 바로 연결 (못 받으면 릴리스 목록 그대로)
+fetch('/releases/index.json').then(r => r.ok ? r.json() : null).then(v => {
+  if (!v || !Array.isArray(v.apps)) return;
+  document.querySelectorAll('a[data-app]').forEach(a => {
+    const app = v.apps.find(x => x.id === a.dataset.app);
+    const w = app && app.stable && app.stable.assets && app.stable.assets.windows;
+    if (!w || !w.url) return;
+    a.href = w.url;
+    a.title = w.name;
+    const sm = a.querySelector('small');
+    if (sm) sm.textContent = '.exe · ' + app.stable.version;
+  });
+}).catch(() => {});
+</script>
 </body>
 </html>
