@@ -47,7 +47,7 @@ metafile = true
 
 [[files]]
 file = "mods/fishingcraft.pw.toml"
-hash = "918f6c358bd7c383973954e2996467e7b2f51b243cbf7260efa310420ae065ad"
+hash = "bfa0f52923ad0b7a0f893014cda1ed23453a4fad0a085db76223b0f089a9dc69"
 metafile = true
 
 [[files]]
@@ -62,7 +62,7 @@ metafile = true
 
 [[files]]
 file = "mods/jei.pw.toml"
-hash = "a4f340238ad8b5768f0ead098f3c734d8a8fb787c5cede9ea0959fa386139bfd"
+hash = "8bad241b58eaa773ed0de228d4a75d26cee71634cb86f5d4f6553c7460dec31e"
 metafile = true
 
 [[files]]

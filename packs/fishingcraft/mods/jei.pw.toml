@@ -1,6 +1,6 @@
 name = "jei-26.3-fabric-31.14.0.72.jar"
 filename = "jei-26.3-fabric-31.14.0.72.jar"
-side = "client"
+side = "both"
 
 [download]
 url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/Zebwcvua/jei-26.3-fabric-31.14.0.72.jar"
