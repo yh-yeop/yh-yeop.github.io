@@ -18,6 +18,7 @@
 <link rel="preload" as="image" href="../../assets/talicraft/hero.webp">
 <link rel="stylesheet" href="talicraft.css">
 <script src="../../share.js" defer></script>
+<script src="page.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -47,10 +48,23 @@
   </div>
 </header>
 
+<nav class="toc" aria-label="이 페이지">
+  <div class="wrap toc-inner">
+    <a href="#about">소개</a>
+    <a href="#media">그림</a>
+    <a href="#charms">I단 부적</a>
+    <a href="#tier2">II단 · 만물</a>
+    <a href="#combat">전투 부적</a>
+    <a href="#gear">무한 장비</a>
+    <a href="#log">개발 기록</a>
+    <a href="#join">플레이하려면</a>
+  </div>
+</nav>
+
 <main id="main" class="wrap layout">
   <div class="col-main">
 
-    <section aria-labelledby="about-h" data-embed>
+    <section id="about" aria-labelledby="about-h" data-embed>
       <h2 id="about-h">이 모드에 대하여</h2>
       <div class="prose">
         <p>26SMP 월드에서 쓰던 데이터팩 다섯 개(비행 · 음식 · 경험치 · 집 · 도구)를 설계서 삼아 <b>Fabric 모드</b>로 다시 만들었습니다.
@@ -64,11 +78,11 @@
         <li><img class="px" src="../../assets/talicraft/items/saturation_shard.png" alt="" width="40" height="40"><b>조각</b><span>재료 9개 → 조각 1개</span></li>
         <li><img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="40" height="40"><b>부적 · 무한 도구</b><span>조각 9개 → 잃지 않는 영구 편의</span></li>
         <li><img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="40" height="40"><b>세트 · 합성</b><span>같이 지니면 세트 효과, 넷을 합치면 만물의 부적</span></li>
-        <li class="next"><b>다음 목표</b><span>각인 고르기 · 강화 보스 (개발 중)</span></li>
+        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤, 다음은 바이옴 보스 (개발 중)</span></li>
       </ol>
     </section>
 
-    <section aria-labelledby="pillar-h">
+    <section id="pillars" aria-labelledby="pillar-h">
       <h2 id="pillar-h">세 가지 원칙</h2>
       <ul class="features pillars">
         <li>
@@ -81,7 +95,7 @@
         </li>
         <li>
           <h3>모으고 고르고 자랑하기</h3>
-          <p>세트 효과, 넷을 하나로 합치는 만물의 부적, 손에 든 아이템을 서버 전체 채팅에 띄우는 <code>/inf show</code>. 다음에는 서로 다른 선택을 하는 각인이 옵니다.</p>
+          <p>세트 효과, 넷을 하나로 합치는 만물의 부적, 손에 든 아이템을 서버 전체 채팅에 띄우는 <code>/inf show</code>, 같은 장비도 서로 다르게 만드는 재가공, 보스를 잡으면 붙는 칭호.</p>
         </li>
       </ul>
     </section>
@@ -120,8 +134,26 @@
           </button>
           <figcaption>방패 칸 위에 생긴 겉날개 칸.</figcaption>
         </figure>
+        <figure class="nb">
+          <button class="shot" type="button" popovertarget="lb-notebook-amulet" aria-label="크게 보기: 탈리 수첩 부적 탭">
+            <img src="../../assets/talicraft/notebook-amulet-t.webp" srcset="../../assets/talicraft/notebook-amulet-t.webp 400w, ../../assets/talicraft/notebook-amulet.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 부적 탭: 계열마다 지금 단계와 다음에 모을 재료" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>탈리 수첩 부적 탭. 계열마다 지금 단계와 다음에 모을 재료가 보입니다.</figcaption>
+        </figure>
+        <figure class="nb">
+          <button class="shot" type="button" popovertarget="lb-notebook-boss" aria-label="크게 보기: 탈리 수첩 보스 탭">
+            <img src="../../assets/talicraft/notebook-boss-t.webp" srcset="../../assets/talicraft/notebook-boss-t.webp 400w, ../../assets/talicraft/notebook-boss.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 보스 탭: 강화 위더와 공허 고래를 부르는 법과 받은 책" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>보스 탭. 부르는 법과 아직 못 받은 보스 인챈트 책.</figcaption>
+        </figure>
+        <figure class="nb">
+          <button class="shot" type="button" popovertarget="lb-notebook-titles" aria-label="크게 보기: 탈리 수첩 칭호 탭">
+            <img src="../../assets/talicraft/notebook-titles-t.webp" srcset="../../assets/talicraft/notebook-titles-t.webp 400w, ../../assets/talicraft/notebook-titles.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 칭호 탭: 결투 전적과 칭호 목록" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>칭호 탭. 업적으로 얻은 칭호를 골라 이름 앞에 붙입니다.</figcaption>
+        </figure>
       </div>
-      <p class="shot-note">아직 게임 스크린샷이 없어 모드의 아이템 그림(16×16 픽셀)으로 만든 그림입니다. 칸 그림은 설명용으로 다시 그렸습니다.</p>
+      <p class="shot-note">앞의 다섯 장은 모드의 아이템 그림(16×16 픽셀)으로 만든 설명 그림이고, 수첩 세 장은 0.7.0 베타 2의 게임 화면입니다. 다음 업데이트에서 몇몇 이름이 바뀝니다 (예: 무한 저항의 부적 → 저항의 부적).</p>
 
       <div class="lb" popover id="lb-charms">
         <img src="../../assets/talicraft/charms.webp" alt="가운데 만물의 부적, 둘레에 II단 부적 4종, 바깥에 I단 부적과 전투 부적" width="1600" height="900" loading="lazy">
@@ -148,9 +180,24 @@
         <p>흉갑 칸엔 갑옷, 겉날개 칸엔 겉날개. 방어와 활공을 같이 얻습니다.</p>
         <button class="lb-close" type="button" popovertarget="lb-wings" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
+      <div class="lb" popover id="lb-notebook-amulet">
+        <img src="../../assets/talicraft/notebook-amulet.webp" alt="탈리 수첩 부적 탭: 계열마다 지금 단계와 다음에 모을 재료" width="854" height="480" loading="lazy">
+        <p>탈리 수첩 부적 탭. 계열마다 지금 단계와 다음에 모을 재료가 보입니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-notebook-amulet" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-notebook-boss">
+        <img src="../../assets/talicraft/notebook-boss.webp" alt="탈리 수첩 보스 탭: 강화 위더와 공허 고래를 부르는 법과 받은 책" width="854" height="480" loading="lazy">
+        <p>보스 탭. 부르는 법과 아직 못 받은 보스 인챈트 책.</p>
+        <button class="lb-close" type="button" popovertarget="lb-notebook-boss" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-notebook-titles">
+        <img src="../../assets/talicraft/notebook-titles.webp" alt="탈리 수첩 칭호 탭: 결투 전적과 칭호 목록" width="854" height="480" loading="lazy">
+        <p>칭호 탭. 업적으로 얻은 칭호를 골라 이름 앞에 붙입니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-notebook-titles" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
     </section>
 
-    <section id="charms" aria-labelledby="t1-h" data-embed>
+    <section id="charms" class="g-survival" aria-labelledby="t1-h" data-embed>
       <h2 id="t1-h">I단 부적 <small>초중반 · 작업대</small></h2>
       <p class="sec-lede">부적은 가방이나 왼손에 지니고만 있으면 효과가 납니다. I단은 작업대에서 테두리 8칸 + 가운데 1칸으로 만들고, 레시피 북에도 나옵니다.</p>
       <ul class="features charms">
@@ -187,7 +234,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="t2-h" data-embed>
+    <section id="tier2" class="g-survival" aria-labelledby="t2-h" data-embed>
       <h2 id="t2-h">II단 부적과 만물의 부적 <small>후반 · <code>/inf forge</code></small></h2>
       <p class="sec-lede">재료 81개를 9개씩 묶어 조각을 만들고, 조각 9개에 열쇠 재료와 같은 계열 I단을 더해 <code>/inf forge</code>로 올립니다. 세트 효과는 II단과 만물의 부적에만 붙습니다.</p>
       <ul class="features charms">
@@ -219,12 +266,12 @@
           <img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="48" height="48">
           <h3>만물의 부적</h3>
           <p class="recipe">II단 부적 4종 → <code>/inf merge</code></p>
-          <p>네 부적의 효과와 세트 효과를 한 칸에. 마지막 목표이자, 다음에 올 각인의 바탕입니다.</p>
+          <p>네 부적의 효과와 세트 효과를 한 칸에. 생존 부적의 마지막 목표이고, 엔드 보스 재료로 한 번 더 각성시킬 수 있습니다.</p>
         </li>
       </ul>
     </section>
 
-    <section aria-labelledby="combat-h" data-embed>
+    <section id="combat" class="g-combat" aria-labelledby="combat-h" data-embed>
       <h2 id="combat-h">전투 부적 <small>투지 · 명사수</small></h2>
       <p class="sec-lede">싸우며 모이는 재료로 만듭니다. 만물의 부적과 세트 효과에는 들어가지 않고, 플레이어끼리 싸울 때도 똑같이 듣습니다.</p>
       <ul class="features charms">
@@ -255,11 +302,11 @@
       </ul>
     </section>
 
-    <section aria-labelledby="gear-h" data-embed>
+    <section id="gear" class="g-infinite" aria-labelledby="gear-h" data-embed>
       <h2 id="gear-h">무한 장비와 편의</h2>
       <ul class="features">
         <li>
-          <h3>무한 비행의 겉날개</h3>
+          <h3>무한 겉날개</h3>
           <p>겉날개 9개로 만듭니다. 부서지지 않고 네더라이트 흉갑만큼 막아 주며, 왼손 폭죽이 저절로 채워집니다.</p>
         </li>
         <li>
@@ -275,12 +322,12 @@
           <p>인벤토리 방패 칸 위에 겉날개만 들어가는 칸이 생겼습니다. 갑옷과 날개를 같이 입고, 갑옷 위에 날개가 보입니다.</p>
         </li>
         <li>
-          <h3><code>/inf</code> 메뉴</h3>
-          <p>부적 단계 · 다음에 모을 재료 · 제작 · 귀환 지점 · 폭죽 설정 · 도움말을 상자 화면 하나에서 봅니다.</p>
+          <h3>탈리 수첩</h3>
+          <p>인벤토리의 탈리 버튼이나 단축키로 여는 모드 화면. 부적 · 장비 · 보스 · 귀환 · 칭호 · 가이드 탭에서 단계 · 다음 재료 · 제작 · 귀환 지점 · 폭죽 설정을 봅니다.</p>
         </li>
         <li>
           <h3>재사용 대기 표시</h3>
-          <p>버티기(저항 I)와 귀환 I이 다시 될 때까지 남은 시간이 화면 왼쪽 위에 아이콘으로 뜹니다.</p>
+          <p>버티기(저항 I) · 귀환 I · 공허 구조가 다시 될 때까지 남은 시간이 화면 왼쪽 위에 아이콘으로 뜹니다.</p>
         </li>
         <li>
           <h3>불사의 토템</h3>
@@ -293,7 +340,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="log-h">
+    <section id="log" aria-labelledby="log-h">
       <h2 id="log-h">개발 기록</h2>
       <ol class="timeline">
         <li>
@@ -311,22 +358,37 @@
           <h3>I단 부적과 메뉴, 새 월드</h3>
           <p>초중반 목표인 I단 5종, <code>/inf</code> 메뉴, 레시피 북을 넣고 새 월드를 열었습니다.</p>
         </li>
-        <li class="now">
+        <li>
           <span class="ms">M2.5</span>
-          <h3>클라이언트 모드 <small>지금 플레이 중</small></h3>
-          <p>서버에만 돌던 모드를 모드팩으로 바꾸고, 겉날개 칸 · 전투 부적 · 재사용 대기 표시를 더했습니다. 서버와 버전이 다르면 접속할 때 알려 줍니다. 게임 안 자동 시험 125개로 확인합니다.</p>
+          <h3>클라이언트 모드</h3>
+          <p>서버에만 돌던 모드를 모드팩으로 바꾸고, 겉날개 칸 · 전투 부적 · 재사용 대기 표시를 더했습니다. 서버와 버전이 다르면 접속할 때 알려 줍니다.</p>
+        </li>
+        <li>
+          <span class="ms">M3</span>
+          <h3>재가공 · 강화 위더 · 결투 <small>0.3.0</small></h3>
+          <p>대장장이 작업대에서 장비에 무작위 접두어를 붙이는 재가공, 다이아몬드 블록으로 부르는 강화 위더와 보스 전용 인챈트, 죽지 않는 결투를 넣었습니다.</p>
+        </li>
+        <li>
+          <span class="ms">M4</span>
+          <h3>엔드: 공허의 부적 · 공허 고래 · 강화 드래곤 <small>0.4.0 ~ 0.5.0</small></h3>
+          <p>공허에서 살려 주는 공허의 부적, 업적과 칭호, 엔드 바깥 섬의 보스 공허 고래, 강화된 엔드 크리스탈로 부르는 강화 드래곤과 만물의 부적 각성.</p>
+        </li>
+        <li class="now">
+          <span class="ms">U2</span>
+          <h3>탈리 수첩 <small>0.7.0 베타 2 · 지금 플레이 중</small></h3>
+          <p>인벤토리 버튼과 단축키로 여는 모드 화면 "탈리 수첩"이 상자 메뉴를 대신합니다. 첫 접속 안내 · 가이드 · 크리에이티브 탭도 같이. 다음 업데이트에서는 이름 · 문구 · 색을 한 규칙으로 다듬습니다.</p>
         </li>
         <li class="next">
-          <span class="ms">M3</span>
-          <h3>각인과 강화 보스 <small>다음</small></h3>
-          <p>만물의 부적에 각인 칸을 열어, 희귀 재료로 서로 겹치지 않는 효과를 하나씩 고릅니다. 바닐라 보스 하나는 둘이 같이 잡는 재도전판이 되고, 그 전리품이 각인 재료가 됩니다.</p>
+          <span class="ms">M5</span>
+          <h3>바이옴 보스와 탐험가의 부적 <small>개발 중</small></h3>
+          <p>첫 바이옴 보스는 사막의 모래 지네. 땅속을 다니다 솟구치고, 갑각 마디를 깨야 머리가 약해집니다. 바이옴 보스마다 나오는 기념 핵을 탐험가의 부적에 새깁니다.</p>
         </li>
       </ol>
     </section>
 
     <section id="join" aria-labelledby="join-h">
       <h2 id="join-h">플레이하려면</h2>
-      <div class="join">
+      <div class="join paper">
         <p class="join-lead">모드팩(<code>.mrpack</code>)과 서버용 jar는 <a href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">yh-yeop/releases</a>에서 받을 수 있습니다. 소스는 공개하지 않습니다. 함께 플레이하는 서버는 친구들끼리 쓰는 화이트리스트 서버입니다.</p>
         <h3>설치</h3>
         <ol>
@@ -334,7 +396,7 @@
           <li>친구 서버라면 운영자에게 닉네임을 알려 화이트리스트에 오른 뒤, 따로 받은 주소로 접속합니다. 직접 서버를 열려면 서버용 <code>talicraft-*.jar</code>를 Fabric 서버의 <code>mods</code>에 넣습니다 (Fabric API 필요).</li>
           <li>새 버전이 나오면: Modrinth App이라면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있어요. 새 모드팩을 다시 가져오거나, 인스턴스 <code>mods</code> 폴더의 <code>talicraft.jar</code>만 새 것으로 바꿔도 됩니다. 서버와 버전이 다르면 접속할 때 알려 줍니다.</li>
         </ol>
-        <p class="small">들어가면 평소처럼 야생입니다. 채팅에 <code>/inf</code>를 치면 메뉴가 열리고, 첫 목표는 작업대에서 만드는 I단 부적입니다.</p>
+        <p class="small">들어가면 평소처럼 야생입니다. 인벤토리의 탈리 버튼이나 채팅의 <code>/inf</code>로 탈리 수첩이 열리고, 첫 목표는 작업대에서 만드는 I단 부적입니다.</p>
       </div>
     </section>
   </div>
@@ -344,7 +406,7 @@
       <h2>받기</h2>
       <p class="small">두 친구가 화이트리스트 서버에서 플레이하며 다듬는 중입니다. 모드팩과 서버용 jar는 releases 저장소에 있고, 소스는 비공개입니다.</p>
       <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">모드팩 받기 <small>.mrpack</small></a>
-      <a class="btn block" href="#join" style="margin-top:8px">설치 방법</a>
+      <a class="btn block" href="#join">설치 방법</a>
     </div>
 
     <div class="panel">
