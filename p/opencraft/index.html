@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://yh-yeop.github.io/assets/opencraft/og.png">
 <meta property="og:url" content="https://yh-yeop.github.io/p/opencraft/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0e1612">
+<meta name="theme-color" content="#0b0f17">
 <link rel="icon" href="../../assets/icons/opencraft.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -22,31 +22,33 @@
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<nav class="topbar wrap" aria-label="사이트">
-  <a class="back" href="../../">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-    yeop 프로젝트
-  </a>
-  <button class="back share" type="button" data-share>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
-    공유
-  </button>
-</nav>
-
-<header class="hero wrap">
-  <div class="hero-id">
-    <img class="hero-ico" src="../../assets/icons/opencraft.svg" alt="" width="72" height="72">
-    <div>
-      <h1>오픈크래프트</h1>
-      <p class="tagline">바닐라 월드에 지역을 덧씌우는 마인크래프트 오픈월드 모험 모드팩</p>
+<header class="hero">
+  <nav class="topbar wrap" aria-label="사이트">
+    <a class="back" href="../../">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      yeop 프로젝트
+    </a>
+    <button class="back share" type="button" data-share>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+      공유
+    </button>
+  </nav>
+  <div class="hero-in wrap">
+    <div class="hero-id">
+      <img class="hero-ico" src="../../assets/icons/opencraft.svg" alt="" width="72" height="72">
+      <div>
+        <p class="eyebrow">꺼진 봉화탑을 하나씩 다시 켜는 모험</p>
+        <h1>오픈크래프트</h1>
+        <p class="tagline">바닐라 월드에 지역을 덧씌우는 마인크래프트 오픈월드 모험 모드팩</p>
+      </div>
     </div>
+    <p class="lede">지역마다 성격이 다른 마을과 필드몹, 그리고 그 지역의 보스가 있습니다. 끝은 분명하고, 어느 보스부터 갈지는 플레이어가 고릅니다.</p>
+    <div class="cta">
+      <a class="btn primary" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true">모드팩 받기 <small id="dl-hero-meta">.mrpack</small></a>
+      <a class="btn" href="#roadmap-h">개발 현황</a>
+    </div>
+    <p class="hero-meta" id="hero-meta">개발 중 · Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
   </div>
-  <p class="lede">지역마다 성격이 다른 마을과 필드몹, 그리고 그 지역의 보스가 있습니다. 끝은 분명하고, 어느 보스부터 갈지는 플레이어가 고릅니다.</p>
-  <div class="cta">
-    <a class="btn primary" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Opencraft&amp;expanded=true">모드팩 받기 <small id="dl-hero-meta">.mrpack</small></a>
-    <a class="btn" href="#roadmap-h">개발 현황</a>
-  </div>
-  <p class="hero-meta" id="hero-meta">개발 중 · Minecraft Java 26.3 · Fabric · 혼자 또는 친구와 · 무료</p>
 </header>
 
 <main id="main" class="wrap layout">
@@ -161,18 +163,20 @@
 
     <section aria-labelledby="roadmap-h">
       <h2 id="roadmap-h">개발 현황</h2>
-      <table class="roadmap">
-        <thead><tr><th scope="col">단계</th><th scope="col">내용</th><th scope="col">상태</th></tr></thead>
-        <tbody>
-          <tr><td>M0</td><td>빌드 환경 · 모드팩 바탕 · 지역 덧씌우기 확인</td><td>완료</td></tr>
-          <tr><td>M1</td><td>설원 지역: 봉화탑 · 보스 서리 큰뿔 · 필드몹 · 야영지 · 모험 일지 · 빠른 이동</td><td>완료</td></tr>
-          <tr><td>0.1.0 베타 2</td><td>첫 콘텐츠 빌드 (설원 지역), 베타 1이 켜지지 않던 문제 고침</td><td>공개</td></tr>
-          <tr><td>M2</td><td>드랍 장비 등급과 부가 옵션 · 봉화탑 대장간 · 야영지 우두머리 · 보스 재도전과 반복 보상 · 능력 강화</td><td>완료</td></tr>
-          <tr><td>0.2.0 베타 1</td><td>M2 묶음</td><td>다음 배포</td></tr>
-          <tr class="now"><td>M3</td><td>사막 · 늪 지역 · 지역 마을 · 도감 (지역 틀 일반화와 바이옴 덧칠부터)</td><td>진행 중</td></tr>
-          <tr><td>M4</td><td>마지막 목표 "첫 탑" · 최종 보스</td><td>계획</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="roadmap">
+          <thead><tr><th scope="col">단계</th><th scope="col">내용</th><th scope="col">상태</th></tr></thead>
+          <tbody>
+            <tr><td>M0</td><td>빌드 환경 · 모드팩 바탕 · 지역 덧씌우기 확인</td><td><span class="st done">완료</span></td></tr>
+            <tr><td>M1</td><td>설원 지역: 봉화탑 · 보스 서리 큰뿔 · 필드몹 · 야영지 · 모험 일지 · 빠른 이동</td><td><span class="st done">완료</span></td></tr>
+            <tr><td>0.1.0 베타 2</td><td>첫 콘텐츠 빌드 (설원 지역), 베타 1이 켜지지 않던 문제 고침</td><td><span class="st out">공개</span></td></tr>
+            <tr><td>M2</td><td>드랍 장비 등급과 부가 옵션 · 봉화탑 대장간 · 야영지 우두머리 · 보스 재도전과 반복 보상 · 능력 강화</td><td><span class="st done">완료</span></td></tr>
+            <tr><td>0.2.0 베타 1</td><td>M2 묶음</td><td><span class="st next">다음 배포</span></td></tr>
+            <tr class="now"><td>M3</td><td>사막 · 늪 지역 · 지역 마을 · 도감 (지역 틀 일반화와 바이옴 덧칠부터)</td><td><span class="st now">진행 중</span></td></tr>
+            <tr><td>M4</td><td>마지막 목표 "첫 탑" · 최종 보스</td><td><span class="st plan">계획</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section aria-labelledby="install-h">
