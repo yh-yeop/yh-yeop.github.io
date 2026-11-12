@@ -61,35 +61,99 @@
       <div class="prose">
         <p>오픈크래프트는 바닐라 지형 위에 지역을 덧씌우고, 몇몇 지역은 땅부터 새로 만듭니다. 높은 곳에 오르면 멀리 탑과 보스의 거처가 보이고, 보이는 곳은 모두 가 볼 수 있습니다.</p>
         <p>메인퀘스트는 지역의 보스들을 쓰러뜨리고 마지막 목표로 가는 한 줄기입니다. 순서는 정해져 있지 않아서, 어느 지역부터 갈지와 어떻게 준비할지는 플레이어가 정합니다.</p>
-        <p class="muted">지금은 개발 초기입니다. 0.1.0 베타에는 설원 지역 하나(봉화탑 · 보스 · 필드몹 · 야영지)가 들어 있고, 마을과 장비 등급은 다음 단계에서 들어갑니다.</p>
+        <p class="muted">지금은 개발 초기입니다. 공개된 0.1.0 베타에는 설원 지역 하나(봉화탑 · 보스 · 필드몹 · 야영지 · 모험 일지 · 빠른 이동)가 들어 있습니다. 다음 배포(0.2.0 베타 1)에는 드랍 장비 등급과 부가 옵션, 봉화탑 대장간, 보스 재도전과 반복 보상, 능력 강화가 들어갑니다. 사막 · 늪 지역과 마을은 그다음입니다.</p>
+      </div>
+    </section>
+
+
+    <section id="media" aria-labelledby="media-h">
+      <h2 id="media-h">스크린샷</h2>
+      <div class="gallery">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-tower" aria-label="크게 보기: 설원 봉화탑">
+            <img src="../../assets/opencraft/tower-t.webp" srcset="../../assets/opencraft/tower-t.webp 400w, ../../assets/opencraft/tower.webp 1200w" sizes="(max-width: 920px) 100vw, 780px" alt="눈 덮인 산 위에 선 꺼진 설원 봉화탑, 꼭대기에 보스 전투장" width="1200" height="675">
+          </button>
+          <figcaption>설원 봉화탑. 꼭대기 전투장에 보스가 잠들어 있고, 쓰러뜨리면 봉화가 켜집니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-boss" aria-label="크게 보기: 서리 큰뿔 얼음 갑옷">
+            <img src="../../assets/opencraft/boss-t.webp" srcset="../../assets/opencraft/boss-t.webp 400w, ../../assets/opencraft/boss.webp 1200w" sizes="(max-width: 600px) 100vw, 380px" alt="전투장 위의 보스 서리 큰뿔과 둘레의 꺼진 화로" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>보스 서리 큰뿔. 얼음 갑옷을 두르면 불씨를 날라 화로를 켭니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-arena" aria-label="크게 보기: 전투장">
+            <img src="../../assets/opencraft/arena-t.webp" srcset="../../assets/opencraft/arena-t.webp 400w, ../../assets/opencraft/arena.webp 1200w" sizes="(max-width: 600px) 100vw, 380px" alt="위에서 내려다본 봉화탑 꼭대기의 둥근 전투장" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>위에서 본 전투장. 사람이 오면 정리되고 보호됩니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-forge" aria-label="크게 보기: 봉화탑 대장간">
+            <img src="../../assets/opencraft/forge-t.webp" srcset="../../assets/opencraft/forge-t.webp 400w, ../../assets/opencraft/forge.webp 1200w" sizes="(max-width: 600px) 100vw, 380px" alt="처마 아래 대장간 모루 뒤에 선 봉화지기" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>봉화탑 대장간과 봉화지기 (다음 배포). 수리 · 옵션 추가 · 재설정.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-journal" aria-label="크게 보기: 모험 일지 능력 탭">
+            <img src="../../assets/opencraft/journal-t.webp" srcset="../../assets/opencraft/journal-t.webp 400w, ../../assets/opencraft/journal.webp 1200w" sizes="(max-width: 600px) 100vw, 380px" alt="모험 일지 능력 탭: 서리 길과 추위 막기의 강화 단계와 재료" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>모험 일지의 능력 탭. 보스 재료로 능력을 강화합니다 (다음 배포).</figcaption>
+        </figure>
+      </div>
+      <p class="shot-note">개발 중 화면입니다. 텍스처 · 모델 · 이펙트는 계속 다듬고 있습니다.</p>
+
+      <div class="lb" popover id="lb-tower">
+        <img src="../../assets/opencraft/tower.webp" alt="눈 덮인 산 위에 선 꺼진 설원 봉화탑, 꼭대기에 보스 전투장" width="1200" height="675" loading="lazy">
+        <p>설원 봉화탑. 꼭대기 전투장에 보스가 잠들어 있고, 쓰러뜨리면 봉화가 켜집니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-tower" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-boss">
+        <img src="../../assets/opencraft/boss.webp" alt="전투장 위의 보스 서리 큰뿔과 둘레의 꺼진 화로" width="1200" height="675" loading="lazy">
+        <p>보스 서리 큰뿔. 얼음 갑옷을 두르면 불씨를 날라 화로를 켭니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-boss" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-arena">
+        <img src="../../assets/opencraft/arena.webp" alt="위에서 내려다본 봉화탑 꼭대기의 둥근 전투장" width="1200" height="675" loading="lazy">
+        <p>위에서 본 전투장. 사람이 오면 정리되고 보호됩니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-arena" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-forge">
+        <img src="../../assets/opencraft/forge.webp" alt="처마 아래 대장간 모루 뒤에 선 봉화지기" width="1200" height="675" loading="lazy">
+        <p>봉화탑 대장간과 봉화지기 (다음 배포). 수리 · 옵션 추가 · 재설정.</p>
+        <button class="lb-close" type="button" popovertarget="lb-forge" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-journal">
+        <img src="../../assets/opencraft/journal.webp" alt="모험 일지 능력 탭: 서리 길과 추위 막기의 강화 단계와 재료" width="1200" height="675" loading="lazy">
+        <p>모험 일지의 능력 탭. 보스 재료로 능력을 강화합니다 (다음 배포).</p>
+        <button class="lb-close" type="button" popovertarget="lb-journal" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
     </section>
 
     <section aria-labelledby="feat-h" data-embed>
-      <h2 id="feat-h">계획</h2>
+      <h2 id="feat-h">무엇이 있나</h2>
       <ul class="features">
         <li>
-          <h3>지역별 마을</h3>
-          <p>지역마다 생김새와 주민, 교환품과 의뢰가 다른 마을이 있습니다. 해방한 지역의 마을에는 대장간 같은 기능이 열립니다.</p>
+          <h3>지역별 마을 <span class="st plan">계획</span></h3>
+          <p>지역마다 생김새와 주민, 의뢰가 다른 마을이 있습니다. 해방한 지역의 마을은 장비를 다듬는 본거지가 됩니다.</p>
         </li>
         <li>
-          <h3>필드몹과 거점</h3>
-          <p>지역에 맞는 적이 들판을 돌아다니고, 곳곳에 그들의 거점이 있습니다. 지역마다 난도가 다릅니다.</p>
+          <h3>필드몹과 거점 <span class="st out">0.1.0</span></h3>
+          <p>지역에 맞는 적이 들판을 돌아다니고, 곳곳에 그들의 야영지가 있습니다. 다음 배포부터는 우두머리가 지키고, 쓸어낸 야영지가 며칠 뒤 다시 찹니다.</p>
         </li>
         <li>
-          <h3>보스</h3>
+          <h3>보스 <span class="st out">0.1.0</span></h3>
           <p>지역마다 전용 거처에 보스가 있습니다. 해방한 뒤에도 거처에서 다시 불러내 싸울 수 있습니다.</p>
         </li>
         <li>
-          <h3>최초 보상과 반복 보상</h3>
-          <p>보스를 처음 쓰러뜨리면 증표와 그 보스만의 고유 아이템을 받습니다. 다시 싸우면 고유 아이템 대신 강화 재료가 나오고, 준 피해가 클수록 많이 나옵니다.</p>
+          <h3>최초 보상과 반복 보상 <span class="st next">다음 배포</span></h3>
+          <p>보스를 처음 쓰러뜨리면 증표(불씨)와 능력을 받습니다. 공물로 다시 불러 싸우면 보스 장비와 강화 재료를 꾸러미로 받고, 기여가 클수록 많이 굴립니다.</p>
         </li>
         <li>
-          <h3>장비 등급과 부가 옵션</h3>
-          <p>장비에는 등급이 있고 무작위 부가 옵션이 붙습니다. 지역마다 드랍 표가 달라 어디서 사냥할지가 선택이 되고, 가장 높은 등급은 어디서든 아주 드물게 나옵니다.</p>
+          <h3>장비 등급과 부가 옵션 <span class="st next">다음 배포</span></h3>
+          <p>드랍 장비에는 다섯 등급과 무작위 부가 옵션이 붙습니다. 봉화탑 대장간에서 수리하고 옵션을 더하거나 다시 굴립니다. 바닐라 인챈트 장비와는 다른 길입니다.</p>
         </li>
         <li>
-          <h3>혼자 또는 친구와</h3>
+          <h3>혼자 또는 친구와 <span class="st out">0.1.0</span></h3>
           <p>싱글과 친구 서버 모두 됩니다. 늦게 들어온 사람도 해방된 지역의 보스를 다시 불러내 직접 겪고 증표를 모을 수 있습니다.</p>
         </li>
       </ul>
@@ -103,8 +167,9 @@
           <tr><td>M0</td><td>빌드 환경 · 모드팩 바탕 · 지역 덧씌우기 확인</td><td>완료</td></tr>
           <tr><td>M1</td><td>설원 지역: 봉화탑 · 보스 서리 큰뿔 · 필드몹 · 야영지 · 모험 일지 · 빠른 이동</td><td>완료</td></tr>
           <tr><td>0.1.0 베타 2</td><td>첫 콘텐츠 빌드 (설원 지역), 베타 1이 켜지지 않던 문제 고침</td><td>공개</td></tr>
-          <tr class="now"><td>M2</td><td>반복 보상 · 드랍 장비 등급과 부가 옵션 · 설원 마을</td><td>다음</td></tr>
-          <tr><td>M3</td><td>사막 · 늪 지역</td><td>계획</td></tr>
+          <tr><td>M2</td><td>드랍 장비 등급과 부가 옵션 · 봉화탑 대장간 · 야영지 우두머리 · 보스 재도전과 반복 보상 · 능력 강화</td><td>완료</td></tr>
+          <tr><td>0.2.0 베타 1</td><td>M2 묶음</td><td>다음 배포</td></tr>
+          <tr class="now"><td>M3</td><td>사막 · 늪 지역 · 지역 마을 · 도감 (지역 틀 일반화와 바이옴 덧칠부터)</td><td>진행 중</td></tr>
           <tr><td>M4</td><td>마지막 목표 "첫 탑" · 최종 보스</td><td>계획</td></tr>
         </tbody>
       </table>

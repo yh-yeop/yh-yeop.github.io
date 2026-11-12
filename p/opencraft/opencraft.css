@@ -150,3 +150,27 @@ p.small.note { margin-top: 12px; }
 @media (prefers-reduced-motion: no-preference) {
   .btn, .back { transition: border-color .15s, opacity .15s; }
 }
+
+/* 스크린샷: 첫 그림은 크게, 나머지는 두 칸씩 */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.gallery figure { margin: 0; }
+.gallery figure:first-child { grid-column: 1 / -1; }
+.shot { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #000; cursor: zoom-in; aspect-ratio: 16 / 9; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .2s; }
+.shot:hover img { transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
+.gallery figcaption { margin: 6px 2px 0; font-size: .875rem; color: var(--soft); }
+.shot-note { margin: 10px 2px 0; font-size: .8125rem; color: var(--muted); }
+/* 크게 보기: popover (스크립트 없음). 바깥을 누르거나 Esc로 닫힌다 */
+.lb { width: min(1200px, calc(100vw - 32px)); max-height: calc(100vh - 32px); margin: auto; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #0a110d; color: var(--text); overflow: auto; }
+.lb::backdrop { background: rgba(0, 0, 0, .78); }
+.lb img { display: block; width: 100%; height: auto; max-height: calc(100vh - 140px); object-fit: contain; border-radius: 8px; }
+.lb p { margin: 10px 48px 2px 4px; color: var(--soft); font-size: .9375rem; }
+.lb-close { position: absolute; right: 14px; bottom: 8px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; cursor: pointer; }
+.lb-close svg { width: 20px; height: 20px; }
+/* 기능 상태 표시 */
+.st { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; font-size: .75rem; font-weight: 600; vertical-align: 2px; border: 1px solid var(--line); color: var(--muted); }
+.st.out { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+.st.next { color: var(--text); border-color: var(--accent); }
+@media (max-width: 600px) { .gallery { grid-template-columns: minmax(0, 1fr); } .roadmap td { word-break: keep-all; } }
