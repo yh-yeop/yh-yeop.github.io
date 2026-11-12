@@ -18,6 +18,7 @@
 <link rel="preload" as="image" href="../../assets/talicraft/hero.webp">
 <link rel="stylesheet" href="talicraft.css">
 <script src="../../share.js" defer></script>
+<script src="page.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -47,10 +48,23 @@
   </div>
 </header>
 
+<nav class="toc" aria-label="이 페이지">
+  <div class="wrap toc-inner">
+    <a href="#about">소개</a>
+    <a href="#media">그림</a>
+    <a href="#charms">I단 부적</a>
+    <a href="#tier2">II단 · 만물</a>
+    <a href="#combat">전투 부적</a>
+    <a href="#gear">무한 장비</a>
+    <a href="#log">개발 기록</a>
+    <a href="#join">플레이하려면</a>
+  </div>
+</nav>
+
 <main id="main" class="wrap layout">
   <div class="col-main">
 
-    <section aria-labelledby="about-h" data-embed>
+    <section id="about" aria-labelledby="about-h" data-embed>
       <h2 id="about-h">이 모드에 대하여</h2>
       <div class="prose">
         <p>26SMP 월드에서 쓰던 데이터팩 다섯 개(비행 · 음식 · 경험치 · 집 · 도구)를 설계서 삼아 <b>Fabric 모드</b>로 다시 만들었습니다.
@@ -68,7 +82,7 @@
       </ol>
     </section>
 
-    <section aria-labelledby="pillar-h">
+    <section id="pillars" aria-labelledby="pillar-h">
       <h2 id="pillar-h">세 가지 원칙</h2>
       <ul class="features pillars">
         <li>
@@ -120,19 +134,19 @@
           </button>
           <figcaption>방패 칸 위에 생긴 겉날개 칸.</figcaption>
         </figure>
-        <figure>
+        <figure class="nb">
           <button class="shot" type="button" popovertarget="lb-notebook-amulet" aria-label="크게 보기: 탈리 수첩 부적 탭">
             <img src="../../assets/talicraft/notebook-amulet-t.webp" srcset="../../assets/talicraft/notebook-amulet-t.webp 400w, ../../assets/talicraft/notebook-amulet.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 부적 탭: 계열마다 지금 단계와 다음에 모을 재료" width="400" height="225" loading="lazy">
           </button>
           <figcaption>탈리 수첩 부적 탭. 계열마다 지금 단계와 다음에 모을 재료가 보입니다.</figcaption>
         </figure>
-        <figure>
+        <figure class="nb">
           <button class="shot" type="button" popovertarget="lb-notebook-boss" aria-label="크게 보기: 탈리 수첩 보스 탭">
             <img src="../../assets/talicraft/notebook-boss-t.webp" srcset="../../assets/talicraft/notebook-boss-t.webp 400w, ../../assets/talicraft/notebook-boss.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 보스 탭: 강화 위더와 공허 고래를 부르는 법과 받은 책" width="400" height="225" loading="lazy">
           </button>
           <figcaption>보스 탭. 부르는 법과 아직 못 받은 보스 인챈트 책.</figcaption>
         </figure>
-        <figure>
+        <figure class="nb">
           <button class="shot" type="button" popovertarget="lb-notebook-titles" aria-label="크게 보기: 탈리 수첩 칭호 탭">
             <img src="../../assets/talicraft/notebook-titles-t.webp" srcset="../../assets/talicraft/notebook-titles-t.webp 400w, ../../assets/talicraft/notebook-titles.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 칭호 탭: 결투 전적과 칭호 목록" width="400" height="225" loading="lazy">
           </button>
@@ -183,7 +197,7 @@
       </div>
     </section>
 
-    <section id="charms" aria-labelledby="t1-h" data-embed>
+    <section id="charms" class="g-survival" aria-labelledby="t1-h" data-embed>
       <h2 id="t1-h">I단 부적 <small>초중반 · 작업대</small></h2>
       <p class="sec-lede">부적은 가방이나 왼손에 지니고만 있으면 효과가 납니다. I단은 작업대에서 테두리 8칸 + 가운데 1칸으로 만들고, 레시피 북에도 나옵니다.</p>
       <ul class="features charms">
@@ -220,7 +234,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="t2-h" data-embed>
+    <section id="tier2" class="g-survival" aria-labelledby="t2-h" data-embed>
       <h2 id="t2-h">II단 부적과 만물의 부적 <small>후반 · <code>/inf forge</code></small></h2>
       <p class="sec-lede">재료 81개를 9개씩 묶어 조각을 만들고, 조각 9개에 열쇠 재료와 같은 계열 I단을 더해 <code>/inf forge</code>로 올립니다. 세트 효과는 II단과 만물의 부적에만 붙습니다.</p>
       <ul class="features charms">
@@ -257,7 +271,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="combat-h" data-embed>
+    <section id="combat" class="g-combat" aria-labelledby="combat-h" data-embed>
       <h2 id="combat-h">전투 부적 <small>투지 · 명사수</small></h2>
       <p class="sec-lede">싸우며 모이는 재료로 만듭니다. 만물의 부적과 세트 효과에는 들어가지 않고, 플레이어끼리 싸울 때도 똑같이 듣습니다.</p>
       <ul class="features charms">
@@ -288,7 +302,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="gear-h" data-embed>
+    <section id="gear" class="g-infinite" aria-labelledby="gear-h" data-embed>
       <h2 id="gear-h">무한 장비와 편의</h2>
       <ul class="features">
         <li>
@@ -326,7 +340,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="log-h">
+    <section id="log" aria-labelledby="log-h">
       <h2 id="log-h">개발 기록</h2>
       <ol class="timeline">
         <li>
@@ -374,7 +388,7 @@
 
     <section id="join" aria-labelledby="join-h">
       <h2 id="join-h">플레이하려면</h2>
-      <div class="join">
+      <div class="join paper">
         <p class="join-lead">모드팩(<code>.mrpack</code>)과 서버용 jar는 <a href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">yh-yeop/releases</a>에서 받을 수 있습니다. 소스는 공개하지 않습니다. 함께 플레이하는 서버는 친구들끼리 쓰는 화이트리스트 서버입니다.</p>
         <h3>설치</h3>
         <ol>
@@ -392,7 +406,7 @@
       <h2>받기</h2>
       <p class="small">두 친구가 화이트리스트 서버에서 플레이하며 다듬는 중입니다. 모드팩과 서버용 jar는 releases 저장소에 있고, 소스는 비공개입니다.</p>
       <a class="btn primary block" href="https://github.com/yh-yeop/releases/releases?q=Talicraft&amp;expanded=true">모드팩 받기 <small>.mrpack</small></a>
-      <a class="btn block" href="#join" style="margin-top:8px">설치 방법</a>
+      <a class="btn block" href="#join">설치 방법</a>
     </div>
 
     <div class="panel">
