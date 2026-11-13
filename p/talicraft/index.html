@@ -55,6 +55,7 @@
     <a href="#charms">I단 부적</a>
     <a href="#tier2">II단 · 만물</a>
     <a href="#combat">전투 부적</a>
+    <a href="#centipede">모래 지네</a>
     <a href="#gear">무한 장비</a>
     <a href="#log">개발 기록</a>
     <a href="#join">플레이하려면</a>
@@ -78,7 +79,7 @@
         <li><img class="px" src="../../assets/talicraft/items/saturation_shard.png" alt="" width="40" height="40"><b>조각</b><span>재료 9개 → 조각 1개</span></li>
         <li><img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="40" height="40"><b>부적 · 무한 도구</b><span>조각 9개 → 잃지 않는 영구 편의</span></li>
         <li><img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="40" height="40"><b>세트 · 합성</b><span>같이 지니면 세트 효과, 넷을 합치면 만물의 부적</span></li>
-        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤, 다음은 바이옴 보스 (개발 중)</span></li>
+        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤, 첫 바이옴 보스 모래 지네</span></li>
       </ol>
     </section>
 
@@ -153,7 +154,7 @@
           <figcaption>칭호 탭. 업적으로 얻은 칭호를 골라 이름 앞에 붙입니다.</figcaption>
         </figure>
       </div>
-      <p class="shot-note">앞의 다섯 장은 모드의 아이템 그림(16×16 픽셀)으로 만든 설명 그림이고, 수첩 세 장은 0.7.0 베타 2의 게임 화면입니다. 다음 업데이트에서 몇몇 이름이 바뀝니다 (예: 무한 저항의 부적 → 저항의 부적).</p>
+      <p class="shot-note">앞의 다섯 장은 모드의 아이템 그림(16×16 픽셀)으로 만든 설명 그림이고, 수첩 세 장은 0.7.0 베타 2의 게임 화면입니다. 0.8.0에서 몇몇 이름이 바뀌었습니다 (예: 무한 저항의 부적 → 저항의 부적).</p>
 
       <div class="lb" popover id="lb-charms">
         <img src="../../assets/talicraft/charms.webp" alt="가운데 만물의 부적, 둘레에 II단 부적 4종, 바깥에 I단 부적과 전투 부적" width="1600" height="900" loading="lazy">
@@ -302,6 +303,102 @@
       </ul>
     </section>
 
+    <section id="centipede" class="g-desert" aria-labelledby="centipede-h" data-embed>
+      <h2 id="centipede-h">모래 지네 <small>첫 바이옴 보스 · 0.8.0</small></h2>
+      <p class="sec-lede">사막에 깎은 사암 십자(가운데 + 네 방향)를 놓고 가운데 위에 선인장을 세운 뒤, 선인장에 모래 미끼를 쓰면 땅이 울리고 3초 뒤 모래 지네가 솟아오릅니다. 제단 둘레 반지름 16칸 땅의 60% 이상이 모래 · 사암이어야 하고, 잡은 뒤 같은 제단은 20분 쉽니다.</p>
+      <div class="gallery">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-centipede-side" aria-label="크게 보기: 모래 지네 옆모습">
+            <img src="../../assets/talicraft/centipede-side-t.webp" srcset="../../assets/talicraft/centipede-side-t.webp 400w, ../../assets/talicraft/centipede-side.webp 1280w" sizes="(max-width: 920px) 100vw, 780px" alt="사막 위의 모래 지네 옆모습: 머리 뒤로 마디가 길게 이어지고 등에 가시 돋은 갑각 마디가 섞여 있다" width="1280" height="720" loading="lazy">
+          </button>
+          <figcaption>머리 뒤로 마디가 길게 이어집니다. 등에 가시가 돋은 것이 갑각 마디입니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-centipede-front" aria-label="크게 보기: 모래 지네 머리">
+            <img src="../../assets/talicraft/centipede-front-t.webp" srcset="../../assets/talicraft/centipede-front-t.webp 400w, ../../assets/talicraft/centipede-front.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="모래 지네 머리 정면: 호박색 눈, 더듬이 둘, 턱 집게 둘" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>호박색 눈과 턱 집게. 공격 전에 집게가 벌어집니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-centipede-phase2" aria-label="크게 보기: 2페이즈 모래 지네">
+            <img src="../../assets/talicraft/centipede-phase2-t.webp" srcset="../../assets/talicraft/centipede-phase2-t.webp 400w, ../../assets/talicraft/centipede-phase2.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="밤의 사막에서 2페이즈 모래 지네: 껍데기가 갈라져 금빛으로 빛나고 눈이 붉다" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>체력이 절반 아래로 내려가면 껍데기가 갈라져 빛나고 모래 폭풍이 붑니다.</figcaption>
+        </figure>
+      </div>
+      <p class="shot-note">지네 세 장은 0.8.0 베타 1의 시험 화면에서 화면 표시(단축바 · 손)를 걷어 낸 것입니다.</p>
+
+      <div class="lb" popover id="lb-centipede-side">
+        <img src="../../assets/talicraft/centipede-side.webp" alt="사막 위의 모래 지네 옆모습: 머리 뒤로 마디가 길게 이어지고 등에 가시 돋은 갑각 마디가 섞여 있다" width="1280" height="720" loading="lazy">
+        <p>모래 지네 옆모습. 갑각 마디가 하나라도 남아 있으면 머리가 받는 피해가 80% 줄어듭니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-centipede-side" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-centipede-front">
+        <img src="../../assets/talicraft/centipede-front.webp" alt="모래 지네 머리 정면: 호박색 눈, 더듬이 둘, 턱 집게 둘" width="1280" height="720" loading="lazy">
+        <p>모래 지네 머리. 공격 전에 턱 집게가 벌어지며 예고합니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-centipede-front" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-centipede-phase2">
+        <img src="../../assets/talicraft/centipede-phase2.webp" alt="밤의 사막에서 2페이즈 모래 지네: 껍데기가 갈라져 금빛으로 빛나고 눈이 붉다" width="1280" height="720" loading="lazy">
+        <p>2페이즈. 껍데기가 갈라져 빛나고, 모래 폭풍 안에서는 화면 가장자리가 모래빛으로 덮이며 마디 벌레가 기어 나옵니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-centipede-phase2" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+
+      <ul class="features fight">
+        <li>
+          <h3>갑각 마디</h3>
+          <p>마디 가운데 갑각 4개가 하나라도 남아 있으면 머리가 받는 피해가 80% 줄어듭니다. 땅속에서 나올 때 깨진 갑각 하나가 되살아납니다 (한 싸움에 2번까지).</p>
+        </li>
+        <li>
+          <h3>땅속에서 오는 공격</h3>
+          <p>땅속을 다니다 발밑에서 솟구치고, 모래를 부채꼴로 뿜고, 몸으로 고리를 만들어 조입니다. 모두 미리 예고가 보입니다.</p>
+        </li>
+        <li>
+          <h3>높은 곳도 안전하지 않음</h3>
+          <p>지표보다 4칸 넘게 높은 곳에 3초 넘게 있으면 모래 덩이를 던집니다.</p>
+        </li>
+        <li>
+          <h3>2페이즈</h3>
+          <p>체력 420(근처에 2명 이상이면 650)이 절반 아래로 내려가면 모래 폭풍이 일고 마디 벌레가 나옵니다.</p>
+        </li>
+      </ul>
+
+      <h3 class="sub-h">부르기와 보상</h3>
+      <p class="sec-lede">보상은 제단 위에 떨어집니다. 모래 지네 턱(트로피) · 금 · 거미 눈에 더해, 처치에 참여한 사람마다 사막 핵 1개와 지네 전용 인챈트 책 1권, 칭호 "모래 사냥꾼"을 받습니다.</p>
+      <ul class="features charms">
+        <li class="charm iron" style="--gem:#e0b062">
+          <img class="px" src="../../assets/talicraft/items/sand_bait.png" alt="" width="48" height="48">
+          <h3>모래 미끼</h3>
+          <p class="recipe">압축 모래 4 + 선인장 4 + 거미 눈</p>
+          <p>제단 가운데 선인장에 쓰면 모래 지네가 깨어납니다. 압축 모래는 모래 9개로 만듭니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#f08a3c">
+          <img class="px" src="../../assets/talicraft/items/desert_core.png" alt="" width="48" height="48">
+          <h3>사막 핵</h3>
+          <p class="recipe">모래 지네 처치에 참여하면 1개</p>
+          <p>탐험가의 부적 재료이고, 부적에 새기면 효과가 켜집니다.</p>
+        </li>
+        <li class="charm gold wide" style="--gem:#f5c044">
+          <img class="px" src="../../assets/talicraft/items/explorer_amulet.png" alt="" width="48" height="48">
+          <h3>탐험가의 부적</h3>
+          <p class="recipe">작업대 가운데 나침반 · 네 변 금 주괴 · 네 귀퉁이 중 한 곳에 사막 핵</p>
+          <p>사막 핵이 새겨진 채로 나옵니다. 지니고 있으면 어느 바이옴에서든 이동 속도 +5% · 허기 소모 15% 감소. 핵은 수첩 부적 탭의 [새기기] 단추(두 번 눌러 실행)나, 부적을 다른 손에 들고 핵을 써서 새깁니다. 바이옴 보스마다 핵이 하나씩 늘어날 자리이고, 만물의 부적과는 따로 씁니다.</p>
+        </li>
+      </ul>
+
+      <h3 class="sub-h">지네 전용 인챈트</h3>
+      <ul class="features">
+        <li>
+          <h3>모래걸음 <small>신발</small></h3>
+          <p>모래 · 사암 위에서 이동 속도 +15%.</p>
+        </li>
+        <li>
+          <h3>모래막이 <small>투구</small></h3>
+          <p>새로 걸리는 구속 효과의 시간이 절반으로 줄어듭니다. 지네의 모래 분사 · 휘감기에도 듣습니다.</p>
+        </li>
+      </ul>
+    </section>
+
     <section id="gear" class="g-infinite" aria-labelledby="gear-h" data-embed>
       <h2 id="gear-h">무한 장비와 편의</h2>
       <ul class="features">
@@ -373,15 +470,20 @@
           <h3>엔드: 공허의 부적 · 공허 고래 · 강화 드래곤 <small>0.4.0 ~ 0.5.0</small></h3>
           <p>공허에서 살려 주는 공허의 부적, 업적과 칭호, 엔드 바깥 섬의 보스 공허 고래, 강화된 엔드 크리스탈로 부르는 강화 드래곤과 만물의 부적 각성.</p>
         </li>
-        <li class="now">
+        <li>
           <span class="ms">U2</span>
-          <h3>탈리 수첩 <small>0.7.0 베타 2 · 지금 플레이 중</small></h3>
-          <p>인벤토리 버튼과 단축키로 여는 모드 화면 "탈리 수첩"이 상자 메뉴를 대신합니다. 첫 접속 안내 · 가이드 · 크리에이티브 탭도 같이. 다음 업데이트에서는 이름 · 문구 · 색을 한 규칙으로 다듬습니다.</p>
+          <h3>탈리 수첩 <small>0.7.0</small></h3>
+          <p>인벤토리 버튼과 단축키로 여는 모드 화면 "탈리 수첩"이 상자 메뉴를 대신합니다. 첫 접속 안내 · 가이드 · 크리에이티브 탭도 같이.</p>
+        </li>
+        <li class="now">
+          <span class="ms">M5</span>
+          <h3>모래 지네와 탐험가의 부적 <small>0.8.0 베타 1 · 최신</small></h3>
+          <p>첫 바이옴 보스 모래 지네. 땅속을 다니다 솟구치고, 갑각 마디를 깨야 머리가 약해집니다. 처치하면 나오는 사막 핵으로 탐험가의 부적을 만들고, 지네 전용 인챈트 모래걸음 · 모래막이도 더했습니다. 이름 · 문구 · 색을 한 규칙으로 정리하고, 효과는 직접 그린 입자로 바꿨습니다.</p>
         </li>
         <li class="next">
-          <span class="ms">M5</span>
-          <h3>바이옴 보스와 탐험가의 부적 <small>개발 중</small></h3>
-          <p>첫 바이옴 보스는 사막의 모래 지네. 땅속을 다니다 솟구치고, 갑각 마디를 깨야 머리가 약해집니다. 바이옴 보스마다 나오는 기념 핵을 탐험가의 부적에 새깁니다.</p>
+          <span class="ms">다음</span>
+          <h3>모래 지네 다듬기 <small>다음 베타</small></h3>
+          <p>친구 서버에서 직접 싸워 본 의견으로 손맛 · 소리 · 여럿이 싸울 때를 다듬습니다.</p>
         </li>
       </ol>
     </section>
@@ -421,7 +523,7 @@
         <div><dt>소스</dt><dd>비공개 (받을 파일은 releases)</dd></div>
       </dl>
       <div class="tags" aria-label="태그">
-        <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>2인 서버</span><span>26SMP</span>
+        <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>바이옴 보스</span><span>2인 서버</span><span>26SMP</span>
       </div>
     </div>
 

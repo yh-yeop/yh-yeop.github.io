@@ -21,6 +21,7 @@
   --g-survival: #5fd6e0;
   --g-combat: #ef6060;
   --g-end: #c99cff;
+  --g-desert: #e0b062;    /* 바이옴 보스: 모래 */
   --g-infinite: var(--accent);
   /* 탈리 수첩 종이 */
   --paper-edge: #1a2430;
@@ -162,11 +163,15 @@ h2 small {
 .g-survival { --sec: var(--g-survival); }
 .g-combat { --sec: var(--g-combat); }
 .g-infinite { --sec: var(--g-infinite); }
-.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small {
+.g-desert { --sec: var(--g-desert); }
+.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small, .g-desert h2 small {
   color: color-mix(in srgb, var(--sec) 70%, var(--text)); border-color: color-mix(in srgb, var(--sec) 45%, transparent);
   background: color-mix(in srgb, var(--sec) 9%, var(--bg));
 }
 .sec-lede { margin: -4px 0 var(--s-5); color: var(--text-2); font-size: var(--fs-m); max-width: 46em; }
+/* 한 절 안의 작은 제목 (모래 지네: 부르기와 보상 · 전용 인챈트) */
+.sub-h { margin: var(--s-6) 0 var(--s-3); font-size: 1.125rem; line-height: 1.4; letter-spacing: -.01em; color: color-mix(in srgb, var(--sec, var(--accent)) 60%, var(--text)); }
+.sub-h + .sec-lede { margin-top: 0; }
 
 /* about */
 .prose { max-width: 44em; }
@@ -199,6 +204,9 @@ h2 small {
 .features h3 { margin: 0 0 4px; font-size: var(--fs-h3); line-height: 1.4; display: flex; align-items: center; gap: 8px; letter-spacing: -.01em; }
 .features p { margin: 0; color: var(--muted); font-size: var(--fs-m); }
 .features .px.inline { width: 24px; height: 24px; flex: none; }
+.features h3 small { font-size: var(--fs-xs); font-weight: 700; padding: 1px 8px; border-radius: 999px; color: var(--muted); border: 1px solid var(--line-2); }
+.g-desert .features h3 { color: #f2d9a6; }
+.fight { margin-top: var(--s-5); }
 .g-infinite .features h3 { color: #f6dca4; }
 /* 세 가지 원칙: 위에 금줄이 있는 세 칸 */
 .pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -227,6 +235,7 @@ h2 small {
 .charm h3 { margin: 0; font-size: var(--fs-h3); line-height: 1.45; letter-spacing: -.01em; }
 .charm .recipe { font-size: var(--fs-s); font-weight: 600; color: color-mix(in srgb, var(--gem) 48%, var(--text)); margin: 2px 0 6px; }
 .charm p { color: #d6cbb9; font-size: var(--fs-m); }
+.charms .charm.wide { grid-column: 1 / -1; }
 .charms .charm.all { grid-column: 1 / -1; border-color: rgba(232, 176, 74, .55); background: linear-gradient(135deg, color-mix(in srgb, var(--gem) 14%, var(--panel)) 0%, color-mix(in srgb, var(--accent) 6%, var(--panel)) 60%, var(--panel) 100%); }
 
 /* gallery: 첫 그림은 크게, 설명 그림은 두 칸, 수첩 화면은 세 칸 */
