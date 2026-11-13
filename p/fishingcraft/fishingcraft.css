@@ -73,6 +73,8 @@ h2 small { font-weight: 500; color: var(--muted); font-size: .875rem; margin-lef
 .loop b { display: block; color: var(--text); font-size: 1rem; }
 
 /* 낚싯대 사다리 */
+.lead-note { margin: 0 0 12px; color: var(--soft); font-size: .9375rem; }
+.subhead { margin: 28px 0 8px; font-size: 1rem; }
 .tiers { margin: 0; padding-left: 1.4em; }
 .tiers li { padding: 12px 0 12px 4px; border-top: 1px solid var(--line); }
 .tiers li::marker { color: var(--muted); }
@@ -144,7 +146,7 @@ p.small.note { margin-top: 12px; }
   .hero h1 { font-size: 1.625rem; }
   .cta .btn { flex: 1 1 100%; }
   .loop, .features, .install { grid-template-columns: minmax(0, 1fr); }
-  .roadmap td:first-child { white-space: normal; }
+  .roadmap td:first-child { white-space: normal; overflow-wrap: normal; }
   .col-side { display: flex; }
 }
 @media (prefers-reduced-motion: no-preference) {

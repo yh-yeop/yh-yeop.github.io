@@ -142,8 +142,8 @@ export const PROJECTS = [
     // 소스 비공개: 받을 파일은 releases 저장소의 Fishingcraft-v 릴리스 (0.1.0 베타 1부터)
     id: 'fishingcraft', cat: 'minecraft', title: '피싱크래프트', icon: 'assets/icons/fishingcraft.svg',
     repos: [], release: { repo: 'releases', prefix: 'Fishingcraft', pre: true }, closed: true, page: 'p/fishingcraft/', stage: 'beta',
-    desc: '바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모읍니다.',
-    points: ['기본 → 인챈트 → 수선 → 종결 낚싯대 사다리를 용암 · 공허 낚시까지', '물마다 다른 표, 도감 · 크기 기록 · 변이, 희귀한 입질엔 줄다리기', '주민은 거래 대신 낚시 의뢰, 자동 낚시 장치도 낚시로 만듦'],
+    desc: '바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모으며 낚시꾼 명인이 됩니다.',
+    points: ['기본 → 인챈트 → 수선 → 종결 낚싯대 사다리를 용암 · 공허 · 심연까지 7단계로', '낚시꾼 등급 1~6과 명인의 별, 낚싯대 부품 · 미끼 · 낚시 전용 인챈트', '물마다 다른 표와 물때 · 물고기 떼, 주민 낚시 의뢰 · 낚시 대회 · 생선 요리'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티'],
   },
   {
