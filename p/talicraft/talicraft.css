@@ -22,6 +22,7 @@
   --g-combat: #ef6060;
   --g-end: #c99cff;
   --g-desert: #e0b062;    /* 바이옴 보스: 모래 */
+  --warn: #ef6060;        /* 공허 사망 안내 (게임 안 RED) */
   --g-infinite: var(--accent);
   /* 탈리 수첩 종이 */
   --paper-edge: #1a2430;
@@ -164,7 +165,8 @@ h2 small {
 .g-combat { --sec: var(--g-combat); }
 .g-infinite { --sec: var(--g-infinite); }
 .g-desert { --sec: var(--g-desert); }
-.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small, .g-desert h2 small {
+.g-boss { --sec: var(--g-end); }
+.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small, .g-desert h2 small, .g-boss h2 small {
   color: color-mix(in srgb, var(--sec) 70%, var(--text)); border-color: color-mix(in srgb, var(--sec) 45%, transparent);
   background: color-mix(in srgb, var(--sec) 9%, var(--bg));
 }
@@ -247,6 +249,27 @@ h2 small {
 .charm .recipe { font-size: var(--fs-s); font-weight: 600; color: color-mix(in srgb, var(--gem) 48%, var(--text)); margin: 2px 0 6px; }
 .charm p { color: #d6cbb9; font-size: var(--fs-m); }
 .charms .charm.wide { grid-column: 1 / -1; }
+
+/* 보스 장비: 새 재료 줄 · 만드는 순서(핵심 순환 꼴 세 칸) · 수치 칸 · 공허 안내 · 앞으로 */
+.mats { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: var(--s-4) 0 var(--s-3); }
+.mats span {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 6px; border-radius: 999px;
+  background: var(--panel); border: 1px solid var(--line); font-size: var(--fs-s); font-weight: 700; color: var(--text-2);
+}
+.mats .px { width: 28px; height: 28px; flex: none; }
+.mats small { font-weight: 600; color: var(--muted); }
+.loop.craft { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0; }
+.loop.craft li:last-child { border-color: color-mix(in srgb, var(--g-end) 45%, var(--line)); background: linear-gradient(160deg, rgba(201, 156, 255, .07), var(--panel) 60%); }
+.stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.stats li { padding: 12px 14px; border-radius: var(--radius-s); background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+.stats b { display: block; font-size: 1.25rem; line-height: 1.3; letter-spacing: -.01em; font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--g-end) 55%, var(--text)); }
+.stats span { display: block; margin-top: 2px; font-size: var(--fs-s); line-height: 1.5; color: var(--muted); }
+.notice.warn {
+  margin: var(--s-5) 0 0; color: var(--text-2); font-size: var(--fs-m);
+  border-color: color-mix(in srgb, var(--warn) 50%, var(--line)); background: color-mix(in srgb, var(--warn) 7%, var(--bg-2));
+}
+.notice.warn b { display: block; margin-bottom: 2px; color: #ff8a80; }
+.principle.ahead { margin: var(--s-4) 0 0; }
 .charms .charm.all { grid-column: 1 / -1; border-color: rgba(232, 176, 74, .55); background: linear-gradient(135deg, color-mix(in srgb, var(--gem) 14%, var(--panel)) 0%, color-mix(in srgb, var(--accent) 6%, var(--panel)) 60%, var(--panel) 100%); }
 
 /* gallery: 첫 그림은 크게, 설명 그림은 두 칸, 수첩 화면은 세 칸 */
@@ -359,6 +382,7 @@ p.small { margin: 0 0 14px; }
   .loop li:nth-child(4)::before { display: none; }
   .gallery figure.nb { grid-column: span 3; }
   .gallery figure.nb:last-child { grid-column: 1 / -1; }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
   :root { --toc-h: 48px; }
@@ -375,6 +399,9 @@ p.small { margin: 0 0 14px; }
   .loop li + li::before { left: 50%; top: -15px; margin: 0 0 0 -6px; transform: rotate(135deg); }
   .loop li:nth-child(4)::before { display: block; }
   .loop .px { grid-row: 1 / span 2; grid-column: 1; margin: 0; }
+  .loop.craft { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats li:last-child { grid-column: 1 / -1; }
   .loop b, .loop span { grid-column: 2; }
   .charms .charm { grid-template-columns: 56px minmax(0, 1fr); column-gap: 14px; }
   .charm .px { width: 56px; height: 56px; padding: 4px; }

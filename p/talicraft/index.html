@@ -55,6 +55,7 @@
     <a href="#charms">생존 부적</a>
     <a href="#combat">전투 부적</a>
     <a href="#centipede">모래 지네</a>
+    <a href="#bossgear">보스 장비</a>
     <a href="#gear">무한 장비</a>
     <a href="#log">개발 기록</a>
     <a href="#join">플레이하려면</a>
@@ -78,7 +79,7 @@
         <li><img class="px" src="../../assets/talicraft/items/saturation_shard.png" alt="" width="40" height="40"><b>조각</b><span>재료 9개 → 조각 1개</span></li>
         <li><img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="40" height="40"><b>부적 · 무한 도구</b><span>조각 9개 → 잃지 않는 영구 편의</span></li>
         <li><img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="40" height="40"><b>세트 · 합성</b><span>같이 지니면 세트 효과, 넷을 합치면 만물의 부적</span></li>
-        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤, 첫 바이옴 보스 모래 지네</span></li>
+        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤 · 모래 지네, 보스마다 보스 장비 하나</span></li>
       </ol>
     </section>
 
@@ -329,6 +330,100 @@
       </ul>
     </section>
 
+    <section id="bossgear" class="g-boss" aria-labelledby="bossgear-h" data-embed>
+      <h2 id="bossgear-h">보스 장비 <small>보스 4종 · 0.9.0</small></h2>
+      <p class="sec-lede">보스는 장비를 직접 떨구지 않고, 처치에 참여한 사람마다 <b>전용 재료</b>를 줍니다. 그 재료로 지금 쓰는 네더라이트 장비(공명의 활은 활)를 보스 장비로 올립니다. 0.9.0부터 공허 고래 심장과 드래곤 알도 참여자마다 하나씩 받습니다.</p>
+      <div class="gallery">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-bossgear-stands" aria-label="크게 보기: 보스 장비를 입힌 갑옷 거치대 둘">
+            <img src="../../assets/talicraft/bossgear-stands-t.webp" srcset="../../assets/talicraft/bossgear-stands-t.webp 400w, ../../assets/talicraft/bossgear-stands.webp 1280w" sizes="(max-width: 920px) 100vw, 780px" alt="갑옷 거치대 둘이 용의 흉갑과 갑각 각반을 입고 있다. 왼쪽은 금 장식 무늬를 겹치고 공명의 활을, 오른쪽은 시듦의 검을 들었다" width="1280" height="720" loading="lazy">
+          </button>
+          <figcaption>보랏빛 용의 흉갑과 모래빛 갑각 각반. 왼쪽은 금 장식 무늬를 겹치고 공명의 활을, 오른쪽은 시듦의 검을 들었습니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-bossgear-player" aria-label="크게 보기: 보스 장비를 갖춘 플레이어">
+            <img src="../../assets/talicraft/bossgear-player-t.webp" srcset="../../assets/talicraft/bossgear-player-t.webp 400w, ../../assets/talicraft/bossgear-player.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="용의 흉갑과 갑각 각반을 입고 시듦의 검을 든 플레이어 앞모습" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>용의 흉갑 · 갑각 각반을 입고 시듦의 검을 든 모습.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-bossgear-tooltip" aria-label="크게 보기: 시듦의 검 툴팁">
+            <img src="../../assets/talicraft/bossgear-tooltip-t.webp" srcset="../../assets/talicraft/bossgear-tooltip-t.webp 400w, ../../assets/talicraft/bossgear-tooltip.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="시듦의 검 툴팁: 공격 피해 9, 시듦 낙인 효과 한 줄, 공허 사망 안내가 붉은 글씨로" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>툴팁에 고유 효과 한 줄과 공허 사망 안내가 붙습니다.</figcaption>
+        </figure>
+      </div>
+      <p class="shot-note">보스 장비 세 장은 0.9.0 베타 1의 시험 화면에서 화면 표시(단축바 · 손 · 채팅)를 걷어 내고 가운데를 잘라 키운 것입니다.</p>
+
+      <div class="lb" popover id="lb-bossgear-stands">
+        <img src="../../assets/talicraft/bossgear-stands.webp" alt="갑옷 거치대 둘이 용의 흉갑과 갑각 각반을 입고 있다. 왼쪽은 금 장식 무늬를 겹치고 공명의 활을, 오른쪽은 시듦의 검을 들었다" width="1280" height="720" loading="lazy">
+        <p>보스 장비 넷. 장식 무늬도 바탕 네더라이트 장비처럼 겹쳐집니다 (왼쪽).</p>
+        <button class="lb-close" type="button" popovertarget="lb-bossgear-stands" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-bossgear-player">
+        <img src="../../assets/talicraft/bossgear-player.webp" alt="용의 흉갑과 갑각 각반을 입고 시듦의 검을 든 플레이어 앞모습" width="1280" height="720" loading="lazy">
+        <p>고유 효과는 검은 주손에 들 때, 갑옷은 입었을 때 켜집니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-bossgear-player" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-bossgear-tooltip">
+        <img src="../../assets/talicraft/bossgear-tooltip.webp" alt="시듦의 검 툴팁: 공격 피해 9, 시듦 낙인 효과 한 줄, 공허 사망 안내가 붉은 글씨로" width="1280" height="720" loading="lazy">
+        <p>시듦의 검 툴팁. 효과 수치는 서버 설정값을 그대로 보여 줍니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-bossgear-tooltip" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+
+      <h3 class="sub-h">보스마다 장비 하나</h3>
+      <ul class="features charms gear-list">
+        <li class="charm gold" style="--gem:#cbbfae">
+          <img class="px" src="../../assets/talicraft/items/withering_sword.png" alt="" width="48" height="48">
+          <h3>시듦의 검</h3>
+          <p class="recipe">강화 위더 · 위더 척추 · 바탕 네더라이트 검</p>
+          <p>시듦 낙인: 근접 적중 대상의 회복 -40% (플레이어 -20%) 3초</p>
+        </li>
+        <li class="charm gold" style="--gem:#5fe0d0">
+          <img class="px" src="../../assets/talicraft/items/resonant_bow.png" alt="" width="48" height="48">
+          <h3>공명의 활</h3>
+          <p class="recipe">공허 고래 · 공허 고래 심장 · 바탕 활</p>
+          <p>하늘 사냥: 꽉 당긴 화살이 공중의 몹에게 피해 +20% (플레이어 대상 제외)</p>
+        </li>
+        <li class="charm gold" style="--gem:#b45cf0">
+          <img class="px" src="../../assets/talicraft/items/dragon_chestplate.png" alt="" width="48" height="48">
+          <h3>용의 흉갑</h3>
+          <p class="recipe">강화 드래곤 · 드래곤 알 · 바탕 네더라이트 흉갑</p>
+          <p>용의 기세: 체력이 40% 아래로 내려가면 흡수 2칸 5초 · 주위 적대 몹 · 결투 상대 밀쳐냄, 재사용 대기 90초 (죽는 피해에는 발동 안 함)</p>
+        </li>
+        <li class="charm gold" style="--gem:#e8a050">
+          <img class="px" src="../../assets/talicraft/items/carapace_leggings.png" alt="" width="48" height="48">
+          <h3>갑각 각반</h3>
+          <p class="recipe">모래 지네 · 지네 갑각 · 바탕 네더라이트 각반</p>
+          <p>마디 갑각: 받는 투사체 피해 -15%</p>
+        </li>
+      </ul>
+      <p class="mats" aria-label="새 재료">
+        <span><img class="px" src="../../assets/talicraft/items/wither_spine.png" alt="" width="32" height="32">위더 척추 <small>새 재료 · 강화 위더</small></span>
+        <span><img class="px" src="../../assets/talicraft/items/void_whale_heart.png" alt="" width="32" height="32">공허 고래 심장 <small>참여자마다 1개로</small></span>
+        <span><img class="px" src="../../assets/talicraft/items/centipede_carapace.png" alt="" width="32" height="32">지네 갑각 <small>새 재료 · 모래 지네</small></span>
+      </p>
+      <p class="sec-lede">고유 효과는 검은 주손에 들 때, 활은 어느 손이든 들 때, 갑옷은 입었을 때 켜집니다.</p>
+
+      <h3 class="sub-h">만드는 법</h3>
+      <ol class="loop craft" aria-label="보스 장비 만드는 순서">
+        <li><img class="px" src="../../assets/talicraft/items/withering_sword_smithing_template.png" alt="" width="40" height="40"><b>보스 강화 견본</b><span>작업대 가운데 네더라이트 강화 견본, 위 · 왼쪽 · 오른쪽에 전용 재료 3개, 아래에 네더라이트 주괴</span></li>
+        <li><img class="px" src="../../assets/talicraft/items/dragon_chestplate.png" alt="" width="40" height="40"><b>대장장이 작업대</b><span>견본 + 네더라이트 장비(공명의 활은 활) + 전용 재료 1개. 장비 하나에 재료 4개</span></li>
+        <li><img class="px" src="../../assets/talicraft/items/upgrade_ticket.png" alt="" width="40" height="40"><b>그대로 이어짐</b><span>인챈트 · 재가공 접두어 · 업글권 불괴(보스 갑옷만) · 모루 이름 · 장식 무늬</span></li>
+      </ol>
+
+      <h3 class="sub-h">수치</h3>
+      <ul class="stats">
+        <li><b>+1</b><span>검 공격력 (네더라이트 8 → 9)</span></li>
+        <li><b>+1</b><span>갑옷 방어 강도, 부위마다 (방어는 그대로)</span></li>
+        <li><b>+0.25</b><span>공명의 활 화살 기본 피해</span></li>
+        <li><b>×1.25</b><span>내구도</span></li>
+        <li><b>불 · 폭발</b><span>불 · 용암 · 폭발에 사라지지 않음</span></li>
+      </ul>
+      <p class="notice warn"><b>공허 사망 보험 없음</b> 보스 장비도 사망 보험 대상입니다. 다만 공허에서 죽으면 보험이 작동하지 않는 규칙은 보스 장비도 그대로라, 엔드에서 쓸 장비에는 공허 회수 인챈트를 권합니다. 툴팁과 수첩에도 이 안내가 붙습니다.</p>
+      <p class="principle ahead"><b>앞으로</b> 바이옴 보스가 늘 때마다 장비가 하나씩 더해집니다. 다음은 정글 보스 덩굴 수호목의 뿌리 신발, 그다음은 버섯 들판 보스 포자 모체의 균사 투구입니다.</p>
+    </section>
+
     <section id="gear" class="g-infinite" aria-labelledby="gear-h" data-embed>
       <h2 id="gear-h">무한 장비와 편의</h2>
       <ul class="features">
@@ -358,7 +453,7 @@
         </li>
         <li>
           <h3>사망 보험</h3>
-          <p>토템 64개로 한 번 가입하면, 죽어도 부적 · 조각 · 무한 장비가 부활할 때 제자리로 돌아옵니다.</p>
+          <p>토템 64개로 한 번 가입하면, 죽어도 부적 · 조각 · 무한 장비 · 보스 장비가 부활할 때 제자리로 돌아옵니다. 공허에서 죽으면 작동하지 않습니다.</p>
         </li>
       </ul>
     </section>
@@ -401,15 +496,20 @@
           <h3>탈리 수첩 <small>0.7.0</small></h3>
           <p>인벤토리 버튼과 단축키로 여는 모드 화면 "탈리 수첩"이 상자 메뉴를 대신합니다. 첫 접속 안내 · 가이드 · 크리에이티브 탭도 같이.</p>
         </li>
-        <li class="now">
+        <li>
           <span class="ms">M5</span>
-          <h3>모래 지네와 탐험가의 부적 <small>0.8.0 베타 3 · 최신</small></h3>
+          <h3>모래 지네와 탐험가의 부적 <small>0.8.0 베타 3</small></h3>
           <p>첫 바이옴 보스 모래 지네. 땅속을 다니다 솟구치고, 갑각 마디를 깨야 머리가 약해집니다. 처치하면 나오는 사막 핵으로 탐험가의 부적을 만들고, 지네 전용 인챈트 모래걸음 · 강인함도 더했습니다. 이름 · 문구 · 색을 한 규칙으로 정리하고, 효과는 직접 그린 입자로 바꿨습니다.</p>
+        </li>
+        <li class="now">
+          <span class="ms">M6a</span>
+          <h3>보스 엔드 장비 <small>0.9.0 베타 1 · 최신</small></h3>
+          <p>보스 넷이 참여자마다 전용 재료를 주고, 그 재료로 네더라이트 장비를 시듦의 검 · 공명의 활 · 용의 흉갑 · 갑각 각반으로 올립니다. 장비마다 고유 효과가 하나씩 있고, 인챈트 · 재가공 접두어는 그대로 이어집니다.</p>
         </li>
         <li class="next">
           <span class="ms">다음</span>
-          <h3>모래 지네 다듬기 <small>다음 베타</small></h3>
-          <p>친구 서버에서 직접 싸워 본 의견으로 손맛 · 소리 · 여럿이 싸울 때를 다듬습니다.</p>
+          <h3>M6b 덩굴 수호목(정글) · 뿌리 신발 <small>다음 베타</small></h3>
+          <p>두 번째 바이옴 보스는 정글의 고정형 보스 덩굴 수호목. 그 재료 수호목 심재로 뿌리 신발을 만듭니다.</p>
         </li>
       </ol>
     </section>
@@ -424,7 +524,7 @@
           <li>친구 서버라면 운영자에게 닉네임을 알려 화이트리스트에 오른 뒤, 따로 받은 주소로 접속합니다. 직접 서버를 열려면 서버용 <code>talicraft-*.jar</code>를 Fabric 서버의 <code>mods</code>에 넣습니다 (Fabric API 필요).</li>
           <li>새 버전이 나오면: Modrinth App이라면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있어요. 새 모드팩을 다시 가져오거나, 인스턴스 <code>mods</code> 폴더의 <code>talicraft.jar</code>만 새 것으로 바꿔도 됩니다. 서버와 버전이 다르면 접속할 때 알려 줍니다.</li>
         </ol>
-        <p class="small">들어가면 평소처럼 야생입니다. 인벤토리의 탈리 버튼이나 채팅의 <code>/inf</code>로 탈리 수첩이 열리고, 부적 탭에서 계열마다 다음에 모을 재료가 보입니다. 초중반에는 재가공 · 모래 지네 · 탐험가의 부적이 목표가 됩니다.</p>
+        <p class="small">들어가면 평소처럼 야생입니다. 인벤토리의 탈리 버튼이나 채팅의 <code>/inf</code>로 탈리 수첩이 열리고, 부적 탭에서 계열마다 다음에 모을 재료가 보입니다. 초중반에는 재가공 · 모래 지네 · 탐험가의 부적이, 엔드까지 가면 보스 장비가 목표가 됩니다.</p>
       </div>
     </section>
   </div>
@@ -449,7 +549,7 @@
         <div><dt>소스</dt><dd>비공개 (받을 파일은 releases)</dd></div>
       </dl>
       <div class="tags" aria-label="태그">
-        <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>바이옴 보스</span><span>2인 서버</span><span>26SMP</span>
+        <span>부적</span><span>영구 편의</span><span>바닐라 야생</span><span>겉날개</span><span>바이옴 보스</span><span>보스 장비</span><span>2인 서버</span><span>26SMP</span>
       </div>
     </div>
 
