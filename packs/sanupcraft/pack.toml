@@ -1,12 +1,12 @@
 name = "산업크래프트"
 author = "yh-yeop"
-version = "0.5.0-beta.7"
+version = "0.5.0-beta.8"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "180b6d225c35b51c18ac5ba9785008f00c8d72c7b258e1ff3962fb984492222d"
+hash = "eee534af782d3d5fad10a6f76acde5234b51787a58372432235e9cc2fd7fa0c3"
 
 [versions]
 minecraft = "26.3"
