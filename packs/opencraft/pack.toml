@@ -1,12 +1,12 @@
 name = "오픈크래프트"
 author = "yh-yeop"
-version = "0.1.0-beta.2"
+version = "0.3.0-beta.1"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "324971e41bd035bbbf63d11fb5924afb046ea1923fb0725f92905f68b3b04a43"
+hash = "c296ac9f15b98e028cbe8d2baed52e068d052f7c32dcafe180d64ebdf0e40eea"
 
 [versions]
 minecraft = "26.3"
