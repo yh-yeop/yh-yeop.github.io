@@ -14,7 +14,9 @@ const label = v => v.replace(/-beta(?:\.(\d+))?$/, (_, n) => ` 베타${n ? ` ${n
 const sha256 = a => (/^sha256:([0-9a-f]{64})$/i.exec(a?.digest || '') || [])[1]?.toLowerCase() || null;
 
 async function loadRelease() {
-  const rel = (await releasesOf(REPO)).find(r => !r.draft && TAG.test(r.tag_name));
+  // API 목록 순서가 공개 순서와 다를 때가 있어(베타 9 가 맨 앞에 온 적 있음) 공개 날짜가 가장 늦은 것을 고른다
+  const rel = (await releasesOf(REPO)).filter(r => !r.draft && TAG.test(r.tag_name))
+    .sort((a, b) => Date.parse(b.published_at || b.created_at) - Date.parse(a.published_at || a.created_at))[0];
   if (!rel) throw new Error('no release');
   const ver = label(rel.tag_name.replace(TAG, ''));
   const pack = rel.assets.find(a => a.name.endsWith('.mrpack'));
