@@ -172,6 +172,17 @@ h2 small {
 /* 한 절 안의 작은 제목 (모래 지네: 부르기와 보상 · 전용 인챈트) */
 .sub-h { margin: var(--s-6) 0 var(--s-3); font-size: 1.125rem; line-height: 1.4; letter-spacing: -.01em; color: color-mix(in srgb, var(--sec, var(--accent)) 60%, var(--text)); }
 .sub-h + .sec-lede { margin-top: 0; }
+/* 부적 원칙 (생존 부적 절 머리) · 없어진 것 안내 */
+.principle {
+  margin: -4px 0 var(--s-4); padding: 10px 14px; max-width: 46em; border-left: 3px solid var(--sec, var(--accent));
+  border-radius: 0 var(--radius-s) var(--radius-s) 0; background: color-mix(in srgb, var(--sec, var(--accent)) 7%, var(--bg-2));
+  color: var(--text-2); font-size: var(--fs-m);
+}
+.principle b { display: block; margin-bottom: 2px; color: color-mix(in srgb, var(--sec, var(--accent)) 70%, var(--text)); }
+.notice {
+  margin: calc(-1 * var(--s-3)) 0 var(--s-4); padding: 10px 14px; max-width: 46em; border-radius: var(--radius-s); border: 1px solid var(--line);
+  background: var(--bg-2); font-size: var(--fs-s); color: var(--muted);
+}
 
 /* about */
 .prose { max-width: 44em; }
@@ -283,6 +294,7 @@ h2 small {
 .timeline h3 { margin: 2px 0 2px; font-size: var(--fs-h3); line-height: 1.45; letter-spacing: -.01em; }
 .timeline h3 small { display: inline-block; font-size: var(--fs-xs); font-weight: 700; margin-left: 6px; padding: 1px 8px; border-radius: 999px; vertical-align: 2px; color: var(--muted); border: 1px solid var(--line-2); }
 .timeline p { margin: 0; color: var(--muted); font-size: var(--fs-m); max-width: 46em; }
+.timeline .later { display: block; margin-top: 4px; font-size: var(--fs-s); color: color-mix(in srgb, var(--accent) 65%, var(--muted)); }
 .timeline .now h3 { color: #fff3d6; }
 .timeline .now .ms { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); box-shadow: 0 0 0 4px rgba(232, 176, 74, .18); }
 .timeline .now h3 small { border-color: transparent; background: rgba(232, 176, 74, .16); color: var(--accent); }
