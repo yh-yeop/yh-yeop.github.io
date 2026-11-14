@@ -47,7 +47,7 @@ metafile = true
 
 [[files]]
 file = "mods/fishingcraft.pw.toml"
-hash = "58ec406e4228f45f9fef492c043a06d7c1e727ec4136545cfba7fa275d6ac591"
+hash = "0755c27a3b07b9e62373b7df502cbb78f8188147ea6b55fd944f56050ddcd589"
 metafile = true
 
 [[files]]
