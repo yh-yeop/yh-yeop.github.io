@@ -56,6 +56,7 @@
     <a href="#combat">전투 부적</a>
     <a href="#centipede">모래 지네</a>
     <a href="#rootwood">덩굴 수호목</a>
+    <a href="#spore-mother">포자 모체</a>
     <a href="#bossgear">보스 장비</a>
     <a href="#gear">무한 장비</a>
     <a href="#log">개발 기록</a>
@@ -80,7 +81,7 @@
         <li><img class="px" src="../../assets/talicraft/items/saturation_shard.png" alt="" width="40" height="40"><b>조각</b><span>재료 9개 → 조각 1개</span></li>
         <li><img class="px" src="../../assets/talicraft/items/saturation_amulet.png" alt="" width="40" height="40"><b>부적 · 무한 도구</b><span>조각 9개 → 잃지 않는 영구 편의</span></li>
         <li><img class="px" src="../../assets/talicraft/items/all_amulet.png" alt="" width="40" height="40"><b>세트 · 합성</b><span>같이 지니면 세트 효과, 넷을 합치면 만물의 부적</span></li>
-        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤 · 모래 지네 · 덩굴 수호목, 보스마다 보스 장비 하나</span></li>
+        <li class="next"><b>보스와 다음 목표</b><span>강화 위더 · 공허 고래 · 강화 드래곤 · 모래 지네 · 덩굴 수호목 · 포자 모체, 보스마다 보스 장비 하나</span></li>
       </ol>
     </section>
 
@@ -313,8 +314,8 @@
         <li class="charm gold wide" style="--gem:#f5c044">
           <img class="px" src="../../assets/talicraft/items/explorer_amulet.png" alt="" width="48" height="48">
           <h3>탐험가의 부적</h3>
-          <p class="recipe">작업대 가운데 나침반 · 네 변 금 주괴 · 네 귀퉁이 중 한 곳에 사막 핵이나 정글 핵</p>
-          <p>넣은 핵이 새겨진 채로 나옵니다. 사막 핵을 새기면 어느 바이옴에서든 이동 속도 +8%, 정글 핵은 낙하 안전 거리 +4칸(<a href="#rootwood">덩굴 수호목</a>). 핵은 수첩 부적 탭의 [새기기] 단추(두 번 눌러 실행)나, 부적을 다른 손에 들고 핵을 써서 새깁니다. 바이옴 보스마다 핵이 하나씩 늘어나고, 만물의 부적과는 따로 씁니다.</p>
+          <p class="recipe">작업대 가운데 나침반 · 네 변 금 주괴 · 네 귀퉁이 중 한 곳에 사막 핵 · 정글 핵 · 버섯 들판 핵 중 하나</p>
+          <p>넣은 핵이 새겨진 채로 나옵니다. 사막 핵을 새기면 어느 바이옴에서든 이동 속도 +8%, 정글 핵은 낙하 안전 거리 +4칸(<a href="#rootwood">덩굴 수호목</a>), 버섯 들판 핵은 몹이 가까이 있어도 잠(<a href="#spore-mother">포자 모체</a>). 핵은 수첩 부적 탭의 [새기기] 단추(두 번 눌러 실행)나, 부적을 다른 손에 들고 핵을 써서 새깁니다. 바이옴 보스마다 핵이 하나씩 늘어나고, 만물의 부적과는 따로 씁니다.</p>
         </li>
       </ul>
 
@@ -326,7 +327,7 @@
         </li>
         <li>
           <h3>강인함 <small>투구</small></h3>
-          <p>새로 걸리는 해로운 효과(구속 · 독 · 위더 등)의 시간이 35% 줄어듭니다. 무한 지속 효과와 직접 마신 물약은 그대로입니다.</p>
+          <p>새로 걸리는 해로운 효과(구속 · 독 · 위더 등)의 시간이 35% 줄어듭니다. 무한 지속 효과와 직접 마신 물약은 그대로이고, 0.11.0부터 먹은 음식 · 수상한 스튜의 효과도 줄이지 않습니다.</p>
         </li>
       </ul>
     </section>
@@ -383,7 +384,7 @@
         </li>
         <li>
           <h3>멀리 · 높이 숨어도</h3>
-          <p>높은 곳이나 먼 곳에 있으면 가시 씨앗이 포물선으로 날아옵니다. 제단에서 24칸 밖에서 준 피해는 들지 않고, 지표보다 5칸 넘게 높은 곳에서 친 피해와 폭발은 4분의 1만 듭니다.</p>
+          <p>높은 곳이나 먼 곳에 있으면 가시 씨앗이 포물선으로 날아옵니다. 제단에서 24칸 밖에서 준 피해는 들지 않고, 폭발과 패턴 높이 띠(지표 −16 ~ +4칸) 밖에서 친 피해는 4분의 1만 듭니다. 0.11.0부터 카펫 · 반 블록으로 띠를 비껴가는 틈도 막았습니다.</p>
         </li>
         <li>
           <h3>2페이즈</h3>
@@ -428,8 +429,105 @@
       <p class="notice">화살 효과는 하나만: 옭매기 · 시듦의 화살 · 공중 부양 화살은 0.10.0부터 서로 같이 붙지 않습니다. 이미 둘이 붙은 활은 그대로입니다.</p>
     </section>
 
+    <section id="spore-mother" class="g-mushroom" aria-labelledby="spore-mother-h" data-embed>
+      <h2 id="spore-mother-h">포자 모체 <small>버섯 들판 보스 · 0.11.0</small></h2>
+      <p class="sec-lede">버섯 들판에 균사체를 놓고 네 방향에 버섯 줄기 블록을 붙인 뒤, 균사체 위에 붉은 버섯을 심은 화분을 둡니다. 화분에 포자 미끼를 쓰면 땅이 울리며 포자 모체가 깨어납니다. 둘레 12칸 지표의 60% 이상이 땅이어야 하고(물 · 큰 버섯은 건너뜀), 제단 위 5×5 · 높이 6칸이 비어 있어야 합니다.</p>
+      <div class="gallery">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-spore-mother-front" aria-label="크게 보기: 포자 모체 정면">
+            <img src="../../assets/talicraft/spore-mother-front-t.webp" srcset="../../assets/talicraft/spore-mother-front-t.webp 400w, ../../assets/talicraft/spore-mother-front.webp 960w" sizes="(max-width: 920px) 100vw, 780px" alt="균사체 땅 위의 포자 모체 정면: 흰 반점이 박힌 검붉은 갓, 연두빛 주름, 연두색 눈 셋이 박힌 회색 줄기, 땅으로 뻗은 뿌리 여덟 갈래" width="960" height="540" loading="lazy">
+          </button>
+          <figcaption>움직이지 않는 거대한 버섯. 체력이 20%씩 깎일 때마다 갈라져 분열체를 내보냅니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-spore-mother-shielded" aria-label="크게 보기: 포자막">
+            <img src="../../assets/talicraft/spore-mother-shielded-t.webp" srcset="../../assets/talicraft/spore-mother-shielded-t.webp 400w, ../../assets/talicraft/spore-mother-shielded.webp 960w" sizes="(max-width: 600px) 100vw, 380px" alt="빛나는 포자막에 덮인 포자 모체와, 왼쪽 아래 땅에 떨어진 분열체 둘이 포자를 흩뿌리는 모습" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>분열체가 살아 있는 동안 모체는 포자막에 덮여 피해를 받지 않습니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-spore-mother-merge" aria-label="크게 보기: 모체로 기어 오는 분열체">
+            <img src="../../assets/talicraft/spore-mother-merge-t.webp" srcset="../../assets/talicraft/spore-mother-merge-t.webp 400w, ../../assets/talicraft/spore-mother-merge.webp 960w" sizes="(max-width: 600px) 100vw, 380px" alt="균사체 땅 위의 분열체 넷이 굴러 오고, 뿌리내리고, 기어 가고, 모체 밑동에 닿아 합쳐지는 모습. 기어 가는 분열체에서 모체까지 균사 실이 이어진다" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>굴러 온 분열체는 뿌리내렸다가 모체로 기어 옵니다. 모체와 이어진 균사 실이 보이면 닿기 전에 끊으세요.</figcaption>
+        </figure>
+      </div>
+      <p class="shot-note">포자 모체 세 장은 0.11.0 베타 1의 시험 화면에서 화면 표시(보스바 · 단축바 · 손 · 조준점)를 걷어 내고 잘라 키운 것입니다.</p>
+
+      <div class="lb" popover id="lb-spore-mother-front">
+        <img src="../../assets/talicraft/spore-mother-front.webp" alt="균사체 땅 위의 포자 모체 정면: 흰 반점이 박힌 검붉은 갓, 연두빛 주름, 연두색 눈 셋이 박힌 회색 줄기, 땅으로 뻗은 뿌리 여덟 갈래" width="960" height="540" loading="lazy">
+        <p>포자 모체. 체력 720(근처에 2명 이상이면 1000)이고, 혼자면 3~4분쯤 걸립니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-spore-mother-front" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-spore-mother-shielded">
+        <img src="../../assets/talicraft/spore-mother-shielded.webp" alt="빛나는 포자막에 덮인 포자 모체와, 왼쪽 아래 땅에 떨어진 분열체 둘이 포자를 흩뿌리는 모습" width="960" height="540" loading="lazy">
+        <p>포자막. 분열체가 모두 사라지면(끊거나 합쳐지면) 걷힙니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-spore-mother-shielded" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-spore-mother-merge">
+        <img src="../../assets/talicraft/spore-mother-merge.webp" alt="균사체 땅 위의 분열체 넷이 굴러 오고, 뿌리내리고, 기어 가고, 모체 밑동에 닿아 합쳐지는 모습. 기어 가는 분열체에서 모체까지 균사 실이 이어진다" width="960" height="540" loading="lazy">
+        <p>18초 안에 끊지 못하거나 모체에 닿은 분열체는 합쳐져 모체를 최대 체력 8%만큼 회복시킵니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-spore-mother-merge" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+
+      <ul class="features fight">
+        <li>
+          <h3>분열과 포자막</h3>
+          <p>체력 80 · 60 · 40 · 20%에서 모체가 <b>갈라져</b> 분열체를 굴려 보냅니다 (처음엔 2개, 2페이즈엔 3개). 분열체가 하나라도 살아 있으면 모체는 포자막에 덮여 피해를 받지 않습니다. 보스바에 남은 분열체 수와 "포자막"이 붙습니다.</p>
+        </li>
+        <li>
+          <h3>끊을까, 합쳐질까</h3>
+          <p>분열체는 뿌리내렸다가 모체로 기어 옵니다. 하나 끊을 때마다 모체가 최대 체력 3%를 잃고, 18초 안에 끊지 못하거나 모체에 닿으면 합쳐져 8%를 회복합니다 (한 싸움에 40%까지). 분열체는 밀리지 않고 물에 뜹니다.</p>
+        </li>
+        <li>
+          <h3>포자 네 가지</h3>
+          <p>포자 폭발(밀침 · 독)과 균사 덫(구속 III · 장판)은 블록을 뚫고, 포자 포격은 포물선 3발로 높거나 먼 사람을 먼저 노립니다(지붕과 방패가 막음). 포자 장막은 5초 동안 어둠을 거는데, 큰 버섯 줄기 뒤로 숨으면 피합니다. 모두 미리 예고가 보입니다.</p>
+        </li>
+        <li>
+          <h3>장판과 숨을 곳</h3>
+          <p>장판 위에 서 있으면 1초마다 피해 1과 구속 I, 분열체는 장판 위에서 1.5배 빠릅니다. 제단에서 24칸 밖에서 준 피해는 들지 않고, 폭발과 패턴 높이 띠(지표 −16 ~ +4칸) 밖에서 친 피해는 4분의 1만 듭니다.</p>
+        </li>
+      </ul>
+
+      <h3 class="sub-h">부르기와 보상</h3>
+      <p class="sec-lede">처치에 참여한 사람마다 포자낭 1개 · 버섯 들판 핵 1개 · 포자 모체 전용 인챈트 책 1권과 칭호 "포자 사냥꾼"을 받습니다 (게임 규칙 <code>doMobLoot</code>와 상관없음). 포자 모체 갓 · 발광 먹물 주머니 · 버섯은 제단 위에 떨어집니다. 잡은 뒤 20분 동안은 같은 차원 32칸 안의 제단에서 다시 부를 수 없고, 참여자가 모두 30초 넘게 떠나면 모체는 땅속으로 돌아갑니다 (미끼는 돌려받지 못함).</p>
+      <ul class="features charms">
+        <li class="charm iron" style="--gem:#cfc3da">
+          <img class="px" src="../../assets/talicraft/items/spore_bait.png" alt="" width="48" height="48">
+          <h3>포자 미끼</h3>
+          <p class="recipe">가운데 발효된 거미 눈 · 네 변 균사 덩이 · 네 귀퉁이 붉은 · 갈색 버섯 블록</p>
+          <p>제단 가운데 화분의 붉은 버섯에 쓰면 포자 모체가 깨어납니다. 균사 덩이는 균사체 9개로 만듭니다.</p>
+        </li>
+        <li class="charm iron" style="--gem:#dc4a62">
+          <img class="px" src="../../assets/talicraft/items/mushroom_core.png" alt="" width="48" height="48">
+          <h3>버섯 들판 핵</h3>
+          <p class="recipe">포자 모체 처치에 참여하면 1개</p>
+          <p>탐험가의 부적에 새기면 몹이 가까이 있어도 잘 수 있습니다. 낮에는 못 자고 다른 차원에서는 침대가 터지는 바닐라 규칙은 그대로입니다. 탐험가의 부적을 만드는 재료로도 씁니다.</p>
+        </li>
+        <li class="charm gold wide" style="--gem:#f5c044">
+          <img class="px" src="../../assets/talicraft/items/explorer_amulet.png" alt="" width="48" height="48">
+          <h3>탐험가의 부적 · 핵 셋</h3>
+          <p class="recipe">사막 핵 · 정글 핵 · 버섯 들판 핵</p>
+          <p>사막 핵은 이동 속도 +8%, 정글 핵은 낙하 안전 거리 +4칸, 버섯 들판 핵은 몹 곁에서 잠. 새기기 · 합치기는 그대로이고, 부적을 여럿 지니면 새긴 핵이 가장 많은 부적 하나의 효과만 납니다.</p>
+        </li>
+      </ul>
+
+      <h3 class="sub-h">포자 모체 전용 인챈트</h3>
+      <ul class="features">
+        <li>
+          <h3>되심기 <small>괭이 · 네더라이트 곡괭이</small></h3>
+          <p>다 자란 작물을 베면 드롭에서 씨앗 1개를 빼 그 자리에 다시 심습니다. 드롭에 씨앗이 없으면 가방에서 1개를 쓰고, 그것도 없으면 심지 않습니다. 웅크리면 꺼지고 횃불꽃은 빠집니다. 곡괭이는 만능 도구로 합쳤을 때 쓰이고, 합칠 때 가지치기와 함께 이어집니다.</p>
+        </li>
+        <li>
+          <h3>포자 터뜨림 <small>검 · 도끼</small></h3>
+          <p>몹을 처치하면 반지름 3칸 안 적대 몹에 약화 I 4초와 피해 2. 연쇄되지 않고 2초에 한 번, 보스와 보스가 부른 부하는 빠집니다. 흡혈과 같이 붙습니다.</p>
+        </li>
+      </ul>
+      <p class="notice">보스 공통 (0.11.0): 2페이즈 상태를 저장해, 다시 불러와도 2페이즈 공지 · 무적이 되풀이되지 않습니다. 쓰러지는 중에 저장돼도 참여자 보상이 나가고, 쓰러진 보스가 되살아나지 않습니다.</p>
+    </section>
+
     <section id="bossgear" class="g-boss" aria-labelledby="bossgear-h" data-embed>
-      <h2 id="bossgear-h">보스 장비 <small>보스 5종 · 0.10.0</small></h2>
+      <h2 id="bossgear-h">보스 장비 <small>보스 6종 · 0.11.0</small></h2>
       <p class="sec-lede">보스는 장비를 직접 떨구지 않고, 처치에 참여한 사람마다 <b>전용 재료</b>를 줍니다. 그 재료로 지금 쓰는 네더라이트 장비(공명의 활은 활)를 보스 장비로 올립니다. 0.9.0부터 공허 고래 심장과 드래곤 알도 참여자마다 하나씩 받습니다.</p>
       <div class="gallery">
         <figure>
@@ -501,14 +599,22 @@
           <p class="recipe">덩굴 수호목 · 수호목 심재 · 바탕 네더라이트 신발</p>
           <p>뿌리내림: 웅크린 채 1초 서 있으면 밀려나지 않고 받는 피해 -10%. 움직이거나 웅크림을 풀거나 공중에 뜨면 풀림 (폭발 · 바람 돌격 밀침, 고래의 들이마시기 · 솟구침은 못 막음, 결투에서도 켜짐)</p>
         </li>
+        <li class="charm gold" style="--gem:#dc4a62">
+          <img class="px" src="../../assets/talicraft/items/mycelium_helmet.png" alt="" width="48" height="48">
+          <h3>균사 투구 <small>0.11.0</small></h3>
+          <p class="recipe">포자 모체 · 포자낭 · 바탕 네더라이트 투구</p>
+          <p>포자 막이: 새로 걸리는 센 해로운 효과(세기 II 이상이거나 3초 넘게 가는 것) 하나를 막고 재사용 대기 20초. 같은 효과가 같거나 더 센 세기로 이미 걸려 있으면 막지 않음. 즉시 · 무한 효과와 스스로 건 효과(마신 물약 · 먹은 음식)는 그대로. 막지 않은 효과는 강인함이 시간을 줄임 (결투에서도 켜짐)</p>
+        </li>
       </ul>
       <p class="mats" aria-label="새 재료">
         <span><img class="px" src="../../assets/talicraft/items/wither_spine.png" alt="" width="32" height="32">위더 척추 <small>새 재료 · 강화 위더</small></span>
         <span><img class="px" src="../../assets/talicraft/items/void_whale_heart.png" alt="" width="32" height="32">공허 고래 심장 <small>참여자마다 1개로</small></span>
         <span><img class="px" src="../../assets/talicraft/items/centipede_carapace.png" alt="" width="32" height="32">지네 갑각 <small>새 재료 · 모래 지네</small></span>
         <span><img class="px" src="../../assets/talicraft/items/rootwood_heartwood.png" alt="" width="32" height="32">수호목 심재 <small>새 재료 · 덩굴 수호목</small></span>
+        <span><img class="px" src="../../assets/talicraft/items/spore_sac.png" alt="" width="32" height="32">포자낭 <small>새 재료 · 포자 모체</small></span>
       </p>
       <p class="sec-lede">고유 효과는 검은 주손에 들 때, 활은 어느 손이든 들 때, 갑옷은 입었을 때 켜집니다.</p>
+      <p class="principle"><b>보스 갑옷 네 부위 · 0.11.0</b>용의 흉갑 · 갑각 각반 · 뿌리 신발 · 균사 투구를 한 번에 다 입으면 칭호 "보스 갑옷을 두른 자"를 받습니다. 수치 효과는 없고, 수첩 장비 탭에 지금 몇 부위를 입었는지 보입니다.</p>
 
       <h3 class="sub-h">만드는 법</h3>
       <ol class="loop craft" aria-label="보스 장비 만드는 순서">
@@ -526,7 +632,7 @@
         <li><b>불 · 폭발</b><span>불 · 용암 · 폭발에 사라지지 않음</span></li>
       </ul>
       <p class="notice warn"><b>공허 사망 보험 없음</b> 보스 장비도 사망 보험 대상입니다. 다만 공허에서 죽으면 보험이 작동하지 않는 규칙은 보스 장비도 그대로라, 엔드에서 쓸 장비에는 공허 회수 인챈트를 권합니다. 툴팁과 수첩에도 이 안내가 붙습니다.</p>
-      <p class="principle ahead"><b>앞으로</b> 바이옴 보스가 늘 때마다 장비가 하나씩 더해집니다. 다음은 버섯 들판 보스 포자 모체의 균사 투구입니다.</p>
+      <p class="principle ahead"><b>앞으로</b> 균사 투구로 보스 갑옷 네 부위가 다 찼습니다. 다음은 골라 쓰는 선택 장비이고, 무엇을 더할지는 친구 서버에서 실테스트해 본 뒤 정합니다.</p>
     </section>
 
     <section id="gear" class="g-infinite" aria-labelledby="gear-h" data-embed>
@@ -611,15 +717,20 @@
           <h3>보스 엔드 장비 <small>0.9.0 베타 1</small></h3>
           <p>보스 넷이 참여자마다 전용 재료를 주고, 그 재료로 네더라이트 장비를 시듦의 검 · 공명의 활 · 용의 흉갑 · 갑각 각반으로 올립니다. 장비마다 고유 효과가 하나씩 있고, 인챈트 · 재가공 접두어는 그대로 이어집니다.</p>
         </li>
-        <li class="now">
+        <li>
           <span class="ms">M6b</span>
-          <h3>덩굴 수호목과 뿌리 신발 <small>0.10.0 베타 1 · 최신</small></h3>
+          <h3>덩굴 수호목과 뿌리 신발 <small>0.10.0 베타 1</small></h3>
           <p>두 번째 바이옴 보스는 정글의 고정형 보스 덩굴 수호목. 뿌리 약점을 깨야 줄기가 드러납니다. 수호목 심재로 뿌리 신발을, 정글 핵으로 탐험가의 부적에 낙하 안전 거리를 더하고, 부적 둘을 합칠 수 있게 했습니다. 전용 인챈트 가지치기 · 옭매기도 더했습니다.</p>
+        </li>
+        <li class="now">
+          <span class="ms">M6c</span>
+          <h3>포자 모체와 균사 투구 <small>0.11.0 베타 1 · 최신</small></h3>
+          <p>세 번째 바이옴 보스는 버섯 들판의 포자 모체. 갈라져 나온 분열체를 끊어야 모체에 피해가 듭니다. 포자낭으로 균사 투구를, 버섯 들판 핵으로 탐험가의 부적에 몹 곁 잠을 더하고, 보스 갑옷 네 부위 칭호와 전용 인챈트 되심기 · 포자 터뜨림도 넣었습니다.</p>
         </li>
         <li class="next">
           <span class="ms">다음</span>
-          <h3>M6c 포자 모체(버섯 들판) · 균사 투구 <small>다음 베타</small></h3>
-          <p>세 번째 바이옴 보스는 버섯 들판의 포자 모체. 그 재료로 균사 투구를 만듭니다. 친구 서버에서 싸워 본 수호목 손맛도 같이 다듬습니다.</p>
+          <h3>선택 장비 <small>실테스트 뒤 정함</small></h3>
+          <p>보스 갑옷 네 부위가 다 찼으니, 다음은 골라 쓰는 선택 장비입니다. 친구 서버에서 수호목 · 모체를 싸워 본 뒤 무엇을 더할지 정합니다.</p>
         </li>
       </ol>
     </section>
@@ -634,7 +745,7 @@
           <li>친구 서버라면 운영자에게 닉네임을 알려 화이트리스트에 오른 뒤, 따로 받은 주소로 접속합니다. 직접 서버를 열려면 서버용 <code>talicraft-*.jar</code>를 Fabric 서버의 <code>mods</code>에 넣습니다 (Fabric API 필요).</li>
           <li>새 버전이 나오면: Modrinth App이라면 <a href="../mcserver/#updater">'모드팩 업데이트' 프로그램</a>으로 인스턴스를 그대로 둔 채 바꿀 수 있어요. 새 모드팩을 다시 가져오거나, 인스턴스 <code>mods</code> 폴더의 <code>talicraft.jar</code>만 새 것으로 바꿔도 됩니다. 서버와 버전이 다르면 접속할 때 알려 줍니다.</li>
         </ol>
-        <p class="small">들어가면 평소처럼 야생입니다. 인벤토리의 탈리 버튼이나 채팅의 <code>/inf</code>로 탈리 수첩이 열리고, 부적 탭에서 계열마다 다음에 모을 재료가 보입니다. 초중반에는 재가공 · 모래 지네 · 덩굴 수호목 · 탐험가의 부적이, 엔드까지 가면 보스 장비가 목표가 됩니다.</p>
+        <p class="small">들어가면 평소처럼 야생입니다. 인벤토리의 탈리 버튼이나 채팅의 <code>/inf</code>로 탈리 수첩이 열리고, 부적 탭에서 계열마다 다음에 모을 재료가 보입니다. 초중반에는 재가공 · 모래 지네 · 덩굴 수호목 · 포자 모체 · 탐험가의 부적이, 엔드까지 가면 보스 장비가 목표가 됩니다.</p>
       </div>
     </section>
   </div>
