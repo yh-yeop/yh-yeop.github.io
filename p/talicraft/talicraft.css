@@ -22,6 +22,7 @@
   --g-combat: #ef6060;
   --g-end: #c99cff;
   --g-desert: #e0b062;    /* 바이옴 보스: 모래 */
+  --g-jungle: #8fd14f;    /* 바이옴 보스: 정글 */
   --warn: #ef6060;        /* 공허 사망 안내 (게임 안 RED) */
   --g-infinite: var(--accent);
   /* 탈리 수첩 종이 */
@@ -165,8 +166,9 @@ h2 small {
 .g-combat { --sec: var(--g-combat); }
 .g-infinite { --sec: var(--g-infinite); }
 .g-desert { --sec: var(--g-desert); }
+.g-jungle { --sec: var(--g-jungle); }
 .g-boss { --sec: var(--g-end); }
-.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small, .g-desert h2 small, .g-boss h2 small {
+.g-survival h2 small, .g-combat h2 small, .g-infinite h2 small, .g-desert h2 small, .g-jungle h2 small, .g-boss h2 small {
   color: color-mix(in srgb, var(--sec) 70%, var(--text)); border-color: color-mix(in srgb, var(--sec) 45%, transparent);
   background: color-mix(in srgb, var(--sec) 9%, var(--bg));
 }
@@ -219,6 +221,7 @@ h2 small {
 .features .px.inline { width: 24px; height: 24px; flex: none; }
 .features h3 small { font-size: var(--fs-xs); font-weight: 700; padding: 1px 8px; border-radius: 999px; color: var(--muted); border: 1px solid var(--line-2); }
 .g-desert .features h3 { color: #f2d9a6; }
+.g-jungle .features h3 { color: #cbe8a8; }
 .fight { margin-top: var(--s-5); }
 .g-infinite .features h3 { color: #f6dca4; }
 /* 세 가지 원칙: 위에 금줄이 있는 세 칸 */
