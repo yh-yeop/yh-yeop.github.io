@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메소노믹스 — 메이플스토리 메소 장부 · 보스 수익 · 목표 도달일</title>
+<meta name="description" content="메이플스토리 메소를 어디서 벌고 어디에 썼는지 적는 장부와, 캐릭터별 보스 결정석 수익으로 목표 메소 도달일을 계산하는 웹앱. 웹에서 바로 쓰고 Windows · Android 설치판도 있습니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="메소노믹스 (Mesonomics)">
+<meta property="og:description" content="메소 장부 · 캐릭터별 보스 수익 · 목표 도달일 계산기. 로그인 없이 기기에 저장되고, 원하면 Google 로그인으로 기기 간 동기화.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/meso/og.jpg">
+<meta property="og:url" content="https://yh-yeop.github.io/p/meso/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#111112">
+<link rel="icon" href="../../assets/icons/meso.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="meso.css">
+<script src="../../share.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/meso.svg" alt="" width="64" height="64">
+    <div>
+      <h1>메소노믹스 <span class="en">Mesonomics</span></h1>
+      <p class="tagline">메이플스토리 메소 장부 · 보스 수익 · 목표 도달일 계산기</p>
+    </div>
+  </div>
+  <p class="lede">메소를 어디서 벌고 어디에 썼는지 적고, 캐릭터마다 도는 보스로 한 주에 얼마가 들어오는지 계산해서, 목표 메소에 언제 닿는지 알려 줍니다.
+    가입 없이 브라우저에서 바로 쓰고, 기록은 내 기기에 저장됩니다.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://yh-yeop.github.io/meso_calcul/">웹에서 바로 열기</a>
+    <a class="btn" href="#get">설치판 받기 <small>Windows · Android</small></a>
+  </div>
+  <p class="hero-meta">무료 · 광고 없음 · 휴대폰 · PC 브라우저 · 홈 화면에 앱으로 설치(PWA)도 됩니다 · 옛 이름 '메소 계산기'</p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <section aria-labelledby="shots-h">
+      <h2 id="shots-h" class="sr-only">화면</h2>
+      <ul class="phones">
+        <li>
+          <button class="shot" type="button" popovertarget="lb-home" aria-label="크게 보기: 홈">
+            <img src="../../assets/meso/home-t.webp" srcset="../../assets/meso/home-t.webp 264w, ../../assets/meso/home.webp 528w" sizes="(max-width: 600px) 45vw, 190px" alt="홈 화면. 시작하기 체크리스트, 현재 잔고 421억과 이번 달 순수익 · 지출 · 남은 예산, 이번 주 보스 체크 목록" width="528" height="1086">
+          </button>
+          <span class="cap">홈</span>
+        </li>
+        <li>
+          <button class="shot" type="button" popovertarget="lb-chars" aria-label="크게 보기: 캐릭터">
+            <img src="../../assets/meso/chars-t.webp" srcset="../../assets/meso/chars-t.webp 264w, ../../assets/meso/chars.webp 528w" sizes="(max-width: 600px) 45vw, 190px" alt="캐릭터 화면. 캐릭터 네 명과 각자의 주간 보스 수익, 캐릭터 추가 · Open API로 불러오기 단추, 계산 기준 접는 칸" width="528" height="1086">
+          </button>
+          <span class="cap">캐릭터</span>
+        </li>
+        <li>
+          <button class="shot" type="button" popovertarget="lb-ledger" aria-label="크게 보기: 장부">
+            <img src="../../assets/meso/ledger-t.webp" srcset="../../assets/meso/ledger-t.webp 264w, ../../assets/meso/ledger.webp 528w" sizes="(max-width: 600px) 45vw, 190px" alt="장부 화면. 2026년 11월 수입 101억 · 지출 34억, 날짜별 사냥 · 주간보스 · 스타포스 기록" width="528" height="1086" loading="lazy">
+          </button>
+          <span class="cap">장부</span>
+        </li>
+        <li>
+          <button class="shot" type="button" popovertarget="lb-calc" aria-label="크게 보기: 계산기">
+            <img src="../../assets/meso/calc-t.webp" srcset="../../assets/meso/calc-t.webp 264w, ../../assets/meso/calc.webp 528w" sizes="(max-width: 600px) 45vw, 190px" alt="계산기 화면. 목표 도달일 2027년 1월 24일, 목표 날짜 예상 잔고, 월 순수익, 보스 수입과 건너뛸 주 선택" width="528" height="1086" loading="lazy">
+          </button>
+          <span class="cap">계산기</span>
+        </li>
+      </ul>
+      <p class="small shots-note">예시 데이터를 넣고 찍은 휴대폰 화면입니다. 누르면 크게 봅니다.</p>
+    </section>
+
+    <section aria-labelledby="feat-h">
+      <div data-embed>
+      <h2 id="feat-h">하는 일</h2>
+      <ul class="features">
+        <li>
+          <h3>메소 장부</h3>
+          <p>사냥 · 보스 · 거래 수입과 강화 · 큐브 같은 지출을 적고, 달마다 통계와 예산을 봅니다. 잔고를 확인하면 적지 않은 차이도 드러납니다.</p>
+        </li>
+        <li>
+          <h3>캐릭터별 보스 수익</h3>
+          <p>캐릭터마다 도는 보스 · 난이도 · 파티 인원을 고르면 주간 · 월간 결정석 수익이 나옵니다. 파티는 인원수로 나누고 버림(게임 규칙).</p>
+        </li>
+        <li>
+          <h3>추천 구성 · 판매 제한 경고</h3>
+          <p>마지막으로 잡는 보스만 고르면 주간 루틴을 비싼 순으로 12개까지 채웁니다. 메이플ID당 주 90개 판매 제한을 넘으면 알려 줍니다.</p>
+        </li>
+        <li>
+          <h3>이번 주 보스 체크</h3>
+          <p>홈에서 잡은 보스만 체크하면 그만큼 장부에 수입으로 들어갑니다. 목요일에 새 주, 월간 보스는 매달 1일에 리셋.</p>
+        </li>
+        <li>
+          <h3>목표 도달일</h3>
+          <p>평균으로 나누지 않고 하루씩 달력을 돌려 계산합니다. 목요일 보스 · 월초 월간 보스 · 매일 사냥을 따로 셈하고, 보스를 건너뛸 주도 고릅니다.</p>
+        </li>
+        <li>
+          <h3>넥슨 Open API</h3>
+          <p>API 키를 넣으면 계정 캐릭터(월드 · 직업 · 레벨)를 불러오고, 잠재능력 · 에디셔널 재설정 지출을 장부에 자동으로 적습니다(추정 금액).</p>
+        </li>
+        <li>
+          <h3>기기 저장 · 동기화는 선택</h3>
+          <p>기본은 이 기기에만 저장합니다. 원하면 Google 로그인으로 다른 기기와 맞추고, 백업 · 복원 · CSV 내보내기도 됩니다.</p>
+        </li>
+        <li>
+          <h3>계산 기준 공개</h3>
+          <p>결정석 가격 기준일과 출처, 분배 · 한도 · 리셋 규칙을 화면 맨 아래에 적어 둡니다. 패치가 나오면 설정에서 가격을 바로 고칠 수 있습니다.</p>
+        </li>
+      </ul>
+      </div>
+    </section>
+
+    <section id="get" class="get-sec" aria-labelledby="get-h">
+      <div data-embed>
+      <h2 id="get-h">바로 열기 · 설치판</h2>
+      <p>웹에서 바로 쓰는 게 기본입니다. 바탕화면이나 휴대폰에 앱처럼 두고 싶으면 브라우저의 '앱으로 설치'를 쓰거나 설치판을 받으세요.</p>
+      <ul class="ways">
+        <li>
+          <b>웹</b>
+          <span>휴대폰 · PC 브라우저에서 <a href="https://yh-yeop.github.io/meso_calcul/">yh-yeop.github.io/meso_calcul</a>. 홈 화면에 추가하면 오프라인에서도 열립니다.</span>
+        </li>
+        <li>
+          <b>Windows</b>
+          <span>설치 파일은 2MB가 안 됩니다. 새 버전이 나오면 열 때 한 번 묻고 스스로 업데이트합니다. Google 로그인 · 동기화도 웹과 같습니다.</span>
+        </li>
+        <li>
+          <b>Android</b>
+          <span>APK를 받아 설치합니다(1.1.0부터). Google 로그인은 막혀 있어서, 기기를 옮길 때는 백업 · 불러오기를 씁니다.</span>
+        </li>
+      </ul>
+      </div>
+      <div class="get">
+        <a class="btn primary" href="https://yh-yeop.github.io/meso_calcul/">웹에서 열기</a>
+        <a class="btn" data-app="MesoCalc" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">Windows <small>.exe</small></a>
+        <a class="btn" data-app="MesoCalc" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">Android <small>.apk</small></a>
+      </div>
+      <p class="small">설치판은 웹과 같은 화면을 그대로 엽니다. 데이터는 브라우저와 따로 저장되니, 옮길 때는 설정의 백업 · 복원이나 동기화를 쓰세요. Windows에서 'PC 보호' 경고가 뜨면 '추가 정보 → 실행'을 누릅니다.</p>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="앱 정보">
+    <div class="panel">
+      <h2>받기</h2>
+      <a class="btn primary block" href="https://yh-yeop.github.io/meso_calcul/">웹에서 열기</a>
+      <a class="btn block" data-app="MesoCalc" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">Windows <small>.exe</small></a>
+      <a class="btn block" data-app="MesoCalc" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">Android <small>.apk</small></a>
+      <p class="small note">설치판 모든 버전은 <a href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">릴리스 목록</a>에 있습니다.</p>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>게임</dt><dd>메이플스토리</dd></div>
+        <div><dt>종류</dt><dd>웹앱 (PWA) · 설치판</dd></div>
+        <div><dt>저장</dt><dd>기기 저장, Google 동기화 선택</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/meso_calcul">yh-yeop/meso_calcul</a></dd></div>
+        <div><dt>문의</dt><dd><a href="https://github.com/yh-yeop/meso_calcul/issues/new/choose">오류 신고 · 제안</a></dd></div>
+      </dl>
+      <p class="tags">메소 장부 · 보스 결정석 · 목표 도달일 · 넥슨 Open API · Tauri</p>
+    </div>
+
+    <div class="panel notice">
+      <p>개인이 만든 <b>비공식 팬 도구</b>로, 넥슨코리아와 관련이 없으며 넥슨코리아가 보증하거나 후원하지 않습니다.</p>
+      <p class="small">Data based on NEXON Open API</p>
+    </div>
+  </aside>
+</main>
+
+<div class="lb" popover id="lb-home">
+  <img src="../../assets/meso/home.webp" alt="홈 화면" width="528" height="1086" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-home" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-chars">
+  <img src="../../assets/meso/chars.webp" alt="캐릭터 화면" width="528" height="1086" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-chars" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-ledger">
+  <img src="../../assets/meso/ledger.webp" alt="장부 화면" width="528" height="1086" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-ledger" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-calc">
+  <img src="../../assets/meso/calc.webp" alt="계산기 화면" width="528" height="1086" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-calc" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<footer class="wrap foot">
+  <p>메소노믹스 © yeop · 넥슨코리아와 관련 없는 비공식 팬 도구입니다. MapleStory와 관련 명칭 · 상표는 넥슨코리아의 자산입니다. Data based on NEXON Open API.
+    화면은 예시 데이터로 찍었습니다. 설치 파일은 <a href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">yh-yeop/releases</a>에 있습니다.</p>
+</footer>
+<script>
+// 받기 단추: releases 저장소가 내는 index.json 으로 최신 설치 파일에 바로 연결 (못 받으면 릴리스 목록 그대로)
+fetch('/releases/index.json').then(r => r.ok ? r.json() : null).then(v => {
+  if (!v || !Array.isArray(v.apps)) return;
+  document.querySelectorAll('a[data-app]').forEach(a => {
+    const app = v.apps.find(x => x.id === a.dataset.app);
+    const f = app && app.stable && app.stable.assets && app.stable.assets[a.dataset.plat];
+    if (!f || !f.url) return;
+    a.href = f.url;
+    a.title = f.name;
+    const sm = a.querySelector('small');
+    if (sm) sm.textContent = sm.textContent.split(' · ')[0] + ' · ' + app.stable.version;
+  });
+}).catch(() => {});
+</script>
+</body>
+</html>
