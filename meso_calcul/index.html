@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메소노믹스 — 주소가 바뀌었어요</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://yh-yeop.github.io/mesonomics/">
+<meta name="theme-color" content="#111112">
+<link rel="icon" href="/mesonomics/icon.svg" type="image/svg+xml">
+<script>
+/* 옛 주소 → 새 주소. 해시 · 쿼리(#calc, #goal=, 공유 링크 #s=)는 그대로 넘긴다.
+   옛 설치판(window.MesoApp)은 새 주소를 앱 창 밖으로 내보내므로 넘기지 않고 업데이트를 안내하고,
+   홈 화면에 설치한 웹앱(standalone)은 옛 주소에 묶여 있어서 다시 설치하라고 안내한다. */
+(function(){
+  var target = "/mesonomics/" + location.search + location.hash;
+  var standalone = (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone;
+  var mode = window.MesoApp ? "app" : standalone ? "pwa" : "web";
+  document.documentElement.dataset.mode = mode;
+  window.__target = target;
+  if (navigator.serviceWorker) navigator.serviceWorker.getRegistrations().then(function(rs){
+    rs.forEach(function(r){ if (/\/meso_calcul\/$/.test(r.scope)) r.unregister(); });
+  }).catch(function(){});
+  if (mode === "web") location.replace(target);
+})();
+</script>
+<style>
+  :root{--bg:#111112;--card:#1b1b1e;--line:#2c2c31;--text:#ececf0;--muted:#9a9aa5;--gold:#e8b84a}
+  @media (prefers-color-scheme: light){:root{--bg:#f6f5f2;--card:#fff;--line:#e3e1dc;--text:#1d1d20;--muted:#6b6b74;--gold:#b8860b}}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);
+       font:15px/1.65 -apple-system,BlinkMacSystemFont,"Pretendard","Malgun Gothic",sans-serif;padding:24px 16px}
+  main{max-width:420px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;text-align:center}
+  img{width:64px;height:64px}
+  h1{font-size:20px;margin:12px 0 6px}
+  p{margin:8px 0;color:var(--muted)}
+  code{color:var(--text);word-break:break-all}
+  .btn{display:inline-block;margin-top:14px;padding:11px 18px;border-radius:10px;border:0;background:var(--gold);color:#111;
+       font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+  .sub{display:block;margin-top:10px;color:var(--muted);font-size:13px}
+  .only{display:none}
+  [data-mode="app"] .app, [data-mode="pwa"] .pwa, [data-mode="web"] .web{display:block}
+</style>
+</head>
+<body>
+<main>
+  <img src="/mesonomics/icon.svg" alt="">
+  <h1>메소노믹스 주소가 바뀌었어요</h1>
+  <p>새 주소: <code>yh-yeop.github.io/mesonomics/</code><br>기록 · 캐릭터 · 설정은 그대로 남아 있어요.</p>
+
+  <div class="only app">
+    <p>설치판을 <b>1.2.0 이상</b>으로 업데이트해야 계속 쓸 수 있어요.</p>
+    <button class="btn" type="button" onclick="window.MesoApp && MesoApp.checkUpdate()">업데이트 확인</button>
+    <a class="sub" href="https://github.com/yh-yeop/releases/releases?q=MesoCalc&amp;expanded=true">받는 곳 직접 열기</a>
+  </div>
+
+  <div class="only pwa">
+    <p>홈 화면에 설치한 앱은 옛 주소에 묶여 있어요. 새 주소에서 다시 설치하고, 이 앱은 지워 주세요.</p>
+    <a class="btn" id="go-pwa" href="/mesonomics/">새 주소로 열기</a>
+  </div>
+
+  <div class="only web">
+    <a class="btn" id="go-web" href="/mesonomics/">새 주소로 가기</a>
+  </div>
+  <noscript><a class="btn" href="/mesonomics/">새 주소로 가기</a></noscript>
+</main>
+<script>
+  ["go-pwa", "go-web"].forEach(function(id){ document.getElementById(id).href = window.__target || "/mesonomics/"; });
+</script>
+</body>
+</html>

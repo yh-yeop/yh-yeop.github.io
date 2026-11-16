@@ -38,7 +38,7 @@ export const PROJECTS = [
   {
     // 옛 이름 '메소 계산기'. 설치판(Windows · Android)은 releases 저장소의 MesoCalc-v 릴리스 (apps.json 의 site: 'meso')
     id: 'meso', cat: 'maple', title: '메소노믹스', icon: 'assets/icons/meso.svg',
-    repos: ['meso_calcul'], live: `${PAGES}/meso_calcul/`, page: 'p/meso/',
+    repos: ['mesonomics'], live: `${PAGES}/mesonomics/`, page: 'p/meso/',
     release: { repo: 'releases', prefix: 'MesoCalc' },
     desc: '메이플스토리 메소를 어디서 벌고 어디에 썼는지 적는 장부와, 캐릭터별 보스 수익으로 목표 메소 도달일을 계산하는 웹앱.',
     points: ['수입 · 지출 장부와 통계 · 예산, 이번 주 보스 체크', '캐릭터별 주간 · 월간 보스 결정석 수익, 추천 구성 · 주 90개 판매 제한 경고', '요일까지 따지는 목표 도달일 계산, Open API로 캐릭터 불러오기'],
