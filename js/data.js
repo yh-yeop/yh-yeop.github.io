@@ -75,7 +75,7 @@ export const PROJECTS = [
   },
   {
     id: 'listup', cat: 'app', title: 'ListUp', icon: 'assets/icons/listup.png',
-    repos: ['ListUp'], release: { repo: 'ListUp' },
+    repos: ['ListUp'], release: { repo: 'ListUp' }, page: 'p/listup/',
     desc: '초대 코드로 다른 사람의 저장소에 참여해 파일을 공유하고, 변경 사항은 제안 · 검토를 거쳐 반영하는 공용 클라우드.',
     points: ['파일용 제안 → 리뷰 → 병합 흐름', '한 파일 2GB까지, 끊겨도 이어 올리기·받기', '내 폴더와 비교해 빠진 파일만 주고받기'],
     tags: ['TypeScript', 'Expo', 'Electron', 'Windows · Android'],

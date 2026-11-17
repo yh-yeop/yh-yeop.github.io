@@ -1,4 +1,5 @@
 # STATUS — yh-yeop.github.io
 
+- 2026-11-17: ListUp 소개 서브페이지 `p/listup/` 추가 — `js/data.js` listup 항목에 `page: 'p/listup/'`, 하는 일 · 설치(Windows · Android · 서버 직접) · 실행 기록(텔레메트리) 안내(12칸 표 · 모으지 않는 것 · 끄기/지우기 · 플랫폼별 내보내기 · device_class 기준) · 실측 샘플(`<!-- MEASURED:START -->`…`<!-- MEASURED:END -->` — 개발 컨테이너의 PC 앱 · 브라우저 실행 기록 표, 원본 `p/listup/sample-telemetry*.csv`). 다른 서브페이지와 달리 밝은 · 어두운 테마 둘 다(기기 설정, 첫 화면 테마 단추 값 `localStorage.theme` 따름), 색은 ListUp 앱 `app/src/theme.ts`. 대표 이미지 `assets/listup/og.png`(1200×630). 다음: 친구 기기 기록이 모이면 `#measured` 를 그 데이터로 바꾸기.
 - 2026-11-16: 메소노믹스(옛 '메소 계산기') 소개 리뉴얼 — `js/data.js` meso 항목 제목 · 소개 갱신, `page: 'p/meso/'` 서브페이지(휴대폰 화면 4장 · 기능 · 웹/설치판 받기 · 비공식 팬 도구 고지), `release: { repo: 'releases', prefix: 'MesoCalc' }`로 설치 파일 연결(전에는 data.js가 MesoCalc를 몰라 index.json 자동 카드 `r-meso`가 중복으로 떴음), 아이콘을 앱 icon.svg와 맞춤. 다음: 푸시 뒤 실제 사이트에서 대표 이미지(`assets/meso/og.jpg`) · 받기 버튼 버전 표시 확인. releases 저장소 `apps.json`의 MesoCalc `name`이 아직 '메소 계산기'(그쪽 저장소에서 고칠 일).
 - 2026-11-16: 메소노믹스 저장소 이름 변경(meso_calcul → mesonomics)에 맞춰 `meso_calcul/` 넘김 폴더 추가, `js/data.js` · `p/meso/` 주소를 /mesonomics/ 로.

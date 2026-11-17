@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ListUp — 초대 코드로 참여하는 자가 호스팅 파일 공유 · 협업 도구</title>
+<meta name="description" content="내 PC에 서버를 열고 초대 코드로 친구를 불러 파일을 나누는 자가 호스팅 협업 도구. 고치고 싶은 파일은 변경 제안 → 검토 → 병합으로 반영합니다. Windows · Android 앱.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ListUp">
+<meta property="og:description" content="초대 코드로 참여하는 자가 호스팅 파일 공유 · 협업 도구. 변경 제안 · 검토 · 병합, 큰 파일 이어 올리기, 내 폴더와 비교. Windows · Android.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/listup/og.png">
+<meta property="og:url" content="https://yh-yeop.github.io/p/listup/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/icons/listup.png" type="image/png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="listup.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script src="../../share.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/listup.png" alt="" width="64" height="64">
+    <div>
+      <h1>ListUp</h1>
+      <p class="tagline">초대 코드로 참여하는 자가 호스팅 파일 공유 · 협업 도구</p>
+    </div>
+  </div>
+  <p class="lede">내 PC에 서버를 열고, 초대 코드 하나로 친구를 불러 파일을 나눕니다. 남의 파일을 고치고 싶으면 <b>변경 제안</b>을 올리고,
+    편집자가 확인한 뒤 반영합니다 — git의 협업 방식(제안 → 리뷰 → 병합)을 코드가 아닌 파일에 가져왔습니다.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/yh-yeop/ListUp/releases/latest">최신 릴리즈 받기 <small>Windows · Android</small></a>
+    <a class="btn" href="https://github.com/yh-yeop/ListUp">소스 코드</a>
+  </div>
+  <p class="hero-meta">무료 · 오픈 소스(AGPL-3.0) · 외부 서비스 없이 내 서버 하나로 · PC 앱 · 안드로이드 앱 · 브라우저</p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <section id="features" aria-labelledby="feat-h">
+      <div data-embed>
+      <h2 id="feat-h">하는 일</h2>
+      <ul class="features">
+        <li>
+          <h3>저장소와 초대 코드</h3>
+          <p>저장소를 만들고 초대 링크(또는 코드)를 건넵니다. 권한 · 기간 · 인원을 정할 수 있고, 옆 사람은 QR 코드를 폰 카메라로 찍으면 됩니다.</p>
+        </li>
+        <li>
+          <h3>변경 제안 · 리뷰 · 병합</h3>
+          <p>열람 권한만 있어도 제안을 올릴 수 있고, 저장소는 편집자가 확인해 병합하기 전까지 바뀌지 않습니다. 내 제안의 반영 · 의견은 '내 제안'에서 모아 봅니다.</p>
+        </li>
+        <li>
+          <h3>변경 이력 · 되돌리기</h3>
+          <p>올리고 병합할 때마다 스냅샷이 남습니다. 실수로 덮어썼으면 이력에서 이전 시점의 파일을 그대로 받거나 되돌립니다.</p>
+        </li>
+        <li>
+          <h3>큰 파일 나눠 올리기 · 이어 올리기</h3>
+          <p>한 파일 2GB까지. 조각으로 나눠 올려 진행률이 보이고, 끊기면 다시 붙어 이어서 올립니다. 폴더째 올려도 구조가 남고, 폴더는 zip 하나로 받습니다.</p>
+        </li>
+        <li>
+          <h3>내 폴더와 비교</h3>
+          <p>기기의 폴더를 골라 저장소와 파일 이름으로 견줍니다. 저장소에만 있는 것은 골라 받고, 내 폴더에만 있는 것은 골라 올립니다. PC 폴더를 계속 맞춰 나가는 동기화 스크립트도 있습니다.</p>
+        </li>
+        <li>
+          <h3>PC 앱에서 바로 서버 열기</h3>
+          <p>Windows 앱의 '이 PC에서 서버 열기 → 서버 켜기'면 끝. Node 설치 없이 밖에서 들어오기(Tailscale Funnel · Cloudflare 빠른 터널) · 백업 · 비밀번호 재설정까지 앱에서 합니다.</p>
+        </li>
+      </ul>
+      </div>
+      <ul class="roles" aria-label="권한 세 단계">
+        <li><b>열람</b>파일을 보고 내려받고, 변경 제안을 올립니다.</li>
+        <li><b>편집</b>파일을 직접 올리고 지우고, 남의 제안을 병합합니다.</li>
+        <li><b>소유자</b>저장소 설정과 멤버를 관리합니다.</li>
+      </ul>
+    </section>
+
+    <section id="get" aria-labelledby="get-h">
+      <h2 id="get-h">설치</h2>
+      <p>설치 파일은 모두 GitHub의 최신 릴리즈에 있습니다. 새 버전이 나오면 앱이 알려 줍니다.</p>
+      <ul class="ways">
+        <li>
+          <b>PC (Windows)</b>
+          <span><code>listup-&lt;버전&gt;-windows-setup.exe</code>를 받아 실행합니다. 코드 서명을 하지 않아 'PC 보호' 경고가 뜨면 '추가 정보 → 실행'. 켠 뒤 '서버 추가'로 받은 서버 주소를 넣고, 서버를 직접 열려면 '이 PC에서 서버 열기'.</span>
+        </li>
+        <li>
+          <b>Android</b>
+          <span><code>listup-&lt;버전&gt;-android.apk</code>를 폰에서 받아 설치합니다. '출처를 알 수 없는 앱' 설치를 허용해야 합니다. 서버 목록에서 서버를 추가하거나, 받은 초대 링크를 열면 됩니다.</span>
+        </li>
+        <li>
+          <b>서버 직접 운영</b>
+          <span>리눅스 · 맥이나 터미널이 편하면 <code>listup-&lt;버전&gt;.zip</code>을 풀고 <code>npm install</code> → <code>npm run serve -- --tunnel</code>. 자세한 설정은 <a href="https://github.com/yh-yeop/ListUp#실행하기">README '실행하기'</a>.</span>
+        </li>
+      </ul>
+      <div class="get">
+        <a class="btn primary" href="https://github.com/yh-yeop/ListUp/releases/latest">최신 릴리즈 받기</a>
+        <a class="btn" href="https://github.com/yh-yeop/ListUp/releases">모든 릴리즈</a>
+      </div>
+    </section>
+
+    <section id="telemetry" aria-labelledby="tel-h">
+      <div data-embed class="prose">
+      <h2 id="tel-h">실행 기록(텔레메트리) 안내</h2>
+      <p>앱을 같이 써 주는 친구들께 — 어떤 환경에서 앱이 느려지거나 오류가 나는지 알아보려고, 앱이 실행될 때마다 간단한 성능 기록을 <b>내 기기 안에만</b> 남깁니다.
+        학교 데이터 분석 과제용이고, <b>처음 켤 때 동의를 물으며</b> 동의하지 않으면 아무것도 남기지 않습니다. 이름 · 파일 · 주소 같은 개인 정보는 모으지 않습니다.</p>
+      </div>
+      <div class="callout">
+        <p><b>왜 모으나요?</b> 실행 한 번이 표의 한 줄이 되고, 모은 기록(300줄쯤)으로 어떤 기기 · 환경에서 오류가 몰리는지 묶어(군집 분석) 봅니다.</p>
+        <p>기록은 서버나 다른 곳으로 저절로 보내지 않습니다. 내가 직접 내보내 건네줄 때만 밖으로 나갑니다.</p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption>기록하는 항목 — 실행 한 번 = 한 줄, 12칸</caption>
+          <thead>
+            <tr><th scope="col">칸 이름</th><th scope="col">뜻</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>session_id</code></td><td>이번 실행에 매긴 무작위 번호. 같은 기록이 두 번 합쳐지지 않게 할 때만 씁니다.</td></tr>
+            <tr><td><code>device_id</code></td><td>앱이 처음 켜질 때 만든 무작위 기기 번호. 하드웨어 정보와 무관합니다.</td></tr>
+            <tr><td><code>date</code></td><td>실행한 날짜(YYYY-MM-DD). 시각은 남기지 않습니다.</td></tr>
+            <tr><td><code>app_version</code></td><td>앱 버전(예: 1.10.0).</td></tr>
+            <tr><td><code>device_class</code></td><td>기기 분류 네 가지 중 하나 — 아래 기준.</td></tr>
+            <tr><td><code>os</code></td><td>운영체제와 버전(예: Windows 11, Android 14).</td></tr>
+            <tr><td><code>avg_fps</code></td><td>화면이 1초에 평균 몇 번 그려졌는지. 잴 수 없는 환경이면 빈칸.</td></tr>
+            <tr><td><code>min_fps_1s</code></td><td>가장 버벅였던 1초 동안 그려진 횟수. 잴 수 없으면 빈칸.</td></tr>
+            <tr><td><code>max_ram_mb</code></td><td>앱이 쓴 메모리의 최댓값(MB). 잴 수 없으면 빈칸.</td></tr>
+            <tr><td><code>duration_min</code></td><td>앱을 켜 둔 시간(분).</td></tr>
+            <tr><td><code>error_count</code></td><td>그동안 난 오류의 개수. 내용은 남기지 않고 개수만.</td></tr>
+            <tr><td><code>crashed</code></td><td>앱이 비정상으로 꺼졌으면 1, 아니면 0.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small" style="margin-top:10px">오류는 개수 말고도 <b>종류 이름</b>별 횟수만 따로 <code>…-errors.csv</code>(칸: session_id, error_type, count)에 담길 수 있습니다. 오류 메시지 원문은 담지 않습니다.</p>
+
+      <div class="cols2">
+        <div class="box">
+          <h3>기기 분류 기준 (<code>device_class</code>)</h3>
+          <ul class="marks ok">
+            <li><b>PC-고사양</b> — 논리 코어 8개 이상이면서 RAM 16GB 이상. 그 밖의 PC는 <b>PC-저사양</b>.</li>
+            <li><b>모바일-고급형</b> — RAM 6GB 이상이면서 코어 8개 이상. 그 밖의 폰은 <b>모바일-보급형</b>.</li>
+          </ul>
+          <p>브라우저는 RAM을 최대 8GB까지만 알려 주므로, 8GB로 나오면 가장 높은 칸으로 칩니다.</p>
+        </div>
+        <div class="box">
+          <h3>모으지 않는 것</h3>
+          <ul class="marks no">
+            <li>사용자 이름 · 아이디(이메일)</li>
+            <li>파일 이름 · 경로</li>
+            <li>IP 주소</li>
+            <li>입력한 내용 · 화면에 보이는 내용</li>
+            <li>오류 메시지 원문</li>
+            <li>하드웨어 고유 번호 · MAC 주소</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>끄기 · 지우기</h3>
+          <p>기록은 앱 안에만 쌓이고 네트워크로 보내지 않습니다. 앱의 <b>'실행 기록'</b> 화면에서 언제든 모은 내용을 보고, <b>기록을 끄거나 전부 지울 수</b> 있습니다.</p>
+        </div>
+        <div class="box">
+          <h3>내보내서 보내기</h3>
+          <p>'실행 기록' 화면 → <b>기록 내보내기</b>.</p>
+          <ul class="steps">
+            <li><b>PC 앱</b> — 저장 창이 뜹니다. 기본 이름은 <code>telemetry-YYYY-MM-DD.csv</code>, 오류 종류는 옆에 <code>…-errors.csv</code>로 함께 저장됩니다.</li>
+            <li><b>Android</b> — 공유 창이 뜹니다. 메신저나 메일로 바로 보내면 됩니다.</li>
+            <li><b>브라우저</b> — 내려받기 폴더로 받아집니다.</li>
+          </ul>
+          <p>받은 파일을 과제 담당에게 전해 주세요. 평범한 표(CSV)라 보내기 전에 열어 확인해도 됩니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="measured" aria-labelledby="measured-h">
+      <h2 id="measured-h">실측 샘플</h2>
+            <!-- MEASURED:START -->
+      <p>2026-11-17, 개발용 리눅스 컨테이너(논리 코어 4개 · RAM 16GB → <code>PC-저사양</code>)에서 <strong>실제 PC 앱(Electron)</strong>과
+        <strong>브라우저(Chromium)</strong>를 각각 실행해 모은 기록입니다. 친구 기기 데이터가 아니라 수집 기능이 제대로 도는지 보는 시험 데이터이고,
+        디버그 옵션(테스트 에러 3개 · 강제 종료 흉내)을 일부러 섞었습니다. 화면은 가상 디스플레이(Xvfb)라 fps 는 60 안팎이 정상입니다.</p>
+      <div class="measured-stats">
+        <div><b>16</b><span>실행(행)</span></div>
+        <div><b>2</b><span>기기(device_id)</span></div>
+        <div><b>59.7 / —</b><span>평균 fps · PC 앱 / 브라우저</span></div>
+        <div><b>700 MB</b><span>PC 앱 최대 메모리 (모든 프로세스 합)</span></div>
+        <div><b>9</b><span>에러 합계</span></div>
+        <div><b>2</b><span>비정상 종료(crashed=1)</span></div>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="실측 실행 기록 전체 행">
+<table class="measured-table"><caption>실행 1회 = 1행 (session_id·device_id 는 줄여 표시)</caption><thead><tr>
+<th scope="col">#</th><th scope="col">session</th><th scope="col">device</th><th scope="col"><code>device_class</code></th><th scope="col"><code>os</code></th><th scope="col"><code>avg_fps</code></th><th scope="col"><code>min_fps_1s</code></th><th scope="col"><code>max_ram_mb</code></th><th scope="col"><code>duration_min</code></th><th scope="col"><code>error_count</code></th><th scope="col"><code>crashed</code></th></tr></thead><tbody>
+<tr><td>1</td><td><code>8f256a5e</code></td><td><code>59bb5f78</code></td><td>PC-저사양</td><td>Linux</td><td>56.5</td><td>0</td><td>13.3</td><td>0.3</td><td>0</td><td>0</td></tr>
+<tr class="errored"><td>2</td><td><code>cfc3250c</code></td><td><code>59bb5f78</code></td><td>PC-저사양</td><td>Linux</td><td>59.9</td><td>57.7</td><td>14.3</td><td>0.3</td><td>3</td><td>0</td></tr>
+<tr><td>3</td><td><code>1fae6c38</code></td><td><code>59bb5f78</code></td><td>PC-저사양</td><td>Linux</td><td>61.4</td><td>56.6</td><td>12.8</td><td>0.2</td><td>0</td><td>0</td></tr>
+<tr><td>4</td><td><code>abf60a0c</code></td><td><code>59bb5f78</code></td><td>PC-저사양</td><td>Linux</td><td>60.2</td><td>60</td><td>17.3</td><td>0.1</td><td>0</td><td>0</td></tr>
+<tr><td>5</td><td><code>32cd5176</code></td><td><code>59bb5f78</code></td><td>PC-저사양</td><td>Linux</td><td>56.5</td><td>0</td><td>21.1</td><td>0.3</td><td>0</td><td>0</td></tr>
+<tr><td>6</td><td><code>49f5bc97</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>61.8</td><td>60</td><td>588.9</td><td>0.3</td><td>0</td><td>0</td></tr>
+<tr class="errored"><td>7</td><td><code>bca0279d</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>59.9</td><td>57.5</td><td>589.4</td><td>0.3</td><td>3</td><td>0</td></tr>
+<tr class="crashed"><td>8</td><td><code>ff6c0168</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>59.8</td><td>58.5</td><td>571.9</td><td>0.2</td><td>0</td><td>1</td></tr>
+<tr><td>9</td><td><code>59ab20f1</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59.9</td><td>564.2</td><td>0.3</td><td>0</td><td>0</td></tr>
+<tr><td>10</td><td><code>b26c237c</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59.9</td><td>565.5</td><td>0.7</td><td>0</td><td>0</td></tr>
+<tr><td>11</td><td><code>ccbcbc68</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59.2</td><td>588.9</td><td>0.7</td><td>0</td><td>0</td></tr>
+<tr><td>12</td><td><code>6426b0d7</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59.8</td><td>699.9</td><td>0.7</td><td>0</td><td>0</td></tr>
+<tr class="errored"><td>13</td><td><code>c313a888</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>59.9</td><td>57.9</td><td>591.2</td><td>0.7</td><td>3</td><td>0</td></tr>
+<tr class="crashed"><td>14</td><td><code>a606ff98</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>59.9</td><td>57.7</td><td>573.7</td><td>0.4</td><td>0</td><td>1</td></tr>
+<tr><td>15</td><td><code>670a12be</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59.8</td><td>564.3</td><td>0.7</td><td>0</td><td>0</td></tr>
+<tr><td>16</td><td><code>c21d8e63</code></td><td><code>c03f16c3</code></td><td>PC-저사양</td><td>Linux 6</td><td>60</td><td>59</td><td>588.8</td><td>0.7</td><td>0</td><td>0</td></tr>
+</tbody></table></div>
+      <p>노란 줄은 에러가 난 실행, 빨간 줄은 비정상 종료입니다. 브라우저의 메모리는 JS 힙만 잰 근사치입니다. PC 앱의 강제 종료 흉내 2번은 모두 <code>crashed=1</code> 로 잡혔지만, 브라우저의 강제 종료 흉내(새로 고침)는 아직 0 으로 남아 고치는 중이고, 브라우저 두 실행의 <code>min_fps_1s</code> 0 은 창이 뜨는 순간 그리기가 멈춘 1초입니다.
+        원본: <a href="sample-telemetry.csv" download>sample-telemetry.csv</a> · <a href="sample-telemetry-errors.csv" download>sample-telemetry-errors.csv</a>
+        (<code>scripts/merge_telemetry.py</code> 로 합친 결과)</p>
+      <!-- MEASURED:END -->
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="앱 정보">
+    <div class="panel">
+      <h2>받기</h2>
+      <a class="btn primary block" href="https://github.com/yh-yeop/ListUp/releases/latest">최신 릴리즈 <small>Windows · Android</small></a>
+      <a class="btn block" href="https://github.com/yh-yeop/ListUp">소스 코드</a>
+      <p class="small note">설치 파일 · 서버 묶음 모든 버전은 <a href="https://github.com/yh-yeop/ListUp/releases">릴리즈 목록</a>에 있습니다.</p>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>자가 호스팅 파일 공유 · 협업</dd></div>
+        <div><dt>앱</dt><dd>Windows · Android · 브라우저</dd></div>
+        <div><dt>서버</dt><dd>PC 앱 안에서, 또는 명령줄(Node)</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/ListUp">yh-yeop/ListUp</a></dd></div>
+        <div><dt>문의</dt><dd><a href="https://github.com/yh-yeop/ListUp/issues">오류 신고 · 제안</a></dd></div>
+      </dl>
+      <p class="tags">TypeScript · Expo · Electron · Fastify · SQLite</p>
+    </div>
+
+    <div class="panel notice">
+      <p><b>실행 기록</b>은 동의한 경우에만 내 기기 안에 남고, 네트워크로 보내지 않습니다. <a href="#telemetry">자세히</a></p>
+    </div>
+  </aside>
+</main>
+
+<footer class="wrap foot">
+  <p>ListUp © yh-yeop · <a href="https://github.com/yh-yeop/ListUp/blob/main/LICENSE">AGPL-3.0</a> 라이선스로 공개된 자유 소프트웨어입니다.
+    소스 코드는 <a href="https://github.com/yh-yeop/ListUp">github.com/yh-yeop/ListUp</a>에 있습니다.</p>
+</footer>
+</body>
+</html>
