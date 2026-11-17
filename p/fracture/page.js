@@ -2,18 +2,17 @@
 import { appRelease, releaseNotes, cleanHTML, formatMB, versionLabel } from '../../js/github.js';
 
 const IMG = '../../assets/fracture/';
+// 모두 16:9 (tools/site_shots.py — Fracture 저장소). 첫 장은 히어로 그림과 다른 장면으로
 const SHOTS = [
-  ['p_chase2', '천장을 뚫고 떨어진 진압 병기. 시간 앵커로 몸을 당겨 위로 달아난다.'],
-  ['device_overload', '시간 간섭 장치 — 가동. 그리고 출력 한계 초과.'],
   ['echo_warn', '첫 보스 에코 헌터. 몇 초 전의 내 움직임을 되풀이하며 쏜다.'],
+  ['p_chase2', '천장을 뚫고 떨어진 진압 병기. 시간 앵커로 몸을 당겨 위로 달아난다.'],
   ['self_echo', '에코는 과거의 나다. 같은 길, 같은 박자로 덮쳐 온다.'],
-  ['sniper', '잔상 저격수. 멈춰 서 있으면 맞는다 — 계속 움직일 것.'],
+  ['sniper', '잔상 저격수의 조준선. 베기 타이밍을 맞추면 탄을 되받아친다.'],
   ['era_future', '과거와 미래의 발판이 번갈아 나타나는 시간대 블록.'],
   ['p_chase5', '추격은 위로, 더 위로.'],
-  ['m_gap1', '외곽 폐허. 건널 수 없는 틈 아래로 불빛이 새어 나온다.'],
+  ['device_overload', '시간 간섭 장치 — 대기. 모든 것을 되돌리려고, 이곳으로 돌아왔다.'],
+  ['m_gap1', '외곽 폐허. 화이트리스트 스캐너는 더 이상 응답하지 않는다.'],
   ['z_take', '추락한 수송기. 아직 살아 있는 추진 셀을 되찾는다.'],
-  ['s_camp', '폐허에 남은 글씨 — 우리는 아직 여기 있다.'],
-  ['lineup', '001, 그리고 도시의 기계들.'],
 ];
 
 const $ = s => document.querySelector(s);
@@ -38,7 +37,7 @@ function show(i, { focusThumb = false } = {}) {
 
 $('#thumbs').innerHTML = SHOTS.map(([name, caption], i) =>
   `<button class="thumb" type="button" data-i="${i}" aria-label="${i + 1}번째 스크린샷: ${caption}">
-     <img src="${IMG}${name}-t.webp" alt="" width="400" height="225" loading="lazy">
+     <img src="${IMG}${name}-t.webp" alt="" width="400" height="225" loading="lazy" decoding="async">
    </button>`).join('');
 $('#thumbs').addEventListener('click', e => { const b = e.target.closest('.thumb'); if (b) show(+b.dataset.i); });
 $('#thumbs').addEventListener('keydown', e => {
@@ -70,11 +69,12 @@ async function loadRelease() {
   const win = rel.assets.find(a => a.label === 'Windows');
   const ver = versionLabel(rel.version);
   if (win) {
+    const kind = /\.exe$/i.test(win.name) ? '설치 프로그램' : 'zip';
     for (const id of ['#dl-hero', '#dl-side']) {
       $(id).href = win.url;
-      $(id).setAttribute('aria-label', `Fracture ${ver} Windows용 받기 (zip, ${formatMB(win.size)})`);
+      $(id).setAttribute('aria-label', `Fracture ${ver} Windows용 받기 (${kind}, ${formatMB(win.size)})`);
     }
-    $('#dl-hero-meta').textContent = `Windows · ${formatMB(win.size)}`;
+    $('#dl-hero-meta').textContent = `Windows ${kind} · ${formatMB(win.size)}`;
     $('#dl-side-label').textContent = `Windows용 받기 · ${formatMB(win.size)}`;
     if (win.sha256) {
       $('#sha').hidden = false;
@@ -85,9 +85,25 @@ async function loadRelease() {
   $('#info-ver').textContent = ver;
   $('#info-date').textContent = fmtDate(rel.date);
   $('#rel-link').href = rel.page;
+  $('#rel-zip').href = rel.page;
   $('#notes-ver').textContent = ver;
   const notes = await releaseNotes(rel, 'releases');
   $('#notes').innerHTML = notes ? cleanHTML(notes, 'releases') : '<p class="muted">이 버전에는 릴리스 노트가 없습니다.</p>';
+  foldNotes();
+}
+
+// 긴 릴리스 노트는 접어 두고 "전체 보기"로 편다 (접힌 높이는 CSS .notes.folded)
+function foldNotes() {
+  const box = $('#notes'), more = $('#notes-more');
+  box.classList.add('folded');
+  if (box.scrollHeight <= box.clientHeight + 40) { box.classList.remove('folded'); return; }
+  more.hidden = false;
+  more.addEventListener('click', () => {
+    const open = box.classList.toggle('folded') === false;
+    more.setAttribute('aria-expanded', open);
+    more.textContent = open ? '릴리스 노트 접기' : '릴리스 노트 전체 보기';
+    if (!open) box.scrollIntoView({ block: 'nearest' });
+  });
 }
 
 loadRelease().catch(() => {

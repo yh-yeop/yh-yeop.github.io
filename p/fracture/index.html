@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fracture · 2D 메트로배니아</title>
-<meta name="description" content="되돌리려다, 시간을 부숴 버렸다. 시간을 건너뛰고 멈추고 되감으며 무너진 기계도시를 가로지르는 2D 플랫포머 메트로배니아. Windows용 첫 공개 베타.">
+<meta name="description" content="되돌리려다, 시간을 부숴 버렸다. 시간을 건너뛰고 멈추고 되감으며 무너진 기계도시를 가로지르는 2D 플랫포머 메트로배니아. Windows용 공개 베타, 무료.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fracture — 첫 공개 베타">
+<meta property="og:title" content="Fracture — 공개 베타">
 <meta property="og:description" content="되돌리려다, 시간을 부숴 버렸다. 시간을 건너뛰고 멈추고 되감으며 무너진 기계도시를 가로지르는 2D 메트로배니아.">
 <meta property="og:image" content="https://yh-yeop.github.io/assets/fracture/og.jpg">
 <meta property="og:url" content="https://yh-yeop.github.io/p/fracture/">
@@ -39,14 +39,14 @@
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <p class="kicker">2D 플랫포머 · 메트로배니아 <span class="badge">첫 공개 베타</span></p>
+    <p class="kicker">2D 플랫포머 · 메트로배니아 <span class="badge">공개 베타</span></p>
     <h1 class="logo" data-text="FRACTURE">FRACTURE</h1>
     <p class="tagline">되돌리려다, 시간을 부숴 버렸다.</p>
     <p class="lede">시간을 건너뛰고, 멈추고, 되감으며 무너진 기계도시를 가로지른다.</p>
     <div class="cta">
       <a class="btn primary big" id="dl-hero" href="https://github.com/yh-yeop/releases/releases?q=Fracture">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-        <span>베타 받기 <small id="dl-hero-meta">Windows</small></span>
+        <span>베타 받기 <small id="dl-hero-meta">Windows 설치 프로그램</small></span>
       </a>
       <a class="btn ghost big" href="#media">스크린샷 보기</a>
     </div>
@@ -61,7 +61,7 @@
       <h2 id="media-h" class="sr-only">스크린샷</h2>
       <div class="viewer">
         <button class="shot-main" type="button" id="shot-open" aria-label="크게 보기">
-          <img id="shot-img" src="../../assets/fracture/p_chase2.webp" alt="" width="1600" height="727">
+          <img id="shot-img" src="../../assets/fracture/echo_warn.webp" alt="" width="1600" height="900">
         </button>
         <button class="nav prev" type="button" id="shot-prev" aria-label="이전 스크린샷">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
@@ -72,7 +72,7 @@
       </div>
       <p class="caption" id="shot-caption" aria-live="polite"></p>
       <div class="thumbs" id="thumbs" role="group" aria-label="스크린샷 고르기"></div>
-      <p class="shot-note">개발 중 화면입니다. 베타의 실제 화면과 다를 수 있습니다.</p>
+      <p class="shot-note">0.9.2 베타 때의 화면입니다. 0.9.4부터 적과 보스를 플레이어와 같은 그림체로 다시 그려서, 지금 베타와는 적의 모습이 다릅니다.</p>
     </section>
 
     <section aria-labelledby="about-h" data-embed>
@@ -118,19 +118,34 @@
       </ul>
     </section>
 
+    <section aria-labelledby="qol-h">
+      <h2 id="qol-h">편의 기능</h2>
+      <ul class="qol">
+        <li><b>자동 저장</b> 각 장의 시작과 보스방에 들어설 때 저장되고, 타이틀의 <b>이어하기</b>로 그 자리부터 다시 시작합니다.</li>
+        <li><b>게임 안 업데이트</b> 새 버전이 나오면 타이틀에 <b>업데이트</b>가 뜹니다. 누르면 받아서 설치하고 다시 켭니다.</li>
+        <li><b>키 바꾸기 · 게임패드</b> 모든 조작 키를 설정에서 바꿀 수 있고, 메뉴까지 게임패드만으로 다룰 수 있습니다.</li>
+        <li><b>화면 흔들림 · 번쩍임</b> 둘 다 0~100%로 줄이거나 끌 수 있습니다.</li>
+        <li><b>화면</b> 전체 화면과 창 모드, 창 크기를 고릅니다. 16:9가 아닌 화면에서는 위아래나 양옆을 비워 16:9로 맞춥니다.</li>
+        <li><b>언어</b> 한국어와 영어.</li>
+      </ul>
+    </section>
+
     <section aria-labelledby="ctrl-h">
       <h2 id="ctrl-h">조작</h2>
       <div class="controls">
-        <dl>
-          <div><dt>이동</dt><dd><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span class="or">또는</span> 방향키</dd></div>
-          <div><dt>점프</dt><dd><kbd>Space</kbd></dd></div>
-          <div><dt>시간 도약 (대시)</dt><dd><kbd>Shift</kbd></dd></div>
-          <div><dt>공격 · 탄 반사</dt><dd><kbd>마우스 왼쪽</kbd> <span class="or">또는</span> <kbd>J</kbd></dd></div>
-          <div><dt>시간 앵커</dt><dd><kbd>마우스 오른쪽</kbd> <span class="or">또는</span> <kbd>K</kbd></dd></div>
-          <div><dt>상호작용</dt><dd><kbd>E</kbd></dd></div>
-          <div><dt>일시정지</dt><dd><kbd>Esc</kbd></dd></div>
-        </dl>
-        <p class="ctrl-note">게임 중 되찾는 능력의 키는 처음 얻을 때 안내 카드로 알려 줍니다. 조작 키는 설정에서 바꿀 수 있고, 게임패드도 지원합니다.</p>
+        <table>
+          <thead><tr><th scope="col">동작</th><th scope="col">키보드 · 마우스</th><th scope="col">게임패드</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">이동</th><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span class="or">또는</span> 방향키</td><td>왼쪽 스틱 <span class="or">또는</span> 방향 패드</td></tr>
+            <tr><th scope="row">점프</th><td><kbd>Space</kbd></td><td><kbd>A</kbd></td></tr>
+            <tr><th scope="row">시간 도약 (대시)</th><td><kbd>Shift</kbd></td><td><kbd>X</kbd> <span class="or">또는</span> <kbd>RT</kbd></td></tr>
+            <tr><th scope="row">공격 · 탄 반사</th><td><kbd>마우스 왼쪽</kbd> <span class="or">또는</span> <kbd>J</kbd></td><td><kbd>Y</kbd> <span class="or">또는</span> <kbd>RB</kbd></td></tr>
+            <tr><th scope="row">시간 앵커</th><td><kbd>마우스 오른쪽</kbd> <span class="or">또는</span> <kbd>K</kbd></td><td><kbd>LB</kbd></td></tr>
+            <tr><th scope="row">상호작용</th><td><kbd>E</kbd></td><td><kbd>B</kbd></td></tr>
+            <tr><th scope="row">일시정지</th><td><kbd>Esc</kbd></td><td><kbd>Start</kbd></td></tr>
+          </tbody>
+        </table>
+        <p class="ctrl-note">게임패드 버튼은 Xbox 이름입니다. PlayStation 패드는 같은 자리 버튼(A ×, B ○, X □, Y △)을 쓰세요. 게임 중 되찾는 능력의 키는 처음 얻을 때 안내 카드로 알려 줍니다.</p>
       </div>
     </section>
 
@@ -139,15 +154,11 @@
       <div class="notes" id="notes">
         <p class="muted">불러오는 중…</p>
       </div>
+      <button class="btn more" type="button" id="notes-more" aria-controls="notes" aria-expanded="false" hidden>릴리스 노트 전체 보기</button>
     </section>
   </div>
 
   <aside class="col-side" aria-label="게임 정보">
-    <div class="panel capsule">
-      <img src="../../assets/fracture/device_overload-t.webp" alt="" width="400" height="184" loading="lazy">
-      <p>시간 간섭 실험에서 탈주한 실험체 001이 무너진 시간 속에서 기계도시를 가로지르는 2D 플랫포머 메트로배니아.</p>
-    </div>
-
     <div class="panel download" id="download">
       <h2>베타 받기</h2>
       <a class="btn primary block" id="dl-side" href="https://github.com/yh-yeop/releases/releases?q=Fracture">
@@ -155,12 +166,13 @@
         <span id="dl-side-label">Windows용 받기</span>
       </a>
       <ol class="steps">
-        <li>zip을 받아 압축을 풉니다.</li>
-        <li>폴더 안의 <code>Fracture.exe</code>를 실행합니다.</li>
+        <li>설치 프로그램을 받아 실행합니다. 관리자 권한은 필요 없습니다.</li>
+        <li>시작 메뉴(원하면 바탕화면)의 <b>Fracture</b>로 실행합니다.</li>
       </ol>
-      <p class="small">설치 프로그램과 자동 업데이트는 없습니다. 서명하지 않은 실행 파일이라 SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b>을 누르세요.</p>
+      <p class="small">한 번 설치하면 다음 버전부터는 게임 안에서 업데이트됩니다. 서명하지 않은 설치 파일이라 SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b>을 누르세요.</p>
+      <p class="small">설치 없이 쓰는 zip판도 <a id="rel-zip" href="https://github.com/yh-yeop/releases/releases?q=Fracture">릴리스 페이지</a>에 있습니다(게임 안 업데이트는 안 됨).</p>
       <div class="sha" id="sha" hidden>
-        <span class="small">SHA-256</span>
+        <span class="small">설치 파일 SHA-256</span>
         <code id="sha-val"></code>
         <button class="btn tiny" type="button" id="sha-copy">복사</button>
       </div>
@@ -170,8 +182,9 @@
     <div class="panel">
       <dl class="info">
         <div><dt>장르</dt><dd>2D 플랫포머 · 메트로배니아</dd></div>
-        <div><dt>버전</dt><dd id="info-ver">0.9.0 베타</dd></div>
-        <div><dt>공개일</dt><dd id="info-date">2026년 11월 2일</dd></div>
+        <div><dt>버전</dt><dd id="info-ver">0.9.5 베타</dd></div>
+        <div><dt>업데이트</dt><dd id="info-date">2026년 11월 9일</dd></div>
+        <div><dt>첫 공개</dt><dd>2026년 11월 2일</dd></div>
         <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
         <div><dt>엔진</dt><dd>Unity 6</dd></div>
         <div><dt>언어</dt><dd>한국어, 영어</dd></div>
@@ -187,6 +200,8 @@
       <dl class="info">
         <div><dt>운영체제</dt><dd>Windows 10 / 11 (64비트)</dd></div>
         <div><dt>입력</dt><dd>키보드 · 마우스, 게임패드</dd></div>
+        <div><dt>화면</dt><dd>16:9 기준, 다른 비율은 여백으로 맞춤</dd></div>
+        <div><dt>인터넷</dt><dd>필요 없음 (새 버전 확인에만 씀)</dd></div>
       </dl>
     </div>
 
@@ -195,6 +210,7 @@
       <ul class="small plain">
         <li>프롤로그부터 엔딩까지 전부 들어 있습니다.</li>
         <li>보스 난이도와 예고 시간은 계속 다듬는 중입니다.</li>
+        <li>진행은 각 장의 시작과 보스방에서 저장됩니다. 장 중간에 끄면 그 장의 처음(또는 보스전)부터 이어집니다.</li>
         <li><kbd>F3</kbd>은 개발용 디버그 창입니다. 정상 진행에는 필요 없습니다.</li>
       </ul>
     </div>
