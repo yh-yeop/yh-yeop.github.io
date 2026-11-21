@@ -73,7 +73,7 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .hero { position: relative; isolation: isolate; overflow: hidden; border-bottom: 1px solid var(--line-soft); }
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: -2;
-  background: url("../../assets/opencraft/tower.webp") 72% 38% / cover no-repeat;
+  background: url("../../assets/opencraft/snow-tower.webp") 72% 38% / cover no-repeat;
 }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -244,7 +244,7 @@ p.small.note { margin-top: var(--s4); }
   .col-side { position: static; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: start; }
 }
 @media (max-width: 900px) {
-  .hero::before { background-image: url("../../assets/opencraft/tower-t.webp"); background-position: 70% 30%; }
+  .hero::before { background-image: url("../../assets/opencraft/snow-tower-t.webp"); background-position: 70% 30%; }
   .hero::after {
     background:
       radial-gradient(80% 50% at 80% 10%, rgba(255, 150, 70, .14), transparent 60%),
