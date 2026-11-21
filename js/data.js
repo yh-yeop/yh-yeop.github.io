@@ -74,6 +74,15 @@ export const PROJECTS = [
     sources: [['웹 소스', 'calendar-app'], ['안드로이드 소스', 'SimpleCalendar']],
   },
   {
+    // 웹앱(Pages) + Windows 설치 파일(같은 저장소 Releases 의 AutoCroper-Setup-<버전>.exe, main 에 버전이 오르면 Actions 가 만듦)
+    id: 'autocroper', cat: 'web', title: 'AutoCroper', icon: 'assets/icons/autocroper.png',
+    repos: ['AutoCroper'], live: `${PAGES}/AutoCroper/`, page: 'p/autocroper/',
+    release: { repo: 'AutoCroper' },
+    desc: '스캔본 · 흰 배경 사진의 흰 여백을 자동으로 잘라 내는 도구. 이미지는 서버로 전송되지 않고 이 기기 안에서만 처리합니다.',
+    points: ['비스듬한 사진 자동 기울기 보정, 가장자리 흰 틈까지 다듬기', '한 번에 여러 장 스캔한 파일을 사진별로 나누기', '고른 폴더에 바로 저장(ZIP 필요 없음), 여러 장 병렬 처리'],
+    tags: ['JavaScript', 'Canvas · Web Worker', 'PWA', 'Electron', 'Windows'],
+  },
+  {
     id: 'listup', cat: 'app', title: 'ListUp', icon: 'assets/icons/listup.png',
     repos: ['ListUp'], release: { repo: 'ListUp' }, page: 'p/listup/',
     desc: '초대 코드로 다른 사람의 저장소에 참여해 파일을 공유하고, 변경 사항은 제안 · 검토를 거쳐 반영하는 공용 클라우드.',

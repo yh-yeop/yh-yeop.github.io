@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoCroper — 스캔한 사진의 흰 여백 자동 자르기 · 기울기 보정 · 여러 장 분리</title>
+<meta name="description" content="스캔본 · 흰 배경 사진의 흰 여백을 자동으로 잘라 내는 도구. 기울기 보정, 한 번에 여러 장 스캔한 파일 분리, 고른 폴더에 바로 저장. 이미지는 서버로 전송되지 않습니다. 웹에서 바로 쓰거나 Windows 설치 파일로.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AutoCroper · 흰 여백 자르기">
+<meta property="og:description" content="스캔한 사진의 흰 여백을 자동으로 잘라 냅니다. 기울기 보정 · 여러 장 분리 · 폴더에 바로 저장. 이미지는 서버로 전송되지 않습니다.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/autocroper/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://yh-yeop.github.io/p/autocroper/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/icons/autocroper.png" type="image/png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="autocroper.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script src="../../share.js" defer></script>
+<script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/autocroper.png" alt="" width="64" height="64">
+    <div>
+      <h1>AutoCroper <span class="en">흰 여백 자르기</span></h1>
+      <p class="tagline">스캔한 사진의 흰 여백을 자동으로 잘라 내는 도구</p>
+    </div>
+  </div>
+  <p class="lede">흰 종이 위에 올려 스캔한 사진을 넣으면 둘레의 흰 여백을 알아서 잘라 냅니다. 비스듬히 놓인 사진은 똑바로 세우고,
+    스캐너에 여러 장을 한꺼번에 올려 찍은 파일은 사진별로 나눕니다. 결과는 고른 폴더에 바로 저장됩니다.</p>
+  <p class="privacy">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z"/></svg>
+    이미지는 서버로 전송되지 않습니다
+  </p>
+  <div class="cta">
+    <a class="btn primary" href="https://yh-yeop.github.io/AutoCroper/">웹에서 바로 쓰기</a>
+    <a class="btn" data-dl href="https://github.com/yh-yeop/AutoCroper/releases/latest">Windows 설치 파일 <small>.exe</small></a>
+  </div>
+  <p class="hero-meta">무료 · 오픈 소스(MIT) · 휴대폰 · PC 브라우저 · 홈 화면에 앱으로 설치(PWA) · Windows 10 · 11 설치판</p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <figure>
+      <button class="shot" type="button" popovertarget="lb-split" aria-label="크게 보기: 여러 장 분리와 폴더 저장">
+        <img src="../../assets/autocroper/split.webp" srcset="../../assets/autocroper/split-t.webp 400w, ../../assets/autocroper/split.webp 1600w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="AutoCroper 화면. 왼쪽 저장 폴더 칸에 '사진 정리' 폴더와 '처리되면 바로 폴더에 저장'이 켜져 있고, 오른쪽에 사진 세 장이 들어 있던 스캔 파일 하나가 카드 세 개로 나뉘어 원본(빨간 점선 크롭 영역)과 결과가 나란히 보인다. 카드마다 기울기 자동 보정 각도와 저장된 파일 이름이 적혀 있다" width="1600" height="1000">
+      </button>
+      <figcaption>사진 세 장을 한 번에 스캔한 파일. 사진별로 나뉘고, 기울기를 바로잡은 뒤 '사진 정리' 폴더에 바로 저장됩니다.</figcaption>
+    </figure>
+
+    <section aria-labelledby="feat-h">
+      <div data-embed>
+      <h2 id="feat-h">하는 일</h2>
+      <ul class="features">
+        <li>
+          <h3>흰 여백 자동 자르기</h3>
+          <p>흰 바탕과 확실히 다른 부분만 남기고 둘레를 잘라 냅니다. 먼지 · 종이 얼룩 같은 작은 점은 무시합니다.</p>
+        </li>
+        <li>
+          <h3>자동 기울기 보정</h3>
+          <p>비스듬히 스캔된 사진의 테두리 각도를 재서 똑바로 돌립니다(±15°까지). 보정한 각도는 카드에 적힙니다.</p>
+        </li>
+        <li>
+          <h3>가장자리 흰 틈 제거</h3>
+          <p>살짝 기운 사진 모서리에 남는 흰 쐐기, 사진과 종이가 섞인 옅은 경계선까지 안쪽으로 다듬습니다.</p>
+        </li>
+        <li>
+          <h3>여러 장 자동 분리</h3>
+          <p>스캐너에 사진 여러 장을 한꺼번에 올려 찍은 파일은 사진마다 카드가 따로 생깁니다. 사진이 하나뿐이거나 문서면 그대로 둡니다.</p>
+        </li>
+        <li>
+          <h3>폴더에 바로 저장</h3>
+          <p>저장 폴더를 고르면 ZIP 없이 결과 파일이 그 폴더에 바로 생깁니다. '처리되면 바로 폴더에 저장'을 켜면 넣기만 하면 끝.</p>
+        </li>
+        <li>
+          <h3>한꺼번에, 빠르게</h3>
+          <p>여러 장을 한 번에 넣을 수 있고, CPU 코어 수만큼 나눠 동시에 처리합니다. 옵션을 바꾸면 모든 이미지에 바로 다시 계산됩니다.</p>
+        </li>
+        <li>
+          <h3>이 기기 안에서만</h3>
+          <p>모든 처리는 브라우저(또는 설치한 앱) 안에서 합니다. 이미지는 서버로 전송되지 않고, 한 번 연 뒤로는 인터넷 없이도 됩니다.</p>
+        </li>
+        <li>
+          <h3>회전 · 여백 · 저장 형식</h3>
+          <p>'고급 설정'에서 90° 회전, 결과 둘레 여백, JPEG 품질 · PNG를 고릅니다. 평소엔 접혀 있고, 고른 값은 기억합니다.</p>
+        </li>
+      </ul>
+      </div>
+      <div class="pair">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-deskew" aria-label="크게 보기: 기울기 자동 보정">
+            <img src="../../assets/autocroper/deskew-t.webp" srcset="../../assets/autocroper/deskew-t.webp 400w, ../../assets/autocroper/deskew.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="카드 두 개. 4도쯤 기울어진 가을 공원 사진은 '기울기 -4.30° 자동 보정'으로 똑바로 세워졌고, 반듯한 열기구 사진은 여백만 잘렸다" width="1600" height="1000" loading="lazy">
+          </button>
+          <figcaption>기운 사진은 똑바로, 반듯한 사진은 여백만</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-settings" aria-label="크게 보기: 고급 설정">
+            <img src="../../assets/autocroper/settings-t.webp" srcset="../../assets/autocroper/settings-t.webp 400w, ../../assets/autocroper/settings.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="고급 설정을 펼친 화면. 여러 장 자동 분리, 흰색 임계값, 노이즈 필터, 자동 기울기 보정, 사진 가장자리 흰 틈 제거, 추가 여백" width="1600" height="1000" loading="lazy">
+          </button>
+          <figcaption>고급 설정. 평소엔 접혀 있어 그냥 넣기만 하면 됩니다</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-h">
+      <div data-embed>
+      <h2 id="how-h">쓰는 법</h2>
+      <ol class="steps">
+        <li><b>저장 폴더 고르기</b> (선택) — '폴더 선택'으로 결과를 넣을 폴더를 정하고 '처리되면 바로 폴더에 저장'을 켭니다. 다음에 열어도 기억합니다.</li>
+        <li><b>이미지 넣기</b> — 끌어다 놓거나, 눌러서 고르거나, <kbd>Ctrl</kbd>+<kbd>V</kbd>로 붙여 넣습니다. 여러 장을 한 번에 넣어도 됩니다.</li>
+        <li><b>결과 확인</b> — 카드마다 왼쪽이 원본(잘릴 영역은 빨간 점선), 오른쪽이 결과입니다. 한 장만 돌리려면 카드의 ⟲ ⟳.</li>
+        <li><b>저장</b> — 폴더를 골랐으면 이미 저장돼 있습니다. 아니면 카드의 '다운로드'나 '전체 ZIP 다운로드'로 받습니다.</li>
+      </ol>
+      <p class="small">파일 이름은 <code>원본이름_crop.jpg</code>, 한 파일에서 여러 장으로 나뉘면 <code>원본이름_crop_1.jpg</code> · <code>_2</code> …</p>
+      </div>
+    </section>
+
+    <section id="get" aria-labelledby="get-h">
+      <div class="get-grid">
+        <div>
+          <div data-embed>
+          <h2 id="get-h">받기</h2>
+          <p>두 가지 모두 하는 일은 같습니다. 바로 써 보려면 웹에서, 폴더 저장을 늘 쓰거나 탐색기에서 바로 열고 싶으면 설치 파일을 받으세요.</p>
+          <ul class="ways">
+            <li>
+              <b>웹에서 바로 쓰기</b>
+              <span>휴대폰 · PC 브라우저에서 <a href="https://yh-yeop.github.io/AutoCroper/">yh-yeop.github.io/AutoCroper</a>. Edge · Chrome에서는 '앱으로 설치'로 독립 창 앱처럼 두고, 인터넷 없이도 씁니다. 폴더에 바로 저장도 Edge · Chrome에서 됩니다.</span>
+            </li>
+            <li>
+              <b>Windows 설치 파일</b>
+              <span><code>AutoCroper-Setup-버전.exe</code>를 받아 실행합니다. 설치 폴더를 고를 수 있고, 바탕화면 · 시작 메뉴 바로가기가 생깁니다. 탐색기에서 이미지를 오른쪽 클릭 → '연결 프로그램 → AutoCroper'로 바로 엽니다.</span>
+            </li>
+          </ul>
+          </div>
+          <div class="get">
+            <a class="btn primary" href="https://yh-yeop.github.io/AutoCroper/">웹에서 바로 쓰기</a>
+            <a class="btn" data-dl href="https://github.com/yh-yeop/AutoCroper/releases/latest">Windows 설치 파일 <small>.exe</small></a>
+          </div>
+          <ul class="notes">
+            <li>코드 서명이 없는 설치 파일이라 처음 실행할 때 Windows가 <b>'PC 보호'</b> 창을 띄울 수 있습니다. <b>추가 정보 → 실행</b>을 누르세요.</li>
+            <li>설치 마법사에서 <b>설치 폴더</b>를 직접 고를 수 있습니다.</li>
+            <li><b>자동 업데이트:</b> 켤 때와 6시간마다 새 버전을 확인해 뒤에서 받아 두고, 준비되면 '다시 시작해 업데이트'가 뜹니다. 그냥 닫아도 다음 실행 때 설치됩니다.</li>
+            <li>지우기: Windows 설정 → 앱 → AutoCroper → 제거.</li>
+          </ul>
+        </div>
+        <figure>
+          <button class="shot phone" type="button" popovertarget="lb-mobile" aria-label="크게 보기: 휴대폰 화면">
+            <img src="../../assets/autocroper/mobile-t.webp" srcset="../../assets/autocroper/mobile-t.webp 400w, ../../assets/autocroper/mobile.webp 800w" sizes="(max-width: 600px) 220px, 200px" alt="휴대폰 브라우저의 어두운 테마 화면. 스캔 파일에서 찾은 사진 3장 중 첫 장의 원본과 결과, 기울기 -1.79° 자동 보정, 분리 취소와 다운로드 단추" width="800" height="1720" loading="lazy">
+          </button>
+          <figcaption>휴대폰에서도 같은 화면</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">알아 둘 것</h2>
+      <dl class="faq">
+        <div>
+          <dt>어떤 이미지에 잘 맞나요?</dt>
+          <dd><b>흰 종이 · 흰 배경</b> 위의 사진과 스캔본에 맞춰 만들었습니다. 바탕이 회색이나 색지면 여백을 잘 찾지 못할 수 있습니다. 연한 부분이 잘려 나가면 고급 설정의 '흰색 임계값'을 낮추세요.</dd>
+        </div>
+        <div>
+          <dt>여러 장이 나뉘지 않아요</dt>
+          <dd>사진과 사진 사이에 <b>눈에 보이는 흰 틈</b>이 있어야 나뉩니다. 서로 닿아 있거나 틈이 아주 좁으면 한 장으로 남고, 아주 작은 사진은 따로 잡히지 않습니다.</dd>
+        </div>
+        <div>
+          <dt>한 장이 둘로 잘못 나뉘었어요</dt>
+          <dd>날아간 하늘 · 흰 벽처럼 넓고 완전히 흰 띠가 사진을 가로지르면 두 장으로 나뉠 수 있습니다. 카드의 <b>'분리 취소'</b>를 누르면 원래 한 장으로 돌아갑니다. 아예 끄려면 고급 설정의 '여러 장 자동 분리'.</dd>
+        </div>
+        <div>
+          <dt>기울기가 보정되지 않아요</dt>
+          <dd>±15°까지, 테두리가 곧은 사진에만 적용합니다. 테두리가 들쭉날쭉한 문서 · 그림은 일부러 그대로 둡니다. 옆으로 누운 사진은 90° 회전 버튼으로.</dd>
+        </div>
+        <div>
+          <dt>'폴더 선택'이 안 보여요</dt>
+          <dd>폴더에 바로 저장하는 기능은 Edge · Chrome과 Windows 설치판에서 됩니다. 다른 브라우저(Firefox · Safari 등)에서는 '다운로드' · '전체 ZIP 다운로드'로 받으세요.</dd>
+        </div>
+        <div>
+          <dt>안 열리는 사진이 있어요</dt>
+          <dd>HEIC처럼 브라우저가 열지 못하는 형식은 지원하지 않습니다. 아이폰 Safari는 아주 큰 결과(약 1,670만 화소 넘게)를 만들지 못할 수 있고, 그때는 카드에 안내가 뜹니다.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="앱 정보">
+    <div class="panel">
+      <h2>받기</h2>
+      <a class="btn primary block" href="https://yh-yeop.github.io/AutoCroper/">웹에서 바로 쓰기</a>
+      <a class="btn block" data-dl href="https://github.com/yh-yeop/AutoCroper/releases/latest">Windows 설치 파일 <small>.exe</small></a>
+      <p class="small note">모든 버전과 바뀐 점은 <a href="https://github.com/yh-yeop/AutoCroper/releases">릴리스 목록</a>에 있습니다.</p>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>웹앱 (PWA) · Windows 설치판</dd></div>
+        <div><dt>버전</dt><dd id="info-ver">최신 릴리스</dd></div>
+        <div><dt>처리</dt><dd>이 기기 안에서만 (서버 전송 없음)</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/AutoCroper">yh-yeop/AutoCroper</a></dd></div>
+        <div><dt>라이선스</dt><dd><a href="https://github.com/yh-yeop/AutoCroper/blob/main/LICENSE">MIT</a></dd></div>
+        <div><dt>문의</dt><dd><a href="https://github.com/yh-yeop/AutoCroper/issues">오류 신고 · 제안</a></dd></div>
+      </dl>
+      <p class="tags">JavaScript · Canvas · Web Worker · PWA · Electron</p>
+    </div>
+
+    <div class="panel notice">
+      <p><b>이미지는 서버로 전송되지 않습니다.</b> 자르기 · 보정 · 분리 · 저장 모두 브라우저나 설치한 앱 안에서 이뤄집니다.</p>
+    </div>
+  </aside>
+</main>
+
+<div class="lb" popover id="lb-split">
+  <img src="../../assets/autocroper/split.webp" alt="여러 장 분리와 폴더 저장 화면" width="1600" height="1000" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-split" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-deskew">
+  <img src="../../assets/autocroper/deskew.webp" alt="기울기 자동 보정 화면" width="1600" height="1000" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-deskew" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-settings">
+  <img src="../../assets/autocroper/settings.webp" alt="고급 설정 화면" width="1600" height="1000" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-settings" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-mobile">
+  <img src="../../assets/autocroper/mobile.webp" alt="휴대폰 화면" width="800" height="1720" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-mobile" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<footer class="wrap foot">
+  <p>AutoCroper © yh-yeop · <a href="https://github.com/yh-yeop/AutoCroper/blob/main/LICENSE">MIT</a> 라이선스로 공개한 오픈 소스입니다.
+    소스 코드와 설치 파일은 <a href="https://github.com/yh-yeop/AutoCroper">github.com/yh-yeop/AutoCroper</a>에 있습니다.
+    화면은 직접 그린 예시 이미지로 찍었습니다.</p>
+</footer>
+</body>
+</html>
