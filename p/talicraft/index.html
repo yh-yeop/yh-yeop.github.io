@@ -280,21 +280,23 @@
       <ul class="features fight">
         <li>
           <h3>갑각 마디</h3>
-          <p>마디 가운데 갑각 4개가 하나라도 남아 있으면 머리가 받는 피해가 80% 줄어듭니다. 땅속에서 나올 때 깨진 갑각 하나가 되살아납니다 (한 싸움에 2번까지).</p>
+          <p>마디 가운데 갑각 4개가 하나라도 남아 있으면 머리가 받는 피해가 80% 줄어듭니다. 땅속에서 나올 때 깨진 갑각 하나가 되살아납니다 (한 싸움에 2번까지). 같은 갑각을 둘이 동시에 치면 둘째 공격은 거의 들지 않으니 나눠 치세요.</p>
         </li>
         <li>
           <h3>땅속에서 오는 공격</h3>
-          <p>땅속을 다니다 발밑에서 솟구치고, 모래를 부채꼴로 뿜고, 몸으로 고리를 만들어 조입니다. 모두 미리 예고가 보입니다.</p>
+          <p>땅속을 다니다 발밑에서 솟구치고, 모래를 부채꼴로 뿜고, 몸으로 고리를 만들어 조입니다. 모두 미리 예고가 보입니다. 솟구치기 · 휘감기는 방패로 막지 못하니 피하세요. 모래 분사는 방패로 막으면 구속도 걸리지 않습니다.</p>
         </li>
         <li>
           <h3>높은 곳도 안전하지 않음</h3>
-          <p>지표보다 4칸 넘게 높은 곳에 3초 넘게 있으면 모래 덩이를 던집니다.</p>
+          <p>지표보다 4칸 넘게 높은 곳에 3초 넘게 있으면 모래 덩이를 던집니다. 모래 덩이는 투사체라 방패 · 투사체 보호 · 갑각 각반이 듣습니다. 제단보다 7칸 넘게 높은 기둥 위나 16칸 넘게 깊은 곳에서 친 피해는 4분의 1만 듭니다.</p>
         </li>
         <li>
           <h3>2페이즈</h3>
           <p>체력 420(근처에 2명 이상이면 650)이 절반 아래로 내려가면 모래 폭풍이 일고 마디 벌레가 나옵니다. 마디 벌레는 경험치를 주지 않습니다.</p>
         </li>
       </ul>
+
+      <p class="notice">0.11.0 베타 2부터: 제단에서 수평 32칸 · 위아래 24칸 밖에서 준 피해와 공격자가 없는 피해(철 골렘 · 늑대 · 디스펜서 등)는 들지 않고, 폭발(TNT · 엔드 수정)은 4분의 1만 듭니다. 이런 피해만 준 사람은 참여 보상을 받지 못합니다.</p>
 
       <h3 class="sub-h">부르기와 보상</h3>
       <p class="sec-lede">보상은 제단 위에 떨어집니다. 모래 지네 턱(트로피) · 금 · 거미 눈에 더해, 처치에 참여한 사람마다 사막 핵 1개와 지네 전용 인챈트 책 1권, 칭호 "모래 사냥꾼"을 받습니다.</p>
@@ -524,6 +526,7 @@
         </li>
       </ul>
       <p class="notice">보스 공통 (0.11.0): 2페이즈 상태를 저장해, 다시 불러와도 2페이즈 공지 · 무적이 되풀이되지 않습니다. 쓰러지는 중에 저장돼도 참여자 보상이 나가고, 쓰러진 보스가 되살아나지 않습니다.</p>
+      <p class="notice">공허 고래 (0.11.0 베타 2 · 3): 제단에서 수평 · 위아래 48칸 밖에서 준 피해와 공격자가 없는 피해(침대 폭발 · 디스펜서 · 늑대 등)는 들지 않고, 엔드 수정 폭발 · TNT는 4분의 1만 듭니다. 같은 공명 수정을 둘이 동시에 치면 둘째 공격은 거의 들지 않으니 나눠 치세요. 꼬리 내려치기 · 솟구침은 방패로 막지 못하니 점프하거나 그림자 밖으로 피하고, 숨결 줄기는 방패로 막으면 공중 부양도 걸리지 않습니다. 세 패턴 모두 옆으로 미는 힘이 줄어 제단 가장자리에서 공허로 떨어지는 일이 줄었습니다.</p>
     </section>
 
     <section id="bossgear" class="g-boss" aria-labelledby="bossgear-h" data-embed>
@@ -548,8 +551,20 @@
           </button>
           <figcaption>툴팁에 고유 효과 한 줄과 공허 사망 안내가 붙습니다.</figcaption>
         </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-bossgear-boots-tooltip" aria-label="크게 보기: 뿌리 신발 툴팁">
+            <img src="../../assets/talicraft/bossgear-boots-tooltip-t.webp" srcset="../../assets/talicraft/bossgear-boots-tooltip-t.webp 400w, ../../assets/talicraft/bossgear-boots-tooltip.webp 1280w" sizes="(max-width: 600px) 100vw, 380px" alt="뿌리 신발 툴팁: 방어 3 · 방어 강도 4 · 밀침 저항 1, 뿌리내림 효과 한 줄, 공허 사망 안내가 붉은 글씨로. 인벤토리 발 칸에 뿌리 신발을 신었다" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>뿌리 신발 (0.10.0). 갑옷은 방어 강도만 +1입니다.</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-bossgear-notebook-gear" aria-label="크게 보기: 수첩 장비 탭">
+            <img src="../../assets/talicraft/bossgear-notebook-gear-t.webp" srcset="../../assets/talicraft/bossgear-notebook-gear-t.webp 400w, ../../assets/talicraft/bossgear-notebook-gear.webp 854w" sizes="(max-width: 600px) 100vw, 380px" alt="탈리 수첩 장비 탭: 발 칸의 뿌리 신발과 뿌리내림 효과, 맨 아래에 보스 갑옷 1/4부위" width="400" height="225" loading="lazy">
+          </button>
+          <figcaption>수첩 장비 탭. 입은 보스 장비의 효과와 보스 갑옷 몇 부위인지 보입니다.</figcaption>
+        </figure>
       </div>
-      <p class="shot-note">보스 장비 세 장은 0.9.0 베타 1의 시험 화면에서 화면 표시(단축바 · 손 · 채팅)를 걷어 내고 가운데를 잘라 키운 것입니다.</p>
+      <p class="shot-note">앞의 세 장은 0.9.0 베타 1, 뿌리 신발 두 장은 0.11.0 베타 3의 시험 화면입니다. 화면 표시(단축바 · 손 · 채팅)를 걷어 내고 잘라 키웠습니다. 균사 투구 화면은 아직 없습니다.</p>
 
       <div class="lb" popover id="lb-bossgear-stands">
         <img src="../../assets/talicraft/bossgear-stands.webp" alt="갑옷 거치대 둘이 용의 흉갑과 갑각 각반을 입고 있다. 왼쪽은 금 장식 무늬를 겹치고 공명의 활을, 오른쪽은 시듦의 검을 들었다" width="1280" height="720" loading="lazy">
@@ -565,6 +580,16 @@
         <img src="../../assets/talicraft/bossgear-tooltip.webp" alt="시듦의 검 툴팁: 공격 피해 9, 시듦 낙인 효과 한 줄, 공허 사망 안내가 붉은 글씨로" width="1280" height="720" loading="lazy">
         <p>시듦의 검 툴팁. 효과 수치는 서버 설정값을 그대로 보여 줍니다.</p>
         <button class="lb-close" type="button" popovertarget="lb-bossgear-tooltip" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-bossgear-boots-tooltip">
+        <img src="../../assets/talicraft/bossgear-boots-tooltip.webp" alt="뿌리 신발 툴팁: 방어 3 · 방어 강도 4 · 밀침 저항 1, 뿌리내림 효과 한 줄, 공허 사망 안내가 붉은 글씨로. 인벤토리 발 칸에 뿌리 신발을 신었다" width="1280" height="720" loading="lazy">
+        <p>뿌리 신발 툴팁. 웅크린 채 1초 서 있으면 밀려나지 않고 받는 피해 -10%.</p>
+        <button class="lb-close" type="button" popovertarget="lb-bossgear-boots-tooltip" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="lb" popover id="lb-bossgear-notebook-gear">
+        <img src="../../assets/talicraft/bossgear-notebook-gear.webp" alt="탈리 수첩 장비 탭: 발 칸의 뿌리 신발과 뿌리내림 효과, 맨 아래에 보스 갑옷 1/4부위" width="854" height="480" loading="lazy">
+        <p>수첩 장비 탭. 용의 흉갑 · 갑각 각반 · 뿌리 신발 · 균사 투구를 한 번에 다 입으면 칭호 "보스 갑옷을 두른 자"를 받습니다.</p>
+        <button class="lb-close" type="button" popovertarget="lb-bossgear-notebook-gear" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
 
       <h3 class="sub-h">보스마다 장비 하나</h3>
@@ -722,10 +747,15 @@
           <h3>덩굴 수호목과 뿌리 신발 <small>0.10.0 베타 1</small></h3>
           <p>두 번째 바이옴 보스는 정글의 고정형 보스 덩굴 수호목. 뿌리 약점을 깨야 줄기가 드러납니다. 수호목 심재로 뿌리 신발을, 정글 핵으로 탐험가의 부적에 낙하 안전 거리를 더하고, 부적 둘을 합칠 수 있게 했습니다. 전용 인챈트 가지치기 · 옭매기도 더했습니다.</p>
         </li>
-        <li class="now">
+        <li>
           <span class="ms">M6c</span>
-          <h3>포자 모체와 균사 투구 <small>0.11.0 베타 1 · 최신</small></h3>
+          <h3>포자 모체와 균사 투구 <small>0.11.0 베타 1</small></h3>
           <p>세 번째 바이옴 보스는 버섯 들판의 포자 모체. 갈라져 나온 분열체를 끊어야 모체에 피해가 듭니다. 포자낭으로 균사 투구를, 버섯 들판 핵으로 탐험가의 부적에 몹 곁 잠을 더하고, 보스 갑옷 네 부위 칭호와 전용 인챈트 되심기 · 포자 터뜨림도 넣었습니다.</p>
+        </li>
+        <li class="now">
+          <span class="ms">다듬기</span>
+          <h3>고래 · 지네 피해 판정 <small>0.11.0 베타 3 · 최신</small></h3>
+          <p>공허 고래와 모래 지네도 수호목 · 모체와 같은 피해 판정을 씁니다. 너무 멀리서 · 공격자 없이 준 피해는 들지 않고, 공명 수정 · 지네 갑각은 나눠 쳐야 합니다. 패턴마다 피해 종류를 나눠, 지네의 솟구치기 · 휘감기와 고래의 꼬리 내려치기 · 솟구침은 방패로 막지 못하고 피해야 합니다 (베타 2 · 3).</p>
         </li>
         <li class="next">
           <span class="ms">다음</span>
