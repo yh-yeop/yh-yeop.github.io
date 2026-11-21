@@ -133,6 +133,24 @@ p.small.note { margin-top: 12px; }
 .info dd { margin: 0; }
 .tags { margin: 14px 0 0; font-size: .8125rem; color: var(--muted); }
 
+/* gallery: 첫 그림은 크게, 나머지는 두 칸. 크게 보기는 popover (스크립트 없음) */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
+.gallery figure { margin: 0; min-width: 0; }
+.gallery figure:first-child { grid-column: 1 / -1; }
+.shot { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #000; cursor: zoom-in; aspect-ratio: 16 / 9; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shot:hover { border-color: var(--muted); }
+.gallery figcaption { margin: 8px 2px 0; font-size: .875rem; line-height: 1.55; color: var(--muted); }
+.shot-note { margin: 14px 2px 0; font-size: .8125rem; color: var(--muted); }
+.lb { width: min(1280px, calc(100vw - 32px)); max-height: calc(100vh - 32px); margin: auto; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #08111a; color: var(--text); overflow: auto; }
+.lb::backdrop { background: rgba(2, 6, 10, .82); }
+.lb img { display: block; width: 100%; height: auto; max-height: calc(100vh - 140px); object-fit: contain; border-radius: 6px; }
+.lb p { margin: 10px 52px 2px 4px; color: var(--soft); font-size: .9375rem; }
+.lb-close { position: absolute; right: 14px; bottom: 8px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; }
+.lb-close:hover { border-color: var(--accent); color: var(--accent); }
+.lb-close svg { width: 20px; height: 20px; }
+
 .foot { padding-top: 24px; padding-bottom: 40px; color: var(--muted); font-size: .8125rem; border-top: 1px solid var(--line); margin-top: 24px; }
 
 @media (max-width: 920px) {
@@ -145,7 +163,7 @@ p.small.note { margin-top: 12px; }
   .hero-ico { width: 56px; height: 56px; border-radius: 12px; }
   .hero h1 { font-size: 1.625rem; }
   .cta .btn { flex: 1 1 100%; }
-  .loop, .features, .install { grid-template-columns: minmax(0, 1fr); }
+  .loop, .features, .install, .gallery { grid-template-columns: minmax(0, 1fr); }
   .roadmap td:first-child { white-space: normal; overflow-wrap: normal; }
   .col-side { display: flex; }
 }
