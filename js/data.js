@@ -91,17 +91,17 @@ export const PROJECTS = [
   },
   {
     id: 'ytdl', cat: 'app', title: 'YTDL', icon: 'assets/icons/ytdl.png',
-    repos: [], release: { repo: 'releases', prefix: 'YTDL' }, closed: true,
-    desc: '유튜브 영상을 커버 이미지 · 싱크 가사(LRC)가 들어간 MP3로 추출하는 Windows 앱.',
+    repos: [], release: { repo: 'releases', prefix: 'YTDL', extra: ['YTDL-Android'] }, closed: true,
+    desc: '유튜브 영상을 커버 이미지 · 싱크 가사(LRC)가 들어간 MP3로 추출하는 앱. Windows와 Android(유튜브 앱 [공유] 한 번으로)에서 쓴다.',
     points: ['링크만 넣으면 아티스트 · 앨범 · 커버 자동 채움', '검색어 · 재생목록 일괄 다운로드, MP4도 지원', 'ffmpeg 내장 단일 실행 파일, 자동 업데이트'],
-    tags: ['Python', 'pywebview', 'yt-dlp', 'Windows'],
+    tags: ['Python', 'pywebview', 'yt-dlp', 'Windows · Android'],
   },
   {
     id: 'mp3', cat: 'app', title: 'MP3 Checker', icon: 'assets/icons/mp3.png',
-    repos: [], release: { repo: 'releases', prefix: 'MP3Checker' }, closed: true,
-    desc: '폴더 안 MP3의 가사(LRC) · 커버 · 태그 상태를 한눈에 보고 고치는 점검 도구.',
+    repos: [], release: { repo: 'releases', prefix: 'MP3Checker', extra: ['MP3Checker-Android'] }, closed: true,
+    desc: '폴더 안 MP3의 가사(LRC) · 커버 · 태그 상태를 한눈에 보고 고치는 점검 도구. Android 판으로 폰의 음악 폴더도 그 자리에서 고친다.',
     points: ['곡별 상태 대시보드와 아티스트 → 앨범 브라우저', '태그 편집 · 커버 일괄 지정 · 원본 링크 자동 검색', 'YTDL 스타일 규칙 기준으로 라이브러리 정리'],
-    tags: ['Python', 'pywebview', 'Windows'],
+    tags: ['Python', 'pywebview', 'Windows · Android'],
   },
   {
     id: 'tododoo', cat: 'app', title: 'Tododoo', icon: 'assets/icons/tododoo.svg',

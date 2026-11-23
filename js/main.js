@@ -11,7 +11,8 @@ const ICON = {
   chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
 };
 
-const state = { cat: 'all', stage: 'all', q: '', sort: 'pick', repos: {}, releases: {}, open: new Set(), docs: {} };
+// extras: release.extra 로 같은 카드에 붙인 다른 앱(예: YTDL 카드의 YTDL-Android)의 최신 릴리스 목록
+const state = { cat: 'all', stage: 'all', q: '', sort: 'pick', repos: {}, releases: {}, extras: {}, open: new Set(), docs: {} };
 const byId = id => PROJECTS.find(p => p.id === id);
 
 function ago(iso) {
@@ -27,6 +28,7 @@ function updatedAt(p) {
   const times = p.repos.map(r => state.repos[r]?.pushed_at).filter(Boolean);
   const rel = state.releases[p.id];
   if (rel?.date) times.push(rel.date);
+  for (const x of state.extras[p.id] || []) if (x.date) times.push(x.date);
   return times.sort().pop() || '';
 }
 
@@ -51,8 +53,12 @@ function downloads(p) {
     ? `${GH}/releases/releases?q=${encodeURIComponent(p.release.prefix)}`
     : `${GH}/${p.release.repo}/releases/latest`;
   if (!rel || !rel.assets.length) return [`<a class="btn primary" href="${fallback}">다운로드</a>`];
-  const out = rel.assets.map(a =>
-    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 ${esc(versionLabel(rel.version))} 받기">${esc(a.label)}</a>`);
+  const btn = (r, a) =>
+    `<a class="btn primary" href="${esc(a.url)}" aria-label="${esc(p.title)} ${esc(a.label)}용 ${esc(versionLabel(r.version))} 받기">${esc(a.label)}</a>`;
+  const out = rel.assets.map(a => btn(rel, a));
+  // 같은 카드에 붙인 다른 판(안드로이드 등) — 본판에 같은 플랫폼 파일이 있으면 겹치지 않게 건너뛴다
+  const seen = new Set(rel.assets.map(a => a.label));
+  for (const x of state.extras[p.id] || []) for (const a of x.assets) if (!seen.has(a.label)) { seen.add(a.label); out.push(btn(x, a)); }
   if (!p.closed) out.push(`<a class="btn" href="${esc(rel.page)}">릴리스 노트</a>`);
   return out;
 }
@@ -95,6 +101,11 @@ function card(p) {
   const up = updatedAt(p);
   if (up) meta.push(`<span>업데이트 ${ago(up)}</span>`);
   if (rel?.version) meta.push(`<span>최신 ${esc(versionLabel(rel.version))}</span>`);
+  // 붙인 판은 버전이 따로 간다 (예: Android 0.1.0)
+  for (const x of state.extras[p.id] || []) {
+    const label = x.assets.map(a => a.label).join(' · ');
+    if (x.version && label) meta.push(`<span>${esc(label)} ${esc(versionLabel(x.version))}</span>`);
+  }
   if (main?.stargazers_count) meta.push(`<span>★ ${main.stargazers_count}</span>`);
   if (main?.license?.spdx_id && main.license.spdx_id !== 'NOASSERTION') meta.push(`<span>${esc(main.license.spdx_id)}</span>`);
 
@@ -306,7 +317,7 @@ async function addUnknownRepos() {
 
 // releases 저장소의 apps.json 에만 있는 앱은 index.json 으로 카드를 만든다 (data.js 에 같은 앱이 있으면 그쪽이 우선)
 function addIndexApps(index) {
-  const known = new Set(PROJECTS.filter(p => p.release?.repo === 'releases').map(p => p.release.prefix));
+  const known = new Set(PROJECTS.filter(p => p.release?.repo === 'releases').flatMap(p => [p.release.prefix, ...(p.release.extra || [])]));
   for (const a of index.apps) {
     if (known.has(a.id)) continue;
     let id = String(a.site || a.id).toLowerCase().replace(/[^\w-]/g, '');
@@ -355,10 +366,15 @@ async function loadLive() {
   else relBy.releases = await releasesOf('releases').catch(() => null); // index.json 을 못 받으면 예전처럼 API 목록에서
   for (const p of PROJECTS) {
     if (!p.release) continue;
-    const { repo, prefix, pre } = p.release;
-    const app = repo === 'releases' && apps?.get(prefix);
-    const rel = app ? fromIndex(app, { pre }) : relBy[repo] && latestRelease(relBy[repo], prefix, { pre });
+    const { repo, prefix, pre, extra = [] } = p.release;
+    const latest = pfx => {
+      const app = repo === 'releases' && apps?.get(pfx);
+      return app ? fromIndex(app, { pre }) : relBy[repo] && latestRelease(relBy[repo], pfx, { pre });
+    };
+    const rel = latest(prefix);
     if (rel) state.releases[p.id] = rel;
+    const more = extra.map(latest).filter(r => r?.assets?.length);
+    if (more.length) state.extras[p.id] = more;
   }
   renderFeatured(); renderQuick(); render();
   // portfolio.json · apps.json 으로 늦게 생긴 카드(#p/sanupcraft 등)도 열리게, 다시 그린 뒤 주소의 프로젝트로 한 번 더 이동한다
