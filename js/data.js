@@ -32,13 +32,14 @@ export function applyCatColors(doc = document) {
 // repos: 이 카드가 소개하는 저장소들(첫 번째가 대표, README도 여기서 읽는다).
 // release: { repo, prefix } 로 최신 설치 파일을 찾는다. closed: 소스 비공개(README 대신 릴리스 노트).
 // icon: 없으면 회색 대체 아이콘을 쓴다. page: 서브페이지가 생기면 그 경로('p/meso/')를 적는다.
-// stage: 'planning'(개발 기획 중) · 'alpha'(알파) · 'beta'(베타) 이면 '개발 중' 묶음에 들어간다. 없으면 '개발 완료'.
+// image: 카드 위쪽 대표 이미지 — 소개 페이지 og 그림을 640px webp 로 줄인 assets/<id>/card.webp.
+// stage: 'planning'(개발 기획 중) · 'dev'(개발 중, 아직 받을 판 없음) · 'alpha'(알파) · 'beta'(베타) 이면 '개발 중' 묶음에 들어간다. 없으면 '개발 완료'.
 //   beta: true 나 release.pre(프리릴리스를 최신으로 보는 앱)도 베타로 친다.
 export const PROJECTS = [
   {
     // 옛 이름 '메소 계산기'. 설치판(Windows · Android)은 releases 저장소의 MesoCalc-v 릴리스 (apps.json 의 site: 'meso')
     id: 'meso', cat: 'maple', title: '메소노믹스', icon: 'assets/icons/meso.svg',
-    repos: ['mesonomics'], live: `${PAGES}/mesonomics/`, page: 'p/meso/',
+    repos: ['mesonomics'], live: `${PAGES}/mesonomics/`, page: 'p/meso/', image: 'assets/meso/card.webp',
     release: { repo: 'releases', prefix: 'MesoCalc' },
     desc: '메이플스토리 메소를 어디서 벌고 어디에 썼는지 적는 장부와, 캐릭터별 보스 수익으로 목표 메소 도달일을 계산하는 웹앱.',
     points: ['수입 · 지출 장부와 통계 · 예산, 이번 주 보스 체크', '캐릭터별 주간 · 월간 보스 결정석 수익, 추천 구성 · 주 90개 판매 제한 경고', '요일까지 따지는 목표 도달일 계산, Open API로 캐릭터 불러오기'],
@@ -76,7 +77,7 @@ export const PROJECTS = [
   {
     // 웹앱(Pages) + Windows 설치 파일(같은 저장소 Releases 의 AutoCroper-Setup-<버전>.exe, main 에 버전이 오르면 Actions 가 만듦)
     id: 'autocroper', cat: 'web', title: 'AutoCroper', icon: 'assets/icons/autocroper.png',
-    repos: ['AutoCroper'], live: `${PAGES}/AutoCroper/`, page: 'p/autocroper/',
+    repos: ['AutoCroper'], live: `${PAGES}/AutoCroper/`, page: 'p/autocroper/', image: 'assets/autocroper/card.webp',
     release: { repo: 'AutoCroper' },
     desc: '스캔본 · 흰 배경 사진의 흰 여백을 자동으로 잘라 내는 도구. 이미지는 서버로 전송되지 않고 이 기기 안에서만 처리합니다.',
     points: ['비스듬한 사진 자동 기울기 보정, 가장자리 흰 틈까지 다듬기', '한 번에 여러 장 스캔한 파일을 사진별로 나누기', '고른 폴더에 바로 저장(ZIP 필요 없음), 여러 장 병렬 처리'],
@@ -84,7 +85,7 @@ export const PROJECTS = [
   },
   {
     id: 'listup', cat: 'app', title: 'ListUp', icon: 'assets/icons/listup.png',
-    repos: ['ListUp'], release: { repo: 'ListUp' }, page: 'p/listup/',
+    repos: ['ListUp'], release: { repo: 'ListUp' }, page: 'p/listup/', image: 'assets/listup/card.webp',
     desc: '초대 코드로 다른 사람의 저장소에 참여해 파일을 공유하고, 변경 사항은 제안 · 검토를 거쳐 반영하는 공용 클라우드.',
     points: ['파일용 제안 → 리뷰 → 병합 흐름', '한 파일 2GB까지, 끊겨도 이어 올리기·받기', '내 폴더와 비교해 빠진 파일만 주고받기'],
     tags: ['TypeScript', 'Expo', 'Electron', 'Windows · Android'],
@@ -113,7 +114,7 @@ export const PROJECTS = [
   {
     // releases apps.json 의 site: 'mcserver'. 소개는 친구용 '모드팩 업데이트'와 한 페이지(p/mcserver/)에 같이 둔다
     id: 'mcserver', cat: 'minecraft', title: '마인크래프트 서버 관리', icon: 'assets/icons/mcserver.png',
-    repos: [], release: { repo: 'releases', prefix: 'MCServerManager' }, closed: true, page: 'p/mcserver/',
+    repos: [], release: { repo: 'releases', prefix: 'MCServerManager' }, closed: true, page: 'p/mcserver/', image: 'assets/mcserver/card.webp',
     desc: '한 PC에서 도는 마인크래프트 Fabric 서버 여러 개와 도메인 중계(mc-router)를 한 창에서 관리하는 Windows 프로그램.',
     points: ['서버별 · 전체 켜기 · 끄기, 실시간 상태 카드 · 로그 · RCON 콘솔', '백업과 한 번에 복원, 플레이어 · 서버 설정 · DDNS · 자동 시작', '새 버전은 버튼 한 번: 백업 → 게임 안 공지 → 서버 모드 교체 → 다시 켜기'],
     tags: ['Python', 'pywebview', 'Windows'],
@@ -128,7 +129,7 @@ export const PROJECTS = [
   },
   {
     id: 'fracture', cat: 'game', title: 'Fracture', icon: 'assets/icons/fracture.png',
-    repos: [], release: { repo: 'releases', prefix: 'Fracture', pre: true }, closed: true, page: 'p/fracture/',
+    repos: [], release: { repo: 'releases', prefix: 'Fracture', pre: true }, closed: true, page: 'p/fracture/', image: 'assets/fracture/card.webp',
     featured: {
       kicker: '공개 베타',
       tagline: '시간을 건너뛰고, 멈추고, 되감으며 무너진 기계도시를 탐험하는 2D 메트로배니아.',
@@ -140,11 +141,16 @@ export const PROJECTS = [
   },
   // 개발 기획 중 — 설명 없이 이름과 표시만 둔다
   { id: 'danbi', cat: 'game', title: 'Danbi', repos: [], stage: 'planning' },
-  { id: 'soliquid', cat: 'game', title: 'Soliquid', repos: [], stage: 'planning' },
+  {
+    // 2026-11-26 구현 착수 (M0 뼈대 뒤). 저장소는 아직 비공개 · 원격 없음
+    id: 'soliquid', cat: 'game', title: 'Soliquid', repos: [], stage: 'dev',
+    desc: '고체와 액체 사이를 오가며 길을 여는 2D 퍼즐 플랫포머. 고체일 때만 뛰고, 액체가 되면 틈으로 흘러 들어갑니다.',
+    tags: ['Unity 6', '퍼즐 플랫포머'],
+  },
   {
     id: 'sanupcraft', cat: 'minecraft', title: '산업크래프트', icon: 'assets/icons/sanupcraft.svg',
     // 2026-11-09부터 소스 비공개: 받을 파일은 releases 저장소의 Sanupcraft-v 릴리스
-    repos: [], release: { repo: 'releases', prefix: 'Sanupcraft', pre: true }, closed: true, page: 'p/sanupcraft/', stage: 'beta',
+    repos: [], release: { repo: 'releases', prefix: 'Sanupcraft', pre: true }, closed: true, page: 'p/sanupcraft/', image: 'assets/sanupcraft/card.webp', stage: 'beta',
     desc: '보스를 잡아 공장을 열고, 공장으로 모험대를 무장시키는 자작 마인크래프트 모드팩. 친구 최대 10명이 함께 합니다.',
     points: ['보스 전리품이 다음 기계를 여는 공장 · 모험 순환', '증기 동력 · 광맥 채광 · 장비 모듈, 네더 · 엔드와 이어진 진행', '인원수만큼 강해지고 2페이즈가 있는 보스, 쓰러지면 동료가 일으키는 협동'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '멀티플레이'],
@@ -152,22 +158,22 @@ export const PROJECTS = [
   {
     // 소스 비공개: 받을 파일은 releases 저장소의 Fishingcraft-v 릴리스 (0.1.0 베타 1부터)
     id: 'fishingcraft', cat: 'minecraft', title: '피싱크래프트', icon: 'assets/icons/fishingcraft.svg',
-    repos: [], release: { repo: 'releases', prefix: 'Fishingcraft', pre: true }, closed: true, page: 'p/fishingcraft/', stage: 'beta',
+    repos: [], release: { repo: 'releases', prefix: 'Fishingcraft', pre: true }, closed: true, page: 'p/fishingcraft/', image: 'assets/fishingcraft/card.webp', stage: 'beta',
     desc: '바닐라 야생 위에 얹는 낚시 모드팩. 낚시로 더 좋은 낚싯대를 낚고, 물마다 다른 보물을 모으며 낚시꾼 명인이 됩니다.',
     points: ['기본 → 인챈트 → 수선 → 종결 낚싯대 사다리를 용암 · 공허 · 심연까지 7단계로', '낚시꾼 등급 1~6과 명인의 별, 낚싯대 부품 · 미끼 · 낚시 전용 인챈트', '물마다 다른 표와 물때 · 물고기 떼, 주민 낚시 의뢰 · 낚시 대회 · 생선 요리'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티'],
   },
   {
     id: 'opencraft', cat: 'minecraft', title: '오픈크래프트', icon: 'assets/icons/opencraft.svg',
-    repos: [], release: { repo: 'releases', prefix: 'Opencraft', pre: true }, closed: true, page: 'p/opencraft/', stage: 'beta',
+    repos: [], release: { repo: 'releases', prefix: 'Opencraft', pre: true }, closed: true, page: 'p/opencraft/', image: 'assets/opencraft/card.webp', stage: 'beta',
     desc: '바닐라 월드에 지역을 덧씌우는 오픈월드 모험 모드팩. 지역마다 마을 · 필드몹 · 보스가 있고, 어느 보스부터 갈지는 플레이어가 고릅니다.',
     points: ['보스 첫 처치로 지역 해방, 해방 뒤에도 보스 재도전', '최초 보상(증표 · 고유 아이템)과 반복 보상(강화 재료)을 나눔', '장비 등급 · 부가 옵션, 지역마다 다른 드랍 표'],
-    tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티', '개발 중'],
+    tags: ['Java', 'Fabric', 'Minecraft 26.3', '싱글 · 멀티'],
   },
   {
     // 친구 서버 전용: 소스 · 릴리스 비공개라 저장소 없이 소개 페이지만 둔다 (GitHub API 호출 없음)
     id: 'talicraft', cat: 'minecraft', title: '탈리크래프트', icon: 'assets/icons/talicraft.svg',
-    repos: [], release: { repo: 'releases', prefix: 'Talicraft' }, closed: true, page: 'p/talicraft/', stage: 'beta',
+    repos: [], release: { repo: 'releases', prefix: 'Talicraft', pre: true }, closed: true, page: 'p/talicraft/', image: 'assets/talicraft/card.webp', stage: 'beta',
     desc: '26SMP 데이터팩 \'무한 시리즈\'에서 출발한, 두 친구용 마인크래프트 야생 모드. 바닐라 재료를 크게 모으면 죽어도 잃지 않는 편의를 줍니다.',
     points: ['재료 → 조각 → 부적, 세트 효과와 만물의 부적 합성', 'II단 생존 부적과 전투 부적, 무한 겉날개 · 도구, 보스 장비 6종', '겉날개 칸(갑옷과 날개 같이), /inf 메뉴, 사망 보험'],
     tags: ['Java', 'Fabric', 'Minecraft 26.3', '2인 서버'],

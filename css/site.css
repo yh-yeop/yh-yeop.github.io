@@ -97,6 +97,15 @@ h2 { font-size: 1.125rem; margin: 0 0 12px; letter-spacing: -0.01em; }
 .featured .feat-ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28); color: #fff; }
 .featured :focus-visible { outline-color: #fff; }
 
+/* 최근 소식: 한 줄에 하나, 이름 · 버전 왼쪽, 지난 시간 오른쪽 */
+.news[hidden] { display: none; }
+.news ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.news li { display: flex; align-items: baseline; gap: 12px; padding: 9px 2px; border-bottom: 1px solid var(--line); font-size: .9375rem; }
+.news a { color: var(--muted); text-decoration: none; min-width: 0; }
+.news a:hover b { text-decoration: underline; }
+.news b { color: var(--text); font-weight: 600; }
+.news time { margin-left: auto; flex: none; font-size: .8125rem; color: var(--muted); }
+
 /* quick access */
 .quick { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .tile {
@@ -146,6 +155,11 @@ select.sort {
   scroll-margin-top: 16px;
 }
 .card.open { grid-column: 1 / -1; }
+/* 카드 대표 이미지: 카드 위쪽을 꽉 채우고, 펼친 카드에서는 숨긴다 (소개 본문이 같은 그림을 크게 보여 줌) */
+.thumb { display: block; margin: -18px -18px 16px; aspect-ratio: 40 / 21; overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card.open .thumb { display: none; }
 .card-head { display: flex; gap: 14px; align-items: flex-start; }
 .head-text { min-width: 0; }
 .card .cat { font-size: .8125rem; color: var(--muted); }

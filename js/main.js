@@ -68,7 +68,7 @@ function downloads(p) {
 // 베타: data.js · portfolio.json 의 beta: true, 또는 프리릴리스를 최신으로 보는 앱
 const isBeta = p => Boolean(p.beta || p.release?.pre);
 // 개발 단계: stage 가 있으면 그것, 없으면 베타 여부로. null 이면 개발 완료
-const STAGES = { planning: '개발 기획 중', alpha: '알파', beta: '베타' };
+const STAGES = { planning: '개발 기획 중', dev: '개발 중', alpha: '알파', beta: '베타' };
 const stageOf = p => (STAGES[p.stage] ? p.stage : isBeta(p) ? 'beta' : null);
 // 단계 걸러 보기: 전체 / 개발 완료 / 개발 중 (주소: #done · #dev, 분류와 함께면 #game+dev)
 const STAGE_FILTERS = { all: '모든 단계', done: '개발 완료', dev: '개발 중' };
@@ -118,7 +118,13 @@ function card(p) {
       <div class="doc-body" id="doc-${p.id}" role="region" aria-label="${esc(p.title)} ${docLabel}"${open ? '' : ' hidden'}></div>
     </div>` : '';
 
-  return `<article class="card${open ? ' open' : ''}${stageOf(p) === 'planning' ? ' planning' : ''}" id="p-${p.id}" style="--cat:${c.color}" aria-labelledby="t-${p.id}">
+  // 대표 이미지(소개 페이지의 og 그림을 줄인 것). 펼친 카드에서는 소개 본문이 같은 그림을 크게 보여 주므로 CSS 로 숨긴다
+  const thumb = p.image
+    ? `<a class="thumb" href="${esc(p.page || p.live || '#p/' + p.id)}" tabindex="-1" aria-hidden="true"><img src="${esc(p.image)}" alt="" loading="lazy" decoding="async"></a>`
+    : '';
+
+  return `<article class="card${open ? ' open' : ''}${stageOf(p) === 'planning' ? ' planning' : ''}${p.image ? ' has-thumb' : ''}" id="p-${p.id}" style="--cat:${c.color}" aria-labelledby="t-${p.id}">
+    ${thumb}
     <div class="card-head">
       ${icon(p, 48)}
       <div class="head-text">
@@ -252,7 +258,8 @@ function renderGrid() {
 }
 
 function renderQuick() {
-  const items = PROJECTS.filter(p => p.live || p.release);
+  // 맨 위 배너(featured)로 이미 알린 프로젝트는 바로 쓰기 칸에 다시 두지 않는다
+  const items = PROJECTS.filter(p => (p.live || p.release) && !p.featured);
   $('#quick').innerHTML = items.map(p => {
     const c = CATS[p.cat];
     const href = p.page || p.live || '#p/' + p.id;
@@ -284,6 +291,26 @@ function renderFeatured() {
         ${win ? `<a class="btn feat-ghost" href="${esc(win.url)}" aria-label="${esc(p.title)} ${esc(versionLabel(rel.version))} Windows용 받기">받기 · ${formatMB(win.size)}</a>` : ''}
       </div>
     </div>`;
+}
+
+// 최근 소식: 프로젝트마다 최신 릴리스 한 줄(붙인 Android 판은 같은 줄에 '· Android v…'), 가장 최근 게시 순으로 5개.
+// 릴리스 정보가 오기 전에는 숨긴다
+function renderNews() {
+  const items = [];
+  for (const p of PROJECTS) {
+    const rels = [state.releases[p.id], ...(state.extras[p.id] || [])].filter(r => r?.date);
+    if (!rels.length) continue;
+    const vers = rels.map((r, i) => (i ? `${r.assets.map(a => a.label).join(' · ')} ` : '') + versionLabel(r.version));
+    items.push({ p, date: rels.map(r => r.date).sort().pop(), vers: vers.join(' · ') });
+  }
+  items.sort((a, b) => b.date.localeCompare(a.date));
+  const box = $('#news');
+  if (!items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  $('#news-list').innerHTML = items.slice(0, 5).map(({ p, date, vers }) =>
+    `<li><a href="${esc(p.page || '#p/' + p.id)}"${p.page ? '' : ` data-jump="${p.id}"`}><b>${esc(p.title)}</b> ${esc(vers)}</a>`
+    + `<time datetime="${esc(date)}">${ago(date)}</time></li>`
+  ).join('');
 }
 
 function render() { renderChips(); renderStages(); renderGrid(); }
@@ -376,7 +403,7 @@ async function loadLive() {
     const more = extra.map(latest).filter(r => r?.assets?.length);
     if (more.length) state.extras[p.id] = more;
   }
-  renderFeatured(); renderQuick(); render();
+  renderFeatured(); renderNews(); renderQuick(); render();
   // portfolio.json · apps.json 으로 늦게 생긴 카드(#p/sanupcraft 등)도 열리게, 다시 그린 뒤 주소의 프로젝트로 한 번 더 이동한다
   if (/^#p\//.test(location.hash)) openFromHash();
 }
@@ -411,14 +438,17 @@ $('#grid').addEventListener('click', e => {
   if (e.target.id === 'reset') { resetFilters(); setHash(''); render(); }
 });
 wireAnchors($('#grid'));
-$('#quick').addEventListener('click', e => {
+// 바로 쓰기 칸 · 최근 소식에서 소개 페이지가 없는 프로젝트를 누르면 목록의 그 카드로 간다
+function jumpToCard(e) {
   const t = e.target.closest('[data-jump]'); if (!t) return;
   e.preventDefault();
   resetFilters(); render();
   const el = document.getElementById('p-' + t.dataset.jump);
   el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   el.querySelector('.actions a')?.focus({ preventScroll: true });
-});
+}
+$('#quick').addEventListener('click', jumpToCard);
+$('#news').addEventListener('click', jumpToCard);
 document.addEventListener('keydown', e => {
   if (e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) { e.preventDefault(); $('#q').focus(); }
   if (e.key === 'Escape' && document.activeElement === $('#q') && $('#q').value) { $('#q').value = ''; state.q = ''; renderGrid(); }
