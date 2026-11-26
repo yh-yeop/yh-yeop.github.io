@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>웹게임 — 등불 심연 · 궤도 점프 · 냠냠 원정대</title>
+<meta name="description" content="브라우저에서 설치 없이 바로 하는 웹게임 세 가지. 기름이 탄약이자 불빛인 던전 슈팅 로그라이트 '등불 심연', 탭 한 번으로 행성을 옮겨 다니는 '궤도 점프', 여럿이 함께 사냥하는 도트 MMORPG '냠냠 원정대'(베타).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="웹게임 · 등불 심연 · 궤도 점프 · 냠냠 원정대">
+<meta property="og:description" content="브라우저에서 설치 없이 바로 하는 웹게임 세 가지. 홈 화면에 추가하면 앱처럼 열립니다.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/webgames/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://yh-yeop.github.io/p/webgames/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/icons/lantern.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="webgames.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script src="../../share.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <h1>웹게임 <span class="en">등불 심연 · 궤도 점프 · 냠냠 원정대</span></h1>
+  <p class="lede">브라우저에서 바로 하는 작은 게임 세 가지입니다. 설치도 가입도 없이 주소만 열면 되고, 휴대폰 · PC 모두 됩니다.
+    홈 화면에 추가(앱으로 설치)하면 독립 창으로 열리고, 등불 심연 · 궤도 점프는 한 번 연 뒤로 인터넷 없이도 됩니다.</p>
+  <div class="cta">
+    <a class="btn" href="#lantern">등불 심연</a>
+    <a class="btn" href="#orbit">궤도 점프</a>
+    <a class="btn" href="#munch">냠냠 원정대</a>
+  </div>
+  <p class="hero-meta">무료 · 광고 없음 · 오픈 소스 · 키보드 · 터치</p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <!-- 등불 심연 -->
+    <section id="lantern" class="game" aria-labelledby="lantern-h" data-embed-image="../../assets/lantern/og.jpg">
+      <div class="game-head">
+        <img src="../../assets/icons/lantern.svg" alt="" width="52" height="52">
+        <div>
+          <h2 id="lantern-h">등불 심연</h2>
+          <p>기름이 곧 탄약이자 불빛인 실시간 던전 슈팅 로그라이트</p>
+        </div>
+      </div>
+      <figure>
+        <button class="shot" type="button" popovertarget="lb-lantern-play" aria-label="크게 보기: 등불 심연 전투">
+          <img src="../../assets/webgames/lantern-play.webp" srcset="../../assets/webgames/lantern-play-t.webp 400w, ../../assets/webgames/lantern-play.webp 1600w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="문이 잠긴 방 안의 전투. 등불을 든 주인공이 산탄 등불을 쏘고, 어둠 쪽에서 하얀 적 둘이 붉은 탄을 쏜다. 위에는 HP 4/6, 기름 87/100 막대, 아래에는 무기 칸 반딧불 주머니 · 산탄 등불" width="1600" height="900">
+        </button>
+        <figcaption>방에 들어서면 문이 잠깁니다. 쏠 때마다 기름(오른쪽 위)이 줄고, 그만큼 불빛도 좁아집니다.</figcaption>
+      </figure>
+      <div data-embed>
+        <p>쏠수록 기름이 줄고, 기름이 줄면 등불이 비추는 범위와 자동 조준 거리가 함께 좁아집니다. 적을 쓰러뜨리고 방을 정리해 기름을 모으며
+          다섯 층을 내려가, 5층 출구의 심연지기를 쓰러뜨리고 불씨를 되찾으면 승리입니다. 키보드만으로 끝까지 할 수 있습니다.</p>
+        <h3 class="sub">특징</h3>
+        <ul class="features">
+          <li>
+            <h3>기름 = 탄약 + 불빛</h3>
+            <p>무기마다 기름 소모가 다르고, 기름이 모자라면 등불로 후려칩니다(근접, 기름 없음). 불빛 밖의 적은 눈빛만 보입니다.</p>
+          </li>
+          <li>
+            <h3>무기 7종</h3>
+            <p>불씨 권총 · 광부 곡괭이(적 탄 쳐내기) · 연발 부싯돌 · 반딧불 주머니(유도 3발) · 산탄 등불 · 빛창(관통) · 기름 투척기(폭발). 두 개를 들고 바꿔 씁니다.</p>
+          </li>
+          <li>
+            <h3>방 단위 전투</h3>
+            <p>방에 들어가면 문이 잠기고 웨이브를 모두 쓰러뜨려야 열립니다. 보물방 상자에서 새 무기, 출구방 계단에서 다음 층.</p>
+          </li>
+          <li>
+            <h3>층마다 특성 · 이어 하기</h3>
+            <p>계단을 내려갈 때 특성 셋 중 하나를 고릅니다. 층을 시작할 때마다 저장돼, 처음 화면에서 그 층부터 이어 합니다.</p>
+          </li>
+        </ul>
+        <h3 class="sub">조작</h3>
+        <table class="keys">
+          <thead><tr><th scope="col">동작</th><th scope="col">키보드</th><th scope="col">터치</th></tr></thead>
+          <tbody>
+            <tr><td>이동</td><td><kbd>WASD</kbd> · 방향키</td><td>왼쪽 스틱</td></tr>
+            <tr><td>공격 (누르고 있으면 연사, 자동 조준)</td><td><kbd>J</kbd> · <kbd>Space</kbd></td><td>공격 버튼</td></tr>
+            <tr><td>구르기 (짧은 무적)</td><td><kbd>K</kbd> · <kbd>Shift</kbd></td><td>구르기 버튼</td></tr>
+            <tr><td>무기 교체</td><td><kbd>Q</kbd> (<kbd>1</kbd> · <kbd>2</kbd>로 바로)</td><td>교체 버튼</td></tr>
+            <tr><td>줍기 · 상자 열기 · 내려가기</td><td><kbd>E</kbd> · <kbd>Enter</kbd></td><td>줍기 버튼</td></tr>
+            <tr><td>일시정지 · 도움말</td><td><kbd>Esc</kbd> · <kbd>P</kbd> · <kbd>?</kbd></td><td>오른쪽 위 일시정지 단추</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pair">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-lantern-title" aria-label="크게 보기: 등불 심연 처음 화면">
+            <img src="../../assets/webgames/lantern-title-t.webp" srcset="../../assets/webgames/lantern-title-t.webp 400w, ../../assets/webgames/lantern-title.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="처음 화면. '등불 심연' 제목과 '기름은 탄약이자 불빛입니다' 설명, 새 탐험 · 조작법 단추" width="1600" height="900" loading="lazy">
+          </button>
+          <figcaption>처음 화면. 저장이 있으면 이어 하기가 생깁니다</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-lantern-room" aria-label="크게 보기: 반딧불 주머니">
+            <img src="../../assets/webgames/lantern-room-t.webp" srcset="../../assets/webgames/lantern-room-t.webp 400w, ../../assets/webgames/lantern-room.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="넓은 방 가운데서 반딧불 주머니의 초록 유도 탄 세 발을 쏘는 장면. 오른쪽에 체력이 깎인 적 하나" width="1600" height="900" loading="lazy">
+          </button>
+          <figcaption>반딧불 주머니. 유도 탄 세 발이 적을 따라갑니다</figcaption>
+        </figure>
+      </div>
+      <div class="get">
+        <a class="btn primary" href="https://yh-yeop.github.io/LanternDeep/">플레이</a>
+        <a class="btn" href="https://yh-yeop.github.io/LanternDeep/?install">앱으로 설치</a>
+        <a class="btn" href="https://github.com/yh-yeop/LanternDeep">소스</a>
+      </div>
+    </section>
+
+    <!-- 궤도 점프 -->
+    <section id="orbit" class="game" aria-labelledby="orbit-h" data-embed-image="../../assets/orbit/og.jpg">
+      <div class="game-head">
+        <img src="../../assets/icons/orbit.svg" alt="" width="52" height="52">
+        <div>
+          <h2 id="orbit-h">궤도 점프</h2>
+          <p>탭 한 번으로 행성에서 행성으로 뛰어오르는 한 손 게임</p>
+        </div>
+      </div>
+      <ul class="phones">
+        <li>
+          <figure>
+            <button class="shot" type="button" popovertarget="lb-orbit-title" aria-label="크게 보기: 궤도 점프 처음 화면">
+              <img src="../../assets/webgames/orbit-title-t.webp" srcset="../../assets/webgames/orbit-title-t.webp 400w, ../../assets/webgames/orbit-title.webp 780w" sizes="(max-width: 600px) 30vw, 190px" alt="휴대폰 처음 화면. '궤도 점프' 제목과 하는 법 세 줄, '탭해서 시작' 안내. 뒤로 행성들이 떠 있다" width="780" height="1688">
+            </button>
+            <figcaption>처음 화면</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <button class="shot" type="button" popovertarget="lb-orbit-play" aria-label="크게 보기: 궤도 점프 플레이">
+              <img src="../../assets/webgames/orbit-play-t.webp" srcset="../../assets/webgames/orbit-play-t.webp 400w, ../../assets/webgames/orbit-play.webp 780w" sizes="(max-width: 600px) 30vw, 190px" alt="점수 10. 파란 행성에서 튀어 나간 빛 알갱이가 점선 자취를 남기며 주황 행성 쪽으로 날아간다" width="780" height="1688">
+            </button>
+            <figcaption>점선 방향으로 점프</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <button class="shot" type="button" popovertarget="lb-orbit-end" aria-label="크게 보기: 궤도 점프 끝 화면">
+              <img src="../../assets/webgames/orbit-end-t.webp" srcset="../../assets/webgames/orbit-end-t.webp 400w, ../../assets/webgames/orbit-end.webp 780w" sizes="(max-width: 600px) 30vw, 190px" alt="끝 화면. '행성이 무너졌어요', 점수 12, 새 최고 기록, '탭해서 다시'" width="780" height="1688" loading="lazy">
+            </button>
+            <figcaption>끝. 최고 기록은 기기에</figcaption>
+          </figure>
+        </li>
+      </ul>
+      <div data-embed>
+        <p>행성 궤도를 돌다가 탭하면 진행 방향(점선)으로 튀어 나가고, 다른 행성의 포획 범위에 들어가면 그 궤도에 붙습니다.
+          머무는 행성은 테두리 게이지가 다 닳으면 무너지니, 그 전에 다음 행성으로 옮겨야 합니다. 한 손으로, 몇 초 만에 다시 시작할 수 있습니다.</p>
+        <h3 class="sub">특징</h3>
+        <ul class="features">
+          <li>
+            <h3>탭 한 번</h3>
+            <p>조작은 점프 하나뿐입니다. 언제 뛰느냐가 전부라, 버스 기다리는 동안 한 판씩 하기 좋습니다.</p>
+          </li>
+          <li>
+            <h3>PERFECT</h3>
+            <p>새 행성에 붙으면 1점, 정중앙을 노려 붙으면 PERFECT로 2점입니다.</p>
+          </li>
+          <li>
+            <h3>점점 빠르게</h3>
+            <p>점수가 오를수록 회전이 빨라지고 행성이 작아지며, 움직이는 행성이 늘어납니다.</p>
+          </li>
+          <li>
+            <h3>끝나는 조건</h3>
+            <p>좌우 벽에는 튕깁니다. 화면 아래로 빠지거나 2.2초 넘게 아무 데도 못 붙으면 끝. 최고 기록과 소리 설정은 기기에 남습니다.</p>
+          </li>
+        </ul>
+        <h3 class="sub">조작</h3>
+        <table class="keys">
+          <thead><tr><th scope="col">동작</th><th scope="col">키보드 · 마우스</th><th scope="col">터치</th></tr></thead>
+          <tbody>
+            <tr><td>점프 · 시작 · 다시</td><td><kbd>Space</kbd> · 클릭</td><td>화면 아무 데나 탭</td></tr>
+            <tr><td>소리 켜고 끄기</td><td>오른쪽 위 단추</td><td>오른쪽 위 단추</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="get">
+        <a class="btn primary" href="https://yh-yeop.github.io/OrbitHop/">플레이</a>
+        <a class="btn" href="https://yh-yeop.github.io/OrbitHop/?install">앱으로 설치</a>
+        <a class="btn" href="https://github.com/yh-yeop/OrbitHop">소스</a>
+      </div>
+    </section>
+
+    <!-- 냠냠 원정대 -->
+    <section id="munch" class="game" aria-labelledby="munch-h" data-embed-image="../../assets/munch/og.jpg">
+      <div class="game-head">
+        <img src="../../assets/icons/munch.svg" alt="" width="52" height="52">
+        <div>
+          <h2 id="munch-h">냠냠 원정대 <span class="stage">베타</span></h2>
+          <p>브라우저에서 여럿이 함께 사냥하는 도트 MMORPG</p>
+        </div>
+      </div>
+      <figure>
+        <button class="shot" type="button" popovertarget="lb-munch-field" aria-label="크게 보기: 말랑 초원 사냥">
+          <img src="../../assets/webgames/munch-field.webp" srcset="../../assets/webgames/munch-field-t.webp 400w, ../../assets/webgames/munch-field.webp 1600w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="도트 그래픽의 초원. 가운데 빨간 옷 캐릭터 '손님' 주위로 피해 숫자가 뜨고, 파란 슬라임들이 흩어져 있다. 위에는 '혼자 테스트 · 여기 4명 · 전체 4명', 아래 왼쪽에 Lv1 체력 막대" width="1600" height="900">
+        </button>
+        <figcaption>말랑 초원. 혼자 테스트(봇 3명)로 찍었습니다</figcaption>
+      </figure>
+      <div data-embed>
+        <p>포털로 이어진 마을과 필드를 다니며 몬스터를 사냥하고 레벨을 올립니다. 같은 필드에 있는 다른 사람이 사냥하는 모습이 보이고,
+          함께 잡으면 경험치를 더 받습니다. 짧게 접속해도 성장할 수 있게 만들고 있는 <b>베타 플레이테스트</b>로, 지금은 레벨 · 가방이 접속해 있는 동안만 남습니다(계정 · 저장은 다음 단계).</p>
+        <h3 class="sub">특징</h3>
+        <ul class="features">
+          <li>
+            <h3>함께 쓰는 필드</h3>
+            <p>한솥 마을 · 말랑 초원 · 버섯 언덕이 포털로 끊김 없이 이어지고, 같은 채널의 사람이 모두 같은 필드에 있습니다.</p>
+          </li>
+          <li>
+            <h3>각자 드롭</h3>
+            <p>피해를 준 사람 모두에게 개인 드롭과 경험치가 돌아갑니다. 같이 잡으면 한 사람당 +10%씩.</p>
+          </li>
+          <li>
+            <h3>서버 판정</h3>
+            <p>이동 · 공격 · 구르기를 서버가 판정하고, 내 화면은 예측으로 바로 반응합니다. 몬스터는 통통 뛰는 슬라임, 돌진하는 토끼, 포자를 쏘는 버섯.</p>
+          </li>
+          <li>
+            <h3>로그인 없이 바로</h3>
+            <p>방을 만들고 초대 링크나 4글자 코드를 보내면 끝. 480×270 도트라 사양 낮은 PC · 크롬북에서도 가볍습니다.</p>
+          </li>
+        </ul>
+        <h3 class="sub">조작</h3>
+        <table class="keys">
+          <thead><tr><th scope="col">동작</th><th scope="col">키보드</th><th scope="col">터치</th></tr></thead>
+          <tbody>
+            <tr><td>이동</td><td><kbd>WASD</kbd> · 방향키</td><td>화면 왼쪽을 누르고 끌기</td></tr>
+            <tr><td>공격 (누르고 있으면 연사, 가까운 몬스터 자동 조준)</td><td><kbd>J</kbd> · <kbd>Space</kbd></td><td>공격 버튼</td></tr>
+            <tr><td>구르기 (구르는 동안 무적)</td><td><kbd>K</kbd> · <kbd>Shift</kbd></td><td>구르기 버튼</td></tr>
+            <tr><td>소리 켜고 끄기 · 나가기</td><td><kbd>M</kbd> · <kbd>Esc</kbd></td><td>위쪽 단추</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pair">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-munch-title" aria-label="크게 보기: 냠냠 원정대 접속 화면">
+            <img src="../../assets/webgames/munch-title-t.webp" srcset="../../assets/webgames/munch-title-t.webp 400w, ../../assets/webgames/munch-title.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="접속 화면. 이름 칸, 방 만들기, 코드 입력과 참가, 혼자 테스트(봇 3 · 지연 150ms) 단추" width="1600" height="900" loading="lazy">
+          </button>
+          <figcaption>접속 화면. 방 만들기 · 코드로 참가 · 혼자 테스트</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-munch-town" aria-label="크게 보기: 한솥 마을">
+            <img src="../../assets/webgames/munch-town-t.webp" srcset="../../assets/webgames/munch-town-t.webp 400w, ../../assets/webgames/munch-town.webp 1600w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="한솥 마을 광장. 돌바닥 광장 가운데 '손님' 캐릭터, 오른쪽 길에 봇 세 명, 위아래로 집과 연못" width="1600" height="900" loading="lazy">
+          </button>
+          <figcaption>한솥 마을. 동쪽 길 끝의 포털이 초원으로 이어집니다</figcaption>
+        </figure>
+      </div>
+      <div class="get">
+        <a class="btn primary" href="https://yh-yeop.github.io/MunchQuest/">플레이</a>
+        <a class="btn" href="https://yh-yeop.github.io/MunchQuest/?install">앱으로 설치</a>
+        <a class="btn" href="https://github.com/yh-yeop/MunchQuest">소스</a>
+      </div>
+      <p class="small">여럿이 하는 게임이라 인터넷 연결이 필요합니다. 중계 서버가 꺼져 있을 때는 방을 만든 사람의 브라우저가 서버가 되는데, 이때는 학교 · 회사 네트워크에서 연결이 막힐 수 있습니다.
+        혼자 테스트는 내 브라우저 안에서 봇 세 명과 돕니다.</p>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="게임 목록">
+    <div class="panel">
+      <h2>바로 하기</h2>
+      <ul class="toc">
+        <li><img src="../../assets/icons/lantern.svg" alt="" width="36" height="36"><a class="name" href="https://yh-yeop.github.io/LanternDeep/">등불 심연</a><span>던전 슈팅 로그라이트 · <a href="#lantern">소개</a></span></li>
+        <li><img src="../../assets/icons/orbit.svg" alt="" width="36" height="36"><a class="name" href="https://yh-yeop.github.io/OrbitHop/">궤도 점프</a><span>한 손 캐주얼 · <a href="#orbit">소개</a></span></li>
+        <li><img src="../../assets/icons/munch.svg" alt="" width="36" height="36"><a class="name" href="https://yh-yeop.github.io/MunchQuest/">냠냠 원정대</a><span>도트 MMORPG 베타 · <a href="#munch">소개</a></span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>웹게임 (PWA)</dd></div>
+        <div><dt>기기</dt><dd>휴대폰 · 태블릿 · PC 브라우저</dd></div>
+        <div><dt>설치</dt><dd>필요 없음. 원하면 홈 화면에 추가</dd></div>
+        <div><dt>저장</dt><dd>기록은 이 기기 브라우저에</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd><a href="https://github.com/yh-yeop/LanternDeep">LanternDeep</a> · <a href="https://github.com/yh-yeop/OrbitHop">OrbitHop</a> · <a href="https://github.com/yh-yeop/MunchQuest">MunchQuest</a></dd></div>
+      </dl>
+      <p class="tags">JavaScript · Canvas · WebAudio · PWA · Cloudflare Workers</p>
+    </div>
+
+    <div class="panel notice">
+      <p><b>앱으로 설치</b>를 누르면 그 게임 페이지가 열리면서 설치 단추를 띄웁니다. 아이폰 Safari는 공유 → '홈 화면에 추가'로 둡니다.</p>
+    </div>
+  </aside>
+</main>
+
+<div class="lb" popover id="lb-lantern-play">
+  <img src="../../assets/webgames/lantern-play.webp" alt="등불 심연 전투 화면" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-lantern-play" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-lantern-title">
+  <img src="../../assets/webgames/lantern-title.webp" alt="등불 심연 처음 화면" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-lantern-title" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-lantern-room">
+  <img src="../../assets/webgames/lantern-room.webp" alt="반딧불 주머니로 싸우는 화면" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-lantern-room" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-orbit-title">
+  <img src="../../assets/webgames/orbit-title.webp" alt="궤도 점프 처음 화면" width="780" height="1688" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-orbit-title" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-orbit-play">
+  <img src="../../assets/webgames/orbit-play.webp" alt="궤도 점프 플레이 화면" width="780" height="1688" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-orbit-play" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-orbit-end">
+  <img src="../../assets/webgames/orbit-end.webp" alt="궤도 점프 끝 화면" width="780" height="1688" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-orbit-end" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-munch-field">
+  <img src="../../assets/webgames/munch-field.webp" alt="냠냠 원정대 말랑 초원" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-munch-field" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-munch-title">
+  <img src="../../assets/webgames/munch-title.webp" alt="냠냠 원정대 접속 화면" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-munch-title" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-munch-town">
+  <img src="../../assets/webgames/munch-town.webp" alt="냠냠 원정대 한솥 마을" width="1600" height="900" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-munch-town" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<footer class="wrap foot">
+  <p>등불 심연 · 궤도 점프 · 냠냠 원정대 © yeop · 소스는 <a href="https://github.com/yh-yeop/LanternDeep">LanternDeep</a> · <a href="https://github.com/yh-yeop/OrbitHop">OrbitHop</a> · <a href="https://github.com/yh-yeop/MunchQuest">MunchQuest</a> 저장소에 있습니다.
+    화면은 실제 게임을 열어 찍었습니다(냠냠 원정대는 혼자 테스트).</p>
+</footer>
+</body>
+</html>

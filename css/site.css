@@ -249,6 +249,15 @@ select.sort {
 .embed .loop li { flex: 1 1 140px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: .8125rem; color: var(--muted); }
 .embed .loop .px { display: block; width: 32px; height: 32px; margin-bottom: 4px; }
 .embed .loop b { display: block; color: var(--text); font-size: .875rem; }
+/* 웹게임 · 앱 소개(p/webgames · ytdl · mp3)의 소제목 · 조작 표 */
+.embed [data-embed] > p { margin: 0 0 .8em; font-size: .9375rem; line-height: 1.7; }
+.embed h3.sub { margin: 18px 0 8px; font-size: .9375rem; }
+.embed .keys { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.embed .keys th, .embed .keys td { padding: 7px 10px 7px 0; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+.embed .keys thead th { border-top: 0; font-size: .8125rem; font-weight: 600; color: var(--muted); }
+.embed .keys td { color: var(--muted); }
+.embed .keys td:first-child { color: var(--text); }
+.embed kbd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .75rem; padding: 0 5px; border: 1px solid var(--line); border-radius: 4px; white-space: nowrap; }
 
 footer { margin: 48px 0 32px; color: var(--muted); font-size: .8125rem; }
 

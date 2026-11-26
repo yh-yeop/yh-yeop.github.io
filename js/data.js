@@ -92,14 +92,14 @@ export const PROJECTS = [
   },
   {
     id: 'ytdl', cat: 'app', title: 'YTDL', icon: 'assets/icons/ytdl.png',
-    repos: [], release: { repo: 'releases', prefix: 'YTDL', extra: ['YTDL-Android'] }, closed: true,
+    repos: [], release: { repo: 'releases', prefix: 'YTDL', extra: ['YTDL-Android'] }, closed: true, page: 'p/ytdl/', image: 'assets/ytdl/card.webp',
     desc: '유튜브 영상을 커버 이미지 · 싱크 가사(LRC)가 들어간 MP3로 추출하는 앱. Windows와 Android(유튜브 앱 [공유] 한 번으로)에서 쓴다.',
     points: ['링크만 넣으면 아티스트 · 앨범 · 커버 자동 채움', '검색어 · 재생목록 일괄 다운로드, MP4도 지원', 'ffmpeg 내장 단일 실행 파일, 자동 업데이트'],
     tags: ['Python', 'pywebview', 'yt-dlp', 'Windows · Android'],
   },
   {
     id: 'mp3', cat: 'app', title: 'MP3 Checker', icon: 'assets/icons/mp3.png',
-    repos: [], release: { repo: 'releases', prefix: 'MP3Checker', extra: ['MP3Checker-Android'] }, closed: true,
+    repos: [], release: { repo: 'releases', prefix: 'MP3Checker', extra: ['MP3Checker-Android'] }, closed: true, page: 'p/mp3/', image: 'assets/mp3/card.webp',
     desc: '폴더 안 MP3의 가사(LRC) · 커버 · 태그 상태를 한눈에 보고 고치는 점검 도구. Android 판으로 폰의 음악 폴더도 그 자리에서 고친다.',
     points: ['곡별 상태 대시보드와 아티스트 → 앨범 브라우저', '태그 편집 · 커버 일괄 지정 · 원본 링크 자동 검색', 'YTDL 스타일 규칙 기준으로 라이브러리 정리'],
     tags: ['Python', 'pywebview', 'Windows · Android'],
@@ -138,6 +138,29 @@ export const PROJECTS = [
     desc: '시간을 건너뛰는 대시와, 벤 적을 멈춰 발판으로 쓰는 공중 연계가 특징인 2D 플랫포머 메트로배니아.',
     points: ['프롤로그부터 엔딩까지 포함된 공개 베타', '시간 도약 · 시간 정지 베기 · 시간 앵커 · 회귀', '보스마다 다른 패턴과 공략'],
     tags: ['Unity 6', '메트로배니아', 'Windows', '베타'],
+  },
+  // 웹게임 3종 — 소개는 한 페이지(p/webgames/)에 묶고 카드는 각자의 절(#lantern · #orbit · #munch)로 잇는다.
+  // desc · points · tags 는 각 저장소 portfolio.json 을 옮긴 것(그쪽을 고치면 여기도). data.js 에 있으면 portfolio.json 자동 카드는 생기지 않는다
+  {
+    id: 'lantern', cat: 'game', title: '등불 심연', icon: 'assets/icons/lantern.svg',
+    repos: ['LanternDeep'], live: `${PAGES}/LanternDeep/`, page: 'p/webgames/#lantern', image: 'assets/lantern/card.webp',
+    desc: '기름을 탄약과 불빛으로 함께 쓰는 실시간 던전 슈팅 로그라이트.',
+    points: ['쏠수록 기름이 줄고, 기름이 줄면 시야와 자동 조준 범위도 좁아짐', '방 단위 전투, 무기 7종 파밍 · 교체, 층마다 특성 선택', '키보드 · 터치 지원, 홈 화면에 추가하면 오프라인 실행'],
+    tags: ['JavaScript', '로그라이트', '실시간 액션'],
+  },
+  {
+    id: 'orbit', cat: 'game', title: '궤도 점프', icon: 'assets/icons/orbit.svg',
+    repos: ['OrbitHop'], live: `${PAGES}/OrbitHop/`, page: 'p/webgames/#orbit', image: 'assets/orbit/card.webp',
+    desc: '탭 한 번으로 행성에서 행성으로 뛰어오르는 한 손 웹게임.',
+    points: ['궤도를 돌다 탭하면 점선 방향으로 점프', '정중앙 착지 시 PERFECT, 진행할수록 속도가 빨라지고 행성이 작아짐', '설치 없이 브라우저에서 실행, 홈 화면에 추가하면 오프라인 실행'],
+    tags: ['HTML', '캔버스', '모바일'],
+  },
+  {
+    id: 'munch', cat: 'game', title: '냠냠 원정대', icon: 'assets/icons/munch.svg', stage: 'beta',
+    repos: ['MunchQuest'], live: `${PAGES}/MunchQuest/`, page: 'p/webgames/#munch', image: 'assets/munch/card.webp',
+    desc: '브라우저에서 여럿이 함께 사냥하는 도트 MMORPG. 짧게 접속해도 성장할 수 있는 구조.',
+    points: ['포털로 이어진 공유 필드, 피해를 준 플레이어 모두에게 개인 드롭', '실시간 멀티플레이 (서버 판정)', '도트 그래픽, WebAudio 효과음'],
+    tags: ['JavaScript', 'Cloudflare Workers', '멀티플레이', '도트'],
   },
   // 개발 기획 중 — 설명 없이 이름과 표시만 둔다
   { id: 'danbi', cat: 'game', title: 'Danbi', repos: [], stage: 'planning' },

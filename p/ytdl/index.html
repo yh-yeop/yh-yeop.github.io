@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YTDL — 유튜브 영상을 커버 · 싱크 가사가 들어간 MP3로 (Windows · Android)</title>
+<meta name="description" content="유튜브 링크를 넣으면 아티스트 · 앨범 · 커버가 채워진 MP3와 싱크 가사(LRC)로 받는 앱. 검색어 · 재생목록 일괄 다운로드, 정리 스타일, MP4도 지원. Windows 설치 파일과 Android APK(유튜브 앱 [공유] 한 번으로).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="YTDL · 유튜브 → 커버 · 싱크 가사 MP3">
+<meta property="og:description" content="링크만 넣으면 아티스트 · 앨범 · 커버를 채운 MP3와 싱크 가사(LRC). Windows · Android.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/ytdl/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://yh-yeop.github.io/p/ytdl/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/icons/ytdl.png" type="image/png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="ytdl.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script src="../../share.js" defer></script>
+<script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/ytdl.png" alt="" width="64" height="64">
+    <div>
+      <h1>YTDL <span class="en">유튜브 → MP3</span></h1>
+      <p class="tagline">유튜브 영상을 커버 · 싱크 가사가 들어간 MP3로</p>
+    </div>
+  </div>
+  <p class="lede">유튜브 링크를 넣으면 채널을 알아보고 아티스트 · 앨범 · 커버를 채운 MP3로 받습니다. 영상에 자막이 있으면 싱크 가사(.lrc)도 함께 만듭니다.
+    PC에서는 링크를 붙여 넣고, 휴대폰에서는 유튜브 앱의 [공유]에서 YTDL을 고르면 됩니다.</p>
+  <div class="cta">
+    <a class="btn primary" data-app="YTDL" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=YTDL&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+    <a class="btn" data-app="YTDL-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=YTDL-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+  </div>
+  <p class="hero-meta">무료 · 광고 없음 · Windows 10 · 11 · Android · 자동 업데이트 · 받은 곡 점검은 <a href="../mp3/">MP3 Checker</a></p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <figure>
+      <button class="shot" type="button" popovertarget="lb-main" aria-label="크게 보기: 한 곡 불러온 화면">
+        <img src="../../assets/ytdl/main.webp" srcset="../../assets/ytdl/main-t.webp 400w, ../../assets/ytdl/main.webp 1320w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="YTDL 창. MP3 탭에 '자막(가사) 다운로드 준비됨', 정리 스타일 '내 스타일', 유튜브 링크 칸과 정보 가져오기 단추. 아래 정보 카드에 커버, 제목 '새벽 정류장', 적용 규칙 '윤슬', 아티스트 · 앨범 · 앨범 아티스트 · 연도 칸" width="1320" height="1140">
+      </button>
+      <figcaption>링크를 넣고 [정보 가져오기]. 채널에 맞는 규칙으로 제목 · 아티스트 · 앨범 · 커버가 채워집니다(곡 · 채널 이름은 예시).</figcaption>
+    </figure>
+
+    <section aria-labelledby="feat-h">
+      <div data-embed>
+      <h2 id="feat-h">하는 일</h2>
+      <ul class="features">
+        <li>
+          <h3>링크만 넣으면</h3>
+          <p>채널을 알아보고 아티스트 · 앨범 · 앨범 아티스트 · 커버를 정리 스타일의 규칙대로 채웁니다. 다른 규칙을 쓰려면 '적용 규칙'에서 이 영상만 바꿉니다.</p>
+        </li>
+        <li>
+          <h3>싱크 가사(LRC)</h3>
+          <p>영상 자막 언어를 고르면 노래에 맞춰 흐르는 .lrc 가사를 mp3 옆에 함께 저장합니다. 자막이 없는 영상은 mp3만.</p>
+        </li>
+        <li>
+          <h3>검색어 · 재생목록</h3>
+          <p>링크 대신 '아티스트 곡명'을 넣으면 음원 영상을 찾아 줍니다. 재생목록은 곡 목록에서 넣고 뺄 곡을 고르고, 곡마다 손본 뒤 한꺼번에 받습니다.</p>
+        </li>
+        <li>
+          <h3>정리 스타일</h3>
+          <p>채널 → 아티스트 규칙, 제목에서 지울 이름, 콜라보 표기를 묶은 것. 불러온 영상의 채널로 규칙을 바로 만들고, 저장하기 전에 결과를 미리 봅니다.</p>
+        </li>
+        <li>
+          <h3>커버 고르기</h3>
+          <p>규칙 커버 · 영상 썸네일 · 정사각 썸네일 중에서, 또는 이미지 링크 · 붙여넣기 · 파일로 직접 지정합니다.</p>
+        </li>
+        <li>
+          <h3>폴더 · 취소 · 다시 받기</h3>
+          <p>이 곡만 다른 폴더에 받을 수 있고 최근 폴더를 기억합니다. 받는 중 취소하면 받다 만 파일은 남지 않고, 재생목록은 실패한 곡만 다시 받습니다.</p>
+        </li>
+        <li>
+          <h3>MP4도</h3>
+          <p>보조 탭에서 영상을 화질만 골라 mp4로 그대로 받습니다(태그 · 가사 없이).</p>
+        </li>
+        <li>
+          <h3>설치 하나로</h3>
+          <p>변환에 필요한 프로그램(ffmpeg 등)이 모두 들어 있어 따로 깔 것이 없습니다. 새 버전은 알아서 받아 둡니다.</p>
+        </li>
+      </ul>
+      </div>
+      <div class="pair">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-playlist" aria-label="크게 보기: 재생목록 일괄 다운로드">
+            <img src="../../assets/ytdl/playlist-t.webp" srcset="../../assets/ytdl/playlist-t.webp 400w, ../../assets/ytdl/playlist.webp 1320w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="재생목록 곡 목록. 번호 · 제목 · 포함 체크 · 상태(완료 · 받는 중 · 대기)가 보이고, 아래에 1/8 페이저와 곡 정보 카드, 전체 다운로드(8곡) 단추" width="1320" height="1140" loading="lazy">
+          </button>
+          <figcaption>재생목록. 곡마다 상태가 보이고, 끝나면 실패한 곡만 다시 받습니다</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-editor" aria-label="크게 보기: 정리 스타일 편집">
+            <img src="../../assets/ytdl/editor-t.webp" srcset="../../assets/ytdl/editor-t.webp 400w, ../../assets/ytdl/editor.webp 1320w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="정리 스타일 관리 창. 기본 · 내 스타일 목록 아래에 스타일 편집 칸: 스타일 이름, 기본 앨범, 제목에서 지울 이름, 아티스트 규칙 카드(윤슬 · 하늘결 · 모래시계)" width="1320" height="1140" loading="lazy">
+          </button>
+          <figcaption>정리 스타일 편집. 규칙 순서가 곧 우선순위입니다</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-h">
+      <div data-embed>
+      <h2 id="how-h">쓰는 법</h2>
+      <h3 class="sub">Windows</h3>
+      <ol class="steps">
+        <li><b>링크 붙여 넣기</b> — 유튜브 주소(또는 '아티스트 곡명')를 넣고 [정보 가져오기]. 재생목록 주소도 됩니다.</li>
+        <li><b>확인</b> — 제목 · 아티스트 · 앨범 · 커버를 보고, 필요하면 고칩니다. 가사를 받으려면 자막 언어를 고릅니다.</li>
+        <li><b>받기</b> — [다운로드]. 저장 폴더에 <code>제목.mp3</code>와 <code>제목.lrc</code>가 생기고, [폴더 열기]로 바로 엽니다.</li>
+      </ol>
+      <h3 class="sub">Android</h3>
+      <ol class="steps">
+        <li><b>유튜브 앱에서 [공유]</b> — 공유 목록에서 YTDL을 고르면 링크가 들어가고 정보까지 바로 가져옵니다.</li>
+        <li><b>받기</b> — 확인하고 [다운로드]. 진행은 알림에 보여서 다른 앱으로 넘어가도 됩니다.</li>
+        <li><b>듣기</b> — <code>음악/YTDL</code> 폴더에 저장돼 음악 앱에서 바로 보입니다. 하위 폴더 이름은 바꿀 수 있습니다.</li>
+      </ol>
+      </div>
+    </section>
+
+    <section id="get" aria-labelledby="get-h">
+      <div class="get-grid">
+        <div>
+          <div data-embed>
+          <h2 id="get-h">받기</h2>
+          <ul class="ways">
+            <li>
+              <b>Windows 설치 파일</b>
+              <span><code>YTDL-Setup-버전.exe</code>를 받아 실행하고 설치 마법사를 따릅니다. Windows 10 · 11.</span>
+            </li>
+            <li>
+              <b>Android APK</b>
+              <span><code>YTDL-Android-버전.apk</code>를 휴대폰에서 받아 엽니다. 설치 뒤 유튜브 앱의 [공유] 목록에 YTDL이 생깁니다.</span>
+            </li>
+          </ul>
+          </div>
+          <div class="get">
+            <a class="btn primary" data-app="YTDL" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=YTDL&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+            <a class="btn" data-app="YTDL-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=YTDL-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+          </div>
+          <ul class="notes">
+            <li>코드 서명이 없는 설치 파일이라 처음 실행할 때 Windows가 <b>'PC 보호'</b> 창을 띄울 수 있습니다. <b>추가 정보 → 실행</b>을 누르세요.</li>
+            <li>Android는 Play 스토어 밖에서 받은 앱이라, 처음 열 때 <b>'알 수 없는 앱 설치'</b>를 받은 브라우저(또는 파일 앱)에 허용해야 합니다. 설치가 끝나면 다시 꺼도 됩니다.</li>
+            <li><b>자동 업데이트:</b> Windows 판은 켤 때와 6시간마다 새 버전을 확인해 뒤에서 받아 두고, 준비되면 [다시 시작해 업데이트]가 뜹니다. 그냥 닫아도 다음에 켤 때 적용됩니다. Android 판은 배너에 새 버전과 용량을 띄우고, 모바일 데이터일 때는 자동으로 받지 않습니다.</li>
+            <li>업데이트는 받은 설치 파일의 크기와 sha256을 릴리스 값과 대조한 뒤에 설치합니다. 잘리거나 다른 파일이면 설치하지 않고 다시 받기를 권합니다.</li>
+          </ul>
+        </div>
+        <figure>
+          <button class="shot phone" type="button" popovertarget="lb-phone" aria-label="크게 보기: 휴대폰 화면">
+            <img src="../../assets/ytdl/phone-t.webp" srcset="../../assets/ytdl/phone-t.webp 400w, ../../assets/ytdl/phone.webp 780w" sizes="(max-width: 600px) 220px, 180px" alt="Android 판 화면. 저장 위치 음악/YTDL, 싱크가사 안내, 공유로 들어온 유튜브 링크와 커버 · 제목 '새벽 정류장'" width="780" height="1688" loading="lazy">
+          </button>
+          <figcaption>Android. [공유]로 들어온 링크</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">알아 둘 것</h2>
+      <dl class="faq">
+        <div>
+          <dt>개인 감상용으로만 쓰세요</dt>
+          <dd>받은 곡은 <b>나 혼자 듣는 용도</b>로만 써야 합니다. 다시 올리거나 나눠 주거나 파는 것은 저작권 침해가 될 수 있습니다. 처음 실행할 때 이 내용에 동의해야 시작됩니다.</dd>
+        </div>
+        <div>
+          <dt>데이터는 기기 안에</dt>
+          <dd>설정 · 정리 스타일 · 받은 파일은 모두 이 기기에 저장됩니다(Windows는 <code>%APPDATA%\YTDL</code>). 계정이나 로그인은 없습니다.</dd>
+        </div>
+        <div>
+          <dt>익명 사용 통계</dt>
+          <dd>사용 중인 기기 수를 세려고 무작위 설치 ID · 버전 · OS 종류만 하루 한 번 보냅니다. 처음 화면에서 알리고, 버전 옆 <b>'통계 보내기'</b>로 끌 수 있습니다.</dd>
+        </div>
+        <div>
+          <dt>PC에서 가사가 안 받아져요</dt>
+          <dd>유튜브가 자막을 받을 때 로그인을 요구할 때가 있습니다. 브라우저 확장으로 내보낸 유튜브 <code>cookies.txt</code>를 [쿠키 파일 선택]으로 지정하세요. 쿠키는 로그인 정보라 남에게 주지 마세요.</dd>
+        </div>
+        <div>
+          <dt>갑자기 받기가 안 돼요</dt>
+          <dd>유튜브가 바뀌면 받는 부품(yt-dlp)이 막힐 수 있습니다. 오류 카드의 [yt-dlp 갱신]을 누르면 앱 안에서 바로 새것으로 바꿉니다.</dd>
+        </div>
+        <div>
+          <dt>받은 곡을 정리하려면</dt>
+          <dd><a href="../mp3/">MP3 Checker</a>로 YTDL 저장 폴더를 열면 가사 · 커버 · 태그 상태를 한눈에 보고, 같은 정리 스타일 기준으로 고칠 수 있습니다.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="앱 정보">
+    <div class="panel">
+      <h2>받기</h2>
+      <a class="btn primary block" data-app="YTDL" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=YTDL&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+      <a class="btn block" data-app="YTDL-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=YTDL-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+      <p class="small note">모든 버전과 바뀐 점은 <a href="https://github.com/yh-yeop/releases/releases?q=YTDL&amp;expanded=true">릴리스 목록</a>에 있습니다.</p>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>설치형 앱 · Windows · Android</dd></div>
+        <div><dt>Windows</dt><dd data-ver="YTDL">최신 릴리스</dd></div>
+        <div><dt>Android</dt><dd data-ver="YTDL-Android">최신 릴리스</dd></div>
+        <div><dt>저장</dt><dd>이 기기 안에만</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd>비공개 (설치 파일만 공개)</dd></div>
+      </dl>
+      <p class="tags">Python · pywebview · yt-dlp · ffmpeg · Android(WebView)</p>
+    </div>
+
+    <div class="panel notice">
+      <p><b>짝 앱 MP3 Checker</b> — YTDL로 받은 곡의 가사 · 커버 · 태그를 점검하고 고칩니다. <a href="../mp3/">소개 보기</a></p>
+    </div>
+  </aside>
+</main>
+
+<div class="lb" popover id="lb-main">
+  <img src="../../assets/ytdl/main.webp" alt="한 곡 불러온 화면" width="1320" height="1140" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-main" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-playlist">
+  <img src="../../assets/ytdl/playlist.webp" alt="재생목록 일괄 다운로드 화면" width="1320" height="1140" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-playlist" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-editor">
+  <img src="../../assets/ytdl/editor.webp" alt="정리 스타일 편집 화면" width="1320" height="1140" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-editor" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-phone">
+  <img src="../../assets/ytdl/phone.webp" alt="Android 판 화면" width="780" height="1688" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-phone" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<footer class="wrap foot">
+  <p>YTDL © yeop · 소스 비공개 무료 앱입니다. 설치 파일은 <a href="https://github.com/yh-yeop/releases/releases?q=YTDL&amp;expanded=true">yh-yeop/releases</a>에 있습니다.
+    화면은 지어낸 곡 · 채널 이름과 예시 커버로 찍었습니다. YouTube는 Google LLC의 상표이며, 이 앱은 Google과 관련이 없습니다.</p>
+</footer>
+</body>
+</html>

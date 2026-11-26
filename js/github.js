@@ -170,11 +170,16 @@ export async function portfolioOf(repo, version = '') {
 
 // 서브페이지에서 data-embed 가 붙은 부분과 대표 이미지(og:image)를 가져온다 → 첫 화면 카드에서 펼쳐 보기.
 // 상대 경로는 서브페이지 기준으로 풀고, id 는 첫 화면의 id 와 겹치지 않게 지운다.
+// 주소에 #<id> 가 있고 그 요소 안에 data-embed 가 있으면 그 부분만 가져온다(한 페이지에 여러 프로젝트를 묶은 경우,
+// 예: p/webgames/#lantern). 그 요소에 data-embed-image 가 있으면 대표 이미지도 og:image 대신 그것.
 export async function pageEmbed(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`page ${res.status}`);
   const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
-  const parts = [...doc.querySelectorAll('[data-embed]')];
+  const hash = decodeURIComponent(new URL(url).hash.slice(1));
+  const scope = hash && doc.getElementById(hash);
+  const from = scope && scope.querySelector('[data-embed]') ? scope : doc;
+  const parts = [...from.querySelectorAll('[data-embed]')];
   const box = doc.createElement('div');
   box.append(...parts);
   box.querySelectorAll(DROP).forEach(el => el.remove());
@@ -186,7 +191,7 @@ export async function pageEmbed(url) {
       if (v && !v.startsWith('#')) el.setAttribute(attr, new URL(v, url).href);
     }
   }
-  const og = doc.querySelector('meta[property="og:image"]')?.content;
+  const og = (from !== doc && from.dataset.embedImage) || doc.querySelector('meta[property="og:image"]')?.content;
   return { image: og ? new URL(og, url).href : null, html: box.innerHTML };
 }
 

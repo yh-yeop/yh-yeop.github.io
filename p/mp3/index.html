@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP3 Checker — 음악 폴더의 가사 · 커버 · 태그 점검과 고치기 (Windows · Android)</title>
+<meta name="description" content="폴더 안 MP3의 싱크 가사(LRC) · 커버 · 태그 상태를 한눈에 보고 고치는 점검 도구. 앨범 정리 · 커버 일괄 지정 · 싱크 가사 찾기 · 원본 링크 검색 · 중복 곡 찾기. YTDL 정리 스타일 기준 검사. Windows 설치 파일과 Android APK.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MP3 Checker · 가사 · 커버 · 태그 점검">
+<meta property="og:description" content="음악 폴더의 가사 · 커버 · 태그 상태를 한눈에 보고 그 자리에서 고칩니다. Windows · Android.">
+<meta property="og:image" content="https://yh-yeop.github.io/assets/mp3/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://yh-yeop.github.io/p/mp3/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/icons/mp3.png" type="image/png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="mp3.css">
+<script>try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<script src="../../share.js" defer></script>
+<script type="module" src="page.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<nav class="topbar wrap" aria-label="사이트">
+  <a class="back" href="../../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    yeop 프로젝트
+  </a>
+  <button class="back share" type="button" data-share>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+    공유
+  </button>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-id">
+    <img class="hero-ico" src="../../assets/icons/mp3.png" alt="" width="64" height="64">
+    <div>
+      <h1>MP3 Checker <span class="en">음악 폴더 점검</span></h1>
+      <p class="tagline">MP3의 가사 · 커버 · 태그 상태를 한눈에 보고 고치는 도구</p>
+    </div>
+  </div>
+  <p class="lede">음악 폴더를 열면 곡마다 싱크 가사(.lrc)가 있는지, 커버가 들어 있는지, 태그가 다 채워졌는지를 표로 보여 줍니다.
+    빠진 것만 골라 커버를 넣고, 가사를 찾고, 태그를 고치는 일을 한 화면에서 합니다. Android 판으로는 휴대폰의 음악 폴더를 그 자리에서 고칩니다.</p>
+  <div class="cta">
+    <a class="btn primary" data-app="MP3Checker" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+    <a class="btn" data-app="MP3Checker-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+  </div>
+  <p class="hero-meta">무료 · 광고 없음 · Windows 10 · 11 · Android · 자동 업데이트 · 곡 받기는 <a href="../ytdl/">YTDL</a></p>
+</header>
+
+<main id="main" class="wrap layout">
+  <div class="col-main">
+
+    <figure>
+      <button class="shot" type="button" popovertarget="lb-detail" aria-label="크게 보기: 목록과 곡 상세">
+        <img src="../../assets/mp3/detail.webp" srcset="../../assets/mp3/detail-t.webp 400w, ../../assets/mp3/detail.webp 1475w" sizes="(max-width: 920px) calc(100vw - 32px), 788px" alt="MP3 Checker 창. 위에 '가사없음 4 · 커버없음 2 · 링크없음 3 · 태그불완전 2 · 스타일위반 1' 칩, 곡 목록 표(커버 · 곡 · 아티스트 · 앨범 · 가사 · 태그 · 스타일 상태), 오른쪽 상세 칸에 스타일 제안 '여름의 끝에서 (Lyric Video) → 여름의 끝에서', 앨범 'YTDL → Covers'와 제안 적용 단추" width="1475" height="950">
+      </button>
+      <figcaption>목록에서 곡을 누르면 오른쪽에 상세가 열립니다. 스타일 규칙에 어긋난 제목 · 앨범은 고칠 값을 제안합니다(곡 · 아티스트 이름은 예시).</figcaption>
+    </figure>
+
+    <section aria-labelledby="feat-h">
+      <div data-embed>
+      <h2 id="feat-h">하는 일</h2>
+      <ul class="features">
+        <li>
+          <h3>상태 한눈에</h3>
+          <p>곡마다 가사 · 커버 · 태그 · 스타일 상태를 표로 보고, '가사없음' · '커버없음' · '링크없음' 같은 칩 하나로 빠진 곡만 거릅니다. 검색 · 정렬 · 분류도.</p>
+        </li>
+        <li>
+          <h3>앨범 정리</h3>
+          <p>아티스트 → 앨범으로 묶어 보고 앨범째 고릅니다. 곡마다 원본 링크가 있으면 [순서 정렬]로 업로드 날짜순 트랙 번호를 매깁니다.</p>
+        </li>
+        <li>
+          <h3>태그 편집</h3>
+          <p>상세 칸에서 제목 · 아티스트 · 앨범 · 연도 · 트랙을 고치고, 이전 · 다음 곡으로 넘기며 저장합니다(<kbd>Ctrl</kbd>+<kbd>Enter</kbd>).</p>
+        </li>
+        <li>
+          <h3>커버 바꾸기</h3>
+          <p>스타일 이미지 · 영상 썸네일(정사각 포함) · 유튜브에서 찾기 · 이미지 링크 · 붙여넣기 · 끌어다 놓기 · 파일. 여러 곡에 한꺼번에 넣을 수 있습니다.</p>
+        </li>
+        <li>
+          <h3>싱크 가사 찾기</h3>
+          <p>곡 태그로 벅스에서 싱크 가사를 찾아 .lrc로 채웁니다. 제목 · 아티스트가 확실히 맞는 곡만 자동 저장하고, 애매하면 후보에서 고릅니다. 직접 검색 · 벅스 링크 · .lrc 파일도.</p>
+        </li>
+        <li>
+          <h3>원본 링크 찾기</h3>
+          <p>링크가 없는 곡의 원본 유튜브 영상을 찾아 태그에 적습니다. 확신이 없으면 저장하지 않고 후보를 보여 줍니다.</p>
+        </li>
+        <li>
+          <h3>YTDL 스타일로 정리</h3>
+          <p>YTDL이 깔려 있으면 그 정리 스타일 기준으로 제목에 남은 군더더기 · 앨범 규칙을 검사하고, 제안을 한 곡씩 또는 한꺼번에 적용합니다.</p>
+        </li>
+        <li>
+          <h3>중복 곡 찾기</h3>
+          <p>같은 영상이거나 제목 · 아티스트가 같은 곡을 묶어 크기 · 음질 · 길이를 나란히 봅니다. 파일은 지우지 않습니다.</p>
+        </li>
+        <li>
+          <h3>바꾸기 전에 확인</h3>
+          <p>일괄 작업은 몇 곡의 무엇이 바뀌는지와 예시 세 곡을 먼저 보여 주고, 진행 중에는 [중지]할 수 있습니다.</p>
+        </li>
+      </ul>
+      </div>
+      <div class="pair">
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-cover" aria-label="크게 보기: 커버 바꾸기">
+            <img src="../../assets/mp3/cover-t.webp" srcset="../../assets/mp3/cover-t.webp 400w, ../../assets/mp3/cover.webp 1475w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="커버 바꾸기 대화상자. 이미지 링크 칸, 끌어다 놓기 영역, 영상 썸네일 · 썸네일(1:1) · 유튜브에서 찾기 단추, 스타일 이미지 격자(하늘결에 '추천' 표시)" width="1475" height="950" loading="lazy">
+          </button>
+          <figcaption>커버 바꾸기. 아티스트에 맞는 스타일 이미지를 앞에 추천합니다</figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" popovertarget="lb-albums" aria-label="크게 보기: 앨범 정리">
+            <img src="../../assets/mp3/albums-t.webp" srcset="../../assets/mp3/albums-t.webp 400w, ../../assets/mp3/albums.webp 1475w" sizes="(max-width: 600px) calc(100vw - 32px), 388px" alt="앨범 정리 화면. 아티스트별로 앨범이 묶이고, 앨범마다 곡 수 · 링크 충족도(링크 4/4) · 순서 정렬 단추, 펼친 앨범의 곡 목록" width="1475" height="950" loading="lazy">
+          </button>
+          <figcaption>앨범 정리. 링크가 다 있으면 업로드 날짜순으로 트랙 번호</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="how-h">
+      <div data-embed>
+      <h2 id="how-h">쓰는 법</h2>
+      <ol class="steps">
+        <li><b>폴더 열기</b> — [폴더 선택]으로 음악 폴더를 고릅니다. YTDL을 쓰면 [YTDL 폴더 스캔] 한 번. ☆을 눌러 시작 폴더로 두면 다음부터 열 때 바로 스캔합니다.</li>
+        <li><b>상태 보기</b> — 위쪽 칩(가사없음 · 커버없음 · 링크없음 · 태그불완전 · 스타일위반)으로 손볼 곡만 남깁니다. 곡을 누르면 상세가 열립니다.</li>
+        <li><b>고치기</b> — 한 곡은 상세 칸에서, 여러 곡은 체크한 뒤 위쪽 일괄 단추(링크 자동검색 · 가사 일괄 추출 · 스타일 일괄 정리 · 커버 일괄 지정)로. 바뀔 내용을 확인하고 [적용].</li>
+      </ol>
+      <p class="small">스캔은 파일만 읽고 인터넷에 접속하지 않습니다. 가사 · 링크 · 썸네일 조회는 그 단추를 눌렀을 때만 합니다.</p>
+      </div>
+    </section>
+
+    <section id="get" aria-labelledby="get-h">
+      <div class="get-grid">
+        <div>
+          <div data-embed>
+          <h2 id="get-h">받기</h2>
+          <ul class="ways">
+            <li>
+              <b>Windows 설치 파일</b>
+              <span><code>MP3Checker-Setup-버전.exe</code>를 받아 실행하고 설치 마법사를 따릅니다. Windows 10 · 11.</span>
+            </li>
+            <li>
+              <b>Android APK</b>
+              <span><code>MP3Checker-Android-버전.apk</code>를 휴대폰에서 받아 엽니다. 음악 폴더를 읽고 고치려면 처음에 <b>'모든 파일 접근'</b> 권한을 허용합니다.</span>
+            </li>
+          </ul>
+          </div>
+          <div class="get">
+            <a class="btn primary" data-app="MP3Checker" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+            <a class="btn" data-app="MP3Checker-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+          </div>
+          <ul class="notes">
+            <li>코드 서명이 없는 설치 파일이라 처음 실행할 때 Windows가 <b>'PC 보호'</b> 창을 띄울 수 있습니다. <b>추가 정보 → 실행</b>을 누르세요.</li>
+            <li>Android는 Play 스토어 밖에서 받은 앱이라, 처음 열 때 <b>'알 수 없는 앱 설치'</b>를 받은 브라우저(또는 파일 앱)에 허용해야 합니다. 설치가 끝나면 다시 꺼도 됩니다.</li>
+            <li><b>자동 업데이트:</b> Windows 판은 켤 때와 6시간마다 새 버전을 확인해 뒤에서 받아 두고, 준비되면 [다시 시작해 업데이트]가 뜹니다. 그냥 닫아도 다음에 켤 때 적용됩니다. Android 판은 배너에 새 버전과 용량을 띄우고, 모바일 데이터일 때는 자동으로 받지 않습니다.</li>
+          </ul>
+        </div>
+        <figure>
+          <button class="shot phone" type="button" popovertarget="lb-phone" aria-label="크게 보기: 휴대폰 화면">
+            <img src="../../assets/mp3/phone-t.webp" srcset="../../assets/mp3/phone-t.webp 400w, ../../assets/mp3/phone.webp 780w" sizes="(max-width: 600px) 220px, 180px" alt="Android 판 목록 화면. 상태 칩 아래로 곡마다 커버 · 제목 · 파일명 · 아티스트와 가사 · 태그 · 스타일 상태 표시" width="780" height="1688" loading="lazy">
+          </button>
+          <figcaption>Android. 폰 음악 폴더를 그 자리에서</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">알아 둘 것</h2>
+      <dl class="faq">
+        <div>
+          <dt>내 파일, 개인 용도로</dt>
+          <dd>본인이 적법하게 가진 파일을 개인적으로 정리하는 도구입니다. 찾아 넣은 가사 · 커버도 개인 감상용으로만 쓰세요. 처음 실행할 때 이 내용에 동의해야 시작됩니다.</dd>
+        </div>
+        <div>
+          <dt>데이터는 기기 안에</dt>
+          <dd>음악 파일은 이 기기 안에서 읽고 고칩니다. 설정은 기기에 저장되고(Windows는 <code>%APPDATA%\MP3Checker</code>), 계정이나 로그인은 없습니다.</dd>
+        </div>
+        <div>
+          <dt>인터넷은 단추를 누를 때만</dt>
+          <dd>스캔 중에는 조회하지 않습니다. 가사(벅스) · 원본 링크 · 영상 썸네일은 그 단추를 누른 곡만 찾아봅니다. 벅스가 요청을 막으면 일괄 작업은 바로 멈춥니다.</dd>
+        </div>
+        <div>
+          <dt>익명 사용 통계</dt>
+          <dd>사용 중인 기기 수를 세려고 무작위 설치 ID · 버전 · OS 종류만 하루 한 번 보냅니다. 처음 화면에서 알리고, 버전 옆 <b>'통계 보내기'</b>로 끌 수 있습니다.</dd>
+        </div>
+        <div>
+          <dt>YTDL 없이도 되나요?</dt>
+          <dd>네. 어떤 MP3 폴더든 됩니다. <a href="../ytdl/">YTDL</a>이 깔려 있으면 그 저장 폴더를 바로 열고, YTDL의 정리 스타일로 검사 · 정리하는 기능이 더해집니다.</dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+
+  <aside class="col-side" aria-label="앱 정보">
+    <div class="panel">
+      <h2>받기</h2>
+      <a class="btn primary block" data-app="MP3Checker" data-plat="windows" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker&amp;expanded=true">Windows <small data-ext=".exe">.exe</small></a>
+      <a class="btn block" data-app="MP3Checker-Android" data-plat="android" href="https://github.com/yh-yeop/releases/releases?q=MP3Checker-Android&amp;expanded=true">Android <small data-ext=".apk">.apk</small></a>
+      <p class="small note">모든 버전과 바뀐 점은 <a href="https://github.com/yh-yeop/releases/releases?q=MP3Checker&amp;expanded=true">릴리스 목록</a>에 있습니다.</p>
+    </div>
+
+    <div class="panel">
+      <dl class="info">
+        <div><dt>종류</dt><dd>설치형 앱 · Windows · Android</dd></div>
+        <div><dt>Windows</dt><dd data-ver="MP3Checker">최신 릴리스</dd></div>
+        <div><dt>Android</dt><dd data-ver="MP3Checker-Android">최신 릴리스</dd></div>
+        <div><dt>저장</dt><dd>이 기기 안에만</dd></div>
+        <div><dt>개발</dt><dd><a href="../../">yeop</a></dd></div>
+        <div><dt>소스</dt><dd>비공개 (설치 파일만 공개)</dd></div>
+      </dl>
+      <p class="tags">Python · pywebview · mutagen · Android(WebView)</p>
+    </div>
+
+    <div class="panel notice">
+      <p><b>짝 앱 YTDL</b> — 유튜브 영상을 커버 · 싱크 가사가 들어간 MP3로 받습니다. YTDL로 받고 MP3 Checker로 점검하면 이어집니다. <a href="../ytdl/">소개 보기</a></p>
+    </div>
+  </aside>
+</main>
+
+<div class="lb" popover id="lb-detail">
+  <img src="../../assets/mp3/detail.webp" alt="목록과 곡 상세 화면" width="1475" height="950" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-detail" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-cover">
+  <img src="../../assets/mp3/cover.webp" alt="커버 바꾸기 화면" width="1475" height="950" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-cover" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb" popover id="lb-albums">
+  <img src="../../assets/mp3/albums.webp" alt="앨범 정리 화면" width="1475" height="950" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-albums" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div class="lb narrow" popover id="lb-phone">
+  <img src="../../assets/mp3/phone.webp" alt="Android 판 목록 화면" width="780" height="1688" loading="lazy">
+  <button class="lb-close" type="button" popovertarget="lb-phone" popovertargetaction="hide" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<footer class="wrap foot">
+  <p>MP3 Checker © yeop · 소스 비공개 무료 앱입니다. 설치 파일은 <a href="https://github.com/yh-yeop/releases/releases?q=MP3Checker&amp;expanded=true">yh-yeop/releases</a>에 있습니다.
+    화면은 지어낸 곡 · 아티스트 이름과 예시 커버로 찍었습니다.</p>
+</footer>
+</body>
+</html>

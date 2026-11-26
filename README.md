@@ -27,6 +27,7 @@
   releases 저장소 `apps.json`에만 있고 `PROJECTS`에 없는 앱은 index.json 내용으로 카드가 자동으로 생긴다 — 새 비공개 앱은 `apps.json` 한 줄이면 되고, 꾸밀 때만 `PROJECTS`에 같은 `release.prefix`로 항목을 둔다.
 - `PROJECTS`에 없는 공개 저장소는 그 저장소 루트의 `portfolio.json`(아래)으로 카드가 자동으로 만들어진다. 없으면 GitHub 설명으로 '기타' 카드. 버린 저장소는 보관(archive) + 비공개로 돌리면 사라진다.
 - 서브페이지가 있는 프로젝트(`page`)는 카드에서 '소개 펼치기'로 서브페이지의 `data-embed` 부분과 대표 이미지(`og:image`)를 보여 준다.
+  `page` 에 `#<id>` 가 붙어 있고 그 요소 안에 `data-embed` 가 있으면 그 부분만, 대표 이미지는 그 요소의 `data-embed-image`(없으면 `og:image`) — 여러 프로젝트를 한 페이지에 묶을 때(예: `p/webgames/#lantern`).
 - `release.extra: ['<id>', …]`면 releases 저장소의 다른 앱(같은 앱의 다른 판)도 같은 카드에 받기 단추 · 버전으로 붙고, 그 앱의 자동 카드는 생기지 않는다 (YTDL 카드 + `YTDL-Android`, MP3 Checker + `MP3Checker-Android`).
 - `release.pre: true`면 프리릴리스(베타)도 최신으로 본다 (Fracture). `.exe` · `.apk` 외에 `*win64.zip` 같은 압축본도 Windows 설치 파일로 친다.
 - `featured`가 있는 프로젝트는 첫 화면 맨 위 배너로 알린다 (한 번에 하나).
